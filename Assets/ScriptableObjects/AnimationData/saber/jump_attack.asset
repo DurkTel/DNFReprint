@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: jump_attack
+  m_EditorClassIdentifier: 
+  aniName: jumpAttack
+  isLoop: 0
+  speed: 1.5
+  frameList:
+  - sprite: {fileID: 21300000, guid: dc93ed84955d03a4ab7e61615b6c5868, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    eventType: 2
+  - sprite: {fileID: 21300000, guid: e8a66276ce24eae44a9388975fa4df72, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    eventType: 0
+  - sprite: {fileID: 21300000, guid: 2f81b423c9f0ac24a8640bb02eff8a37, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    eventType: 0
+  - sprite: {fileID: 21300000, guid: 7f8ec126d2ab904428d75c31e1a27ca9, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    eventType: 0
+  - sprite: {fileID: 21300000, guid: cc67035d99b4e8842b61e9b3e398590c, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    eventType: 0
+  - sprite: {fileID: 21300000, guid: 55591276e2c3da64498c24e44202b58f, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    eventType: 0
+  switchingConditions:
+  - frame: 5
+    animationData: {fileID: 11400000, guid: 9f809d6fc264c684f8bd7984bd19d4c7, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 2
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+  - frame: 5
+    animationData: {fileID: 11400000, guid: 1e55f850f92d7214d81f708395360392, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 2
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 4
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 1
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 4
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+  - frame: 5
+    animationData: {fileID: 11400000, guid: 06d21e1cfe223dd4982ba9ad7bc97f93, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 2
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 4
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 1
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 4
+        targetValue: 0
+      spriteSpeedY:
+        relation: 4
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0

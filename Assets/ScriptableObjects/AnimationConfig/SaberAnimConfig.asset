@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17a3e22d6e8c24db78e638472818a2, type: 3}
+  m_Name: SaberAnimConfig
+  m_EditorClassIdentifier: 
+  idle_Anim: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
+  idleTown_Anim: {fileID: 0}
+  walk_Anim: {fileID: 11400000, guid: c1d1ce428c9ab4a4ea6b6212a1b84d27, type: 2}
+  run_Anim: {fileID: 11400000, guid: c6554024b18f6c148b878dc96317cb79, type: 2}
+  sit_Anim: {fileID: 0}
+  attack_Anim: {fileID: 11400000, guid: c9d93ee2e98de1b4caa10beb82f5008b, type: 2}
+  attack2_Anim: {fileID: 11400000, guid: f19a6ec6bb177ef49bbb3ee92d98ee41, type: 2}
+  attack3_Anim: {fileID: 11400000, guid: 1dfad26c1d52ba14e931e37ebb67be90, type: 2}
+  jump_Anim: {fileID: 11400000, guid: be47b0b125c6a6e4894745f60edb2653, type: 2}
+  jumpRise_Anim: {fileID: 11400000, guid: 9f809d6fc264c684f8bd7984bd19d4c7, type: 2}
+  jumpDrop_Anim: {fileID: 11400000, guid: 1e55f850f92d7214d81f708395360392, type: 2}
+  jumpEnd_Anim: {fileID: 11400000, guid: 06d21e1cfe223dd4982ba9ad7bc97f93, type: 2}
+  jump_Attack: {fileID: 11400000, guid: 6354d92fdeb74c845b5c5af2aabf41ae, type: 2}

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: idle_town
+  m_EditorClassIdentifier: 
+  aniName: 
+  isLoop: 1
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: 6b048549998d1d949b51a441eacf3786, type: 3}
+    interval: 0.5
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: ae911bdd9eb5bd14d944331ef6fdcb5e, type: 3}
+    interval: 0.5
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: e8ae90568ed80fa4087e4fd29dd21cc0, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: b9ebe1496ec45d840938deccc501b5a1, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: 5f0bcaf057d3f7b4eaf98896d6b76d74, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: 5bdeea123d39d01449c2dc670ba45b69, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: 872228b8cd7a2d34fa6dbd2ce89149d3, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: f95d3b56434d9504c9660758d43924ba, type: 3}
+    interval: 0.5
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - sprite: {fileID: 21300000, guid: b7c4c90fb14fcc94086c261b5b9638b2, type: 3}
+    interval: 0.5
+    frameEventLoop: 0
+    frameEvent:
+      m_PersistentCalls:
+        m_Calls: []
