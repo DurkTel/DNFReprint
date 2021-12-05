@@ -9,6 +9,7 @@ public class CharacterSkill : ScriptableObject
     {
         Damage,
         Buff,
+        Attribute,
         Functionality
     }
 
@@ -20,6 +21,9 @@ public class CharacterSkill : ScriptableObject
 
     public float CD;
 
-    public float NeedMP;
+    public int Condition;
 
+    public int Level;
+
+    public float NeedMP;
 }

@@ -1,0 +1,292 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: idle
+  m_EditorClassIdentifier: 
+  aniName: idle_Anim
+  isLoop: 1
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: 72a442a8e838d92478755f84a93583f6, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 1
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 9b5f7fe95e692f144aa77c3618509832, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 86d78c844f19bb643acabb6a0f6e91af, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 2789963247dd1864a9530676548a0d41, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 41835f51509cc8e4c88d8cf3211a0ac2, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 0ae286c714396ed47a85a51c8ecd73d2, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  switchingConditions:
+  - frame: {x: 0, y: 0}
+    animationData: {fileID: 11400000, guid: c9d93ee2e98de1b4caa10beb82f5008b, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 5
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 4
+      customCondition: 0
+  - frame: {x: 0, y: 0}
+    animationData: {fileID: 11400000, guid: be47b0b125c6a6e4894745f60edb2653, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 5
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 6
+      customCondition: 0
+  - frame: {x: 0, y: 0}
+    animationData: {fileID: 11400000, guid: c6554024b18f6c148b878dc96317cb79, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 6
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 2
+  - frame: {x: 0, y: 0}
+    animationData: {fileID: 11400000, guid: c1d1ce428c9ab4a4ea6b6212a1b84d27, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 6
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 4
+      customCondition: 3
+  - frame: {x: 0, y: 0}
+    animationData: {fileID: 11400000, guid: b51e376d538178b438e219b1f0742a16, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0
+    - conditionType: 5
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 5
+      customCondition: 0

@@ -7,7 +7,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "ScriptableObject/Animation/AnimationData")]
 public class AnimationData : ScriptableObject
 {
+    //这里的动画名字要与AnimationConfig里的一样
     public string aniName;
+
+    public ColliderInfo colliderInfo;
 
     public bool isLoop;
 
@@ -18,6 +21,9 @@ public class AnimationData : ScriptableObject
     public List<AnimationFrameData> frameList = new List<AnimationFrameData>();
 
     public List<SwitchingConditions> switchingConditions = new List<SwitchingConditions>();
+
+    //public int selectedIndex = 0;  //inspertor面板选择   
+
 
 }
 
@@ -30,8 +36,30 @@ public class AnimationFrameData
 
     public bool frameEventLoop;
 
-    public CharacterEventDefine eventType;
+    public FrameEvent frameEvent;
 
+}
+
+[System.Serializable]
+public struct FrameEvent
+{ 
+    public EventDefine eventType;
+
+    public EventParamDefine paramType;
+
+    public Object parameterObject;
+
+    public string parameterString;
+
+    public float parameterFloat;
+
+    public int parameterInt;
+
+    public bool parameterBool;
+
+    public bool parameterOnEnable;
+
+    public bool parameterOnDisable;
 }
 
 [System.Serializable]
@@ -40,7 +68,7 @@ public struct SwitchingConditions
     /// <summary>
     /// 值为-1时为任意帧，不为-1时为该帧
     /// </summary>
-    public int frame;
+    public Vector2Int frame;
 
     public AnimationData animationData;
 

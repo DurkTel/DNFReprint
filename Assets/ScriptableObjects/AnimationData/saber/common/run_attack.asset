@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: run_attack
+  m_EditorClassIdentifier: 
+  aniName: run_attack
+  isLoop: 0
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: f6eac6dc316a87a4c9463f5c8bfdb0a2, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: ebaada58d778b374d8437468262848cb, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: b9375ac232c6a0444a16fc42a98955be, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 0f163e9a08274c543a55fd8bfacd8042, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 2209600a51a20ee4894286b21a72f133, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 2bb06d062741e3b4e88cd3aceb02b77e, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 544cd15a1ac7d8d43bddc576b25749ea, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: a50791ede76f050449ff9a0788983526, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: b4dd358557db64345b44bb7ecb0a3e58, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 503090d1444ae604bb3f4ae3c31c8e44, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+      eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 1
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  switchingConditions:
+  - frame: {x: 9, y: 9}
+    animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        keyCode: 0
+      customCondition: 0

@@ -19,17 +19,25 @@ public class BaseMotor : MonoBehaviour
 
     protected Transform m_charactRenderer;
 
-    private Vector2 m_curMoveDir;
+    protected float m_moveDirCoefficient = 1f;
 
-    private float m_curSpeed;
+    protected Vector2 m_curMoveDir;
+
+    protected float m_curSpeed;
 
     public int airAttackCombo;
 
+    public bool runningReady;
+
+    public bool walkingReady;
+
     public CharacterAttribute characterAttribute;
 
-    public CharacterSkillTree characterSkillTree = new CharacterSkillTree();
+    public CharacterSkillTree characterSkillTree;
 
     public CharacterSkill jumpAttack;//先写死测试
+
+    public Vector2 curMoveDir { get { return m_curMoveDir; } }
 
     [HideInInspector] public float speedDrop;
 
@@ -39,19 +47,17 @@ public class BaseMotor : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_renenderSprite = GetComponentInChildren<RenenderSprite>();
         m_spriceAnimator = GetComponentInChildren<SpriteAnimator>();
+        characterSkillTree = GetComponent<CharacterSkillTree>();
         m_charactRenderer = transform.Find("SpriteRenderer").GetComponent<Transform>();
         m_animationConfig = m_spriceAnimator.AnimationConfig;
         characterSkillTree.AddSkill(jumpAttack);
         InitAnimEvent();
+        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.commonAnim.idle_Anim);
     }
 
     protected virtual void Update()
     {
         MotorAnim();
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.attack_Anim);
-        }
     }
 
     protected virtual void FixedUpdate()
@@ -62,55 +68,17 @@ public class BaseMotor : MonoBehaviour
 
     protected virtual void InitAnimEvent()
     {
-        m_spriceAnimator.EVENT_AddJump += () => 
-        {
-            speedDrop = Mathf.Sqrt(Mathf.Pow(characterAttribute.JumpPower, 2) * 15);
-            airAttackCombo = 0;
-        };
 
-        
-    }
-
-    protected virtual bool IsMotorMoveLimit()
-    {
-        return (m_spriceAnimator.current_animationData != m_animationConfig.jump_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.jumpEnd_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.jump_Attack) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.jumpRise_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.jumpDrop_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.attack_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.attack2_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.attack3_Anim);
-    }
-
-    protected virtual bool IsMotorJumpLimit()
-    {
-        return (m_spriceAnimator.current_animationData != m_animationConfig.jump_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.jumpDrop_Anim) &&
-            (m_spriceAnimator.current_animationData != m_animationConfig.jumpEnd_Anim);
     }
 
     protected virtual void MotorAnim()
     {
         m_curSpeed = ControlSpeed();
 
-        if (IsMotorJumpLimit() && KeyboardInput.Instance.ButtonJump.OnPressed)
-        {
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.jump_Anim);
-        }
-        else if (IsMotorMoveLimit())
-        {
-            if (m_curMoveDir != Vector2.zero)
-            {
-                m_spriceAnimator.DOSpriteAnimation(m_curSpeed > characterAttribute.MoveSpeed ? m_animationConfig.run_Anim : m_animationConfig.walk_Anim);
-            }
-            else
-            {
-                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
-            }
-        }
+        runningReady = m_curSpeed > characterAttribute.MoveSpeed && m_curMoveDir != Vector2.zero;
+        walkingReady = m_curSpeed <= characterAttribute.MoveSpeed && m_curMoveDir != Vector2.zero;
 
-        if (m_curMoveDir.x != 0)
+        if (m_curMoveDir.x != 0 && FilpLimit())
             m_renenderSprite.SetSpriteFilp(m_curMoveDir.x < 0);
     }
 
@@ -119,7 +87,7 @@ public class BaseMotor : MonoBehaviour
         m_curMoveDir.x = KeyboardInput.Instance.MoveAxisX.Axis * XOffsetSpeed;
         m_curMoveDir.y = KeyboardInput.Instance.MoveAxisY.Axis * YOffsetSpeed;
 
-        m_curMoveDir = m_curMoveDir * m_curSpeed;
+        m_curMoveDir = m_curMoveDir * m_curSpeed * m_moveDirCoefficient;
         m_rigidbody.velocity = m_curMoveDir;
        
     }
@@ -131,10 +99,15 @@ public class BaseMotor : MonoBehaviour
         {
             return characterAttribute.MoveSpeed * 2;
         }
-        else if ((!KeyboardInput.Instance.MoveAxisX.IsPressing && !KeyboardInput.Instance.MoveAxisY.IsDelaying)||
-            !IsMotorMoveLimit())
+        else if ((!KeyboardInput.Instance.MoveAxisX.IsPressing && !KeyboardInput.Instance.MoveAxisY.IsDelaying))
             return characterAttribute.MoveSpeed;
         return m_curSpeed != 0 ? m_curSpeed : characterAttribute.MoveSpeed;
+    }
+
+    private bool FilpLimit()
+    {
+        bool attackAnimLimit = !m_spriceAnimator.IsInThisAni(m_animationConfig.attackAnim);
+        return attackAnimLimit;
     }
 
     /// <summary>

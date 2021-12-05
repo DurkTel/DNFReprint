@@ -73,6 +73,45 @@ public class RenenderSprite : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
+    public void InitSpriteForEditor()
+    {
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        part_Sprite.Clear();
+        if (path == null)
+        {
+            Debug.LogError("请添加Sprite资源路径");
+            return;
+        }
+        TextAsset tempTA = Resources.Load<TextAsset>(path + "/pointOffsize");
+
+        string str = tempTA.ToString();
+        m_coordinate = str.Split(' ', '\n');
+
+        m_spriteCount = m_coordinate.Length / 2;
+
+        for (int i = 0; i < m_spriteCount; i++)
+        {
+            m_singSprite = Resources.Load<Sprite>(path + '/' + i);
+            m_singTexture = Resources.Load<Texture2D>(path + '/' + i);
+
+            if (m_singSprite == null || m_singTexture == null)
+            {
+                Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);
+                return;
+            }
+
+            m_anchorVector.x = int.Parse(m_coordinate[i * 2]);
+            m_anchorVector.y = int.Parse(m_coordinate[i * 2 + 1]);
+
+            m_newPivot = new Vector2(0.5f - ((m_anchorVector.x - offsetX + m_singSprite.rect.width / 2) / m_singSprite.rect.width),
+                0.5f + ((m_anchorVector.y - offsetY + m_singSprite.rect.height / 2) / m_singSprite.rect.height));
+            part_Sprite.Add(Sprite.Create(m_singTexture, m_singSprite.rect, m_newPivot, 100));
+        }
+    }
+#endif
+
+
     public void SetSprite(int index)
     { 
         m_spriteRenderer.sprite = part_Sprite[index];
@@ -81,6 +120,15 @@ public class RenenderSprite : MonoBehaviour
     public void SetSpriteFilp(bool isLeft)
     {
         m_spriteRenderer.flipX = isLeft;
+    }
+
+    /// <summary>
+    /// 返回面朝方向
+    /// </summary>
+    /// <returns>-1为右</returns>
+    public int GetCurFlip()
+    {
+        return m_spriteRenderer.flipX ? -1 : 1;
     }
 
 

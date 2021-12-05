@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,13 +8,21 @@ public class SpriteAnimator : MonoBehaviour
 {
 
     public bool m_stop;
-
+    /// <summary>
+    /// 每帧使用时间
+    /// </summary>
     private float m_totalTime = 999;
-
+    /// <summary>
+    /// 当前帧动画进行到的那一帧
+    /// </summary>
     private int m_currentFrame;
-
+    /// <summary>
+    /// 当前帧动画进行到的上一帧
+    /// </summary>
     private int m_lastFrame;
-
+    /// <summary>
+    /// 动画配置的下标
+    /// </summary>
     private int m_currentIndex;
 
     private bool[] m_isFirstList;
@@ -30,11 +39,10 @@ public class SpriteAnimator : MonoBehaviour
 
     public AnimationConfig AnimationConfig;
 
-    public UnityAction EVENT_AddJump;
-    
-    public UnityAction EVENT_AirAttackCombo;
+    public UnityAction<int> UpdateSpriteEvent;
 
-    public UnityAction EVENT_SkillCombo;
+    public UnityAction<AnimationData> UpdateAnimationEvent;
+
 
     private void Start()
     {
@@ -50,10 +58,10 @@ public class SpriteAnimator : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
+    //private void FixedUpdate()
+    //{
 
-    }
+    //}
 
     public void TickSpriteAnimation()
     {
@@ -68,7 +76,10 @@ public class SpriteAnimator : MonoBehaviour
             
             m_currentIndex = int.Parse(curSprite.sprite.name);
             m_renenderSprite.SetSprite(m_currentIndex);
+            
             m_lastFrame = m_currentFrame;
+
+            UpdateSpriteEvent?.Invoke(m_lastFrame);
             m_currentFrame++;
 
             if (m_currentFrame >= aniSprites.Count)
@@ -86,7 +97,7 @@ public class SpriteAnimator : MonoBehaviour
             if (curSprite.frameEventLoop || !m_isFirstList[m_lastFrame])
             {
                 m_isFirstList[m_lastFrame] = true;
-                DoAnimFrameEvent(curSprite);
+                DoAnimFrameEvent(curSprite.frameEvent);
             }
 
         }
@@ -102,6 +113,7 @@ public class SpriteAnimator : MonoBehaviour
         if (current_animationData == animationData) return;
         last_animationData = current_animationData;
         current_animationData = animationData;
+        UpdateAnimationEvent?.Invoke(animationData);
         m_totalTime = 999;
         m_currentFrame = 0;
         m_isFirstList = new bool[animationData.frameList.Count];
@@ -120,24 +132,44 @@ public class SpriteAnimator : MonoBehaviour
         return totalLength;
     }
 
-    private void DoAnimFrameEvent(AnimationFrameData frameData)
+    public bool IsInThisAni(AnimationData animationData)
     {
-        switch (frameData.eventType)
+        return current_animationData == animationData;
+    }
+
+    public bool IsInThisAni(IBaseAnim baseAnim)
+    {
+        FieldInfo[] fieldInfos = baseAnim.GetType().GetFields();
+
+        foreach (var item in fieldInfos)
         {
-            case CharacterEventDefine.NONE:
+            if (item.Name == current_animationData.aniName)
+                return true;
+        }
+
+        return false;
+    }
+
+    private void DoAnimFrameEvent(FrameEvent frameEvent)
+    {
+        switch (frameEvent.paramType)
+        {
+            case EventParamDefine.Bool:
+                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterBool);
                 break;
-            case CharacterEventDefine.ADD_JUMP_FORCE:
-                EVENT_AddJump.Invoke();
+            case EventParamDefine.Int:
+                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterInt);
                 break;
-            case CharacterEventDefine.AIR_ATTACK_COMBO:
-                EVENT_AirAttackCombo.Invoke();
+            case EventParamDefine.Float:
+                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterFloat);
                 break;
-            case CharacterEventDefine.SKILL_COMBO:
-                EVENT_SkillCombo.Invoke();
+            case EventParamDefine.String:
+                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterString);
                 break;
             default:
                 break;
         }
+
     }
 
     /// <summary>
@@ -152,11 +184,12 @@ public class SpriteAnimator : MonoBehaviour
         {
             for (int i = 0; i < current_animationData.switchingConditions.Count; i++)
             {
-                if (current_animationData.switchingConditions[i].frame == frame || current_animationData.switchingConditions[i].frame == -1)
+                SwitchingConditions curFrameCondition = current_animationData.switchingConditions[i];
+                if (curFrameCondition.frame.x <= frame && curFrameCondition.frame.y >= frame || curFrameCondition.frame == Vector2Int.zero)
                 {
                     result = true;
 
-                    foreach (var item in current_animationData.switchingConditions[i].conditions)
+                    foreach (var item in curFrameCondition.conditions)
                     {
                         switch (item.conditionType)
                         {
@@ -226,8 +259,66 @@ public class SpriteAnimator : MonoBehaviour
                                 }
                                 break;
                             case Condition.ConditionType.inputSpeedX:
+                                switch (item.inputSpeedX.relation)
+                                {
+                                    case Condition.Relation.bigger:
+                                        if (m_motor.curMoveDir.x <= item.inputSpeedX.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.smaller:
+                                        if (m_motor.curMoveDir.x >= item.inputSpeedX.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.equal:
+                                        if (m_motor.curMoveDir.x != item.inputSpeedX.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.bigger_E:
+                                        if (m_motor.curMoveDir.x < item.inputSpeedX.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.smaller_E:
+                                        if (m_motor.curMoveDir.x > item.inputSpeedX.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.unequal:
+                                        if (m_motor.curMoveDir.x == item.inputSpeedX.targetValue) result = false;
+
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 break;
                             case Condition.ConditionType.inputSpeedY:
+                                switch (item.inputSpeedY.relation)
+                                {
+                                    case Condition.Relation.bigger:
+                                        if (m_motor.curMoveDir.y <= item.inputSpeedY.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.smaller:
+                                        if (m_motor.curMoveDir.y >= item.inputSpeedY.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.equal:
+                                        if (m_motor.curMoveDir.y != item.inputSpeedY.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.bigger_E:
+                                        if (m_motor.curMoveDir.y < item.inputSpeedY.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.smaller_E:
+                                        if (m_motor.curMoveDir.y > item.inputSpeedY.targetValue) result = false;
+
+                                        break;
+                                    case Condition.Relation.unequal:
+                                        if (m_motor.curMoveDir.y == item.inputSpeedY.targetValue) result = false;
+
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 break;
                             case Condition.ConditionType.inputKey:
                                 if (Input.anyKey)
@@ -263,6 +354,18 @@ public class SpriteAnimator : MonoBehaviour
                                     case CustomCondition.NONE:
 
                                         break;
+                                    case CustomCondition.NO_MOVE_INPUT:
+                                        if (m_motor.curMoveDir != Vector2.zero) result = false;
+
+                                        break;
+                                    case CustomCondition.WALK_LIMIT:
+                                        if (!m_motor.walkingReady) result = false;
+
+                                        break;
+                                    case CustomCondition.RUN_LIMIT:
+                                        if (!m_motor.runningReady) result = false;
+
+                                        break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
                                         if (!CustomConditionFuc.IsStudiedThisSkill(10001, m_motor.characterSkillTree) && m_motor.airAttackCombo > 0) result = false;
 
@@ -277,7 +380,7 @@ public class SpriteAnimator : MonoBehaviour
                     }
                     //print(result + "....." + i);
                     if (result)
-                        DOSpriteAnimation(current_animationData.switchingConditions[i].animationData);
+                        DOSpriteAnimation(curFrameCondition.animationData);
                 }
             }
         }
