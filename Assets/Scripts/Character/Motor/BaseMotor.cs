@@ -41,6 +41,10 @@ public class BaseMotor : MonoBehaviour
 
     [HideInInspector] public float speedDrop;
 
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {

@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
+  m_Name: run_collider
+  m_EditorClassIdentifier: 
+  frameCollInfos:
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.02530408, y: 0.3032886}
+      size: {x: 0.4897083, y: 0.59508}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.01089038, y: 0.38322}
+      size: {x: 0.560467, y: 0.492873}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.03840774, y: 0.3766682}
+      size: {x: 0.5578463, y: 0.5059764}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.02137311, y: 0.3766682}
+      size: {x: 0.5028117, y: 0.5059764}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.0567526, y: 0.3766682}
+      size: {x: 0.3167418, y: 0.5059764}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.04626982, y: 0.3766682}
+      size: {x: 0.4215698, y: 0.5059764}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.0711665, y: 0.3766682}
+      size: {x: 0.5237771, y: 0.5059764}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}
+  - collValueConfigs:
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.07116649, y: 0.3334266}
+      size: {x: 0.340328, y: 0.5924597}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.1917189, y: 0.7212908}
+      size: {x: 0.2931554, y: 0.1731468}
+    - layer: 12
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 0.3
+      offset: {x: 0.2939263, y: 0.8837743}
+      size: {x: 0.1830857, y: 0.1521813}

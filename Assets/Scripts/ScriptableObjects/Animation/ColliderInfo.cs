@@ -10,7 +10,7 @@ public class ColliderInfo : ScriptableObject
 
 [System.Serializable]
 public struct FrameCollInfo
-{ 
+{
     public List<CollValueConfig> collValueConfigs;
 }
 
@@ -33,8 +33,8 @@ public struct CollValueConfig
 
 public enum ColliderLayer
 {
-    Damage,
-    BeDamage,
-    Interact,
-    Scene
+    Scene = 9,
+    Interact = 10,
+    Damage = 11,
+    BeDamage = 12,
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: idle
   m_EditorClassIdentifier: 
   aniName: idle_Anim
+  colliderInfo: {fileID: 11400000, guid: 523070dca9317ba449ec1a91ad205738, type: 2}
   isLoop: 1
   speed: 1
   frameList:

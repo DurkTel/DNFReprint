@@ -14,58 +14,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameCollInfos:
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: 0, y: 0.55}
       size: {x: 0.24, y: 1.08}
   - collValueConfigs:
-    - layer: 1
-      isTrigger: 0
+    - layer: 12
+      isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: 0, y: 0.55}
       size: {x: 0.24, y: 1.08}
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: -0.005511031, y: 0.55}
       size: {x: 0.2730661, y: 1.08}
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: -0.005511031, y: 0.55}
       size: {x: 0.2730661, y: 1.08}
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: -0.005511031, y: 0.55}
       size: {x: 0.2730661, y: 1.08}
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: -0.005511031, y: 0.55}
       size: {x: 0.2730661, y: 1.08}
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: -0.005511031, y: 0.55}
       size: {x: 0.2730661, y: 1.08}
   - collValueConfigs:
-    - layer: 1
+    - layer: 12
       isTrigger: 1
       offset_Z: 0
-      size_Z: 0.5
+      size_Z: 0.3
       offset: {x: -0.005511031, y: 0.55}
       size: {x: 0.2730661, y: 1.08}
