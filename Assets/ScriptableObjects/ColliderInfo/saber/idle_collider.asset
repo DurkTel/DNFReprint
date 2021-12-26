@@ -13,81 +13,16 @@ MonoBehaviour:
   m_Name: idle_collider
   m_EditorClassIdentifier: 
   frameCollInfos:
-  - collValueConfigs:
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0004073828, y: 0.4185996}
-      size: {x: 0.4032251, y: 0.825702}
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0858229, y: 0.9214493}
-      size: {x: 0.1827979, y: 0.1726863}
-  - collValueConfigs:
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0004073828, y: 0.4185996}
-      size: {x: 0.4032251, y: 0.825702}
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0858229, y: 0.9214493}
-      size: {x: 0.1827979, y: 0.1726863}
-  - collValueConfigs:
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0004073828, y: 0.4185996}
-      size: {x: 0.4032251, y: 0.825702}
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0858229, y: 0.9214493}
-      size: {x: 0.1827979, y: 0.1726863}
-  - collValueConfigs:
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0004073828, y: 0.4185996}
-      size: {x: 0.4032251, y: 0.825702}
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0858229, y: 0.9214493}
-      size: {x: 0.1827979, y: 0.1726863}
-  - collValueConfigs:
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0004073828, y: 0.4185996}
-      size: {x: 0.4032251, y: 0.825702}
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0858229, y: 0.9214493}
-      size: {x: 0.1827979, y: 0.1726863}
-  - collValueConfigs:
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0004073828, y: 0.4185996}
-      size: {x: 0.4032251, y: 0.825702}
-    - layer: 12
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 0.3
-      offset: {x: 0.0858229, y: 0.9214493}
-      size: {x: 0.1827979, y: 0.1726863}
+  - single_colliderInfo: []
+    index: 0
+  - single_colliderInfo: []
+    index: 0
+  - single_colliderInfo: []
+    index: 0
+  - single_colliderInfo: []
+    index: 0
+  - single_colliderInfo: []
+    index: 0
+  - single_colliderInfo: []
+    index: 0
+  frameCount: 6

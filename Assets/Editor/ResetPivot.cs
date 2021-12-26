@@ -14,7 +14,7 @@ public class ResetPivot : EditorWindow
     private static string[] m_coordinate;
 
 
-    [MenuItem("Tools/ResetPivot")]
+    [MenuItem("Tools/2DGame/ResetPivot")]
     private static void OpenGui()
     {
         ResetPivot resetPivot = (ResetPivot)EditorWindow.GetWindow(typeof(ResetPivot));

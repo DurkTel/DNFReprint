@@ -10,7 +10,7 @@ public class AnimationData : ScriptableObject
     //这里的动画名字要与AnimationConfig里的一样
     public string aniName;
 
-    public ColliderInfo colliderInfo;
+    public ColliderInfos colliderInfo;
 
     public bool isLoop;
 
