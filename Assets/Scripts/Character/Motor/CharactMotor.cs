@@ -6,37 +6,37 @@ public class CharactMotor : BaseMotor
 {
     private float m_addMoveForce;
 
-    protected override void InitAnimEvent()
-    {
-        base.InitAnimEvent();
 
-        EventCenter.Instance.AddEventListener(EventDefine.EVENT_AIR_ATTACK_COMBO, () =>
+    protected override void Start()
+    {
+        base.Start();
+
+        InitAnimEvent(EventDefine.EVENT_AIR_ATTACK_COMBO, () =>
         {
             airAttackCombo++;
 
         });
 
-        EventCenter.Instance.AddEventListener<float>(EventDefine.EVENT_ADD_JUMP_FORCE, (coefficient) =>
+        InitAnimEvent<float>(EventDefine.EVENT_ADD_JUMP_FORCE, (coefficient) =>
         {
             speedDrop = Mathf.Sqrt(Mathf.Pow(characterAttribute.JumpPower, 2) * coefficient);
             airAttackCombo = 0;
         });
 
-        EventCenter.Instance.AddEventListener<float>(EventDefine.EVENT_MOVE_COEFFICIENT_CHANGE, (coefficient) =>
+        InitAnimEvent<float>(EventDefine.EVENT_MOVE_COEFFICIENT_CHANGE, (coefficient) =>
         {
             m_moveDirCoefficient = coefficient;
         });
 
-        EventCenter.Instance.AddEventListener<float>(EventDefine.EVENT_ADD_MOVE_FORCE, (coefficient) =>
+        InitAnimEvent<float>(EventDefine.EVENT_ADD_MOVE_FORCE, (coefficient) =>
         {
             m_addMoveForce = coefficient;
         });
 
-        EventCenter.Instance.AddEventListener<float>(EventDefine.EVENT_REST_MOVE_SPEED, (coefficient) =>
+        InitAnimEvent<float>(EventDefine.EVENT_REST_MOVE_SPEED, (coefficient) =>
         {
             m_curSpeed = coefficient;
         });
-
     }
 
     protected override void MotorMove()

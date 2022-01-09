@@ -43,11 +43,14 @@ public struct JumpAnim : IBaseAnim
 [System.Serializable]
 public struct AttackAnim : IBaseAnim
 {
-    public AnimationData attack_Anim;
+    public AnimationData attack1_Anim;
 
     public AnimationData attack2_Anim;
 
     public AnimationData attack3_Anim;
 
-    public AnimationData jump_Attack;
+    public AnimationData jumpAttack_Anim;
+
+    public AnimationData runAttack_Anim;
+
 }

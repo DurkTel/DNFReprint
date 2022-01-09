@@ -14,15 +14,13 @@ public class AnimationData : ScriptableObject
 
     public bool isLoop;
 
-    [Range(0.1f,3f)]
+    //[Range(0.1f,3f)]
     public float speed = 1f;
 
     [SerializeField]
     public List<AnimationFrameData> frameList = new List<AnimationFrameData>();
 
     public List<SwitchingConditions> switchingConditions = new List<SwitchingConditions>();
-
-    //public int selectedIndex = 0;  //inspertor面板选择   
 
 
 }

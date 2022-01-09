@@ -12,5 +12,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
   m_Name: walk_collider
   m_EditorClassIdentifier: 
-  frameCollInfos: []
-  frameCount: 0
+  frameCollInfos:
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 30.2, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 30.2, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 33.4, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 30.2, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: -1.2, y: 55.4}
+      size: {x: 35.9, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 30.2, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 30.2, y: 113.1}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 55.4}
+      size: {x: 30.2, y: 113.1}
+    index: 0
+  frameCount: 8

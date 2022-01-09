@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class SpriteAnimator : MonoBehaviour
 {
-
+    [HideInInspector]
     public bool m_stop;
     /// <summary>
     /// 每帧使用时间
@@ -154,21 +154,25 @@ public class SpriteAnimator : MonoBehaviour
     {
         switch (frameEvent.paramType)
         {
+            case EventParamDefine.None:
+                m_motor.OnAnimEvent(frameEvent.eventType);
+                break;
             case EventParamDefine.Bool:
-                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterBool);
+                m_motor.OnAnimEvent(frameEvent.eventType, frameEvent.parameterBool);
                 break;
             case EventParamDefine.Int:
-                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterInt);
+                m_motor.OnAnimEvent(frameEvent.eventType, frameEvent.parameterInt);
                 break;
             case EventParamDefine.Float:
-                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterFloat);
+                m_motor.OnAnimEvent(frameEvent.eventType, frameEvent.parameterFloat);
                 break;
             case EventParamDefine.String:
-                EventCenter.Instance.DispatchEvent(frameEvent.eventType, frameEvent.parameterString);
+                m_motor.OnAnimEvent(frameEvent.eventType, frameEvent.parameterString);
                 break;
             default:
                 break;
         }
+
 
     }
 

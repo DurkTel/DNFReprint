@@ -64,7 +64,6 @@ public class ActionEditor : EditorWindow
             errorStyle.normal.textColor = Color.red;
             errorStyle.fontSize = 20;
             GUI.Label(new Rect(40, 150, 200, 100), "请拖拽对应的数据赋值", errorStyle);
-
             return;
         }
         else
@@ -73,7 +72,7 @@ public class ActionEditor : EditorWindow
             string collName = colliderInfo.name.Split('_')[0];
             if (string.Compare(aniName, collName) == -1)
             {
-                Debug.LogError("放入的数据名称前缀不相符，请检查是否同一组数据！");
+                EditorGUI.HelpBox(new Rect(40, 150, 200, 100), "放入的数据名称前缀不相符，请检查是否同一组数据！", MessageType.Error);
                 return;
             }
         }
@@ -98,7 +97,7 @@ public class ActionEditor : EditorWindow
             colliderInfosEditor.RemoveColliderInfo(colliderInfosEditor.curSelectCollBox);
         }
 
-        if (GUI.Button(new Rect(40, 150, 200, 22), "清除所有碰撞"))
+        if (GUI.Button(new Rect(30, 150, 215, 22), "清除所有碰撞"))
         {
             if (colliderInfosEditor == null)
                 return;
@@ -106,7 +105,23 @@ public class ActionEditor : EditorWindow
             colliderInfosEditor.ClearColliederInfo();
         }
 
-        GUI.Label(new Rect(30, 180, 120, 20), string.Format("动画总帧数：{0}", animationData.frameList.Count));
+        if (GUI.Button(new Rect(30, 180, 100, 22), "Copy"))
+        {
+            if (colliderInfosEditor == null)
+                return;
+
+            colliderInfosEditor.CopyValue(colliderInfosEditor.curSelectCollBox);
+        }
+
+        if (GUI.Button(new Rect(145, 180, 100, 22), "Paste"))
+        {
+            if (colliderInfosEditor == null)
+                return;
+
+            colliderInfosEditor.PasteValue(colliderInfosEditor.curSelectCollBox);
+        }
+
+        GUI.Label(new Rect(30, 220, 120, 20), string.Format("动画总帧数：{0}", animationData.frameList.Count));
 
 
 

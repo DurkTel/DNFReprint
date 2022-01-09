@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class BaseMotor : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class BaseMotor : MonoBehaviour
 
     public CharacterSkill jumpAttack;//先写死测试
 
+    public Dictionary<EventDefine, IAnimatorEvent> eventDic = new Dictionary<EventDefine, IAnimatorEvent>();
+
     public Vector2 curMoveDir { get { return m_curMoveDir; } }
 
     [HideInInspector] public float speedDrop;
@@ -46,7 +49,7 @@ public class BaseMotor : MonoBehaviour
         
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_renenderSprite = GetComponentInChildren<RenenderSprite>();
@@ -55,7 +58,6 @@ public class BaseMotor : MonoBehaviour
         m_charactRenderer = transform.Find("SpriteRenderer").GetComponent<Transform>();
         m_animationConfig = m_spriceAnimator.AnimationConfig;
         characterSkillTree.AddSkill(jumpAttack);
-        InitAnimEvent();
         m_spriceAnimator.DOSpriteAnimation(m_animationConfig.commonAnim.idle_Anim);
     }
 
@@ -70,9 +72,55 @@ public class BaseMotor : MonoBehaviour
         DropUpdate();
     }
 
-    protected virtual void InitAnimEvent()
+    protected virtual void InitAnimEvent(EventDefine eventType,UnityAction unityAction)
     {
+        if (eventDic.ContainsKey(eventType))
+        {
+            (eventDic[eventType] as AnimationEvent).unityAction += unityAction;
+        }
+        else
+        {
+            eventDic.Add(eventType, new AnimationEvent(unityAction));
+        }
+    }
 
+    protected virtual void InitAnimEvent<T>(EventDefine eventType, UnityAction<T> unityAction)
+    {
+        if (eventDic.ContainsKey(eventType))
+        {
+            (eventDic[eventType] as AnimationEvent<T>).unityAction += unityAction;
+        }
+        else
+        {
+            eventDic.Add(eventType, new AnimationEvent<T>(unityAction));
+        }
+    }
+
+    public void OnAnimEvent(EventDefine eventType)
+    {
+        if (eventDic.ContainsKey(eventType))
+        {
+            AnimationEvent action = (eventDic[eventType] as AnimationEvent);
+            if (action == null)
+            {
+                Debug.LogError("action为空" + eventType.ToString());
+                return;
+            }
+            action.unityAction?.Invoke();
+        }
+    }
+    public void OnAnimEvent<T>(EventDefine eventType, T param)
+    {
+        if (eventDic.ContainsKey(eventType))
+        {
+            AnimationEvent<T> action = (eventDic[eventType] as AnimationEvent<T>);
+            if (action == null)
+            {
+                Debug.LogError("action为空" + eventType.ToString());
+                return;
+            }
+            action.unityAction?.Invoke(param);
+        }
     }
 
     protected virtual void MotorAnim()

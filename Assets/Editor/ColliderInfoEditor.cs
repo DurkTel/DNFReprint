@@ -45,6 +45,9 @@ public class ColliderInfoEditor : Editor
 
         if (animationData != null && m_frameCount.intValue > animationData.frameList.Count)
             m_frameCount.intValue = animationData.frameList.Count;
+        else if(animationData != null && m_frameCount.intValue < 0)
+            m_frameCount.intValue = 0;
+
 
         RefreshCount();
 
@@ -167,14 +170,14 @@ public class ColliderInfoEditor : Editor
 
     public void DrawTextrue(Vector2 offset, Vector2 size, float offsetZ, float sizeZ, int index)
     {
-        if (animationData == null || animationData.frameList[m_curSelectFrame - 1] == null)
-        {
-            GUI.Label(new Rect(18, 60, 200, 100), "没有动画信息\n暂时无法展示效果图\n请通过ActionEditor进行配置");
-            return;
-        }
-
         float posX = 5;
         float posY = 50 + index * 220;
+
+        if (animationData == null || animationData.frameList[m_curSelectFrame - 1] == null)
+        {
+            GUI.Label(new Rect(18, posY, 200, 100), "没有动画信息\n暂时无法展示效果图\n请通过ActionEditor进行配置");
+            return;
+        }
 
         Rect boxRect = new Rect(posX, posY, 230, 200);
         GUI.Box(boxRect, string.Empty, EditorStyles.helpBox);
@@ -226,6 +229,67 @@ public class ColliderInfoEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
+    private Vector2 copyOffset;
+
+    private Vector2 copySize;
+
+    private float copyOffset_Z;
+
+    private float copySize_Z;
+
+    private int copyLayer;
+
+    private bool copyIsTrigger;
+    public void CopyValue(int index)
+    {
+        if (index + 1 > m_Colliders.arraySize)
+        {
+            Debug.Log("请选中要复制的碰撞");
+            return;
+        }
+        SerializedProperty collider = m_Colliders.GetArrayElementAtIndex(index);
+
+        SerializedProperty offset = collider.FindPropertyRelative("offset");
+        SerializedProperty size = collider.FindPropertyRelative("size");
+        SerializedProperty offset_Z = collider.FindPropertyRelative("offset_Z");
+        SerializedProperty size_Z = collider.FindPropertyRelative("size_Z");
+        SerializedProperty layer = collider.FindPropertyRelative("layer");
+        SerializedProperty isTrigger = collider.FindPropertyRelative("isTrigger");
+
+
+        copyOffset = offset.vector2Value;
+        copySize = size.vector2Value;
+        copyOffset_Z = offset_Z.floatValue;
+        copySize_Z = size_Z.floatValue;
+        copyLayer = layer.intValue;
+        copyIsTrigger = isTrigger.boolValue;
+    }
+
+    public void PasteValue(int index)
+    {
+        if (index + 1 > m_Colliders.arraySize)
+        {
+            Debug.Log("请选中要赋值的碰撞");
+            return;
+        }
+        SerializedProperty collider = m_Colliders.GetArrayElementAtIndex(index);
+
+        SerializedProperty offset = collider.FindPropertyRelative("offset");
+        SerializedProperty size = collider.FindPropertyRelative("size");
+        SerializedProperty offset_Z = collider.FindPropertyRelative("offset_Z");
+        SerializedProperty size_Z = collider.FindPropertyRelative("size_Z");
+        SerializedProperty layer = collider.FindPropertyRelative("layer");
+        SerializedProperty isTrigger = collider.FindPropertyRelative("isTrigger");
+
+        offset.vector2Value = copyOffset;
+        size.vector2Value = copySize;
+        offset_Z.floatValue = copyOffset_Z;
+        size_Z.floatValue = copySize_Z;
+        layer.intValue = copyLayer;
+        isTrigger.boolValue = copyIsTrigger;
+        serializedObject.ApplyModifiedProperties();
+
+    }
     #endregion
 }
 
