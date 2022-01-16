@@ -12,7 +12,7 @@ public class ColliderInfos : ScriptableObject
 
     public int frameCount;
 
-    //public List<CollValueConfig> collValueConfigs = new List<CollValueConfig>();
+    public EntitySkill entitySkill;
 }
 
 /// <summary>

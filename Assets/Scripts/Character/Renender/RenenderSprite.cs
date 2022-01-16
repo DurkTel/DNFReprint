@@ -38,6 +38,12 @@ public class RenenderSprite : MonoBehaviour
 
     }
 
+    protected void OnEnable()
+    {
+        InitSprite();
+
+    }
+
     private void InitSprite()
     {
         part_Sprite.Clear();
@@ -69,7 +75,7 @@ public class RenenderSprite : MonoBehaviour
             
             m_newPivot = new Vector2(0.5f - ((m_anchorVector.x - offsetX + m_singSprite.rect.width / 2) / m_singSprite.rect.width),
                 0.5f + ((m_anchorVector.y - offsetY + m_singSprite.rect.height / 2) / m_singSprite.rect.height));
-            part_Sprite.Add(Sprite.Create(m_singTexture, m_singSprite.rect, m_newPivot, 1));
+            part_Sprite.Add(Sprite.Create(m_singTexture, m_singSprite.rect, m_newPivot, m_singSprite.pixelsPerUnit));
         }
     }
 

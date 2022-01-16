@@ -31,7 +31,7 @@ public class SpriteAnimator : MonoBehaviour
 
     private Transform m_charactRenderer;
 
-    private BaseMotor m_motor;
+    private EntityMotor m_motor;
 
     public AnimationData current_animationData;
 
@@ -48,7 +48,7 @@ public class SpriteAnimator : MonoBehaviour
     {
         m_renenderSprite = GetComponent<RenenderSprite>();
         m_charactRenderer = GetComponent<Transform>();
-        m_motor = GetComponentInParent<BaseMotor>();
+        m_motor = GetComponentInParent<EntityMotor>();
     }
 
     private void Update()
@@ -183,6 +183,7 @@ public class SpriteAnimator : MonoBehaviour
     /// <returns></returns>
     private bool ConditionRelation(int frame)
     {
+        if (current_animationData == null) return false;
         bool result = false;
         if (current_animationData.switchingConditions.Count > 0)
         {
@@ -371,7 +372,8 @@ public class SpriteAnimator : MonoBehaviour
 
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
-                                        if (!CustomConditionFuc.IsStudiedThisSkill(10001, m_motor.characterSkillTree) && m_motor.airAttackCombo > 0) result = false;
+                                        CharactMotor charactMotor = (CharactMotor)m_motor;
+                                        if (!CustomConditionFuc.IsStudiedThisSkill(10001, charactMotor.characterSkillTree) && charactMotor.airAttackCombo > 0) result = false;
 
                                         break;
                                     default:
@@ -384,7 +386,10 @@ public class SpriteAnimator : MonoBehaviour
                     }
                     //print(result + "....." + i);
                     if (result)
+                    { 
                         DOSpriteAnimation(curFrameCondition.animationData);
+                        return true;
+                    }
                 }
             }
         }

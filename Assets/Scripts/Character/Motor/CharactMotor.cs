@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharactMotor : BaseMotor
+public class CharactMotor : EntityMotor
 {
+
+    public CharacterSkillTree characterSkillTree;
+
+    public EntitySkill jumpAttack;//先写死测试
+
+    public int airAttackCombo;
+
+
+
     private float m_addMoveForce;
 
 
@@ -11,6 +20,15 @@ public class CharactMotor : BaseMotor
     {
         base.Start();
 
+        characterSkillTree = GetComponent<CharacterSkillTree>();
+        characterSkillTree.AddSkill(jumpAttack);
+
+
+        InitEvent();
+    }
+
+    private void InitEvent()
+    {
         InitAnimEvent(EventDefine.EVENT_AIR_ATTACK_COMBO, () =>
         {
             airAttackCombo++;
@@ -19,7 +37,7 @@ public class CharactMotor : BaseMotor
 
         InitAnimEvent<float>(EventDefine.EVENT_ADD_JUMP_FORCE, (coefficient) =>
         {
-            speedDrop = Mathf.Sqrt(Mathf.Pow(characterAttribute.JumpPower, 2) * coefficient);
+            speedDrop = Mathf.Sqrt(Mathf.Pow(entityAttribute.JumpPower, 2) * coefficient);
             airAttackCombo = 0;
         });
 
@@ -42,7 +60,7 @@ public class CharactMotor : BaseMotor
     protected override void MotorMove()
     {
         base.MotorMove();
-        bool onAttack = m_spriceAnimator.IsInThisAni(m_animationConfig.attackAnim);
+        bool onAttack = m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim);
         int flip = m_renenderSprite.GetCurFlip();
 
         //攻击时不能上下移动

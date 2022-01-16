@@ -19,7 +19,8 @@ public class ColliderTrigger : MonoBehaviour
         {
             if (trigger.axial == axial)
             {
-                updateCollider.AddColliderInfo(trigger.axialInstanceID, axial, (ColliderLayer)collision.gameObject.layer);
+
+                updateCollider.AddColliderInfo(trigger.axialInstanceID, axial, (ColliderLayer)collision.gameObject.layer, trigger.updateCollider.colliderInfo);
             }
         }
     }

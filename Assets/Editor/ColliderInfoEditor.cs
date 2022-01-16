@@ -16,6 +16,8 @@ public class ColliderInfoEditor : Editor
 
     private SerializedProperty m_frameCount;
 
+    private SerializedProperty m_entitySkill;
+
     private GUIStyle errorStyle;
 
     private int m_curSelectFrame = 1;
@@ -28,7 +30,8 @@ public class ColliderInfoEditor : Editor
     {
         m_frameCollInfos = serializedObject.FindProperty("frameCollInfos");
         m_frameCount = serializedObject.FindProperty("frameCount");
-        
+        m_entitySkill = serializedObject.FindProperty("entitySkill");
+
         errorStyle = new GUIStyle();
         errorStyle.normal.textColor = Color.red;
         errorStyle.fontSize = 30;
@@ -40,8 +43,10 @@ public class ColliderInfoEditor : Editor
         //base.OnInspectorGUI();
         serializedObject.Update();
         m_scrollPos = EditorGUILayout.BeginScrollView(m_scrollPos, GUILayout.Width(550), GUILayout.Height(600));
-        
+        m_entitySkill.objectReferenceValue = (EntitySkill)EditorGUILayout.ObjectField("实体技能：",m_entitySkill.objectReferenceValue, typeof(EntitySkill), true, GUILayout.Width(500));
         m_frameCount.intValue = EditorGUILayout.IntField("总帧数：", m_frameCount.intValue, GUILayout.Width(500));
+
+
 
         if (animationData != null && m_frameCount.intValue > animationData.frameList.Count)
             m_frameCount.intValue = animationData.frameList.Count;
@@ -109,7 +114,7 @@ public class ColliderInfoEditor : Editor
     private void DrawBox(int index, SerializedProperty colliderInfo)
     {
         float posX = 300;
-        float posY = 50 + index * 220;
+        float posY = 70 + index * 220;
 
         Rect bigBoxRect = new Rect(0, posY-5, 535, 210);
 
@@ -171,7 +176,7 @@ public class ColliderInfoEditor : Editor
     public void DrawTextrue(Vector2 offset, Vector2 size, float offsetZ, float sizeZ, int index)
     {
         float posX = 5;
-        float posY = 50 + index * 220;
+        float posY = 70 + index * 220;
 
         if (animationData == null || animationData.frameList[m_curSelectFrame - 1] == null)
         {

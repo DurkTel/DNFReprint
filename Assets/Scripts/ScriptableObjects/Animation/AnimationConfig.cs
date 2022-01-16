@@ -5,11 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/Animation/AnimationConfig")]
 public class AnimationConfig : ScriptableObject
 {
-    public CommonAnim commonAnim;
+    public CommonAnim CommonAnim;
 
     public JumpAnim JumpAnim;
 
-    public AttackAnim attackAnim;
+    public AttackAnim AttackAnim;
+
+    public HitAnim HitAnim;
 }
 
 public interface IBaseAnim { }
@@ -53,4 +55,14 @@ public struct AttackAnim : IBaseAnim
 
     public AnimationData runAttack_Anim;
 
+}
+
+[System.Serializable]
+public struct HitAnim : IBaseAnim
+{
+    public AnimationData hit1_Anim;
+
+    public AnimationData hit2_Anim;
+
+    public AnimationData hit3_Anim;
 }

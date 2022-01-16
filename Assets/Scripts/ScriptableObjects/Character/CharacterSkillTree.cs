@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterSkillTree : MonoBehaviour
 {
-    private Dictionary<int, CharacterSkill> m_skillTree = new Dictionary<int, CharacterSkill>();
-    public void AddSkill(CharacterSkill skill)
+    private Dictionary<int, EntitySkill> m_skillTree = new Dictionary<int, EntitySkill>();
+    public void AddSkill(EntitySkill skill)
     {
         bool conditionSkill = skill.Condition == 0 ? true : m_skillTree.ContainsKey(skill.Condition);
 
@@ -34,7 +34,7 @@ public class CharacterSkillTree : MonoBehaviour
     //    }
     //}
 
-    public CharacterSkill GetSkill(int skillCode)
+    public EntitySkill GetSkill(int skillCode)
     {
         if (m_skillTree.ContainsKey(skillCode))
         {

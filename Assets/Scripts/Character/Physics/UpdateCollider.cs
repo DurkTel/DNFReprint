@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UpdateCollider : MonoBehaviour
 {
+    public ColliderInfos colliderInfo { get { return m_colliderInfo; } }
+
     private SpriteAnimator m_spriteAnimator;
 
     private RenenderSprite m_renenderSprite;
@@ -13,6 +15,8 @@ public class UpdateCollider : MonoBehaviour
     private ColliderInfos m_colliderInfo;
 
     private FrameCollInfo m_frameCollInfo;
+
+    private int m_colleffectTime;
 
     /// <summary>
     /// XY轴
@@ -24,7 +28,9 @@ public class UpdateCollider : MonoBehaviour
     /// </summary>
     private List<BoxCollider2D> m_collidersZ = new List<BoxCollider2D>();
 
-    private Dictionary<int, AxialInfo> m_collIderDic = new Dictionary<int, AxialInfo>();
+    private Dictionary<int, OtherInfo> m_collIderDic = new Dictionary<int, OtherInfo>();
+
+    private Dictionary<int, int> m_collIderEffectDic = new Dictionary<int, int>();
 
     private Transform m_collidersXY_parent;
 
@@ -72,7 +78,7 @@ public class UpdateCollider : MonoBehaviour
             }
         }
 
-        int instanceID = this.GetInstanceID();
+        int instanceID = m_colliderInfo.GetInstanceID();
 
         //根据该动画的最大碰撞盒数创建碰撞盒
         if (m_collidersXY.Count < maxCout)
@@ -162,17 +168,23 @@ public class UpdateCollider : MonoBehaviour
     {
         foreach (var coll in m_collIderDic)
         {
-            if (coll.Value.XY && coll.Value.Z)
+            OtherInfo info = coll.Value;
+            if (info.XY && info.Z)
             {
                 //对方的碰撞层级
-                switch (coll.Value.colllayer - 9)
+                switch (info.colllayer - 9)
                 {
                     case ColliderLayer.Scene:
                         break;
                     case ColliderLayer.Interact:
                         break;
                     case ColliderLayer.Damage:
-                        print(string.Format("ID:{0}受到来自ID:{1}的攻击！", this.GetInstanceID(), coll.Key));
+                        if (info.otherCollInfo.entitySkill != null && m_collIderEffectDic.ContainsKey(coll.Key) && info.otherCollInfo.entitySkill.NumbeOfAttacks > m_collIderEffectDic[coll.Key])
+                        {
+                            print(string.Format("ID:{0}、name:{1}受到来自技能:{2}的攻击！", this.GetInstanceID(), gameObject.name, coll.Value.otherCollInfo.name));
+                            SendMessage("GetDamage", info.otherCollInfo.entitySkill, SendMessageOptions.DontRequireReceiver);
+                            m_collIderEffectDic[coll.Key]++;
+                        }
                         break;
                     case ColliderLayer.BeDamage:
                         break;
@@ -183,24 +195,25 @@ public class UpdateCollider : MonoBehaviour
         }
     }
 
-    public void AddColliderInfo(int instanceID, Axial axial, ColliderLayer colliderLayer)
+    public void AddColliderInfo(int instanceID, Axial axial, ColliderLayer colliderLayer, ColliderInfos othersColliderInfo)
     {
         if (m_collIderDic.ContainsKey(instanceID))
         {
             if (m_collIderDic[instanceID].XY && m_collIderDic[instanceID].Z) return;
-            AxialInfo newInfo = m_collIderDic[instanceID];
+            OtherInfo newInfo = m_collIderDic[instanceID];
             newInfo.colllayer = colliderLayer;
+            newInfo.otherCollInfo = othersColliderInfo;
             m_collIderDic[instanceID] = newInfo;
             switch (axial)
             {
                 case Axial.AxialXY:
                     //结构体get为值传递而非地址
-                    AxialInfo newInfoXY = m_collIderDic[instanceID];
+                    OtherInfo newInfoXY = m_collIderDic[instanceID];
                     newInfoXY.XY = true;
                     m_collIderDic[instanceID] = newInfoXY;
                     break;
                 case Axial.AxialZ:
-                    AxialInfo newInfoZ = m_collIderDic[instanceID];
+                    OtherInfo newInfoZ = m_collIderDic[instanceID];
                     newInfoZ.Z = true;
                     m_collIderDic[instanceID] = newInfoZ;
                     break;
@@ -210,8 +223,9 @@ public class UpdateCollider : MonoBehaviour
         }
         else
         {
-            AxialInfo newInfo = new AxialInfo(axial, colliderLayer);
+            OtherInfo newInfo = new OtherInfo(axial, colliderLayer, othersColliderInfo);
             m_collIderDic.Add(instanceID, newInfo);
+            m_collIderEffectDic.Add(instanceID, 0);
         }
     }
 
@@ -223,12 +237,12 @@ public class UpdateCollider : MonoBehaviour
             {
                 case Axial.AxialXY:
                     //结构体get为值传递而非地址
-                    AxialInfo newInfoXY = m_collIderDic[instanceID];
+                    OtherInfo newInfoXY = m_collIderDic[instanceID];
                     newInfoXY.XY = false;
                     m_collIderDic[instanceID] = newInfoXY;
                     break;
                 case Axial.AxialZ:
-                    AxialInfo newInfoZ = m_collIderDic[instanceID];
+                    OtherInfo newInfoZ = m_collIderDic[instanceID];
                     newInfoZ.Z = false;
                     m_collIderDic[instanceID] = newInfoZ;
                     break;
@@ -239,6 +253,7 @@ public class UpdateCollider : MonoBehaviour
             if (!m_collIderDic[instanceID].XY && !m_collIderDic[instanceID].Z)
             {
                 m_collIderDic.Remove(instanceID);
+                m_collIderEffectDic.Remove(instanceID);
             }
         }
     }
@@ -264,13 +279,14 @@ public class UpdateCollider : MonoBehaviour
         AxialZ = 1,
     }
 
-    public struct AxialInfo
+    public struct OtherInfo
     {
         public bool XY;
         public bool Z;
         public ColliderLayer colllayer;
+        public ColliderInfos otherCollInfo;
 
-        public AxialInfo(Axial axial, ColliderLayer layer)
+        public OtherInfo(Axial axial, ColliderLayer layer, ColliderInfos info)
         {
             switch (axial)
             {
@@ -288,6 +304,7 @@ public class UpdateCollider : MonoBehaviour
                     break;
             }
             colllayer = layer;
+            otherCollInfo = info;
         }
     }
 }
