@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SortSprite2D))]
 public class RenenderSprite : MonoBehaviour
 {
     private SpriteRenderer m_spriteRenderer;

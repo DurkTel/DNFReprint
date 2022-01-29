@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class OtherMotor : EntityMotor
+public class OtherMotor : EntityMotor, IDamage
 {
     protected override void Start()
     {
@@ -11,7 +12,7 @@ public class OtherMotor : EntityMotor
 
     }
 
-    private void GetDamage(EntitySkill entitySkill)
+    public void GetDamage(EntitySkill entitySkill)
     {
         m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim.hit1_Anim);
     }

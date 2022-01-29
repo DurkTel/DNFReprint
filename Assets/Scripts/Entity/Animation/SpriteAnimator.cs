@@ -110,7 +110,7 @@ public class SpriteAnimator : MonoBehaviour
             Debug.LogError("动画数据为空");
             return;
         }
-        if (current_animationData == animationData) return;
+        //if (current_animationData == animationData) return;
         last_animationData = current_animationData;
         current_animationData = animationData;
         UpdateAnimationEvent?.Invoke(animationData);

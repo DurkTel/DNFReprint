@@ -51,23 +51,6 @@ public struct FrameCollInfo
     public int index;
 }
 
-//[System.Serializable]
-//public struct CollValueConfig
-//{ 
-//    public ColliderLayer layer;
-
-//    public bool isTrigger;
-
-//    public float offset_Z;
-
-//    public float size_Z;
-
-//    public Vector2 offset;
-
-//    public Vector2 size;
-    
-//}
-
 public enum ColliderLayer
 {
     Scene = 0,

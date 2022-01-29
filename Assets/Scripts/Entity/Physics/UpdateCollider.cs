@@ -18,6 +18,8 @@ public class UpdateCollider : MonoBehaviour
 
     private int m_colleffectTime;
 
+    private int m_maxCount;
+
     /// <summary>
     /// XY轴
     /// </summary>
@@ -50,7 +52,7 @@ public class UpdateCollider : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         RefreshColliderInfo();
     }
@@ -68,22 +70,22 @@ public class UpdateCollider : MonoBehaviour
         if (m_animationData.colliderInfo == null) return;
         m_colliderInfo = m_animationData.colliderInfo;
 
-        int maxCout = 0;
+        m_maxCount = 0;
         if (m_colliderInfo != null)
         {
             foreach (var frame in m_colliderInfo.frameCollInfos)
             {
-                if (maxCout < frame.single_colliderInfo.Count)
-                    maxCout = frame.single_colliderInfo.Count;
+                if (m_maxCount < frame.single_colliderInfo.Count)
+                    m_maxCount = frame.single_colliderInfo.Count;
             }
         }
 
         int instanceID = m_colliderInfo.GetInstanceID();
 
         //根据该动画的最大碰撞盒数创建碰撞盒
-        if (m_collidersXY.Count < maxCout)
+        if (m_collidersXY.Count < m_maxCount)
         {
-            int length = maxCout - m_collidersXY.Count;
+            int length = m_maxCount - m_collidersXY.Count;
             for (int i = 0; i < length; i++)
             {
                 GameObject newColliderXY = new GameObject("collider_XY");
@@ -105,30 +107,30 @@ public class UpdateCollider : MonoBehaviour
                 m_collidersZ.Add(newCollZ);
             }
 
-            for (int i = 0; i < m_collidersXY.Count; i++)
-            {
-                m_collidersXY[i].gameObject.SetActive(true);
-                m_collidersZ[i].gameObject.SetActive(true);
-            }
+            //for (int i = 0; i < m_collidersXY.Count; i++)
+            //{
+            //    m_collidersXY[i].gameObject.SetActive(true);
+            //    m_collidersZ[i].gameObject.SetActive(true);
+            //}
         }
-        else if (m_collidersXY.Count == maxCout)
-        {
-            for (int i = 0; i < m_collidersXY.Count; i++)
-            {
-                m_collidersXY[i].gameObject.SetActive(true);
-                m_collidersZ[i].gameObject.SetActive(true);
-            }
-        }
-        else
-        {
+        //else if (m_collidersXY.Count == maxCout)
+        //{
+        //    for (int i = 0; i < m_collidersXY.Count; i++)
+        //    {
+        //        m_collidersXY[i].gameObject.SetActive(true);
+        //        m_collidersZ[i].gameObject.SetActive(true);
+        //    }
+        //}
+        //else
+        //{
 
-            for (int i = 0; i < m_collidersXY.Count; i++)
-            {
-                bool isActive = maxCout - 1 >= i;
-                m_collidersXY[i].gameObject.SetActive(isActive);
-                m_collidersZ[i].gameObject.SetActive(isActive);
-            }
-        }
+        //    for (int i = 0; i < m_collidersXY.Count; i++)
+        //    {
+        //        bool isActive = maxCout - 1 >= i;
+        //        m_collidersXY[i].gameObject.SetActive(isActive);
+        //        m_collidersZ[i].gameObject.SetActive(isActive);
+        //    }
+        //}
     }
 
     private void RefreshCollider(int currentFrame)
@@ -145,22 +147,37 @@ public class UpdateCollider : MonoBehaviour
         m_frameCollInfo = m_colliderInfo.frameCollInfos[currentFrame];
 
         int isFilp = m_renenderSprite.GetCurFlip();
+        Vector3 collScale = new Vector3(isFilp, 1, 1);
+
+        for (int i = 0; i < m_collidersXY.Count; i++)
+        {
+            float scale = m_maxCount - 1 >= i ? 1 : 0;
+            m_collidersXY[i].enabled = false;
+            m_collidersZ[i].enabled = false;
+
+        }
 
         for (int i = 0; i < m_frameCollInfo.single_colliderInfo.Count; i++)
         {
+            bool isActive = m_maxCount - 1 >= i;
+
             m_collidersXY[i].offset = m_frameCollInfo.single_colliderInfo[i].offset;
             m_collidersXY[i].size = m_frameCollInfo.single_colliderInfo[i].size;
             m_collidersXY[i].isTrigger = m_frameCollInfo.single_colliderInfo[i].isTrigger;
             m_collidersXY[i].gameObject.layer = (int)m_frameCollInfo.single_colliderInfo[i].layer + 9;
-            m_collidersXY[i].transform.localScale = new Vector3(isFilp, 1, 1);
+            m_collidersXY[i].transform.localScale = collScale;
 
             m_collidersZ[i].offset = new Vector2(m_frameCollInfo.single_colliderInfo[i].offset.x, m_frameCollInfo.single_colliderInfo[i].offset_Z);
             m_collidersZ[i].size = new Vector2(m_frameCollInfo.single_colliderInfo[i].size.x, m_frameCollInfo.single_colliderInfo[i].size_Z);
             m_collidersZ[i].isTrigger = m_frameCollInfo.single_colliderInfo[i].isTrigger;
             m_collidersZ[i].gameObject.layer = (int)m_frameCollInfo.single_colliderInfo[i].layer + 9;
-            m_collidersZ[i].transform.localScale = new Vector3(isFilp, 1, 1);
+            m_collidersZ[i].transform.localScale = collScale;
 
+            m_collidersXY[i].enabled = isActive;
+            m_collidersZ[i].enabled = isActive;
         }
+
+        
 
     }
 

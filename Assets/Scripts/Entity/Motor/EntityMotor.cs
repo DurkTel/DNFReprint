@@ -32,6 +32,8 @@ public class EntityMotor : MonoBehaviour
 
     public EntityAttribute entityAttribute;
 
+    public bool isStatic;
+
 
     public Dictionary<EventDefine, IAnimatorEvent> eventDic = new Dictionary<EventDefine, IAnimatorEvent>();
 
@@ -109,6 +111,7 @@ public class EntityMotor : MonoBehaviour
     /// </summary>
     private void DropUpdate()
     {
+        if (isStatic) return;
         m_charactRenderer.localPosition += Vector3.up * speedDrop * Time.fixedDeltaTime;
 
         if (m_charactRenderer.localPosition.y > 0)
