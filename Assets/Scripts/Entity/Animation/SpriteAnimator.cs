@@ -4,6 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class SpriteAnimator : MonoBehaviour
 {
     [HideInInspector]
@@ -58,11 +59,10 @@ public class SpriteAnimator : MonoBehaviour
 
     }
 
-    //private void FixedUpdate()
-    //{
 
-    //}
-
+    /// <summary>
+    /// 每帧刷新动画
+    /// </summary>
     public void TickSpriteAnimation()
     {
         if (m_stop || current_animationData == null) return;
@@ -103,6 +103,10 @@ public class SpriteAnimator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 播放动画
+    /// </summary>
+    /// <param name="animationData">要播放的动画</param>
     public void DOSpriteAnimation(AnimationData animationData)
     {
         if (animationData == null)
@@ -119,6 +123,18 @@ public class SpriteAnimator : MonoBehaviour
         m_isFirstList = new bool[animationData.frameList.Count];
     }
 
+    /// <summary>
+    /// 强制播放技能动画
+    /// </summary>
+    /// <param name="animationData">要切换的技能动画</param>
+    /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
+    public void ForceDOSkillAnimation(AnimationData animationData, bool onlyOnCommon = true)
+    {
+        if (!onlyOnCommon || !IsInThisAni(AnimationConfig.ForceAnim))
+            return;
+        DOSpriteAnimation(animationData);
+    }
+
     public float GetCurAnimationLength()
     {
         if (current_animationData == null) return 0;
@@ -132,11 +148,21 @@ public class SpriteAnimator : MonoBehaviour
         return totalLength;
     }
 
+    /// <summary>
+    /// 当前播放的是否是这个动画
+    /// </summary>
+    /// <param name="animationData">要检测的动画</param>
+    /// <returns></returns>
     public bool IsInThisAni(AnimationData animationData)
     {
         return current_animationData == animationData;
     }
 
+    /// <summary>
+    /// 当前播放的是否是这个动画
+    /// </summary>
+    /// <param name="baseAnim">动画类型枚举</param>
+    /// <returns></returns>
     public bool IsInThisAni(IBaseAnim baseAnim)
     {
         FieldInfo[] fieldInfos = baseAnim.GetType().GetFields();
@@ -150,6 +176,10 @@ public class SpriteAnimator : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 执行动画事件
+    /// </summary>
+    /// <param name="frameEvent"></param>
     private void DoAnimFrameEvent(FrameEvent frameEvent)
     {
         switch (frameEvent.paramType)

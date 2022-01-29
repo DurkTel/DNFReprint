@@ -78,5 +78,8 @@ public class EntitySkill : ScriptableObject
     /// </summary>
     public float NeedHP;
 
-    
+    /// <summary>
+    /// 表现动画
+    /// </summary>
+    public AnimationData animationData;
 }

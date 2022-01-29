@@ -25,9 +25,9 @@ public class EntityMotor : MonoBehaviour
     protected Vector2 m_curMoveDir;
 
     protected float m_curSpeed;
-
+    [HideInInspector]
     public bool runningReady;
-
+    [HideInInspector]
     public bool walkingReady;
 
     public EntityAttribute entityAttribute;
@@ -82,7 +82,7 @@ public class EntityMotor : MonoBehaviour
     {
         m_curMoveDir.x = KeyboardInput.Instance.MoveAxisX.Axis * XOffsetSpeed;
         m_curMoveDir.y = KeyboardInput.Instance.MoveAxisY.Axis * YOffsetSpeed;
-
+        
         m_curMoveDir = m_curMoveDir * m_curSpeed * m_moveDirCoefficient;
         m_rigidbody.velocity = m_curMoveDir;
        
@@ -95,8 +95,10 @@ public class EntityMotor : MonoBehaviour
         {
             return entityAttribute.MoveSpeed * 2;
         }
-        else if ((!KeyboardInput.Instance.MoveAxisX.IsPressing && !KeyboardInput.Instance.MoveAxisY.IsDelaying))
+        else if ((!KeyboardInput.Instance.MoveAxisX.IsPressing && !KeyboardInput.Instance.MoveAxisX.IsDelaying))
+        {
             return entityAttribute.MoveSpeed;
+        }
         return m_curSpeed != 0 ? m_curSpeed : entityAttribute.MoveSpeed;
     }
 

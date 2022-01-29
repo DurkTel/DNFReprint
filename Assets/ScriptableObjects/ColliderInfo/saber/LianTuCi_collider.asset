@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
+  m_Name: LianTuCi_collider
+  m_EditorClassIdentifier: 
+  frameCollInfos:
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 39.2, y: 42.7}
+      size: {x: 38.3, y: 88.6}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 2
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 142, y: 64.5}
+      size: {x: 78.6, y: 21.8}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 47.6, y: 24.7}
+      size: {x: 38.3, y: 52.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 63.6, y: 68.4}
+      size: {x: 28.6, y: 35.2}
+    index: 0
+  frameCount: 8
+  entitySkill: {fileID: 11400000, guid: 8f2898934187f064fb25947fd279cbb9, type: 2}

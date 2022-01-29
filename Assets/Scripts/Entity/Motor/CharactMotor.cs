@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CharactMotor : EntityMotor
 {
-
+    [HideInInspector]
     public CharacterSkillTree characterSkillTree;
-
-    public EntitySkill jumpAttack;//先写死测试
-
+    [HideInInspector]
     public int airAttackCombo;
 
+    //先写死测试
+    public EntitySkill jumpAttack;
 
+    public EntitySkill shangtiaoSkill;
 
     private float m_addMoveForce;
 
@@ -22,6 +23,7 @@ public class CharactMotor : EntityMotor
 
         characterSkillTree = GetComponent<CharacterSkillTree>();
         characterSkillTree.AddSkill(jumpAttack);
+        characterSkillTree.AddSkill(shangtiaoSkill);
 
 
         InitEvent();

@@ -12,6 +12,8 @@ public class AnimationConfig : ScriptableObject
     public AttackAnim AttackAnim;
 
     public HitAnim HitAnim;
+
+    public ForceAnim ForceAnim;
 }
 
 public interface IBaseAnim { }
@@ -65,4 +67,21 @@ public struct HitAnim : IBaseAnim
     public AnimationData hit2_Anim;
 
     public AnimationData hit3_Anim;
+}
+
+[System.Serializable]
+public struct ForceAnim : IBaseAnim
+{
+    public AnimationData idle_Anim;
+
+    public AnimationData walk_Anim;
+
+    public AnimationData run_Anim;
+
+    public AnimationData attack1_Anim;
+
+    public AnimationData attack2_Anim;
+
+    public AnimationData attack3_Anim;
+
 }
