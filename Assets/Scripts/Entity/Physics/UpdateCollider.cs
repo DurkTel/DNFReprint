@@ -43,13 +43,8 @@ public class UpdateCollider : MonoBehaviour
         m_spriteAnimator = GetComponentInChildren<SpriteAnimator>();
         m_renenderSprite = GetComponentInChildren<RenenderSprite>();
         AddUpdateEvent();
-        m_collidersXY_parent = transform.Find("Colliders").transform.Find("colliders_XY");
-        m_collidersZ_parent = transform.Find("Colliders").transform.Find("colliders_Z");
-    }
-
-    void Start()
-    {
-        
+        m_collidersXY_parent = transform.Find("Colliders/colliders_XY");
+        m_collidersZ_parent = transform.Find("colliders_Z");//Z轴不需要跟随跳跃
     }
 
     private void Update()
@@ -107,30 +102,7 @@ public class UpdateCollider : MonoBehaviour
                 m_collidersZ.Add(newCollZ);
             }
 
-            //for (int i = 0; i < m_collidersXY.Count; i++)
-            //{
-            //    m_collidersXY[i].gameObject.SetActive(true);
-            //    m_collidersZ[i].gameObject.SetActive(true);
-            //}
         }
-        //else if (m_collidersXY.Count == maxCout)
-        //{
-        //    for (int i = 0; i < m_collidersXY.Count; i++)
-        //    {
-        //        m_collidersXY[i].gameObject.SetActive(true);
-        //        m_collidersZ[i].gameObject.SetActive(true);
-        //    }
-        //}
-        //else
-        //{
-
-        //    for (int i = 0; i < m_collidersXY.Count; i++)
-        //    {
-        //        bool isActive = maxCout - 1 >= i;
-        //        m_collidersXY[i].gameObject.SetActive(isActive);
-        //        m_collidersZ[i].gameObject.SetActive(isActive);
-        //    }
-        //}
     }
 
     private void RefreshCollider(int currentFrame)
@@ -283,7 +255,7 @@ public class UpdateCollider : MonoBehaviour
         for (int i = 0; i < m_frameCollInfo.single_colliderInfo.Count; i++)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(new Vector2(transform.position.x, transform.position.y) + m_collidersXY[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersXY[i].size * 0.01f);
+            Gizmos.DrawWireCube(new Vector2(transform.position.x, m_spriteAnimator.transform.position.y) + m_collidersXY[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersXY[i].size * 0.01f);
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(new Vector2(transform.position.x, transform.position.y) + m_collidersZ[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersZ[i].size * 0.01f);
 

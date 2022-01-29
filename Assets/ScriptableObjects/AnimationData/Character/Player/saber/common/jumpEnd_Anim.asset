@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: jumpEnd_Anim
   m_EditorClassIdentifier: 
   aniName: jumpEnd_Anim
-  colliderInfo: {fileID: 0}
+  colliderInfo: {fileID: 11400000, guid: 27212af6be0d91344a2e9990167049d1, type: 2}
   isLoop: 0
   speed: 1
   frameList:

@@ -50,7 +50,7 @@ MonoBehaviour:
       size: {x: 55.4, y: 48}
     - layer: 2
       isTrigger: 1
-      offset_Z: 55
+      offset_Z: 0
       size_Z: 20
       offset: {x: 110.7, y: 68.8}
       size: {x: 73.5, y: 27.2}
@@ -76,7 +76,7 @@ MonoBehaviour:
       size: {x: 29.6, y: 34.4}
     - layer: 2
       isTrigger: 1
-      offset_Z: 30
+      offset_Z: 0
       size_Z: 20
       offset: {x: -12.7, y: 39.2}
       size: {x: 119.4, y: 22.6}
