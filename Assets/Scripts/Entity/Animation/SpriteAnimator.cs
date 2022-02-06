@@ -394,11 +394,11 @@ public class SpriteAnimator : MonoBehaviour
 
                                         break;
                                     case CustomCondition.WALK_LIMIT:
-                                        if (!m_motor.walkingReady) result = false;
+                                        if (m_motor.movePhase != 1) result = false;
 
                                         break;
                                     case CustomCondition.RUN_LIMIT:
-                                        if (!m_motor.runningReady) result = false;
+                                        if (m_motor.movePhase != 2) result = false;
 
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:

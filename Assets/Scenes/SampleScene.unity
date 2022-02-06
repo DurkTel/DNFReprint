@@ -22840,7 +22840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7921391, y: -0.7762108, z: -6}
+  m_LocalPosition: {x: -0.79213905, y: -0.77621865, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -22862,7 +22862,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -23382,11 +23382,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runningReady: 0
   walkingReady: 0
+  movePhase: 0
   entityAttribute: {fileID: 11400000, guid: dc8cd9ac9c4655b47a249e06ae41a66b, type: 2}
   isStatic: 0
   speedDrop: 0
   characterSkillTree: {fileID: 983931162}
   airAttackCombo: 0
+  inputReader: {fileID: 11400000, guid: def6ff5f9bd86e04ba07488cb441228b, type: 2}
   jumpAttack: {fileID: 11400000, guid: 28a3f87818fb5b24eb610e5112541421, type: 2}
   shangtiaoSkill: {fileID: 11400000, guid: eae26bda6b66f484d8a884184cfe924a, type: 2}
 --- !u!4 &983931161
@@ -27542,7 +27544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1175415267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27607,6 +27609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runningReady: 0
   walkingReady: 0
+  movePhase: 0
   entityAttribute: {fileID: 11400000, guid: 3b8b0eeb3b75ef44e96ddd3cf6e8115e, type: 2}
   isStatic: 1
   speedDrop: 0
@@ -31903,7 +31906,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350010266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79099995, y: -1.3309999, z: -6}
+  m_LocalPosition: {x: -0.7909999, y: -1.3309999, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 232235707}

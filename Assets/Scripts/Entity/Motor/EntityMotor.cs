@@ -10,6 +10,8 @@ public class EntityMotor : BaseEvent
 
     const float YOffsetSpeed = 0.7f;
 
+    private Vector2 m_offsetSpeed = new Vector2(1f, 0.7f);
+
     protected Rigidbody2D m_rigidbody;
 
     protected RenenderSprite m_renenderSprite;
@@ -29,6 +31,10 @@ public class EntityMotor : BaseEvent
     public bool runningReady;
     [HideInInspector]
     public bool walkingReady;
+    /// <summary>
+    /// 0 没有移动 1 走路 2跑步
+    /// </summary>
+    public int movePhase;
 
     public EntityAttribute entityAttribute;
 
@@ -67,38 +73,19 @@ public class EntityMotor : BaseEvent
 
     protected virtual void MotorAnim()
     {
-        m_curSpeed = ControlSpeed();
-
-        runningReady = m_curSpeed > entityAttribute.MoveSpeed && m_curMoveDir != Vector2.zero;
-        walkingReady = m_curSpeed <= entityAttribute.MoveSpeed && m_curMoveDir != Vector2.zero;
-
         if (m_curMoveDir.x != 0 && FilpLimit())
             m_renenderSprite.SetSpriteFilp(m_curMoveDir.x < 0);
     }
 
     protected virtual void MotorMove()
     {
-        m_curMoveDir.x = KeyboardInput.Instance.MoveAxisX.Axis * XOffsetSpeed;
-        m_curMoveDir.y = KeyboardInput.Instance.MoveAxisY.Axis * YOffsetSpeed;
-        
-        m_curMoveDir = m_curMoveDir * m_curSpeed * m_moveDirCoefficient;
-        m_rigidbody.velocity = m_curMoveDir;
-       
+        //移动向量由子类自身处理
+        Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
+        m_curSpeed = movePhase == 1 ? entityAttribute.MoveSpeed : entityAttribute.MoveSpeed * 2;
+        m_rigidbody.velocity = dir * m_curSpeed * m_moveDirCoefficient;
+
     }
 
-    protected virtual float ControlSpeed()
-    {
-        if ((KeyboardInput.Instance.MoveLeft.OnPressed && KeyboardInput.Instance.MoveLeft.IsExtending) ||
-            (KeyboardInput.Instance.MoveRight.OnPressed && KeyboardInput.Instance.MoveRight.IsExtending))
-        {
-            return entityAttribute.MoveSpeed * 2;
-        }
-        else if ((!KeyboardInput.Instance.MoveAxisX.IsPressing && !KeyboardInput.Instance.MoveAxisX.IsDelaying))
-        {
-            return entityAttribute.MoveSpeed;
-        }
-        return m_curSpeed != 0 ? m_curSpeed : entityAttribute.MoveSpeed;
-    }
 
     private bool FilpLimit()
     {

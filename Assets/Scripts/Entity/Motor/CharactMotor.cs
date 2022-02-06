@@ -9,12 +9,27 @@ public class CharactMotor : EntityMotor
     [HideInInspector]
     public int airAttackCombo;
 
+    public InputReader inputReader;
+
     //先写死测试
     public EntitySkill jumpAttack;
 
     public EntitySkill shangtiaoSkill;
 
     private float m_addMoveForce;
+
+    private void OnEnable()
+    {
+        inputReader.moveInputEvent += ReceiveMoveInput;
+        inputReader.buttonMultiEvent += MovePhaseHandle;
+    }
+
+    private void OnDisable()
+    {
+        inputReader.moveInputEvent -= ReceiveMoveInput;
+        inputReader.buttonMultiEvent -= MovePhaseHandle;
+
+    }
 
 
     protected override void Start()
@@ -27,6 +42,7 @@ public class CharactMotor : EntityMotor
 
 
         InitEvent();
+        inputReader.EnableGameplayInput();
     }
 
     private void InitEvent()
@@ -77,6 +93,23 @@ public class CharactMotor : EntityMotor
 
         m_addMoveForce = 0;
     }
+
+    private void ReceiveMoveInput(Vector2 input)
+    {
+        m_curMoveDir = input;
+        if (m_curMoveDir != Vector2.zero && movePhase != 2)
+            movePhase = 1;
+        else if (m_curMoveDir == Vector2.zero)
+            movePhase = 0;
+    }
+
+    private void MovePhaseHandle(string action)
+    {
+        if (action == "Left" || action == "Right")
+            movePhase = 2;
+
+    }
+
 
     protected override void Update()
     {
