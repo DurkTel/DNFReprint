@@ -22840,7 +22840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7921388, y: -0.7762196, z: -6}
+  m_LocalPosition: {x: -0.7921391, y: -0.7762108, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -23308,12 +23308,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983931161}
-  - component: {fileID: 983931159}
-  - component: {fileID: 983931158}
   - component: {fileID: 983931160}
   - component: {fileID: 983931163}
   - component: {fileID: 983931162}
   - component: {fileID: 983931164}
+  - component: {fileID: 983931159}
+  - component: {fileID: 983931158}
   m_Layer: 8
   m_Name: saber
   m_TagString: Player
@@ -31903,7 +31903,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350010266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7909999, y: -1.3309999, z: -6}
+  m_LocalPosition: {x: -0.79099995, y: -1.3309999, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 232235707}

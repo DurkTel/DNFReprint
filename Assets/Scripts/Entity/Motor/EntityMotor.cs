@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
-public class EntityMotor : MonoBehaviour
+public class EntityMotor : BaseEvent
 {
     const float XOffsetSpeed = 1f;
 
@@ -34,8 +34,6 @@ public class EntityMotor : MonoBehaviour
 
     public bool isStatic;
 
-
-    public Dictionary<EventDefine, IAnimatorEvent> eventDic = new Dictionary<EventDefine, IAnimatorEvent>();
 
     public Vector2 curMoveDir { get { return m_curMoveDir; } }
 
@@ -134,59 +132,5 @@ public class EntityMotor : MonoBehaviour
 
         m_charactRenderer.localPosition = new Vector3(m_charactRenderer.localPosition.x, Mathf.Clamp(m_charactRenderer.localPosition.y, 0, Mathf.Infinity), m_charactRenderer.localPosition.z);
     }
-
-
-    #region 单个对象的动画事件
-    protected virtual void InitAnimEvent(EventDefine eventType, UnityAction unityAction)
-    {
-        if (eventDic.ContainsKey(eventType))
-        {
-            (eventDic[eventType] as AnimationEvent).unityAction += unityAction;
-        }
-        else
-        {
-            eventDic.Add(eventType, new AnimationEvent(unityAction));
-        }
-    }
-
-    protected virtual void InitAnimEvent<T>(EventDefine eventType, UnityAction<T> unityAction)
-    {
-        if (eventDic.ContainsKey(eventType))
-        {
-            (eventDic[eventType] as AnimationEvent<T>).unityAction += unityAction;
-        }
-        else
-        {
-            eventDic.Add(eventType, new AnimationEvent<T>(unityAction));
-        }
-    }
-
-    public void OnAnimEvent(EventDefine eventType)
-    {
-        if (eventDic.ContainsKey(eventType))
-        {
-            AnimationEvent action = (eventDic[eventType] as AnimationEvent);
-            if (action == null)
-            {
-                Debug.LogError("action为空" + eventType.ToString());
-                return;
-            }
-            action.unityAction?.Invoke();
-        }
-    }
-    public void OnAnimEvent<T>(EventDefine eventType, T param)
-    {
-        if (eventDic.ContainsKey(eventType))
-        {
-            AnimationEvent<T> action = (eventDic[eventType] as AnimationEvent<T>);
-            if (action == null)
-            {
-                Debug.LogError("action为空" + eventType.ToString());
-                return;
-            }
-            action.unityAction?.Invoke(param);
-        }
-    }
-    #endregion
 
 }
