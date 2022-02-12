@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class CustomConditionFuc
 {
-    public static bool IsStudiedThisSkill(int skillCode, CharacterSkillTree skillTree)
+    public static bool IsStudiedThisSkill(int skillCode, SkillTree skillTree)
     {
         return skillTree.IsHasSkill(skillCode);
     }

@@ -385,9 +385,9 @@ public class AnimationDataEditor : Editor
                 break;
             case Condition.ConditionType.inputKey:
                 SerializedProperty inputType = condition.FindPropertyRelative("inputComparison.inputType");
-                SerializedProperty keyCode = condition.FindPropertyRelative("inputComparison.keyCode");
+                SerializedProperty action = condition.FindPropertyRelative("inputComparison.action");
                 inputType.enumValueIndex = EditorGUI.Popup(new Rect(75, posY, 60, 22), string.Empty, inputType.enumValueIndex, Enum.GetNames(typeof(Condition.InputType)));
-                keyCode.enumValueIndex = EditorGUI.Popup(new Rect(145, posY, 50, 22), string.Empty, keyCode.enumValueIndex, Enum.GetNames(typeof(InputKeys)));
+                action.enumValueIndex = EditorGUI.Popup(new Rect(145, posY, 50, 22), string.Empty, action.enumValueIndex, Enum.GetNames(typeof(InputActionDefine)));
                 break;
             case Condition.ConditionType.custom:
                 SerializedProperty customCondition = condition.FindPropertyRelative("customCondition");

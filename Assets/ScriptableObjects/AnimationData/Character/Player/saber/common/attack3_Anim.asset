@@ -38,7 +38,7 @@ MonoBehaviour:
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 5
+      parameterFloat: 1
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -154,5 +154,5 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0

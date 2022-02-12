@@ -64,7 +64,7 @@ MonoBehaviour:
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 5
+      parameterFloat: 1
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
       parameterOnEnable: 0
       parameterOnDisable: 0
   switchingConditions:
-  - frame: {x: 2, y: 10}
+  - frame: {x: 7, y: 10}
     animationData: {fileID: 11400000, guid: 1dfad26c1d52ba14e931e37ebb67be90, type: 2}
     conditions:
     - conditionType: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 5
       characterAnimation: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 4
+        action: 5
       customCondition: 0
   - frame: {x: 10, y: 10}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
@@ -219,5 +219,5 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0

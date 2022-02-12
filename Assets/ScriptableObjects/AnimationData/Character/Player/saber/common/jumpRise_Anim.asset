@@ -63,7 +63,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 2
       characterAnimation: {fileID: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
   - frame: {x: 0, y: 0}
     animationData: {fileID: 11400000, guid: 6354d92fdeb74c845b5c5af2aabf41ae, type: 2}
@@ -102,7 +102,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 5
       characterAnimation: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 4
+        action: 5
       customCondition: 0
     - conditionType: 6
       characterAnimation: {fileID: 0}
@@ -138,5 +138,5 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 3
-        keyCode: 4
+        action: 0
       customCondition: 4

@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSkillTree : MonoBehaviour
+[CreateAssetMenu(fileName ="SkillTree", menuName = "ScriptableObject/Skill/SkillTree")]
+public class SkillTree : ScriptableObject
 {
     private Dictionary<int, EntitySkill> m_skillTree = new Dictionary<int, EntitySkill>();
     public void AddSkill(EntitySkill skill)
     {
         bool conditionSkill = skill.Condition == 0 ? true : m_skillTree.ContainsKey(skill.Condition);
-
-        if (!m_skillTree.ContainsKey(skill.SkillCode) && conditionSkill)
+        bool isStudy = m_skillTree.ContainsKey(skill.SkillCode);
+        if (!isStudy && conditionSkill)
         {
             m_skillTree.Add(skill.SkillCode, skill);
         }
         else
         {
-            if (m_skillTree.ContainsKey(skill.SkillCode))
+            if (isStudy)
             {
                 Debug.LogError("当前技能已学习");
             }

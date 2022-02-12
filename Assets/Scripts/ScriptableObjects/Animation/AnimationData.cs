@@ -100,8 +100,8 @@ public class Condition
     {
         onPressed,
         onReleased,
-        doublePressed,
-        isPressing
+        multiPressed,
+        holdPressed,
     }
 
     [System.Serializable]
@@ -115,7 +115,7 @@ public class Condition
     public struct InputComparison
     {
         public InputType inputType;
-        public InputKeys keyCode;
+        public InputActionDefine action;
     }
 
     public ConditionType conditionType;

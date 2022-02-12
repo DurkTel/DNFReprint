@@ -15,7 +15,7 @@ MonoBehaviour:
   aniName: jumpAttack_Anim
   colliderInfo: {fileID: 11400000, guid: 9c2f1de573ecd1345ab04a290fe4ace1, type: 2}
   isLoop: 0
-  speed: 1.5
+  speed: 1.2
   frameList:
   - sprite: {fileID: 21300000, guid: dc93ed84955d03a4ab7e61615b6c5868, type: 3}
     interval: 0.1
@@ -115,7 +115,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 2
       characterAnimation: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
   - frame: {x: 5, y: 5}
     animationData: {fileID: 11400000, guid: 1e55f850f92d7214d81f708395360392, type: 2}
@@ -154,7 +154,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 2
       characterAnimation: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 1
       characterAnimation: {fileID: 0}
@@ -190,7 +190,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
   - frame: {x: 0, y: 0}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
@@ -211,7 +211,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 2
       characterAnimation: {fileID: 0}
@@ -229,7 +229,7 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0
     - conditionType: 1
       characterAnimation: {fileID: 0}
@@ -247,5 +247,5 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0

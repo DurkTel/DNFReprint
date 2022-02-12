@@ -34,8 +34,11 @@ public class SpriteAnimator : MonoBehaviour
 
     private EntityMotor m_motor;
 
+    private SkillManager m_skillManager;
+
     public AnimationData current_animationData;
 
+    [HideInInspector]
     public AnimationData last_animationData;
 
     public AnimationConfig AnimationConfig;
@@ -44,12 +47,15 @@ public class SpriteAnimator : MonoBehaviour
 
     public UnityAction<AnimationData> UpdateAnimationEvent;
 
+    public InputReader inputReader;
+
 
     private void Start()
     {
         m_renenderSprite = GetComponent<RenenderSprite>();
         m_charactRenderer = GetComponent<Transform>();
         m_motor = GetComponentInParent<EntityMotor>();
+        m_skillManager = GetComponentInParent<SkillManager>();
     }
 
     private void Update()
@@ -356,32 +362,29 @@ public class SpriteAnimator : MonoBehaviour
                                 }
                                 break;
                             case Condition.ConditionType.inputKey:
-                                if (Input.anyKey)
+                                ButtonBehaviour buttonBehaviour = inputReader.buttonBehaviour[CharacterEventFunc.GetInputEnumToString(item.inputComparison.action)];
+                                switch (item.inputComparison.inputType)
                                 {
-                                    switch (item.inputComparison.inputType)
-                                    {
-                                        case Condition.InputType.onPressed:
-                                            if (!KeyboardInput.Instance.GetButtonFormKeyEnum(item.inputComparison.keyCode).OnPressed) result = false;
-                                            
-                                            break;
-                                        case Condition.InputType.onReleased:
-                                            if (!KeyboardInput.Instance.GetButtonFormKeyEnum(item.inputComparison.keyCode).OnReleased) result = false;
+                                    case Condition.InputType.onPressed:
+                                        if (!buttonBehaviour.onPressed) result = false;
 
-                                            break;
-                                        case Condition.InputType.doublePressed:
-                                            if (!(KeyboardInput.Instance.GetButtonFormKeyEnum(item.inputComparison.keyCode).OnPressed && KeyboardInput.Instance.GetButtonFormKeyEnum(item.inputComparison.keyCode).IsExtending)) result = false;
+                                        break;
 
-                                            break;
-                                        case Condition.InputType.isPressing:
-                                            if (!KeyboardInput.Instance.GetButtonFormKeyEnum(item.inputComparison.keyCode).IsPressing) result = false;
+                                    case Condition.InputType.onReleased:
+                                        if (!buttonBehaviour.onRelease) result = false;
 
-                                            break;
-                                        default:
-                                            break;
-                                    }
+                                        break;
+                                    case Condition.InputType.multiPressed:
+                                        if (!buttonBehaviour.onMulti) result = false;
+
+                                        break;
+                                    case Condition.InputType.holdPressed:
+                                        if (!buttonBehaviour.onHold) result = false;
+
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                else
-                                    result = false;
                                 break;
                             case Condition.ConditionType.custom:
                                 switch (item.customCondition)
@@ -403,8 +406,11 @@ public class SpriteAnimator : MonoBehaviour
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
                                         CharactMotor charactMotor = (CharactMotor)m_motor;
-                                        if (!CustomConditionFuc.IsStudiedThisSkill(10001, charactMotor.characterSkillTree) && charactMotor.airAttackCombo > 0) result = false;
+                                        if (!m_skillManager.characterSkillTree.IsHasSkill(10001) && charactMotor.airAttackCombo > 0) result = false;
 
+                                        break;
+                                    case CustomCondition.HIT_RECOVER:
+                                        if (m_motor.isHitRecover) result = false;
                                         break;
                                     default:
                                         break;

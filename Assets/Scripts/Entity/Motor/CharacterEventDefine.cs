@@ -22,6 +22,7 @@ public enum CustomCondition
     RUN_LIMIT,
     WALK_LIMIT,
     JUMP_ATTACK_LIMIT,
+    HIT_RECOVER,
 }
 
 
@@ -32,4 +33,20 @@ public enum EventParamDefine
     Int,
     Float,
     String,
+}
+
+public enum InputActionDefine
+{
+    Up,
+    Down,
+    Left,
+    Right,
+    Jump,
+    Attack_1,
+    Attack_2,
+    Skill_1,
+    Skill_2,
+    Skill_3,
+    Skill_4,
+
 }

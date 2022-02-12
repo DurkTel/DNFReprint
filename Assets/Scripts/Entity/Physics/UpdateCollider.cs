@@ -176,6 +176,7 @@ public class UpdateCollider : MonoBehaviour
                         }
                         break;
                     case ColliderLayer.BeDamage:
+
                         break;
                     default:
                         break;

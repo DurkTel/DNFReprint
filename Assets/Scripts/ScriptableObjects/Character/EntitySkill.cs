@@ -82,4 +82,23 @@ public class EntitySkill : ScriptableObject
     /// 表现动画
     /// </summary>
     public AnimationData animationData;
+
+    /// <summary>
+    /// 上次释放的时间
+    /// </summary>
+    private int lastUseTime;
+
+
+    public void SetLastUseTime(int time)
+    {
+        lastUseTime = time;
+    }
+
+    /// <summary>
+    /// 该技能是否冷却完
+    /// </summary>
+    public void IsCooled()
+    { 
+        
+    }
 }

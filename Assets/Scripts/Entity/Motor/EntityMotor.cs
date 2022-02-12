@@ -4,12 +4,11 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
+/// <summary>
+/// 该类管理实体的移动、跳跃等
+/// </summary>
 public class EntityMotor : BaseEvent
 {
-    const float XOffsetSpeed = 1f;
-
-    const float YOffsetSpeed = 0.7f;
-
     private Vector2 m_offsetSpeed = new Vector2(1f, 0.7f);
 
     protected Rigidbody2D m_rigidbody;
@@ -27,6 +26,10 @@ public class EntityMotor : BaseEvent
     protected Vector2 m_curMoveDir;
 
     protected float m_curSpeed;
+
+    protected float m_hitRecoverTime;
+
+    public bool isHitRecover { get { return m_hitRecoverTime > 0; } }
     [HideInInspector]
     public bool runningReady;
     [HideInInspector]
@@ -44,11 +47,6 @@ public class EntityMotor : BaseEvent
     public Vector2 curMoveDir { get { return m_curMoveDir; } }
 
     [HideInInspector] public float speedDrop;
-
-    private void Awake()
-    {
-        
-    }
 
     protected virtual void Start()
     {
@@ -75,10 +73,14 @@ public class EntityMotor : BaseEvent
     {
         if (m_curMoveDir.x != 0 && FilpLimit())
             m_renenderSprite.SetSpriteFilp(m_curMoveDir.x < 0);
+
+        CalculateHitRecover();
     }
 
     protected virtual void MotorMove()
     {
+        if (isHitRecover)
+            m_curMoveDir = Vector2.zero;
         //移动向量由子类自身处理
         Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
         m_curSpeed = movePhase == 1 ? entityAttribute.MoveSpeed : entityAttribute.MoveSpeed * 2;
@@ -86,10 +88,15 @@ public class EntityMotor : BaseEvent
 
     }
 
+    protected void CalculateHitRecover()
+    {
+        if (m_hitRecoverTime > 0)
+            m_hitRecoverTime -= Time.deltaTime;
+    }
 
     private bool FilpLimit()
     {
-        bool attackAnimLimit = !m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim);
+        bool attackAnimLimit = !m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim) && !isHitRecover;
         return attackAnimLimit;
     }
 

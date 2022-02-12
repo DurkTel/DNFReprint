@@ -19,7 +19,7 @@
                     "id": "62835c92-37cf-466a-a9e3-dfb56f3958e2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapCount=1),Press(behavior=1)"
+                    "interactions": "Press(behavior=1)"
                 },
                 {
                     "name": "Down",
@@ -27,7 +27,7 @@
                     "id": "c28a45c5-736c-4c83-9fd1-293d38987524",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapCount=1),Press(behavior=1)"
+                    "interactions": "Press(behavior=1)"
                 },
                 {
                     "name": "Left",
@@ -35,7 +35,7 @@
                     "id": "75f56647-db3e-4819-b2ea-54aecf7ae345",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapCount=1),Press(behavior=1)"
+                    "interactions": "Press(behavior=1)"
                 },
                 {
                     "name": "Right",
@@ -43,10 +43,121 @@
                     "id": "830c7845-9e0d-4f12-90bd-939281d696a5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapCount=1),Press(behavior=1)"
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "f3bd0495-1a84-48a7-878f-d259caf2ccb5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Attack_1",
+                    "type": "Button",
+                    "id": "739e924d-e5dc-4ff1-ad43-7d4b53f936f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Attack_2",
+                    "type": "Button",
+                    "id": "dc26c7c7-7221-472b-b29d-4c89e481a439",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Skill_1",
+                    "type": "Button",
+                    "id": "e82fd099-8750-493d-9381-5b467deda157",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Skill_2",
+                    "type": "Button",
+                    "id": "7b2c4176-4109-41f2-9d0a-7f7a368baecd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Skill_3",
+                    "type": "Button",
+                    "id": "7f9ce7be-27ff-41f3-b1f7-a5c33bbb1fac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Skill_4",
+                    "type": "Button",
+                    "id": "707d9ee8-5c15-4a52-81be-92918ea0409b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
+                {
+                    "name": "",
+                    "id": "278049df-2d1b-4069-80e5-465cfe48dac3",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25e37341-15f2-49a4-8229-aa163fa1d69a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50dfbe18-6648-4a31-9dbf-d42520f88d7b",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab3ecebd-01f3-4fd8-8b80-c044c950b5b9",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "957ef54d-2754-4c92-a4ee-55461bebfd1f",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
                 {
                     "name": "2D Vector",
                     "id": "6acd24ea-c533-44a5-b045-60badb5e7003",
@@ -104,45 +215,67 @@
                 },
                 {
                     "name": "",
-                    "id": "278049df-2d1b-4069-80e5-465cfe48dac3",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "411f0968-65e2-4718-8d8e-b0e7dc7b2488",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Up",
+                    "action": "Attack_1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "25e37341-15f2-49a4-8229-aa163fa1d69a",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "ea4f839f-c98f-48b6-a31b-2cc39ae534e4",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Down",
+                    "action": "Attack_2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "50dfbe18-6648-4a31-9dbf-d42520f88d7b",
-                    "path": "<Keyboard>/leftArrow",
+                    "id": "d97164ae-7a39-4835-a968-93e6386809c9",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Left",
+                    "action": "Skill_1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ab3ecebd-01f3-4fd8-8b80-c044c950b5b9",
-                    "path": "<Keyboard>/rightArrow",
+                    "id": "568273ff-11fe-4b9a-b990-6a2588e45cec",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right",
+                    "action": "Skill_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88806b4c-ecb7-43d5-92cf-227a14101834",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill_3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6344f65f-0041-4202-a1ee-cc0ea460f648",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill_4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

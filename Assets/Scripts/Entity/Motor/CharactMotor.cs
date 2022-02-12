@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharactMotor : EntityMotor
+public class CharactMotor : EntityMotor, IDamage
 {
-    [HideInInspector]
-    public CharacterSkillTree characterSkillTree;
     [HideInInspector]
     public int airAttackCombo;
 
     public InputReader inputReader;
-
-    //先写死测试
-    public EntitySkill jumpAttack;
-
-    public EntitySkill shangtiaoSkill;
 
     private float m_addMoveForce;
 
@@ -36,13 +29,10 @@ public class CharactMotor : EntityMotor
     {
         base.Start();
 
-        characterSkillTree = GetComponent<CharacterSkillTree>();
-        characterSkillTree.AddSkill(jumpAttack);
-        characterSkillTree.AddSkill(shangtiaoSkill);
-
-
         InitEvent();
         inputReader.EnableGameplayInput();
+
+        
     }
 
     private void InitEvent()
@@ -89,15 +79,28 @@ public class CharactMotor : EntityMotor
         if (m_curMoveDir[0] * flip < 0 && onAttack)
             m_rigidbody.velocity = Vector2.zero;
         else
-            m_rigidbody.velocity += new Vector2(1, 0) * m_addMoveForce * flip;
+        {
+            if (Mathf.Abs(m_addMoveForce) > 0.1)
+            {
+                if (m_addMoveForce > 0)
+                    m_addMoveForce -= Time.deltaTime * 5;
+                else
+                    m_addMoveForce += Time.deltaTime * 5;
+                m_rigidbody.velocity += new Vector2(1, 0) * m_addMoveForce * flip;
 
-        m_addMoveForce = 0;
+            }
+
+        }
+
     }
 
     private void ReceiveMoveInput(Vector2 input)
     {
+
         m_curMoveDir = input;
-        if (m_curMoveDir != Vector2.zero && movePhase != 2)
+        if (isHitRecover)
+            movePhase = 0;
+        else if (m_curMoveDir != Vector2.zero && movePhase != 2)
             movePhase = 1;
         else if (m_curMoveDir == Vector2.zero)
             movePhase = 0;
@@ -106,7 +109,21 @@ public class CharactMotor : EntityMotor
     private void MovePhaseHandle(string action)
     {
         if (action == "Left" || action == "Right")
+        {
             movePhase = 2;
+        }
+
+    }
+
+    public void GetDamage(EntitySkill entitySkill = null)
+    {
+        movePhase = 0;
+        m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
+        int rand = Random.Range(0, 2);
+        if (rand == 0)
+            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim.hit1_Anim);
+        else
+            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim.hit2_Anim);
 
     }
 
@@ -114,12 +131,16 @@ public class CharactMotor : EntityMotor
     protected override void Update()
     {
         base.Update();
-        //SkillUpdate();
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GetDamage();
+        }
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
     }
+
 
 }
