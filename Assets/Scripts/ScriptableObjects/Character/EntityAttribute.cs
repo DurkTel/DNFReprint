@@ -18,4 +18,6 @@ public class EntityAttribute : ScriptableObject
     public float JumpPower;
 
     public float HitRecover;
+
+    public float AirBorneLimit;
 }

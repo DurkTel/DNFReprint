@@ -79,26 +79,17 @@ public class EntitySkill : ScriptableObject
     public float NeedHP;
 
     /// <summary>
+    /// 浮空值
+    /// </summary>
+    public float AirBorneForce;
+
+    /// <summary>
+    /// 是否能浮空
+    /// </summary>
+    public bool CanAirBorne;
+
+    /// <summary>
     /// 表现动画
     /// </summary>
     public AnimationData animationData;
-
-    /// <summary>
-    /// 上次释放的时间
-    /// </summary>
-    private int lastUseTime;
-
-
-    public void SetLastUseTime(int time)
-    {
-        lastUseTime = time;
-    }
-
-    /// <summary>
-    /// 该技能是否冷却完
-    /// </summary>
-    public void IsCooled()
-    { 
-        
-    }
 }

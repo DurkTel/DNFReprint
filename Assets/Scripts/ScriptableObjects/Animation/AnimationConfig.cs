@@ -5,22 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/Animation/AnimationConfig")]
 public class AnimationConfig : ScriptableObject
 {
-    public CommonAnim CommonAnim;
-
-    public JumpAnim JumpAnim;
-
-    public AttackAnim AttackAnim;
-
-    public HitAnim HitAnim;
-
-    public ForceAnim ForceAnim;
-}
-
-public interface IBaseAnim { }
-
-[System.Serializable]
-public struct CommonAnim : IBaseAnim
-{
     public AnimationData idle_Anim;
 
     public AnimationData idleTown_Anim;
@@ -30,11 +14,13 @@ public struct CommonAnim : IBaseAnim
     public AnimationData run_Anim;
 
     public AnimationData sit_Anim;
-}
 
-[System.Serializable]
-public struct JumpAnim : IBaseAnim
-{
+    public AnimationData airBorne_Anim;
+
+    public AnimationData rebound_Anim;
+
+    public AnimationData lie_Anim;
+
     public AnimationData jump_Anim;
 
     public AnimationData jumpRise_Anim;
@@ -42,11 +28,7 @@ public struct JumpAnim : IBaseAnim
     public AnimationData jumpDrop_Anim;
 
     public AnimationData jumpEnd_Anim;
-}
 
-[System.Serializable]
-public struct AttackAnim : IBaseAnim
-{
     public AnimationData attack1_Anim;
 
     public AnimationData attack2_Anim;
@@ -57,31 +39,23 @@ public struct AttackAnim : IBaseAnim
 
     public AnimationData runAttack_Anim;
 
-}
-
-[System.Serializable]
-public struct HitAnim : IBaseAnim
-{
     public AnimationData hit1_Anim;
 
     public AnimationData hit2_Anim;
 
     public AnimationData hit3_Anim;
-}
 
-[System.Serializable]
-public struct ForceAnim : IBaseAnim
-{
-    public AnimationData idle_Anim;
+    public List<AnimationData> CommonAnim = new List<AnimationData>();
 
-    public AnimationData walk_Anim;
+    public List<AnimationData> JumpAnim = new List<AnimationData>();
 
-    public AnimationData run_Anim;
+    public List<AnimationData> AttackAnim = new List<AnimationData>();
 
-    public AnimationData attack1_Anim;
+    public List<AnimationData> HitAnim = new List<AnimationData>();
 
-    public AnimationData attack2_Anim;
+    public List<AnimationData> ForceAnim = new List<AnimationData>();
 
-    public AnimationData attack3_Anim;
+    public List<AnimationData> NotMoveAnim = new List<AnimationData>();
 
 }
+

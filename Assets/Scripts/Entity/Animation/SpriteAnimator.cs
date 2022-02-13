@@ -36,6 +36,8 @@ public class SpriteAnimator : MonoBehaviour
 
     private SkillManager m_skillManager;
 
+    private AnimationData m_next_animationData;
+
     public AnimationData current_animationData;
 
     [HideInInspector]
@@ -90,7 +92,12 @@ public class SpriteAnimator : MonoBehaviour
 
             if (m_currentFrame >= aniSprites.Count)
             {
-                if (current_animationData.isLoop)
+                if (m_next_animationData != null)
+                {
+                    DOSpriteAnimation(m_next_animationData);
+                    m_next_animationData = null;
+                }
+                else if (current_animationData.isLoop)
                 {
                     m_currentFrame = 0;
                 }
@@ -130,6 +137,20 @@ public class SpriteAnimator : MonoBehaviour
     }
 
     /// <summary>
+    /// 播放完当前动画后播放该动画
+    /// </summary>
+    /// <param name="animationData">要播放的动画</param>
+    public void DOSpriteAnimationNext(AnimationData animationData)
+    {
+        if (animationData == null)
+        {
+            Debug.LogError("动画数据为空");
+            return;
+        }
+        m_next_animationData = animationData;
+    }
+
+    /// <summary>
     /// 强制播放技能动画
     /// </summary>
     /// <param name="animationData">要切换的技能动画</param>
@@ -161,25 +182,19 @@ public class SpriteAnimator : MonoBehaviour
     /// <returns></returns>
     public bool IsInThisAni(AnimationData animationData)
     {
+        FieldInfo[] fieldInfos = typeof(AnimationConfig).GetFields();
+
         return current_animationData == animationData;
     }
 
     /// <summary>
     /// 当前播放的是否是这个动画
     /// </summary>
-    /// <param name="baseAnim">动画类型枚举</param>
+    /// <param name="baseAnim">动画类型</param>
     /// <returns></returns>
-    public bool IsInThisAni(IBaseAnim baseAnim)
+    public bool IsInThisAni(List<AnimationData> animations)
     {
-        FieldInfo[] fieldInfos = baseAnim.GetType().GetFields();
-
-        foreach (var item in fieldInfos)
-        {
-            if (item.Name == current_animationData.aniName)
-                return true;
-        }
-
-        return false;
+        return animations.Contains(current_animationData);
     }
 
     /// <summary>

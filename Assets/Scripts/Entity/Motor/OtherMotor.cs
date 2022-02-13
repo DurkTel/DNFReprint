@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class OtherMotor : EntityMotor, IDamage
+public class OtherMotor : EntityMotor
 {
     protected override void Start()
     {
         base.Start();
-        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.CommonAnim.idle_Anim);
+        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
 
     }
 
-    public void GetDamage(EntitySkill entitySkill)
+    public override void GetDamage(EntitySkill entitySkill)
     {
-        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim.hit1_Anim);
+        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.hit1_Anim);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharactMotor : EntityMotor, IDamage
+public class CharactMotor : EntityMotor
 {
     [HideInInspector]
     public int airAttackCombo;
@@ -83,9 +83,9 @@ public class CharactMotor : EntityMotor, IDamage
             if (Mathf.Abs(m_addMoveForce) > 0.1)
             {
                 if (m_addMoveForce > 0)
-                    m_addMoveForce -= Time.deltaTime * 5;
+                    m_addMoveForce -= Time.deltaTime * 3;
                 else
-                    m_addMoveForce += Time.deltaTime * 5;
+                    m_addMoveForce += Time.deltaTime * 3;
                 m_rigidbody.velocity += new Vector2(1, 0) * m_addMoveForce * flip;
 
             }
@@ -98,7 +98,7 @@ public class CharactMotor : EntityMotor, IDamage
     {
 
         m_curMoveDir = input;
-        if (isHitRecover)
+        if (m_spriceAnimator.IsInThisAni(m_animationConfig.NotMoveAnim))
             movePhase = 0;
         else if (m_curMoveDir != Vector2.zero && movePhase != 2)
             movePhase = 1;
@@ -115,16 +115,38 @@ public class CharactMotor : EntityMotor, IDamage
 
     }
 
-    public void GetDamage(EntitySkill entitySkill = null)
+    public override void GetDamage(EntitySkill entitySkill = null)
     {
         movePhase = 0;
         m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
-        int rand = Random.Range(0, 2);
-        if (rand == 0)
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim.hit1_Anim);
+        if (m_charactRenderer.localPosition.y > 0)
+        {
+            //空中受击直接浮空 加速下落
+            GetAirBorne(entitySkill, Mathf.Abs(speedDrop * 2f));
+        }
         else
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim.hit2_Anim);
+        {
+            int rand = Random.Range(0, 2);
+            if (rand == 0)
+                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.hit1_Anim);
+            else
+                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.hit2_Anim);
 
+            GetAirBorne(entitySkill);
+
+        }
+
+    }
+
+    public override void GetAirBorne(EntitySkill entitySkill, float air = 0)
+    {
+        if (entitySkill.CanAirBorne || air != 0)
+        {
+            float airForce = air == 0 ? entitySkill.AirBorneForce - entityAttribute.AirBorneLimit : air;
+            m_addMoveForce = -airForce / 2.5f;
+            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.airBorne_Anim);
+            speedDrop = airForce;
+        }
     }
 
 
@@ -134,6 +156,10 @@ public class CharactMotor : EntityMotor, IDamage
         if (Input.GetKeyDown(KeyCode.I))
         {
             GetDamage();
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            //GetAirBorne();
         }
     }
 

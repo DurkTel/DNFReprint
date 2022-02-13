@@ -18,6 +18,9 @@ MonoBehaviour:
     walk_Anim: {fileID: 0}
     run_Anim: {fileID: 0}
     sit_Anim: {fileID: 0}
+    airBorne_Anim: {fileID: 0}
+    rebound_Anim: {fileID: 0}
+    lie_Anim: {fileID: 0}
   JumpAnim:
     jump_Anim: {fileID: 0}
     jumpRise_Anim: {fileID: 0}
@@ -33,3 +36,11 @@ MonoBehaviour:
     hit1_Anim: {fileID: 0}
     hit2_Anim: {fileID: 0}
     hit3_Anim: {fileID: 0}
+  ForceAnim:
+    idle_Anim: {fileID: 0}
+    walk_Anim: {fileID: 0}
+    run_Anim: {fileID: 0}
+    attack1_Anim: {fileID: 0}
+    attack2_Anim: {fileID: 0}
+    attack3_Anim: {fileID: 0}
+  NotMoveAnim: []

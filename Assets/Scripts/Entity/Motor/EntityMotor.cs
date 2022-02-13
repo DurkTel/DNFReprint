@@ -7,7 +7,7 @@ using UnityEngine.Events;
 /// <summary>
 /// 该类管理实体的移动、跳跃等
 /// </summary>
-public class EntityMotor : BaseEvent
+public class EntityMotor : BaseEvent, IDamage
 {
     private Vector2 m_offsetSpeed = new Vector2(1f, 0.7f);
 
@@ -55,7 +55,7 @@ public class EntityMotor : BaseEvent
         m_spriceAnimator = GetComponentInChildren<SpriteAnimator>();
         m_charactRenderer = transform.Find("SpriteRenderer").GetComponent<Transform>();
         m_animationConfig = m_spriceAnimator.AnimationConfig;
-        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.CommonAnim.idle_Anim);
+        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
     }
 
     protected virtual void Update()
@@ -79,7 +79,7 @@ public class EntityMotor : BaseEvent
 
     protected virtual void MotorMove()
     {
-        if (isHitRecover)
+        if (m_spriceAnimator.IsInThisAni(m_animationConfig.NotMoveAnim))
             m_curMoveDir = Vector2.zero;
         //移动向量由子类自身处理
         Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
@@ -96,7 +96,7 @@ public class EntityMotor : BaseEvent
 
     private bool FilpLimit()
     {
-        bool attackAnimLimit = !m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim) && !isHitRecover;
+        bool attackAnimLimit = !m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim) && !m_spriceAnimator.IsInThisAni(m_animationConfig.NotMoveAnim);
         return attackAnimLimit;
     }
 
@@ -107,24 +107,33 @@ public class EntityMotor : BaseEvent
     {
         if (isStatic) return;
         m_charactRenderer.localPosition += Vector3.up * speedDrop * Time.fixedDeltaTime;
-
+        float hurtPause = m_spriceAnimator.IsInThisAni(m_animationConfig.HitAnim) ? 0.5f : 1f;
+        //处于受击动画停顿
         if (m_charactRenderer.localPosition.y > 0)
         {
             if (speedDrop > 0)
             {
-                speedDrop -= Time.fixedDeltaTime * 15f * 0.8f;
+                speedDrop -= Time.fixedDeltaTime * 15f * 0.8f * hurtPause;
             }
             else
             {
-                speedDrop -= Time.fixedDeltaTime * 15f * 0.6f;
+                speedDrop -= Time.fixedDeltaTime * 15f * 0.6f * hurtPause;
             }
         }
-
-        if (m_charactRenderer.localPosition.y <= 0)
-            speedDrop = 0;
+        //if (m_charactRenderer.localPosition.y <= 0)
+        //    speedDrop = 0;
 
 
         m_charactRenderer.localPosition = new Vector3(m_charactRenderer.localPosition.x, Mathf.Clamp(m_charactRenderer.localPosition.y, 0, Mathf.Infinity), m_charactRenderer.localPosition.z);
     }
 
+    public virtual void GetDamage(EntitySkill entitySkill)
+    {
+        
+    }
+
+    public virtual void GetAirBorne(EntitySkill entitySkill, float air)
+    {
+        
+    }
 }

@@ -60,7 +60,7 @@ MonoBehaviour:
     interval: 0.1
     frameEventLoop: 0
     frameEvent:
-      eventType: 5
+      eventType: 0
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
