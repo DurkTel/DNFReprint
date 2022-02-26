@@ -20,9 +20,11 @@ MonoBehaviour:
   NumbeOfAttacks: 1
   NumbeOfInterval: 0
   Damage: 10
-  CD: 3
+  CD: 0
   Condition: 0
   OpenLevel: 0
   NeedMP: 0
   NeedHP: 0
+  AirBorneForce: 26
+  CanAirBorne: 1
   animationData: {fileID: 11400000, guid: b51e376d538178b438e219b1f0742a16, type: 2}

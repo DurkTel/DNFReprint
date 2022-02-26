@@ -26,41 +26,41 @@ public class SkillManager : MonoBehaviour
 
     private void Reset()
     {
-        if (characterSkillTree == null)
-        {
-            string path = string.Format("Assets/ScriptableObjects/Data/SkillTree/{0}/SkllTree_{1}.asset", this.gameObject.name, this.gameObject.name);
-            if (File.Exists(path))
-            {
-                SkillTree skillTree = AssetDatabase.LoadAssetAtPath(path, typeof(SkillTree)) as SkillTree;
-                characterSkillTree = skillTree;
+        //if (characterSkillTree == null)
+        //{
+        //    string path = string.Format("Assets/ScriptableObjects/Data/SkillTree/{0}/SkllTree_{1}.asset", this.gameObject.name, this.gameObject.name);
+        //    if (File.Exists(path))
+        //    {
+        //        SkillTree skillTree = AssetDatabase.LoadAssetAtPath(path, typeof(SkillTree)) as SkillTree;
+        //        characterSkillTree = skillTree;
 
-            }
-            else
-            {
-                Directory.CreateDirectory(path);
-                var skillTree = ScriptableObject.CreateInstance<SkillTree>();
-                AssetDatabase.CreateAsset(skillTree, path);
-                characterSkillTree = skillTree;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        Directory.CreateDirectory(path);
+        //        var skillTree = ScriptableObject.CreateInstance<SkillTree>();
+        //        AssetDatabase.CreateAsset(skillTree, path);
+        //        characterSkillTree = skillTree;
+        //    }
+        //}
 
-        if (inputReader == null)
-        {
-            string path = "Assets/ScriptableObjects/Input/InputReader.asset";
-            if (File.Exists(path))
-            {
-                InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
-                inputReader = input;
+        //if (inputReader == null)
+        //{
+        //    string path = "Assets/ScriptableObjects/Input/InputReader.asset";
+        //    if (File.Exists(path))
+        //    {
+        //        InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
+        //        inputReader = input;
 
-            }
-            else
-            {
-                Directory.CreateDirectory(path);
-                var input = ScriptableObject.CreateInstance<InputReader>();
-                AssetDatabase.CreateAsset(input, path);
-                inputReader = input;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        Directory.CreateDirectory(path);
+        //        var input = ScriptableObject.CreateInstance<InputReader>();
+        //        AssetDatabase.CreateAsset(input, path);
+        //        inputReader = input;
+        //    }
+        //}
     }
 
     private void OnEnable()

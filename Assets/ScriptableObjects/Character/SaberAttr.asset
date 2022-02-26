@@ -19,3 +19,4 @@ MonoBehaviour:
   MoveSpeed: 1.5
   JumpPower: 1.2
   HitRecover: 1000
+  AirBorneLimit: 20

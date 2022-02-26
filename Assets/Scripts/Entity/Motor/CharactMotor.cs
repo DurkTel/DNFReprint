@@ -9,7 +9,6 @@ public class CharactMotor : EntityMotor
 
     public InputReader inputReader;
 
-    private float m_addMoveForce;
 
     private void OnEnable()
     {
@@ -69,7 +68,7 @@ public class CharactMotor : EntityMotor
     {
         base.MotorMove();
         bool onAttack = m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim);
-        int flip = m_renenderSprite.GetCurFlip();
+        int flip = m_renenderSprites[0].GetCurFlip();
 
         //攻击时不能上下移动
         if (onAttack)
@@ -115,52 +114,17 @@ public class CharactMotor : EntityMotor
 
     }
 
-    public override void GetDamage(EntitySkill entitySkill = null)
-    {
-        movePhase = 0;
-        m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
-        if (m_charactRenderer.localPosition.y > 0)
-        {
-            //空中受击直接浮空 加速下落
-            GetAirBorne(entitySkill, Mathf.Abs(speedDrop * 2f));
-        }
-        else
-        {
-            int rand = Random.Range(0, 2);
-            if (rand == 0)
-                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.hit1_Anim);
-            else
-                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.hit2_Anim);
+    //public override void GetDamage(EntitySkill entitySkill = null)
+    //{
+    //    base.GetDamage(entitySkill);
 
-            GetAirBorne(entitySkill);
+    //}
 
-        }
-
-    }
-
-    public override void GetAirBorne(EntitySkill entitySkill, float air = 0)
-    {
-        if (entitySkill.CanAirBorne || air != 0)
-        {
-            float airForce = air == 0 ? entitySkill.AirBorneForce - entityAttribute.AirBorneLimit : air;
-            m_addMoveForce = -airForce / 2.5f;
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.airBorne_Anim);
-            speedDrop = airForce;
-        }
-    }
 
 
     protected override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            GetDamage();
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            //GetAirBorne();
-        }
     }
 
     protected override void FixedUpdate()

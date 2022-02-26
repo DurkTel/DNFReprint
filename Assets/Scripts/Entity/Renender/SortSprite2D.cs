@@ -19,7 +19,7 @@ public class SortSprite2D : MonoBehaviour
 
     private void Start()
     {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         m_spriteLowerBound = spriteRenderer.bounds.size.y * 0.5f;
         m_spriteHalfWidth = 0.5f;
         m_root = transform.parent;

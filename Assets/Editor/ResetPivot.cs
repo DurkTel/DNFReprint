@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class ResetPivot : EditorWindow
 {
-    public static string path = "Character/swordman-f/body";
+    public static string path = "Textrue/Character/swordman-f/body";
 
     public static Vector2 m_anchorVector;
 
@@ -27,7 +27,7 @@ public class ResetPivot : EditorWindow
     {
         GUI.Label(new Rect(10, 10, 300, 20), "请输入资源文件夹路径：");
 
-        path = GUI.TextField(new Rect(10, 50, 300, 20), path, 25);
+        path = GUI.TextField(new Rect(10, 50, 300, 20), path, 80);
 
         if (GUI.Button(new Rect(80, 100, 150, 35), "开始批量处理中心点偏移"))
         {
@@ -80,6 +80,7 @@ public class ResetPivot : EditorWindow
             m_anchorVector.y = int.Parse(m_coordinate[i * 2 + 1]);
 
             textureImporter.textureType = TextureImporterType.Sprite;
+            textureImporter.spritePixelsPerUnit = 1f;
             textureImporter.spritePivot = GetPiovt(m_singSprite);
             AssetDatabase.ImportAsset(textPath);
         }

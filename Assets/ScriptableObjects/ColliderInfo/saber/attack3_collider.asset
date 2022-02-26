@@ -158,4 +158,4 @@ MonoBehaviour:
       size: {x: 26.6, y: 34}
     index: 0
   frameCount: 9
-  entitySkill: {fileID: 11400000, guid: 9c0dfcd18776b0b47af8ce9375555187, type: 2}
+  entitySkill: {fileID: 11400000, guid: f5968f2a204b40c4a89c1be95b51aa33, type: 2}

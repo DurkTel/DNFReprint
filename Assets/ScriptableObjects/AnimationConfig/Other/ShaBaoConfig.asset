@@ -51,7 +51,5 @@ MonoBehaviour:
   - {fileID: 0}
   HitAnim:
   - {fileID: 11400000, guid: 815bf49a9d950ca42bfcaae7c1018efc, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
   ForceAnim: []
   NotMoveAnim: []

@@ -18,3 +18,5 @@ MonoBehaviour:
   Defensive: 0
   MoveSpeed: 0
   JumpPower: 0
+  HitRecover: 0
+  AirBorneLimit: 9999999

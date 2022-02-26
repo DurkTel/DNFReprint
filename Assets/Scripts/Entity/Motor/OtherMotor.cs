@@ -12,8 +12,8 @@ public class OtherMotor : EntityMotor
 
     }
 
-    public override void GetDamage(EntitySkill entitySkill)
-    {
-        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.hit1_Anim);
-    }
+    //public override void GetDamage(EntitySkill entitySkill)
+    //{
+        
+    //}
 }

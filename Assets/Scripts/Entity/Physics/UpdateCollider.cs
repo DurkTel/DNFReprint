@@ -121,30 +121,32 @@ public class UpdateCollider : MonoBehaviour
         int isFilp = m_renenderSprite.GetCurFlip();
         Vector3 collScale = new Vector3(isFilp, 1, 1);
 
-        for (int i = 0; i < m_collidersXY.Count; i++)
+        //for (int i = 0; i < m_collidersXY.Count; i++)
+        //{
+        //    m_collidersXY[i].enabled = false;
+        //    m_collidersZ[i].enabled = false;
+
+        //}
+        int allCount = m_collidersXY.Count;
+        int singleCount = m_frameCollInfo.single_colliderInfo.Count;
+
+        for (int i = 0; i < allCount; i++)
         {
-            float scale = m_maxCount - 1 >= i ? 1 : 0;
-            m_collidersXY[i].enabled = false;
-            m_collidersZ[i].enabled = false;
+            bool isActive = i < singleCount;
+            if (i < singleCount)
+            {
+                m_collidersXY[i].offset = m_frameCollInfo.single_colliderInfo[i].offset;
+                m_collidersXY[i].size = m_frameCollInfo.single_colliderInfo[i].size;
+                m_collidersXY[i].isTrigger = m_frameCollInfo.single_colliderInfo[i].isTrigger;
+                m_collidersXY[i].gameObject.layer = (int)m_frameCollInfo.single_colliderInfo[i].layer + 9;
+                m_collidersXY[i].transform.localScale = collScale;
 
-        }
-
-        for (int i = 0; i < m_frameCollInfo.single_colliderInfo.Count; i++)
-        {
-            bool isActive = m_maxCount - 1 >= i;
-
-            m_collidersXY[i].offset = m_frameCollInfo.single_colliderInfo[i].offset;
-            m_collidersXY[i].size = m_frameCollInfo.single_colliderInfo[i].size;
-            m_collidersXY[i].isTrigger = m_frameCollInfo.single_colliderInfo[i].isTrigger;
-            m_collidersXY[i].gameObject.layer = (int)m_frameCollInfo.single_colliderInfo[i].layer + 9;
-            m_collidersXY[i].transform.localScale = collScale;
-
-            m_collidersZ[i].offset = new Vector2(m_frameCollInfo.single_colliderInfo[i].offset.x, m_frameCollInfo.single_colliderInfo[i].offset_Z);
-            m_collidersZ[i].size = new Vector2(m_frameCollInfo.single_colliderInfo[i].size.x, m_frameCollInfo.single_colliderInfo[i].size_Z);
-            m_collidersZ[i].isTrigger = m_frameCollInfo.single_colliderInfo[i].isTrigger;
-            m_collidersZ[i].gameObject.layer = (int)m_frameCollInfo.single_colliderInfo[i].layer + 9;
-            m_collidersZ[i].transform.localScale = collScale;
-
+                m_collidersZ[i].offset = new Vector2(m_frameCollInfo.single_colliderInfo[i].offset.x, m_frameCollInfo.single_colliderInfo[i].offset_Z);
+                m_collidersZ[i].size = new Vector2(m_frameCollInfo.single_colliderInfo[i].size.x, m_frameCollInfo.single_colliderInfo[i].size_Z);
+                m_collidersZ[i].isTrigger = m_frameCollInfo.single_colliderInfo[i].isTrigger;
+                m_collidersZ[i].gameObject.layer = (int)m_frameCollInfo.single_colliderInfo[i].layer + 9;
+                m_collidersZ[i].transform.localScale = collScale;
+            }
             m_collidersXY[i].enabled = isActive;
             m_collidersZ[i].enabled = isActive;
         }
@@ -168,11 +170,14 @@ public class UpdateCollider : MonoBehaviour
                     case ColliderLayer.Interact:
                         break;
                     case ColliderLayer.Damage:
-                        if (info.otherCollInfo.entitySkill != null && m_collIderEffectDic.ContainsKey(coll.Key) && info.otherCollInfo.entitySkill.NumbeOfAttacks > m_collIderEffectDic[coll.Key])
+                        if (info.otherCollInfo.entitySkill != null && (!m_collIderEffectDic.ContainsKey(coll.Key) || info.otherCollInfo.entitySkill.NumbeOfAttacks > m_collIderEffectDic[coll.Key]))
                         {
+                            if (m_collIderEffectDic.ContainsKey(coll.Key))
+                                m_collIderEffectDic[coll.Key]++;
+                            else
+                                m_collIderEffectDic.Add(coll.Key, 1);
                             print(string.Format("ID:{0}、name:{1}受到来自技能:{2}的攻击！", this.GetInstanceID(), gameObject.name, coll.Value.otherCollInfo.name));
                             SendMessage("GetDamage", info.otherCollInfo.entitySkill, SendMessageOptions.DontRequireReceiver);
-                            m_collIderEffectDic[coll.Key]++;
                         }
                         break;
                     case ColliderLayer.BeDamage:
@@ -215,7 +220,8 @@ public class UpdateCollider : MonoBehaviour
         {
             OtherInfo newInfo = new OtherInfo(axial, colliderLayer, othersColliderInfo);
             m_collIderDic.Add(instanceID, newInfo);
-            m_collIderEffectDic.Add(instanceID, 0);
+            //m_collIderEffectDic.Add(instanceID, 0);
+
         }
     }
 
@@ -243,7 +249,7 @@ public class UpdateCollider : MonoBehaviour
             if (!m_collIderDic[instanceID].XY && !m_collIderDic[instanceID].Z)
             {
                 m_collIderDic.Remove(instanceID);
-                m_collIderEffectDic.Remove(instanceID);
+                m_collIderEffectDic?.Remove(instanceID);
             }
         }
     }

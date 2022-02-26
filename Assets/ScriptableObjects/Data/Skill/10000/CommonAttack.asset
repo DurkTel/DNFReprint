@@ -25,4 +25,6 @@ MonoBehaviour:
   OpenLevel: 0
   NeedMP: 0
   NeedHP: 0
+  AirBorneForce: 0
+  CanAirBorne: 0
   animationData: {fileID: 0}

@@ -28,9 +28,8 @@ public class SpriteAnimator : MonoBehaviour
 
     private bool[] m_isFirstList;
 
-    private RenenderSprite m_renenderSprite;
+    private RenenderSprite[] m_renenderSprites;
 
-    private Transform m_charactRenderer;
 
     private EntityMotor m_motor;
 
@@ -42,6 +41,8 @@ public class SpriteAnimator : MonoBehaviour
 
     [HideInInspector]
     public AnimationData last_animationData;
+    [HideInInspector]
+    public Transform charactRenderer;
 
     public AnimationConfig AnimationConfig;
 
@@ -51,11 +52,10 @@ public class SpriteAnimator : MonoBehaviour
 
     public InputReader inputReader;
 
-
     private void Start()
     {
-        m_renenderSprite = GetComponent<RenenderSprite>();
-        m_charactRenderer = GetComponent<Transform>();
+        m_renenderSprites = GetComponentsInChildren<RenenderSprite>();
+        charactRenderer = GetComponent<Transform>();
         m_motor = GetComponentInParent<EntityMotor>();
         m_skillManager = GetComponentInParent<SkillManager>();
     }
@@ -83,7 +83,7 @@ public class SpriteAnimator : MonoBehaviour
             m_totalTime = 0;
             
             m_currentIndex = int.Parse(curSprite.sprite.name);
-            m_renenderSprite.SetSprite(m_currentIndex);
+            SetSprites(m_currentIndex);
             
             m_lastFrame = m_currentFrame;
 
@@ -115,6 +115,15 @@ public class SpriteAnimator : MonoBehaviour
 
         }
     }
+
+    private void SetSprites(int index)
+    {
+        for (int i = 0; i < m_renenderSprites.Length; i++)
+        {
+            m_renenderSprites[i].SetSprite(index);
+        }
+    }
+
 
     /// <summary>
     /// 播放动画
@@ -256,27 +265,27 @@ public class SpriteAnimator : MonoBehaviour
                                 switch (item.spritePostionY.relation)
                                 {
                                     case Condition.Relation.bigger:
-                                        if (m_charactRenderer.localPosition.y <= item.spritePostionY.targetValue) result = false;
+                                        if (charactRenderer.localPosition.y <= item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.smaller:
-                                        if (m_charactRenderer.localPosition.y >= item.spritePostionY.targetValue) result = false;
+                                        if (charactRenderer.localPosition.y >= item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.equal:
-                                        if (m_charactRenderer.localPosition.y != item.spritePostionY.targetValue) result = false;
+                                        if (charactRenderer.localPosition.y != item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.bigger_E:
-                                        if (m_charactRenderer.localPosition.y < item.spritePostionY.targetValue) result = false;
+                                        if (charactRenderer.localPosition.y < item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.smaller_E:
-                                        if (m_charactRenderer.localPosition.y > item.spritePostionY.targetValue) result = false;
+                                        if (charactRenderer.localPosition.y > item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.unequal:
-                                        if (m_charactRenderer.localPosition.y == item.spritePostionY.targetValue) result = false;
+                                        if (charactRenderer.localPosition.y == item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     default:
@@ -377,28 +386,35 @@ public class SpriteAnimator : MonoBehaviour
                                 }
                                 break;
                             case Condition.ConditionType.inputKey:
-                                ButtonBehaviour buttonBehaviour = inputReader.buttonBehaviour[CharacterEventFunc.GetInputEnumToString(item.inputComparison.action)];
-                                switch (item.inputComparison.inputType)
+                                if (inputReader != null)
                                 {
-                                    case Condition.InputType.onPressed:
-                                        if (!buttonBehaviour.onPressed) result = false;
+                                    ButtonBehaviour buttonBehaviour = inputReader.buttonBehaviour[CharacterEventFunc.GetInputEnumToString(item.inputComparison.action)];
+                                    switch (item.inputComparison.inputType)
+                                    {
+                                        case Condition.InputType.onPressed:
+                                            if (!buttonBehaviour.onPressed) result = false;
 
-                                        break;
+                                            break;
 
-                                    case Condition.InputType.onReleased:
-                                        if (!buttonBehaviour.onRelease) result = false;
+                                        case Condition.InputType.onReleased:
+                                            if (!buttonBehaviour.onRelease) result = false;
 
-                                        break;
-                                    case Condition.InputType.multiPressed:
-                                        if (!buttonBehaviour.onMulti) result = false;
+                                            break;
+                                        case Condition.InputType.multiPressed:
+                                            if (!buttonBehaviour.onMulti) result = false;
 
-                                        break;
-                                    case Condition.InputType.holdPressed:
-                                        if (!buttonBehaviour.onHold) result = false;
+                                            break;
+                                        case Condition.InputType.holdPressed:
+                                            if (!buttonBehaviour.onHold) result = false;
 
-                                        break;
-                                    default:
-                                        break;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    result = false;
                                 }
                                 break;
                             case Condition.ConditionType.custom:

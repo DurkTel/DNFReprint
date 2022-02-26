@@ -13,7 +13,7 @@ public class EntityMotor : BaseEvent, IDamage
 
     protected Rigidbody2D m_rigidbody;
 
-    protected RenenderSprite m_renenderSprite;
+    protected RenenderSprite[] m_renenderSprites;
 
     protected AnimationConfig m_animationConfig;
 
@@ -28,6 +28,9 @@ public class EntityMotor : BaseEvent, IDamage
     protected float m_curSpeed;
 
     protected float m_hitRecoverTime;
+
+    protected float m_addMoveForce;
+
 
     public bool isHitRecover { get { return m_hitRecoverTime > 0; } }
     [HideInInspector]
@@ -51,9 +54,9 @@ public class EntityMotor : BaseEvent, IDamage
     protected virtual void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
-        m_renenderSprite = GetComponentInChildren<RenenderSprite>();
+        m_renenderSprites = GetComponentsInChildren<RenenderSprite>();
         m_spriceAnimator = GetComponentInChildren<SpriteAnimator>();
-        m_charactRenderer = transform.Find("SpriteRenderer").GetComponent<Transform>();
+        m_charactRenderer = m_spriceAnimator.transform;
         m_animationConfig = m_spriceAnimator.AnimationConfig;
         m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
     }
@@ -72,7 +75,12 @@ public class EntityMotor : BaseEvent, IDamage
     protected virtual void MotorAnim()
     {
         if (m_curMoveDir.x != 0 && FilpLimit())
-            m_renenderSprite.SetSpriteFilp(m_curMoveDir.x < 0);
+        {
+            foreach (var item in m_renenderSprites)
+            {
+                item.SetSpriteFilp(m_curMoveDir.x < 0);
+            }
+        }
 
         CalculateHitRecover();
     }
@@ -127,13 +135,33 @@ public class EntityMotor : BaseEvent, IDamage
         m_charactRenderer.localPosition = new Vector3(m_charactRenderer.localPosition.x, Mathf.Clamp(m_charactRenderer.localPosition.y, 0, Mathf.Infinity), m_charactRenderer.localPosition.z);
     }
 
-    public virtual void GetDamage(EntitySkill entitySkill)
+    public virtual void GetDamage(EntitySkill entitySkill = null)
     {
-        
+        movePhase = 0;
+        m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
+        if (m_charactRenderer.localPosition.y > 0)
+        {
+            //空中受击直接浮空 加速下落
+            GetAirBorne(entitySkill, Mathf.Abs(speedDrop * 2f));
+        }
+        else
+        {
+            int rand = Random.Range(0, m_animationConfig.HitAnim.Count);
+            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[rand]);
+
+            GetAirBorne(entitySkill);
+
+        }
     }
 
-    public virtual void GetAirBorne(EntitySkill entitySkill, float air)
+    public virtual void GetAirBorne(EntitySkill entitySkill, float air = 0)
     {
-        
+        if (entitySkill.CanAirBorne || air != 0)
+        {
+            float airForce = air == 0 ? entitySkill.AirBorneForce - entityAttribute.AirBorneLimit : air;
+            m_addMoveForce = -airForce / 2.5f;
+            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.airBorne_Anim);
+            speedDrop = airForce;
+        }
     }
 }
