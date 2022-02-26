@@ -52,8 +52,8 @@ MonoBehaviour:
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: 113.85, y: 10.7}
-      size: {x: 25, y: 57.6}
+      offset: {x: 73.1, y: 38.7}
+      size: {x: 107.8, y: 79.5}
     - layer: 3
       isTrigger: 1
       offset_Z: 0
@@ -68,24 +68,12 @@ MonoBehaviour:
       size_Z: 20
       offset: {x: 50.8, y: 26.3}
       size: {x: 54.52, y: 48.19}
-    - layer: 2
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 20
-      offset: {x: 136.3, y: 46.7}
-      size: {x: 69.5, y: 44.2}
     - layer: 3
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
       offset: {x: 66.5, y: 78.9}
       size: {x: 26.6, y: 34}
-    - layer: 2
-      isTrigger: 1
-      offset_Z: 85
-      size_Z: 20
-      offset: {x: 125, y: 102.1}
-      size: {x: 65.6, y: 34}
     index: 0
   - single_colliderInfo:
     - layer: 3

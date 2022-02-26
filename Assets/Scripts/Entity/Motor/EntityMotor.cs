@@ -31,6 +31,8 @@ public class EntityMotor : BaseEvent, IDamage
 
     protected float m_addMoveForce;
 
+    protected bool m_isHitAir;
+
 
     public bool isHitRecover { get { return m_hitRecoverTime > 0; } }
     [HideInInspector]
@@ -59,6 +61,9 @@ public class EntityMotor : BaseEvent, IDamage
         m_charactRenderer = m_spriceAnimator.transform;
         m_animationConfig = m_spriceAnimator.AnimationConfig;
         m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
+
+        InitEvent();
+
     }
 
     protected virtual void Update()
@@ -70,6 +75,25 @@ public class EntityMotor : BaseEvent, IDamage
     {
         MotorMove();
         DropUpdate();
+    }
+
+    protected virtual void InitEvent()
+    {
+
+        InitAnimEvent<float>(EventDefine.EVENT_MOVE_COEFFICIENT_CHANGE, (coefficient) =>
+        {
+            m_moveDirCoefficient = coefficient;
+        });
+
+        InitAnimEvent<float>(EventDefine.EVENT_ADD_MOVE_FORCE, (coefficient) =>
+        {
+            m_addMoveForce = coefficient;
+        });
+
+        InitAnimEvent<float>(EventDefine.EVENT_REST_MOVE_SPEED, (coefficient) =>
+        {
+            m_curSpeed = coefficient;
+        });
     }
 
     protected virtual void MotorAnim()
@@ -93,6 +117,18 @@ public class EntityMotor : BaseEvent, IDamage
         Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
         m_curSpeed = movePhase == 1 ? entityAttribute.MoveSpeed : entityAttribute.MoveSpeed * 2;
         m_rigidbody.velocity = dir * m_curSpeed * m_moveDirCoefficient;
+
+        int flip = m_renenderSprites[0].GetCurFlip();
+
+        if (Mathf.Abs(m_addMoveForce) > 0.1)
+        {
+            if (m_addMoveForce > 0)
+                m_addMoveForce -= Time.deltaTime * 3;
+            else
+                m_addMoveForce += Time.deltaTime * 3;
+            m_rigidbody.velocity += new Vector2(1, 0) * m_addMoveForce * flip;
+
+        }
 
     }
 
@@ -128,6 +164,8 @@ public class EntityMotor : BaseEvent, IDamage
                 speedDrop -= Time.fixedDeltaTime * 15f * 0.6f * hurtPause;
             }
         }
+        else
+            m_isHitAir = false;//退出受击浮空状态
         //if (m_charactRenderer.localPosition.y <= 0)
         //    speedDrop = 0;
 
@@ -141,8 +179,20 @@ public class EntityMotor : BaseEvent, IDamage
         m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
         if (m_charactRenderer.localPosition.y > 0)
         {
-            //空中受击直接浮空 加速下落
-            GetAirBorne(entitySkill, Mathf.Abs(speedDrop * 2f));
+            if (!m_isHitAir)
+            {
+                //空中正常状态受击直接浮空 加速下落
+                GetAirBorne(entitySkill, Mathf.Abs(speedDrop * 2f));
+            }
+            else
+            {
+                //已经浮空状态下 再收到攻击 轻微上浮
+                if (!entitySkill.CanAirBorne)
+                    speedDrop += 5f;
+                else
+                    GetAirBorne(entitySkill);
+
+            }
         }
         else
         {
@@ -159,9 +209,10 @@ public class EntityMotor : BaseEvent, IDamage
         if (entitySkill.CanAirBorne || air != 0)
         {
             float airForce = air == 0 ? entitySkill.AirBorneForce - entityAttribute.AirBorneLimit : air;
-            m_addMoveForce = -airForce / 2.5f;
+            m_addMoveForce = -airForce / 5f;
             m_spriceAnimator.DOSpriteAnimation(m_animationConfig.airBorne_Anim);
             speedDrop = airForce;
+            m_isHitAir = true;
         }
     }
 }

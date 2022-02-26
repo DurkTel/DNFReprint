@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: lie_Anim
   m_EditorClassIdentifier: 
   aniName: airborne_Anim
-  colliderInfo: {fileID: 0}
+  colliderInfo: {fileID: 11400000, guid: 8ba24a0e135b65843a2e94893f5a2171, type: 2}
   isLoop: 0
   speed: 1
   frameList:

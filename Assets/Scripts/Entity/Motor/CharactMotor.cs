@@ -28,14 +28,15 @@ public class CharactMotor : EntityMotor
     {
         base.Start();
 
-        InitEvent();
         inputReader.EnableGameplayInput();
 
         
     }
 
-    private void InitEvent()
+    protected override void InitEvent()
     {
+        base.InitEvent();
+
         InitAnimEvent(EventDefine.EVENT_AIR_ATTACK_COMBO, () =>
         {
             airAttackCombo++;
@@ -48,20 +49,6 @@ public class CharactMotor : EntityMotor
             airAttackCombo = 0;
         });
 
-        InitAnimEvent<float>(EventDefine.EVENT_MOVE_COEFFICIENT_CHANGE, (coefficient) =>
-        {
-            m_moveDirCoefficient = coefficient;
-        });
-
-        InitAnimEvent<float>(EventDefine.EVENT_ADD_MOVE_FORCE, (coefficient) =>
-        {
-            m_addMoveForce = coefficient;
-        });
-
-        InitAnimEvent<float>(EventDefine.EVENT_REST_MOVE_SPEED, (coefficient) =>
-        {
-            m_curSpeed = coefficient;
-        });
     }
 
     protected override void MotorMove()
@@ -77,19 +64,6 @@ public class CharactMotor : EntityMotor
         //攻击时如果按与面朝方向相反的方向键 不会向前位移 原地攻击
         if (m_curMoveDir[0] * flip < 0 && onAttack)
             m_rigidbody.velocity = Vector2.zero;
-        else
-        {
-            if (Mathf.Abs(m_addMoveForce) > 0.1)
-            {
-                if (m_addMoveForce > 0)
-                    m_addMoveForce -= Time.deltaTime * 3;
-                else
-                    m_addMoveForce += Time.deltaTime * 3;
-                m_rigidbody.velocity += new Vector2(1, 0) * m_addMoveForce * flip;
-
-            }
-
-        }
 
     }
 

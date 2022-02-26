@@ -24,6 +24,18 @@ public class ColliderTrigger : MonoBehaviour
         }
     }
 
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (updateCollider == null) return;
+    //    if (collision.TryGetComponent(out ColliderTrigger trigger))
+    //    {
+    //        if (trigger.axial == axial)
+    //        {
+    //            updateCollider.AddColliderInfo(trigger.axialInstanceID, axial, (ColliderLayer)collision.gameObject.layer, trigger.updateCollider.colliderInfo);
+    //        }
+    //    }
+    //}
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (updateCollider == null) return;
