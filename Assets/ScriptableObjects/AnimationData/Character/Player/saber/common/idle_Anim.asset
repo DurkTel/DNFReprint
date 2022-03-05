@@ -21,7 +21,7 @@ MonoBehaviour:
     interval: 0.15
     frameEventLoop: 0
     frameEvent:
-      eventType: 4
+    - eventType: 4
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
@@ -33,68 +33,23 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 9b5f7fe95e692f144aa77c3618509832, type: 3}
     interval: 0.15
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 86d78c844f19bb643acabb6a0f6e91af, type: 3}
     interval: 0.15
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 2789963247dd1864a9530676548a0d41, type: 3}
     interval: 0.15
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 41835f51509cc8e4c88d8cf3211a0ac2, type: 3}
     interval: 0.15
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 0ae286c714396ed47a85a51c8ecd73d2, type: 3}
     interval: 0.15
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
   - frame: {x: 0, y: 0}
     animationData: {fileID: 11400000, guid: c9d93ee2e98de1b4caa10beb82f5008b, type: 2}

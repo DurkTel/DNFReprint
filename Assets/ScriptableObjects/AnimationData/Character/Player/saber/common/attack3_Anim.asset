@@ -20,21 +20,16 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: ae6b423a65cdbd447af0bfdf8fe95cb2, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 9cf9f285f321d704b811d445fe306741, type: 3}
     interval: 0.1
     frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: fb512091f82bc8c41b64dc1c061f92b7, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
     frameEvent:
-      eventType: 5
+    - eventType: 5
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
@@ -43,15 +38,20 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
-  - sprite: {fileID: 21300000, guid: fb512091f82bc8c41b64dc1c061f92b7, type: 3}
-    interval: 0.1
-    frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
+    - eventType: 8
+      paramType: 4
       parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
+      parameterString: weapon/beamswda_03
+      parameterFloat: 1
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 8
+      paramType: 4
+      parameterObject: {fileID: 0}
+      parameterString: sm_atk_03
+      parameterFloat: 1
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -59,81 +59,27 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: c8bfb60b152a6624ba0a0096b1284e32, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 0f3cc6507f1dbef4c8e6ea521890cfa9, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: d6367447ff9b50f4da46c88f3e737057, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 974e6a8a46731e742ba5d8998c4e153d, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 45aec6ed014478e45b49bb1acfd120c6, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 023c15f30cbde3a41a4aff6a2609e69b, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 4
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 1
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
   - frame: {x: 8, y: 8}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}

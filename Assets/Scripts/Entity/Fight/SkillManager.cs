@@ -130,6 +130,7 @@ public class SkillManager : MonoBehaviour
                 m_skillCoolingMap[skill] = Time.time;
                 return true;
             }
+            MusicManager.Instance.PlaySound("sm_cooltime");
             return false;
         }
         else

@@ -49,6 +49,11 @@ public class CharactMotor : EntityMotor
             airAttackCombo = 0;
         });
 
+        InitAnimEvent(EventDefine.EVENT_RESET_MOVEPHASE, () =>
+        {
+            movePhase = m_curMoveDir != Vector2.zero ? 1 : 0;
+        });
+
     }
 
     protected override void MotorMove()

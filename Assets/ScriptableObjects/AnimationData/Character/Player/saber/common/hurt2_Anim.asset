@@ -21,7 +21,7 @@ MonoBehaviour:
     interval: 0.3
     frameEventLoop: 0
     frameEvent:
-      eventType: 5
+    - eventType: 5
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
@@ -31,7 +31,7 @@ MonoBehaviour:
       parameterOnEnable: 0
       parameterOnDisable: 0
   switchingConditions:
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 1}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
     conditions:
     - conditionType: 0

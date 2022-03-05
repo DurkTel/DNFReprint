@@ -21,11 +21,11 @@ MonoBehaviour:
     interval: 0.1
     frameEventLoop: 0
     frameEvent:
-      eventType: 0
+    - eventType: 4
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 15
+      parameterFloat: 1
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -33,16 +33,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 4c26893230d27ce418ab4956ab93c89a, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 3
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0.6
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
   - frame: {x: 1, y: 1}
     animationData: {fileID: 11400000, guid: 1e55f850f92d7214d81f708395360392, type: 2}

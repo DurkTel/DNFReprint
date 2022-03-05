@@ -163,7 +163,7 @@ public class UpdateCollider : MonoBehaviour
             if (info.XY && info.Z)
             {
                 //对方的碰撞层级
-                switch (info.colllayer - 9)
+                switch ((ColliderLayer)info.collider2d.gameObject.layer - 9)
                 {
                     case ColliderLayer.Scene:
                         break;
@@ -176,8 +176,8 @@ public class UpdateCollider : MonoBehaviour
                                 m_collIderEffectDic[coll.Key]++;
                             else
                                 m_collIderEffectDic.Add(coll.Key, 1);
-                            print(string.Format("ID:{0}、name:{1}受到来自技能:{2}的攻击！", this.GetInstanceID(), gameObject.name, coll.Value.otherCollInfo.name));
-                            SendMessage("GetDamage", info.otherCollInfo.entitySkill, SendMessageOptions.DontRequireReceiver);
+                            //print(string.Format("ID:{0}、name:{1}受到来自技能:{2}的攻击！", this.GetInstanceID(), gameObject.name, coll.Value.otherCollInfo.name));
+                            SendMessage("GetDamage", info, SendMessageOptions.DontRequireReceiver);
                         }
                         break;
                     case ColliderLayer.BeDamage:
@@ -190,27 +190,20 @@ public class UpdateCollider : MonoBehaviour
         }
     }
 
-    public void AddColliderInfo(int instanceID, Axial axial, ColliderLayer colliderLayer, ColliderInfos othersColliderInfo)
+    public void AddColliderInfo(int instanceID, Axial axial, Collider2D collider2D, ColliderInfos othersColliderInfo)
     {
         if (m_collIderDic.ContainsKey(instanceID))
         {
-            if (m_collIderDic[instanceID].XY && m_collIderDic[instanceID].Z) return;
-            OtherInfo newInfo = m_collIderDic[instanceID];
-            newInfo.colllayer = colliderLayer;
-            newInfo.otherCollInfo = othersColliderInfo;
-            m_collIderDic[instanceID] = newInfo;
+            //if (m_collIderDic[instanceID].XY && m_collIderDic[instanceID].Z) return;
+            m_collIderDic[instanceID].collider2d = collider2D;
+            m_collIderDic[instanceID].otherCollInfo = othersColliderInfo;
             switch (axial)
             {
                 case Axial.AxialXY:
-                    //结构体get为值传递而非地址
-                    OtherInfo newInfoXY = m_collIderDic[instanceID];
-                    newInfoXY.XY = true;
-                    m_collIderDic[instanceID] = newInfoXY;
+                    m_collIderDic[instanceID].XY = true;
                     break;
                 case Axial.AxialZ:
-                    OtherInfo newInfoZ = m_collIderDic[instanceID];
-                    newInfoZ.Z = true;
-                    m_collIderDic[instanceID] = newInfoZ;
+                    m_collIderDic[instanceID].Z = true;
                     break;
                 default:
                     break;
@@ -218,7 +211,7 @@ public class UpdateCollider : MonoBehaviour
         }
         else
         {
-            OtherInfo newInfo = new OtherInfo(axial, colliderLayer, othersColliderInfo);
+            OtherInfo newInfo = new OtherInfo(axial, collider2D, othersColliderInfo);
             m_collIderDic.Add(instanceID, newInfo);
             //m_collIderEffectDic.Add(instanceID, 0);
 
@@ -232,15 +225,10 @@ public class UpdateCollider : MonoBehaviour
             switch (axial)
             {
                 case Axial.AxialXY:
-                    //结构体get为值传递而非地址
-                    OtherInfo newInfoXY = m_collIderDic[instanceID];
-                    newInfoXY.XY = false;
-                    m_collIderDic[instanceID] = newInfoXY;
+                    m_collIderDic[instanceID].XY = false;
                     break;
                 case Axial.AxialZ:
-                    OtherInfo newInfoZ = m_collIderDic[instanceID];
-                    newInfoZ.Z = false;
-                    m_collIderDic[instanceID] = newInfoZ;
+                    m_collIderDic[instanceID].Z = false;
                     break;
                 default:
                     break;
@@ -269,38 +257,41 @@ public class UpdateCollider : MonoBehaviour
         }
     }
 
-    public enum Axial
-    { 
-        AxialXY = 0,
-        AxialZ = 1,
-    }
+    
 
-    public struct OtherInfo
+    
+}
+
+public enum Axial
+{
+    AxialXY = 0,
+    AxialZ = 1,
+}
+public class OtherInfo
+{
+    public bool XY;
+    public bool Z;
+    public ColliderInfos otherCollInfo;
+    public Collider2D collider2d;
+
+    public OtherInfo(Axial axial, Collider2D collider, ColliderInfos info)
     {
-        public bool XY;
-        public bool Z;
-        public ColliderLayer colllayer;
-        public ColliderInfos otherCollInfo;
-
-        public OtherInfo(Axial axial, ColliderLayer layer, ColliderInfos info)
+        switch (axial)
         {
-            switch (axial)
-            {
-                case Axial.AxialXY:
-                    XY = true;
-                    Z = false;
-                    break;
-                case Axial.AxialZ:
-                    XY = false;
-                    Z = true;
-                    break;
-                default:
-                    XY = false;
-                    Z = false;
-                    break;
-            }
-            colllayer = layer;
-            otherCollInfo = info;
+            case Axial.AxialXY:
+                XY = true;
+                Z = false;
+                break;
+            case Axial.AxialZ:
+                XY = false;
+                Z = true;
+                break;
+            default:
+                XY = false;
+                Z = false;
+                break;
         }
+        collider2d = collider;
+        otherCollInfo = info;
     }
 }

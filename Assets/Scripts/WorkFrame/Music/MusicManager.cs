@@ -48,7 +48,7 @@ public class MusicManager : SingletonBase<MusicManager>
             GameObject.DontDestroyOnLoad(bkMusic);
         }
         //异步加载背景音乐 加载完成后 播放
-        ResManager.Instance.LoadAsync<AudioClip>("Music/BK/" + name, (clip) =>
+        ResManager.Instance.LoadAsync<AudioClip>("Music/" + name, (clip) =>
         {
             bkMusic.clip = clip;
             bkMusic.loop = true;
@@ -93,7 +93,7 @@ public class MusicManager : SingletonBase<MusicManager>
     /// <summary>
     /// 播放音效
     /// </summary>
-    public AudioSource PlaySound(string name, bool isLoop, float volume = 0, UnityAction<AudioSource> callBack = null)
+    public AudioSource PlaySound(string name, bool isLoop = false, float volume = 0, UnityAction<AudioSource> callBack = null)
     {
         if (soundObj == null)
         {
@@ -102,7 +102,7 @@ public class MusicManager : SingletonBase<MusicManager>
         }
         AudioSource source = soundObj.AddComponent<AudioSource>(); ;
         //当音效资源异步加载结束后 再添加一个音效
-        ResManager.Instance.LoadAsync<AudioClip>("Music/Sound/" + name, (clip) =>
+        ResManager.Instance.LoadAsync<AudioClip>("Sounds/Character/swordman/" + name, (clip) =>
         {
             source.clip = clip;
             source.loop = isLoop;

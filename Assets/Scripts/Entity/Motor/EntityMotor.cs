@@ -85,14 +85,25 @@ public class EntityMotor : BaseEvent, IDamage
             m_moveDirCoefficient = coefficient;
         });
 
-        InitAnimEvent<float>(EventDefine.EVENT_ADD_MOVE_FORCE, (coefficient) =>
+        InitAnimEvent<float>(EventDefine.EVENT_ADD_MOVEX_FORCE, (coefficient) =>
         {
+            if (m_isHitAir) return;
             m_addMoveForce = coefficient;
+        });
+
+        InitAnimEvent<float>(EventDefine.EVENT_ADD_MOVEY_FORCE, (coefficient) =>
+        {
+            speedDrop = Mathf.Sqrt(Mathf.Pow(1.2f, 2) * coefficient);
         });
 
         InitAnimEvent<float>(EventDefine.EVENT_REST_MOVE_SPEED, (coefficient) =>
         {
             m_curSpeed = coefficient;
+        });
+
+        InitAnimEvent<string>(EventDefine.EVENT_PLAY_SOUND, (name) =>
+        {
+            MusicManager.Instance.PlaySound(name);
         });
     }
 
@@ -100,13 +111,18 @@ public class EntityMotor : BaseEvent, IDamage
     {
         if (m_curMoveDir.x != 0 && FilpLimit())
         {
-            foreach (var item in m_renenderSprites)
-            {
-                item.SetSpriteFilp(m_curMoveDir.x < 0);
-            }
+            SetSpriteFilp(m_curMoveDir.x < 0);
         }
 
         CalculateHitRecover();
+    }
+
+    protected void SetSpriteFilp(bool isLeft)
+    {
+        foreach (var item in m_renenderSprites)
+        {
+            item.SetSpriteFilp(isLeft);
+        }
     }
 
     protected virtual void MotorMove()
@@ -150,18 +166,23 @@ public class EntityMotor : BaseEvent, IDamage
     private void DropUpdate()
     {
         if (isStatic) return;
+        //空中处于受击动画停顿 减缓下落
+        bool hurtPause = m_spriceAnimator.IsInThisAni(m_animationConfig.HitAnim) && m_isHitAir;
+        if (hurtPause)
+        {
+            speedDrop += Time.deltaTime * 15f * 0.6f;
+            return;
+        } 
         m_charactRenderer.localPosition += Vector3.up * speedDrop * Time.fixedDeltaTime;
-        float hurtPause = m_spriceAnimator.IsInThisAni(m_animationConfig.HitAnim) ? 0.5f : 1f;
-        //处于受击动画停顿
         if (m_charactRenderer.localPosition.y > 0)
         {
             if (speedDrop > 0)
             {
-                speedDrop -= Time.fixedDeltaTime * 15f * 0.8f * hurtPause;
+                speedDrop -= Time.fixedDeltaTime * 15f * 0.8f;
             }
             else
             {
-                speedDrop -= Time.fixedDeltaTime * 15f * 0.6f * hurtPause;
+                speedDrop -= Time.fixedDeltaTime * 15f * 0.6f;
             }
         }
         else
@@ -173,8 +194,13 @@ public class EntityMotor : BaseEvent, IDamage
         m_charactRenderer.localPosition = new Vector3(m_charactRenderer.localPosition.x, Mathf.Clamp(m_charactRenderer.localPosition.y, 0, Mathf.Infinity), m_charactRenderer.localPosition.z);
     }
 
-    public virtual void GetDamage(EntitySkill entitySkill = null)
+    public virtual void GetDamage(OtherInfo info)
     {
+        if (!isStatic)
+        {
+            float deltaX = info.collider2d.transform.position.x - transform.position.x;
+            SetSpriteFilp(deltaX < 0);
+        }
         movePhase = 0;
         m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
         if (m_charactRenderer.localPosition.y > 0)
@@ -182,15 +208,14 @@ public class EntityMotor : BaseEvent, IDamage
             if (!m_isHitAir)
             {
                 //空中正常状态受击直接浮空 加速下落
-                GetAirBorne(entitySkill, Mathf.Abs(speedDrop * 2f));
+                //GetAirBorne(info.otherCollInfo.entitySkill, Mathf.Abs(speedDrop * 2f));
             }
             else
             {
-                //已经浮空状态下 再收到攻击 轻微上浮
-                if (!entitySkill.CanAirBorne)
-                    speedDrop += 5f;
-                else
-                    GetAirBorne(entitySkill);
+                //已经浮空状态下 再收到攻击
+                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[0]);
+                if (info.otherCollInfo.entitySkill.CanAirBorne)
+                    GetAirBorne(info.otherCollInfo.entitySkill);
 
             }
         }
@@ -199,14 +224,19 @@ public class EntityMotor : BaseEvent, IDamage
             int rand = Random.Range(0, m_animationConfig.HitAnim.Count);
             m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[rand]);
 
-            GetAirBorne(entitySkill);
+            GetAirBorne(info.otherCollInfo.entitySkill);
 
         }
+
+        MusicManager.Instance.PlaySound("sm_dmg_01");
+        int randsound = Random.Range(1, 3);
+        MusicManager.Instance.PlaySound("weapon/beamswda_hit_0" + randsound);
+
     }
 
     public virtual void GetAirBorne(EntitySkill entitySkill, float air = 0)
     {
-        if (entitySkill.CanAirBorne || air != 0)
+        if ((entitySkill.CanAirBorne || air != 0) && !isStatic)
         {
             float airForce = air == 0 ? entitySkill.AirBorneForce - entityAttribute.AirBorneLimit : air;
             m_addMoveForce = -airForce / 5f;

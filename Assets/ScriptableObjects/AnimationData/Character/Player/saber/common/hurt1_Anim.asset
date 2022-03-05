@@ -18,10 +18,10 @@ MonoBehaviour:
   speed: 1
   frameList:
   - sprite: {fileID: 21300000, guid: 85ba4dc847c730546bc49e18417455cd, type: 3}
-    interval: 0.3
+    interval: 0.2
     frameEventLoop: 0
     frameEvent:
-      eventType: 5
+    - eventType: 5
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
@@ -30,14 +30,75 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 85ba4dc847c730546bc49e18417455cd, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
   switchingConditions:
-  - frame: {x: 0, y: 0}
+  - frame: {x: 1, y: 1}
+    animationData: {fileID: 11400000, guid: e8f323a864c3df74e991e868b7a23868, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 0
+    - conditionType: 1
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 5
+  - frame: {x: 0, y: 1}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
     conditions:
     - conditionType: 0
       characterAnimation: {fileID: 11400000}
       spritePostionY:
         relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 0
+    - conditionType: 1
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 4
         targetValue: 0
       spriteSpeedY:
         relation: 0

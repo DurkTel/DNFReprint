@@ -121,6 +121,25 @@ public class AnimationDataEditor : Editor
         GUI.DrawTexture(new Rect(texturePosX, texturePosY, texture.width, texture.height), texture);
     }
 
+    private void EventBtn(SerializedProperty frameEvent)
+    {
+        //GUI.Label(new Rect(350, 90, 100, 22), "动画切换条件:");
+        if (GUI.Button(new Rect(120, 280, 70, 22), "+"))
+        {
+            int index = frameEvent.arraySize == 0 ? 0 : frameEvent.arraySize - 1;
+            frameEvent.InsertArrayElementAtIndex(index);
+        }
+
+        if (GUI.Button(new Rect(230, 280, 70, 22), "-"))
+        {
+            if (frameEvent.arraySize >= m_conditionIndex && frameEvent.arraySize > 0)
+            {
+                frameEvent.DeleteArrayElementAtIndex(m_conditionIndex - 1);
+
+            }
+        }
+    }
+
     private void RefreshFrameInfo()
     {
         if (m_curFrameData == null) return;
@@ -128,44 +147,50 @@ public class AnimationDataEditor : Editor
 
 
         SerializedProperty frameEvent = m_curFrameData.FindPropertyRelative("frameEvent");
-
-        SerializedProperty eventType = frameEvent.FindPropertyRelative("eventType");
-        eventType.enumValueIndex = EditorGUI.Popup(new Rect(120, 280, 180, 22),"帧事件：", eventType.enumValueIndex, Enum.GetNames(typeof(EventDefine)));
-
-        if (eventType.enumValueIndex != 0)
+        EventBtn(frameEvent);
+        for (int i = 0; i < frameEvent.arraySize; i++)
         {
-            SerializedProperty paramType = frameEvent.FindPropertyRelative("paramType");
-            paramType.enumValueIndex = EditorGUI.Popup(new Rect(120, 310, 180, 22), "参数类型：", paramType.enumValueIndex, Enum.GetNames(typeof(EventParamDefine)));
+            float offset = i * 115 + 25;
+            SerializedProperty evet = frameEvent.GetArrayElementAtIndex(i);
 
-            if (paramType.enumValueIndex != 0)
+            SerializedProperty eventType = evet.FindPropertyRelative("eventType");
+            eventType.enumValueIndex = EditorGUI.Popup(new Rect(120, 280 + offset, 180, 22), "帧事件：", eventType.enumValueIndex, Enum.GetNames(typeof(EventDefine)));
+
+            if (eventType.enumValueIndex != 0)
             {
-                EventParamDefine eventParam = (EventParamDefine)paramType.enumValueIndex;
-                switch (eventParam)
-                {
-                    case EventParamDefine.Bool:
-                        SerializedProperty parameterBool = frameEvent.FindPropertyRelative("parameterBool");
-                        parameterBool.boolValue = EditorGUI.Toggle(new Rect(120, 340, 180, 22),"布尔值：", parameterBool.boolValue);
-                        break;
-                    case EventParamDefine.Int:
-                        SerializedProperty parameterInt = frameEvent.FindPropertyRelative("parameterInt");
-                        parameterInt.intValue = EditorGUI.IntField(new Rect(120, 340, 180, 22), "整型：", parameterInt.intValue);
-                        break;
-                    case EventParamDefine.Float:
-                        SerializedProperty parameterFloat = frameEvent.FindPropertyRelative("parameterFloat");
-                        parameterFloat.floatValue = EditorGUI.FloatField(new Rect(120, 340, 180, 22), "浮点型：", parameterFloat.floatValue);
-                        break;
-                    case EventParamDefine.String:
-                        SerializedProperty parameterString = frameEvent.FindPropertyRelative("parameterString");
-                        parameterString.stringValue = EditorGUI.TextField(new Rect(120, 340, 180, 22), "字符串：", parameterString.stringValue);
-                        break;
-                    default:
-                        break;
-                }
-            }
+                SerializedProperty paramType = evet.FindPropertyRelative("paramType");
+                paramType.enumValueIndex = EditorGUI.Popup(new Rect(120, 310 + offset, 180, 22), "参数类型：", paramType.enumValueIndex, Enum.GetNames(typeof(EventParamDefine)));
 
-            float tempY = paramType.enumValueIndex != 0 ? 370 : 340;
-            SerializedProperty frameEventLoop = m_curFrameData.FindPropertyRelative("frameEventLoop");
-            frameEventLoop.boolValue = EditorGUI.Toggle(new Rect(120, tempY, 180, 22), "每帧调用：", frameEventLoop.boolValue);
+                if (paramType.enumValueIndex != 0)
+                {
+                    EventParamDefine eventParam = (EventParamDefine)paramType.enumValueIndex;
+                    switch (eventParam)
+                    {
+                        case EventParamDefine.Bool:
+                            SerializedProperty parameterBool = evet.FindPropertyRelative("parameterBool");
+                            parameterBool.boolValue = EditorGUI.Toggle(new Rect(120, 340 + offset, 180, 22), "布尔值：", parameterBool.boolValue);
+                            break;
+                        case EventParamDefine.Int:
+                            SerializedProperty parameterInt = evet.FindPropertyRelative("parameterInt");
+                            parameterInt.intValue = EditorGUI.IntField(new Rect(120, 340 + offset, 180, 22), "整型：", parameterInt.intValue);
+                            break;
+                        case EventParamDefine.Float:
+                            SerializedProperty parameterFloat = evet.FindPropertyRelative("parameterFloat");
+                            parameterFloat.floatValue = EditorGUI.FloatField(new Rect(120, 340 + offset, 180, 22), "浮点型：", parameterFloat.floatValue);
+                            break;
+                        case EventParamDefine.String:
+                            SerializedProperty parameterString = evet.FindPropertyRelative("parameterString");
+                            parameterString.stringValue = EditorGUI.TextField(new Rect(120, 340 + offset, 180, 22), "字符串：", parameterString.stringValue);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                float tempY = paramType.enumValueIndex != 0 ? 370 : 340;
+                SerializedProperty frameEventLoop = m_curFrameData.FindPropertyRelative("frameEventLoop");
+                frameEventLoop.boolValue = EditorGUI.Toggle(new Rect(120, tempY + offset, 180, 22), "每帧调用：", frameEventLoop.boolValue);
+            }
 
         }
     }

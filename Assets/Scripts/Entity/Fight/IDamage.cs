@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public interface IDamage
 {
-    void GetDamage(EntitySkill entitySkill);
+    void GetDamage(OtherInfo info);
 
     void GetAirBorne(EntitySkill entitySkill,float air);
 }

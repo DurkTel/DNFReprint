@@ -20,29 +20,11 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: b3aac140638418d47ba949c49c1ac844, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: aa52c86a8ec60c448aa831b32aa3c8e2, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
   - frame: {x: 1, y: 1}
     animationData: {fileID: 11400000, guid: 06d21e1cfe223dd4982ba9ad7bc97f93, type: 2}

@@ -21,7 +21,7 @@ MonoBehaviour:
     interval: 0.3
     frameEventLoop: 0
     frameEvent:
-      eventType: 1
+    - eventType: 6
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
@@ -30,8 +30,12 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 74e9a1f319a9d764b942938cd2caf57d, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent: []
   switchingConditions:
-  - frame: {x: 0, y: 0}
+  - frame: {x: 1, y: 1}
     animationData: {fileID: 11400000, guid: c796e7fce5d4f7c47981e8190ee5e4d3, type: 2}
     conditions:
     - conditionType: 0

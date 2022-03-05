@@ -21,50 +21,41 @@ MonoBehaviour:
     interval: 0.1
     frameEventLoop: 0
     frameEvent:
-      eventType: 4
+    - eventType: 4
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 0.2
+      parameterFloat: 0.3
       parameterInt: 0
-      parameterBool: 0
+      parameterBool: 1
       parameterOnEnable: 0
       parameterOnDisable: 0
   - sprite: {fileID: 21300000, guid: a89f6a389cd0e484e8f6b92e18fd4089, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: b0c22ef1f08e6254989615429e142eff, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 2ab59d253dc59b74aad8b6f197dd5c5d, type: 3}
     interval: 0.1
     frameEventLoop: 0
     frameEvent:
-      eventType: 0
-      paramType: 3
+    - eventType: 8
+      paramType: 4
       parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 1
+      parameterString: weapon/beamswda_01
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 8
+      paramType: 4
+      parameterObject: {fileID: 0}
+      parameterString: sm_atk_02
+      parameterFloat: 0
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -72,81 +63,27 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 037cc986f29c50b4a816f0f631543af1, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: b53d603da0f0fde40a472b1e808b9f16, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 81d28198e8dd7c047ae30ba532ed7c51, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 662d119c5a8401249b119f83f61bb218, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: ad2dce28687562749a8a7fbbbe66380f, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 49b7fdbd000bf834097852a5ad683a89, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 4
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 1
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
   - frame: {x: 7, y: 9}
     animationData: {fileID: 11400000, guid: f19a6ec6bb177ef49bbb3ee92d98ee41, type: 2}

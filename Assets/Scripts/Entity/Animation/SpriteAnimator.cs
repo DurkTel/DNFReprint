@@ -110,7 +110,13 @@ public class SpriteAnimator : MonoBehaviour
             if (curSprite.frameEventLoop || !m_isFirstList[m_lastFrame])
             {
                 m_isFirstList[m_lastFrame] = true;
-                DoAnimFrameEvent(curSprite.frameEvent);
+                if (curSprite.frameEvent.Count > 0)
+                {
+                    foreach (var item in curSprite.frameEvent)
+                    {
+                        DoAnimFrameEvent(item);
+                    }
+                }
             }
 
         }

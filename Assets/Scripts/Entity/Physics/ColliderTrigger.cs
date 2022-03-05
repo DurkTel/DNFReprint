@@ -7,7 +7,7 @@ public class ColliderTrigger : MonoBehaviour
     [HideInInspector]
     public UpdateCollider updateCollider;
 
-    public UpdateCollider.Axial axial;
+    public Axial axial;
 
     public int axialInstanceID;
 
@@ -19,7 +19,7 @@ public class ColliderTrigger : MonoBehaviour
         {
             if (trigger.axial == axial)
             {
-                updateCollider.AddColliderInfo(trigger.axialInstanceID, axial, (ColliderLayer)collision.gameObject.layer, trigger.updateCollider.colliderInfo);
+                updateCollider.AddColliderInfo(trigger.axialInstanceID, axial, collision, trigger.updateCollider.colliderInfo);
             }
         }
     }

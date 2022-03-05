@@ -34,7 +34,7 @@ public class AnimationFrameData
 
     public bool frameEventLoop;
 
-    public FrameEvent frameEvent;
+    public List<FrameEvent> frameEvent;
 
 }
 

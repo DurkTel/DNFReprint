@@ -21,11 +21,11 @@ MonoBehaviour:
     interval: 0.1
     frameEventLoop: 0
     frameEvent:
-      eventType: 1
+    - eventType: 4
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 15
+      parameterFloat: 0
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -34,11 +34,20 @@ MonoBehaviour:
     interval: 0.1
     frameEventLoop: 0
     frameEvent:
-      eventType: 4
+    - eventType: 1
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 0.8
+      parameterFloat: 15
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 8
+      paramType: 4
+      parameterObject: {fileID: 0}
+      parameterString: sm_jump
+      parameterFloat: 2
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -63,5 +72,5 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0

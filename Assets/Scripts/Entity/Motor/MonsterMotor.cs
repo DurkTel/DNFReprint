@@ -16,4 +16,9 @@ public class MonsterMotor : EntityMotor
     //    int rand = Random.Range(0, m_animationConfig.HitAnim.Count);
     //    m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[rand]);
     //}
+
+    protected override void Update()
+    {
+        base.Update();
+    }
 }
