@@ -6,7 +6,7 @@ public class UpdateCollider : MonoBehaviour
 {
     public ColliderInfos colliderInfo { get { return m_colliderInfo; } }
 
-    private SpriteAnimator m_spriteAnimator;
+    private Entity m_spriteAnimator;
 
     private RenenderSprite m_renenderSprite;
 
@@ -40,7 +40,7 @@ public class UpdateCollider : MonoBehaviour
 
     private void Awake()
     {
-        m_spriteAnimator = GetComponentInChildren<SpriteAnimator>();
+        //m_spriteAnimator = GetComponentInChildren<SpriteAnimator>();
         m_renenderSprite = GetComponentInChildren<RenenderSprite>();
         AddUpdateEvent();
         m_collidersXY_parent = transform.Find("Colliders/colliders_XY");

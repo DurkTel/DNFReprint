@@ -17,8 +17,6 @@ public class EntityMotor : BaseEvent, IDamage
 
     protected AnimationConfig m_animationConfig;
 
-    protected SpriteAnimator m_spriceAnimator;
-
     protected Transform m_charactRenderer;
 
     protected float m_moveDirCoefficient = 1f;
@@ -33,6 +31,9 @@ public class EntityMotor : BaseEvent, IDamage
 
     protected bool m_isHitAir;
 
+    public Entity entity;
+
+    public InputReader inputReader;
 
     public bool isHitRecover { get { return m_hitRecoverTime > 0; } }
     [HideInInspector]
@@ -57,10 +58,10 @@ public class EntityMotor : BaseEvent, IDamage
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_renenderSprites = GetComponentsInChildren<RenenderSprite>();
-        m_spriceAnimator = GetComponentInChildren<SpriteAnimator>();
-        m_charactRenderer = m_spriceAnimator.transform;
-        m_animationConfig = m_spriceAnimator.AnimationConfig;
-        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
+        //m_entity = GetComponentInChildren<SpriteAnimator>();
+        m_charactRenderer = entity.skinNode;
+        m_animationConfig = entity.AnimationConfig;
+        entity.DOSpriteAnimation(m_animationConfig.idle_Anim);
 
         InitEvent();
 
@@ -127,7 +128,7 @@ public class EntityMotor : BaseEvent, IDamage
 
     protected virtual void MotorMove()
     {
-        if (m_spriceAnimator.IsInThisAni(m_animationConfig.NotMoveAnim))
+        if (entity.IsInThisAni(m_animationConfig.NotMoveAnim))
             m_curMoveDir = Vector2.zero;
         //移动向量由子类自身处理
         Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
@@ -156,7 +157,7 @@ public class EntityMotor : BaseEvent, IDamage
 
     private bool FilpLimit()
     {
-        bool attackAnimLimit = !m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim) && !m_spriceAnimator.IsInThisAni(m_animationConfig.NotMoveAnim);
+        bool attackAnimLimit = !entity.IsInThisAni(m_animationConfig.AttackAnim) && !entity.IsInThisAni(m_animationConfig.NotMoveAnim);
         return attackAnimLimit;
     }
 
@@ -167,7 +168,7 @@ public class EntityMotor : BaseEvent, IDamage
     {
         if (isStatic) return;
         //空中处于受击动画停顿 减缓下落
-        bool hurtPause = m_spriceAnimator.IsInThisAni(m_animationConfig.HitAnim) && m_isHitAir;
+        bool hurtPause = entity.IsInThisAni(m_animationConfig.HitAnim) && m_isHitAir;
         if (hurtPause)
         {
             speedDrop += Time.deltaTime * 15f * 0.6f;
@@ -214,7 +215,7 @@ public class EntityMotor : BaseEvent, IDamage
             else
             {
                 //已经浮空状态下 再收到攻击
-                m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[0]);
+                entity.DOSpriteAnimation(m_animationConfig.HitAnim[0]);
                 if (entitySkill != null && entitySkill.CanAirBorne)
                     GetAirBorne(entitySkill);
 
@@ -223,7 +224,7 @@ public class EntityMotor : BaseEvent, IDamage
         else
         {
             int rand = Random.Range(0, m_animationConfig.HitAnim.Count);
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[rand]);
+            entity.DOSpriteAnimation(m_animationConfig.HitAnim[rand]);
 
             GetAirBorne(entitySkill);
 
@@ -241,7 +242,7 @@ public class EntityMotor : BaseEvent, IDamage
         {
             float airForce = air == 0 ? entitySkill.AirBorneForce - entityAttribute.AirBorneLimit : air;
             m_addMoveForce = -airForce / 5f;
-            m_spriceAnimator.DOSpriteAnimation(m_animationConfig.airBorne_Anim);
+            entity.DOSpriteAnimation(m_animationConfig.airBorne_Anim);
             speedDrop = airForce;
             m_isHitAir = true;
         }

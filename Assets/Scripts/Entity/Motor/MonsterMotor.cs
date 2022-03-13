@@ -7,7 +7,7 @@ public class MonsterMotor : EntityMotor
     protected override void Start()
     {
         base.Start();
-        m_spriceAnimator.DOSpriteAnimation(m_animationConfig.idle_Anim);
+        entity.DOSpriteAnimation(m_animationConfig.idle_Anim);
 
     }
 

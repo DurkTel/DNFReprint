@@ -27,6 +27,8 @@ public partial class Entity
     /// </summary>
     public int skinInitFrameCount { get; private set; }
 
+    public SkillManager skillManager;
+
     public GameObject gameObject;
 
     public Transform transform;
@@ -43,7 +45,8 @@ public partial class Entity
 
     public void Update()
     {
-        
+        TickSpriteAnimation();
+        ConditionRelation(m_lastFrame);
     }
 
     public void LateUpdate()
@@ -81,23 +84,27 @@ public partial class Entity
     {
         gameObject.name = "local_Player";
 
-        CharactMotor motor = gameObject.AddComponent<CharactMotor>();
-        //添加输入模块
-        motor.inputReader = InputReader.GetInputAsset();
-
         //添加动画机
-        SpriteAnimator spriteAnimator = skinNode.gameObject.AddComponent<SpriteAnimator>();
-        spriteAnimator.AnimationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
-        spriteAnimator.inputReader = InputReader.GetInputAsset();
+        foreach (AvatarPart part in mainAvatar.avatarPartDic.Values)
+        {
+            m_renenderSprites.Add(part.renender);
+        }
+        AnimationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
+        inputReader = InputReader.GetInputAsset();
+
+        //添加输入模块
+        m_motor = gameObject.AddComponent<CharactMotor>();
+        m_motor.inputReader = InputReader.GetInputAsset();
+        m_motor.entity = this;
 
         //添加技能模块
-        SkillManager skillManager = new SkillManager(this, spriteAnimator);
+        skillManager = new SkillManager(this);
         skillManager.inputReader = InputReader.GetInputAsset();
         skillManager.Init();
 
         //添加属性模块
         EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
-        motor.entityAttribute = attr;
+        m_motor.entityAttribute = attr;
     }
 
     public enum EntityType

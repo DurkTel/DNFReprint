@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class SpriteAnimator : MonoBehaviour
+public partial class Entity
 {
     [HideInInspector]
     public bool m_stop;
@@ -29,21 +29,16 @@ public class SpriteAnimator : MonoBehaviour
 
     private bool[] m_isFirstList;
 
-    private RenenderSprite[] m_renenderSprites;
+    private List<RenenderSprite> m_renenderSprites = new List<RenenderSprite>();
 
 
     private EntityMotor m_motor;
 
     private AnimationData m_next_animationData;
 
-    //public SkillManager skillManager;
-
     public AnimationData current_animationData;
 
-    [HideInInspector]
     public AnimationData last_animationData;
-    [HideInInspector]
-    public Transform charactRenderer;
 
     public AnimationConfig AnimationConfig;
 
@@ -52,22 +47,6 @@ public class SpriteAnimator : MonoBehaviour
     public UnityAction<AnimationData> UpdateAnimationEvent;
 
     public InputReader inputReader;
-
-    private void Start()
-    {
-        m_renenderSprites = GetComponentsInChildren<RenenderSprite>();
-        charactRenderer = GetComponent<Transform>();
-        m_motor = GetComponentInParent<EntityMotor>();
-        //skillManager = GetComponentInParent<SkillManager>();
-    }
-
-    private void Update()
-    {
-        TickSpriteAnimation();
-        ConditionRelation(m_lastFrame);
-
-    }
-
 
     /// <summary>
     /// 每帧刷新动画
@@ -125,7 +104,7 @@ public class SpriteAnimator : MonoBehaviour
 
     private void SetSprites(int index)
     {
-        for (int i = 0; i < m_renenderSprites.Length; i++)
+        for (int i = 0; i < m_renenderSprites.Count; i++)
         {
             m_renenderSprites[i].SetSprite(index);
         }
@@ -289,27 +268,27 @@ public class SpriteAnimator : MonoBehaviour
                                 switch (item.spritePostionY.relation)
                                 {
                                     case Condition.Relation.bigger:
-                                        if (charactRenderer.localPosition.y <= item.spritePostionY.targetValue) result = false;
+                                        if (skinNode.localPosition.y <= item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.smaller:
-                                        if (charactRenderer.localPosition.y >= item.spritePostionY.targetValue) result = false;
+                                        if (skinNode.localPosition.y >= item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.equal:
-                                        if (charactRenderer.localPosition.y != item.spritePostionY.targetValue) result = false;
+                                        if (skinNode.localPosition.y != item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.bigger_E:
-                                        if (charactRenderer.localPosition.y < item.spritePostionY.targetValue) result = false;
+                                        if (skinNode.localPosition.y < item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.smaller_E:
-                                        if (charactRenderer.localPosition.y > item.spritePostionY.targetValue) result = false;
+                                        if (skinNode.localPosition.y > item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     case Condition.Relation.unequal:
-                                        if (charactRenderer.localPosition.y == item.spritePostionY.targetValue) result = false;
+                                        if (skinNode.localPosition.y == item.spritePostionY.targetValue) result = false;
 
                                         break;
                                     default:
@@ -461,8 +440,8 @@ public class SpriteAnimator : MonoBehaviour
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
                                         CharactMotor charactMotor = (CharactMotor)m_motor;
-                                        //if (!skillManager.characterSkillTree.IsHasSkill(10001) && charactMotor.airAttackCombo > 0) result = false;
-                                        result = false;
+                                        if (!skillManager.characterSkillTree.IsHasSkill(10001) && charactMotor.airAttackCombo > 0) result = false;
+                                        //result = false;
                                         break;
                                     case CustomCondition.HIT_RECOVER:
                                         if (m_motor.isHitRecover) result = false;

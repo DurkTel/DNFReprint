@@ -11,8 +11,6 @@ public class SkillManager
 {
     private Entity m_entity;
 
-    private SpriteAnimator m_spriteAnimator;
-
     private Dictionary<InputActionDefine, int> m_actionSkillCodeMap = new Dictionary<InputActionDefine, int>();
 
     private Dictionary<EntitySkill, float> m_skillCoolingMap = new Dictionary<EntitySkill, float>();
@@ -26,10 +24,9 @@ public class SkillManager
         inputReader.buttonPressEvent -= SkillAction;
     }
 
-    public SkillManager(Entity entity, SpriteAnimator spriteAnimator)
+    public SkillManager(Entity entity)
     {
         m_entity = entity;
-        m_spriteAnimator = spriteAnimator;
         characterSkillTree = new SkillTree();
     }
 
@@ -68,7 +65,7 @@ public class SkillManager
             }
             if (CanReleaseSkill(skill) && CheckSkillCD(skill) && !string.IsNullOrEmpty(skill.AnimationDataName))
             {
-                m_spriteAnimator.ForceDOSkillAnimation(skill.AnimationDataName, m_entity.careerType);
+                m_entity.ForceDOSkillAnimation(skill.AnimationDataName, m_entity.careerType);
                 
             }
         }

@@ -27,11 +27,11 @@ public class EditorMeunTest
                 GameObject prefab = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject;
                 if (prefab != null)
                 {
-                    SpriteAnimator spriteAnimator = prefab.GetComponentInChildren<SpriteAnimator>();
-                    if (spriteAnimator != null && spriteAnimator.m_stop)
-                    {
-                        Debug.Log(prefab.name);
-                    }
+                    //SpriteAnimator spriteAnimator = prefab.GetComponentInChildren<SpriteAnimator>();
+                    //if (spriteAnimator != null && spriteAnimator.m_stop)
+                    //{
+                    //    Debug.Log(prefab.name);
+                    //}
                 }
             }
         }

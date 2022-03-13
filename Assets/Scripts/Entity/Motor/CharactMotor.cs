@@ -7,7 +7,6 @@ public class CharactMotor : EntityMotor
     [HideInInspector]
     public int airAttackCombo;
 
-    public InputReader inputReader;
 
 
     //private void OnEnable()
@@ -60,7 +59,7 @@ public class CharactMotor : EntityMotor
     protected override void MotorMove()
     {
         base.MotorMove();
-        bool onAttack = m_spriceAnimator.IsInThisAni(m_animationConfig.AttackAnim);
+        bool onAttack = entity.IsInThisAni(m_animationConfig.AttackAnim);
         int flip = m_renenderSprites[0].GetCurFlip();
 
         //攻击时不能上下移动
@@ -77,7 +76,7 @@ public class CharactMotor : EntityMotor
     {
 
         m_curMoveDir = input;
-        if (m_spriceAnimator.IsInThisAni(m_animationConfig.NotMoveAnim))
+        if (entity.IsInThisAni(m_animationConfig.NotMoveAnim))
             movePhase = 0;
         else if (m_curMoveDir != Vector2.zero && movePhase != 2)
             movePhase = 1;

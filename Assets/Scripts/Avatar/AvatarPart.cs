@@ -42,7 +42,7 @@ public class AvatarPart
         }
     }
 
-    private RenenderSprite m_renender;
+    public RenenderSprite renender { get; private set; }
 
     public Avatar avatar { get; private set; }
 
@@ -50,7 +50,7 @@ public class AvatarPart
 
     public string partName { get; private set; }
 
-    public bool loadComplete { get { return m_renender != null && m_renender.loadComplete; } }
+    public bool loadComplete { get { return renender != null && renender.loadComplete; } }
 
     public Transform partNode { get; private set; }
 
@@ -83,11 +83,11 @@ public class AvatarPart
         if (partNode == null)
         {
             GameObject go = new GameObject(partType.ToString());
-            m_renender = go.AddComponent<RenenderSprite>();
+            renender = go.AddComponent<RenenderSprite>();
             partNode = go.transform;
             partNode.SetParent(avatar.transform);
         }
 
-        return m_renender.InitSpriteAsync(assetName, fashionCode, OnPartLoadComplete);
+        return renender.InitSpriteAsync(assetName, fashionCode, OnPartLoadComplete);
     }
 }
