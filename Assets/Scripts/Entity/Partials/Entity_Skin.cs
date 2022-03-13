@@ -12,15 +12,23 @@ public partial class Entity
 
     public Avatar mainAvatar { get; private set; }
 
-    public ModelInfo[] models = new ModelInfo[9];
+    public Dictionary<Avatar.AvatarPartType, ModelInfo> models = new Dictionary<Avatar.AvatarPartType, ModelInfo>();
 
     public struct ModelInfo
     {
-        public int fashionCode;
+        public int modelCode;
 
-        public Vector3 position;
+        public string des;
 
-        public Vector3 scale;
+        public string modelPath;
+
+        public float modelScale;
+
+        public float modelPositionX;
+
+        public float modelPositionY;
+
+        public float modelPositionZ;
     }
 
 
@@ -56,6 +64,8 @@ public partial class Entity
             GameObject go = new GameObject("MainAvatar");
             mainAvatar = go.AddComponent<Avatar>();
             go.transform.SetParent(skinNode);
+            //加载完成后添加组件
+            mainAvatar.onAvatarLoadComplete += AssembleComponent;
         }
 
         //初始化完载体加载各个皮肤部件
@@ -82,49 +92,49 @@ public partial class Entity
 
     public void Update_Skin_Body()
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.body, "Textrue/Character/swordman", models[0]);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.body, models);
     }
 
     public void Update_Skin_Shirt()
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.shirt, "Textrue/Character/swordman", models[1]);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.shirt, models);
 
     }
 
     public void Update_Skin_Weapon()
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.weapon, "Textrue/Character/swordman", models[2]);
-        Skin_SetAvatarPart(Avatar.AvatarPartType.weaponEx, "Textrue/Character/swordman", models[3]);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.weapon, models);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.weaponEx, models);
 
     }
 
     public void Update_Skin_Hair()
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.hair, "Textrue/Character/swordman", models[4]);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.hair, models);
 
     }
 
     public void Update_Skin_Pants()
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.pants, "Textrue/Character/swordman", models[5]);
-        Skin_SetAvatarPart(Avatar.AvatarPartType.pantsEx, "Textrue/Character/swordman", models[6]);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.pants, models);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.pantsEx, models);
 
     }
 
     public void Update_Skin_Shoes()
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.shoes, "Textrue/Character/swordman", models[7]);
-        Skin_SetAvatarPart(Avatar.AvatarPartType.shoesEx, "Textrue/Character/swordman", models[8]);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.shoes, models);
+        Skin_SetAvatarPart(Avatar.AvatarPartType.shoesEx, models);
     }
 
-    private void Skin_SetAvatarPart(Avatar.AvatarPartType partType, string assetName,ModelInfo modelInfo)
+    private void Skin_SetAvatarPart(Avatar.AvatarPartType partType, Dictionary<Avatar.AvatarPartType, ModelInfo> modelInfo)
     {
-        if (mainAvatar == null) return;
+        if (mainAvatar == null || !modelInfo.ContainsKey(partType)) return;
         AvatarPart part = mainAvatar.AddPart(partType);
-        part.assetName = assetName;
-        part.fashionCode = modelInfo.fashionCode;
-        part.position = modelInfo.position;
-        part.scale = modelInfo.scale;
+        part.assetName = modelInfo[partType].modelPath;
+        part.fashionCode = modelInfo[partType].modelCode;
+        part.position = new Vector3(modelInfo[partType].modelPositionX, modelInfo[partType].modelPositionY, -modelInfo[partType].modelPositionZ);
+        part.scale = Vector3.one * modelInfo[partType].modelScale;
     }
 
     public void Skin_SetAvatarPartScale(Avatar.AvatarPartType partType, Vector3 scale)

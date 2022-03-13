@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="SkillTree", menuName = "ScriptableObject/Skill/SkillTree")]
-public class SkillTree : ScriptableObject
+//[CreateAssetMenu(fileName ="SkillTree", menuName = "ScriptableObject/Skill/SkillTree")]
+public class SkillTree
 {
     private Dictionary<int, EntitySkill> m_skillTree = new Dictionary<int, EntitySkill>();
-    public void AddSkill(EntitySkill skill)
+    public void AddSkill(int skillCode)
     {
+        EntitySkill skill = SkillConfig.GetInfoByCode(skillCode);
+        if (skill == null) return;
+
         bool conditionSkill = skill.Condition == 0 ? true : m_skillTree.ContainsKey(skill.Condition);
         bool isStudy = m_skillTree.ContainsKey(skill.SkillCode);
         if (!isStudy && conditionSkill)

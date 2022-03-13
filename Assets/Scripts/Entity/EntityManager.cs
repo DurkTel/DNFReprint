@@ -56,12 +56,12 @@ public class EntityManager : SingletonMono<EntityManager>
     }
 
 
-    public Entity CreateEntity(Entity.EntityType etype)
+    public Entity CreateEntity(Entity.EntityType etype, CommonDefine.Career career)
     {
         Entity entity = new Entity();
         GameObject go = new GameObject();
         int eid = GUID;
-        entity.Init(eid, etype, go);
+        entity.Init(eid, etype, career, go);
         entity.transform.SetParent(m_actives);
         m_entityMap.Add(eid, entity);
         return entity;

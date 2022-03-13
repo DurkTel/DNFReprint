@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -8,6 +10,10 @@ using UnityEngine.InputSystem.Interactions;
 [CreateAssetMenu(menuName = "ScriptableObject/Input/InputReader", fileName = "InputReader")]
 public class InputReader : ScriptableObject, InputControls.IGameplayActions
 {
+    public static string path = "Assets/ScriptableObjects/Input/InputReader.asset";
+
+    public static InputReader inputReader;
+
     [SerializeField]
     private InputControls m_inputs;
     /// <summary>
@@ -45,6 +51,27 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions
             
             InitGameplayButton();
         }
+    }
+
+    public static InputReader GetInputAsset()
+    {
+        if (inputReader != null)
+            return inputReader;
+
+        if (File.Exists(path))
+        {
+            InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
+            inputReader = input;
+
+        }
+        else
+        {
+            Directory.CreateDirectory(path);
+            var input = ScriptableObject.CreateInstance<InputReader>();
+            AssetDatabase.CreateAsset(input, path);
+            inputReader = input;
+        }
+        return inputReader;
     }
 
     private void InitGameplayButton()

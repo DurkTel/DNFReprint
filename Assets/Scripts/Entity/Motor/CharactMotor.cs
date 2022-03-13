@@ -10,11 +10,11 @@ public class CharactMotor : EntityMotor
     public InputReader inputReader;
 
 
-    private void OnEnable()
-    {
-        inputReader.moveInputEvent += ReceiveMoveInput;
-        inputReader.buttonMultiEvent += MovePhaseHandle;
-    }
+    //private void OnEnable()
+    //{
+    //    inputReader.moveInputEvent += ReceiveMoveInput;
+    //    inputReader.buttonMultiEvent += MovePhaseHandle;
+    //}
 
     private void OnDisable()
     {
@@ -27,7 +27,8 @@ public class CharactMotor : EntityMotor
     protected override void Start()
     {
         base.Start();
-
+        inputReader.moveInputEvent += ReceiveMoveInput;
+        inputReader.buttonMultiEvent += MovePhaseHandle;
         inputReader.EnableGameplayInput();
 
         

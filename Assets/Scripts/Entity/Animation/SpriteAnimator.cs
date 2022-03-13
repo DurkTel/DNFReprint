@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,9 +34,9 @@ public class SpriteAnimator : MonoBehaviour
 
     private EntityMotor m_motor;
 
-    private SkillManager m_skillManager;
-
     private AnimationData m_next_animationData;
+
+    //public SkillManager skillManager;
 
     public AnimationData current_animationData;
 
@@ -57,7 +58,7 @@ public class SpriteAnimator : MonoBehaviour
         m_renenderSprites = GetComponentsInChildren<RenenderSprite>();
         charactRenderer = GetComponent<Transform>();
         m_motor = GetComponentInParent<EntityMotor>();
-        m_skillManager = GetComponentInParent<SkillManager>();
+        //skillManager = GetComponentInParent<SkillManager>();
     }
 
     private void Update()
@@ -174,6 +175,23 @@ public class SpriteAnimator : MonoBehaviour
     {
         if (!onlyOnCommon || !IsInThisAni(AnimationConfig.ForceAnim))
             return;
+        DOSpriteAnimation(animationData);
+    }
+
+    /// <summary>
+    /// 强制播放技能动画
+    /// </summary>
+    /// <param name="animationData">要切换的技能动画</param>
+    /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
+    public void ForceDOSkillAnimation(string animationDataName, CommonDefine.Career career, bool onlyOnCommon = true)
+    {
+        if (!onlyOnCommon || !IsInThisAni(AnimationConfig.ForceAnim))
+            return;
+
+        string path = string.Format("{0}Character/Player/{1}/skill/{2}.asset", CommonDefine.AnimationDataAssetPath ,(int)career, animationDataName);
+        AnimationData animationData = AssetDatabase.LoadAssetAtPath(path, typeof(AnimationData)) as AnimationData;
+        if (!animationData) return;
+
         DOSpriteAnimation(animationData);
     }
 
@@ -443,8 +461,8 @@ public class SpriteAnimator : MonoBehaviour
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
                                         CharactMotor charactMotor = (CharactMotor)m_motor;
-                                        if (!m_skillManager.characterSkillTree.IsHasSkill(10001) && charactMotor.airAttackCombo > 0) result = false;
-
+                                        //if (!skillManager.characterSkillTree.IsHasSkill(10001) && charactMotor.airAttackCombo > 0) result = false;
+                                        result = false;
                                         break;
                                     case CustomCondition.HIT_RECOVER:
                                         if (m_motor.isHitRecover) result = false;

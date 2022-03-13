@@ -132,7 +132,7 @@ public class RenenderSprite : MonoBehaviour
     public IEnumerator InitSpriteAsync(string assetName, int fashionCode, UnityAction<Avatar.AvatarPartType> callback)
     {
         loadComplete = false;
-        string path = string.Format("{0}/{1}/{2}", assetName, fashionCode, name);
+        string path = string.Format("{0}/{1}", assetName, fashionCode);
         part_Sprite.Clear();
         if (path == null)
         {
@@ -177,12 +177,20 @@ public class RenenderSprite : MonoBehaviour
 
     public void SetSprite(int index)
     { 
-        m_spriteRenderer.sprite = part_Sprite[index];
+        if(part_Sprite.Count - 1 >= index)
+        {
+            m_spriteRenderer.sprite = part_Sprite[index];
+        }
     }
 
     public void SetSpriteFilp(bool isLeft)
     {
         m_spriteRenderer.flipX = isLeft;
+    }
+
+    public void Clear()
+    { 
+        part_Sprite.Clear();
     }
 
     /// <summary>

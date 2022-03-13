@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObject/Character/EntitySkill")]
-public class EntitySkill : ScriptableObject
+public class EntitySkill
 {
     public enum CharacterSkillType
     {
@@ -91,5 +90,6 @@ public class EntitySkill : ScriptableObject
     /// <summary>
     /// 表现动画
     /// </summary>
-    public AnimationData animationData;
+    public string AnimationDataName;
+
 }

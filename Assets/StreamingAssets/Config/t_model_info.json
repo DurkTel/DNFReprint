@@ -1,0 +1,11 @@
+[
+{"modelCode":10000,"des":"男剑默认身体","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0},
+{"modelCode":10001,"des":"男剑默认头发","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.001},
+{"modelCode":10002,"des":"男剑默认裤子1","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.01},
+{"modelCode":10003,"des":"男剑默认裤子2","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.01},
+{"modelCode":10004,"des":"男剑默认上衣","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.004},
+{"modelCode":10005,"des":"男剑默认鞋子1","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.005},
+{"modelCode":10006,"des":"男剑默认鞋子2","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.005},
+{"modelCode":10007,"des":"男剑默认武器1","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.011},
+{"modelCode":10008,"des":"男剑默认武器2","modelPath":"Textrue/Character/swordman","modelScale":0.01,"modelPositionX":0,"modelPositionY":0,"modelPositionZ":0.011}
+]

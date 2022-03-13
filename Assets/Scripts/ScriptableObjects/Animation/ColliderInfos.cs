@@ -12,7 +12,7 @@ public class ColliderInfos : ScriptableObject
 
     public int frameCount;
 
-    public EntitySkill entitySkill;
+    public int skillCode;
 }
 
 /// <summary>

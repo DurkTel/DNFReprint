@@ -16,7 +16,7 @@ public class ColliderInfoEditor : Editor
 
     private SerializedProperty m_frameCount;
 
-    private SerializedProperty m_entitySkill;
+    private SerializedProperty m_skillCode;
 
     private GUIStyle errorStyle;
 
@@ -30,7 +30,7 @@ public class ColliderInfoEditor : Editor
     {
         m_frameCollInfos = serializedObject.FindProperty("frameCollInfos");
         m_frameCount = serializedObject.FindProperty("frameCount");
-        m_entitySkill = serializedObject.FindProperty("entitySkill");
+        m_skillCode = serializedObject.FindProperty("skillCode");
 
         errorStyle = new GUIStyle();
         errorStyle.normal.textColor = Color.red;
@@ -43,7 +43,7 @@ public class ColliderInfoEditor : Editor
         //base.OnInspectorGUI();
         serializedObject.Update();
         m_scrollPos = EditorGUILayout.BeginScrollView(m_scrollPos, GUILayout.Width(550), GUILayout.Height(600));
-        m_entitySkill.objectReferenceValue = (EntitySkill)EditorGUILayout.ObjectField("实体技能：",m_entitySkill.objectReferenceValue, typeof(EntitySkill), true, GUILayout.Width(500));
+        m_skillCode.intValue = EditorGUILayout.IntField("技能code：", m_skillCode.intValue, GUILayout.Width(500));
         m_frameCount.intValue = EditorGUILayout.IntField("总帧数：", m_frameCount.intValue, GUILayout.Width(500));
 
 

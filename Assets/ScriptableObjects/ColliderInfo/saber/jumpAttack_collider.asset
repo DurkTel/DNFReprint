@@ -68,4 +68,4 @@ MonoBehaviour:
       size: {x: 31.8, y: 71.31}
     index: 0
   frameCount: 6
-  entitySkill: {fileID: 11400000, guid: 28a3f87818fb5b24eb610e5112541421, type: 2}
+  skillCode: 10002

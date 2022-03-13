@@ -203,6 +203,7 @@ public class EntityMotor : BaseEvent, IDamage
         }
         movePhase = 0;
         m_hitRecoverTime = 500 / (entityAttribute.HitRecover + 1);
+        EntitySkill entitySkill = SkillConfig.GetInfoByCode(info.otherCollInfo.skillCode);
         if (m_charactRenderer.localPosition.y > 0)
         {
             if (!m_isHitAir)
@@ -214,8 +215,8 @@ public class EntityMotor : BaseEvent, IDamage
             {
                 //已经浮空状态下 再收到攻击
                 m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[0]);
-                if (info.otherCollInfo.entitySkill.CanAirBorne)
-                    GetAirBorne(info.otherCollInfo.entitySkill);
+                if (entitySkill != null && entitySkill.CanAirBorne)
+                    GetAirBorne(entitySkill);
 
             }
         }
@@ -224,7 +225,7 @@ public class EntityMotor : BaseEvent, IDamage
             int rand = Random.Range(0, m_animationConfig.HitAnim.Count);
             m_spriceAnimator.DOSpriteAnimation(m_animationConfig.HitAnim[rand]);
 
-            GetAirBorne(info.otherCollInfo.entitySkill);
+            GetAirBorne(entitySkill);
 
         }
 

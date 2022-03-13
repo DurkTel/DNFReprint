@@ -170,7 +170,8 @@ public class UpdateCollider : MonoBehaviour
                     case ColliderLayer.Interact:
                         break;
                     case ColliderLayer.Damage:
-                        if (info.otherCollInfo.entitySkill != null && (!m_collIderEffectDic.ContainsKey(coll.Key) || info.otherCollInfo.entitySkill.NumbeOfAttacks > m_collIderEffectDic[coll.Key]))
+                        EntitySkill entitySkill = SkillConfig.GetInfoByCode(info.otherCollInfo.skillCode);
+                        if (entitySkill != null && (!m_collIderEffectDic.ContainsKey(coll.Key) || entitySkill.NumbeOfAttacks > m_collIderEffectDic[coll.Key]))
                         {
                             if (m_collIderEffectDic.ContainsKey(coll.Key))
                                 m_collIderEffectDic[coll.Key]++;

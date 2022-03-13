@@ -7,8 +7,10 @@ using System.IO;
 /// <summary>
 /// 管理攻击或释放技能
 /// </summary>
-public class SkillManager : MonoBehaviour
+public class SkillManager
 {
+    private Entity m_entity;
+
     private SpriteAnimator m_spriteAnimator;
 
     private Dictionary<InputActionDefine, int> m_actionSkillCodeMap = new Dictionary<InputActionDefine, int>();
@@ -19,69 +21,26 @@ public class SkillManager : MonoBehaviour
 
     public InputReader inputReader;
 
-    //先写死测试
-    public EntitySkill jumpAttack;
-
-    public EntitySkill shangtiaoSkill;
-
-    private void Reset()
-    {
-        //if (characterSkillTree == null)
-        //{
-        //    string path = string.Format("Assets/ScriptableObjects/Data/SkillTree/{0}/SkllTree_{1}.asset", this.gameObject.name, this.gameObject.name);
-        //    if (File.Exists(path))
-        //    {
-        //        SkillTree skillTree = AssetDatabase.LoadAssetAtPath(path, typeof(SkillTree)) as SkillTree;
-        //        characterSkillTree = skillTree;
-
-        //    }
-        //    else
-        //    {
-        //        Directory.CreateDirectory(path);
-        //        var skillTree = ScriptableObject.CreateInstance<SkillTree>();
-        //        AssetDatabase.CreateAsset(skillTree, path);
-        //        characterSkillTree = skillTree;
-        //    }
-        //}
-
-        //if (inputReader == null)
-        //{
-        //    string path = "Assets/ScriptableObjects/Input/InputReader.asset";
-        //    if (File.Exists(path))
-        //    {
-        //        InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
-        //        inputReader = input;
-
-        //    }
-        //    else
-        //    {
-        //        Directory.CreateDirectory(path);
-        //        var input = ScriptableObject.CreateInstance<InputReader>();
-        //        AssetDatabase.CreateAsset(input, path);
-        //        inputReader = input;
-        //    }
-        //}
-    }
-
-    private void OnEnable()
-    {
-        inputReader.buttonPressEvent += SkillAction;
-    }
-
     private void OnDisable()
     {
         inputReader.buttonPressEvent -= SkillAction;
-
     }
 
-    void Start()
+    public SkillManager(Entity entity, SpriteAnimator spriteAnimator)
     {
-        m_spriteAnimator = GetComponentInChildren<SpriteAnimator>();
+        m_entity = entity;
+        m_spriteAnimator = spriteAnimator;
+        characterSkillTree = new SkillTree();
+    }
+
+    public void Init()
+    {
+        inputReader.buttonPressEvent += SkillAction;
 
         //先测试
-        characterSkillTree.AddSkill(jumpAttack);
-        characterSkillTree.AddSkill(shangtiaoSkill);
-        AddAcionSkill(InputActionDefine.Attack_2, 10002);
+        characterSkillTree.AddSkill(10002);
+        characterSkillTree.AddSkill(10003);
+        AddAcionSkill(InputActionDefine.Attack_2, 10003);
     }
 
     public void AddAcionSkill(InputActionDefine action, int code)
@@ -107,9 +66,9 @@ public class SkillManager : MonoBehaviour
                 Debug.LogError(string.Format("技能code{0}在技能树中找不到对应的技能！", skillCode));
                 return;
             }
-            if (CanReleaseSkill(skill) && CheckSkillCD(skill) && skill.animationData != null)
+            if (CanReleaseSkill(skill) && CheckSkillCD(skill) && !string.IsNullOrEmpty(skill.AnimationDataName))
             {
-                m_spriteAnimator.ForceDOSkillAnimation(skill.animationData);
+                m_spriteAnimator.ForceDOSkillAnimation(skill.AnimationDataName, m_entity.careerType);
                 
             }
         }
