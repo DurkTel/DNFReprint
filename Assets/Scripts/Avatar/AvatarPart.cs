@@ -42,26 +42,26 @@ public class AvatarPart
         }
     }
 
+    public Transform boneTransform { get; set; }
+
     public RenenderSprite renender { get; private set; }
 
     public Avatar avatar { get; private set; }
 
     public Avatar.AvatarPartType partType { get; private set; }
 
-    public string partName { get; private set; }
-
     public bool loadComplete { get { return renender != null && renender.loadComplete; } }
 
     public Transform partNode { get; private set; }
 
     public Vector3 position { get; set; }
+
     public Vector3 scale { get; set; }
 
     public AvatarPart(Avatar avatar, Avatar.AvatarPartType partType)
     {
         this.avatar = avatar;
         this.partType = partType;
-        this.partName = partType.ToString();
     }
 
     public void Refresh()
@@ -85,7 +85,7 @@ public class AvatarPart
             GameObject go = new GameObject(partType.ToString());
             renender = go.AddComponent<RenenderSprite>();
             partNode = go.transform;
-            partNode.SetParent(avatar.transform);
+            partNode.SetParent(boneTransform);
         }
 
         return renender.InitSpriteAsync(assetName, fashionCode, OnPartLoadComplete);

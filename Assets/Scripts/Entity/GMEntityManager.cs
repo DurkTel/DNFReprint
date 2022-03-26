@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityManager : SingletonMono<EntityManager>
+public class GMEntityManager : SingletonMono<GMEntityManager>
 {
     private static int m_GUID = 0;
     private static int GUID { get { return ++m_GUID; } }
@@ -19,19 +19,21 @@ public class EntityManager : SingletonMono<EntityManager>
 
     public static void Initialize()
     {
-        m_transform = new GameObject("EntityManager").transform;
-        m_transform.gameObject.AddComponent<EntityManager>();
-        m_actives = new GameObject("Entity_Actives").transform;
+        m_transform = new GameObject("GMEntityManager").transform;
+        m_transform.gameObject.AddComponent<GMEntityManager>();
+        m_actives = new GameObject("GMEntity_Actives").transform;
         m_actives.SetParent(m_transform);
+        DontDestroyOnLoad(m_transform.gameObject);
     }
 
     private void Update()
     {
         Entity entity = null;
+        float deltaTime = Time.deltaTime;
         foreach (var item in m_entityMap)
         {
             entity = item.Value;
-            entity.Update();
+            entity.Update(deltaTime);
             //已经初始化皮肤 直接跳出
             if (entity.skinInitialized)
                 continue;

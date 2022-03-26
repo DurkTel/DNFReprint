@@ -6,11 +6,34 @@ public partial class Entity
 {
     public Transform skinNode { get; private set; }
 
+    public Transform rootBone { get; private set; }
+
     public BoxCollider2D boxCollider { get; private set; }
 
     public Rigidbody2D rigidbody { get; private set; }
 
     public Avatar mainAvatar { get; private set; }
+
+    private Dictionary<string, Transform> m_allBones;
+    public Dictionary<string,Transform> allBones
+    {
+        get
+        {
+            if (m_allBones == null)
+                m_allBones = new Dictionary<string, Transform>();
+            if (m_allBones.Count < 1 && rootBone != null)
+            {
+                Transform[] bones = rootBone.GetComponentsInChildren<Transform>();
+                foreach (Transform bone in bones)
+                {
+                    m_allBones.Add(bone.name, bone);
+                }
+            }
+
+
+            return m_allBones;
+        }
+    }
 
     public Dictionary<Avatar.AvatarPartType, ModelInfo> models = new Dictionary<Avatar.AvatarPartType, ModelInfo>();
 
@@ -29,6 +52,8 @@ public partial class Entity
         public float modelPositionY;
 
         public float modelPositionZ;
+
+        public string boneName;
     }
 
 
@@ -69,7 +94,13 @@ public partial class Entity
         }
 
         //初始化完载体加载各个皮肤部件
-        Init_Skin();
+        ResourceRequest re = AssetLoader.LoadAsync<GameObject>(AvatarUtility.commonCharacterBone);
+        re.completed += (p) =>
+        {
+            rootBone = Object.Instantiate(re.asset as GameObject).transform;
+            rootBone.SetParent(mainAvatar.gameObject.transform);
+            Init_Skin();
+        };
     }
 
     /// <summary>
@@ -131,10 +162,12 @@ public partial class Entity
     {
         if (mainAvatar == null || !modelInfo.ContainsKey(partType)) return;
         AvatarPart part = mainAvatar.AddPart(partType);
-        part.assetName = modelInfo[partType].modelPath;
-        part.fashionCode = modelInfo[partType].modelCode;
-        part.position = new Vector3(modelInfo[partType].modelPositionX, modelInfo[partType].modelPositionY, -modelInfo[partType].modelPositionZ);
-        part.scale = Vector3.one * modelInfo[partType].modelScale;
+        ModelInfo info = modelInfo[partType];
+        part.assetName = info.modelPath;
+        part.fashionCode = info.modelCode;
+        part.position = new Vector3(info.modelPositionX, info.modelPositionY, info.modelPositionZ);
+        part.scale = Vector3.one * info.modelScale;
+        part.boneTransform = allBones.ContainsKey(info.boneName) ? allBones[info.boneName] : mainAvatar.transform;
     }
 
     public void Skin_SetAvatarPartScale(Avatar.AvatarPartType partType, Vector3 scale)

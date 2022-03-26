@@ -40,6 +40,18 @@ public class TimerManager : SingletonMonoAuto<TimerManager>
         m_waitRemove.Add(id);
     }
 
+    //启协协程
+    public static Coroutine AddCoroutine(IEnumerator routine)
+    {
+        return Instance.StartCoroutine(routine);
+    }
+
+    //停止协程
+    public static void DelCoroutine(Coroutine coroutine)
+    {
+        Instance.StopCoroutine(coroutine);
+    }
+
     private void Update()
     {
         if (m_waitAdd.Count > 0)

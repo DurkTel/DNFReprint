@@ -60,7 +60,7 @@ public class CharactMotor : EntityMotor
     {
         base.MotorMove();
         bool onAttack = entity.IsInThisAni(m_animationConfig.AttackAnim);
-        int flip = m_renenderSprites[0].GetCurFlip();
+        int flip = entity.curFlip;
 
         //攻击时不能上下移动
         if (onAttack)

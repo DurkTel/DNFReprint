@@ -66,7 +66,7 @@ public class RenenderSprite : MonoBehaviour
 
         for (int i = 0; i < m_spriteCount; i++)
         {
-            m_singSprite = Resources.Load<Sprite>(path + '/' + i);
+            m_singSprite = AssetLoader.Load<Sprite>(path + '/' + i);
 
             if (m_singSprite == null)
             {
@@ -92,7 +92,7 @@ public class RenenderSprite : MonoBehaviour
             Debug.LogError("请添加Sprite资源路径");
             yield break;
         }
-        TextAsset tempTA = Resources.Load<TextAsset>(path + "/pointOffsize");
+        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + "/pointOffsize");
         
         if (tempTA == null)
         {
@@ -108,7 +108,7 @@ public class RenenderSprite : MonoBehaviour
         int i = 0;
         while (i < m_spriteCount)
         {
-            ResourceRequest r = Resources.LoadAsync<Sprite>(path + '/' + i);
+            ResourceRequest r = AssetLoader.LoadAsync<Sprite>(path + '/' + i);
 
             yield return r;
 
@@ -155,21 +155,4 @@ public class RenenderSprite : MonoBehaviour
         return m_spriteRenderer.flipX ? -1 : 1;
     }
 
-
-    //绘制着地点/跳跃点
-    public virtual void OnDrawGizmos()
-    {
-
-        Gizmos.color = Color.red;
-        if (transform.parent != null)
-        {
-            Gizmos.DrawWireSphere(transform.parent.position, 0.1f);
-        }
-        if (transform.localPosition.y > 0)
-        {
-            Gizmos.DrawWireSphere(transform.position, 0.1f);
-            Gizmos.DrawLine(transform.position, transform.parent.position);
-        }
-
-    }
 }

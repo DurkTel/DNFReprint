@@ -6,9 +6,7 @@ public class UpdateCollider : MonoBehaviour
 {
     public ColliderInfos colliderInfo { get { return m_colliderInfo; } }
 
-    private Entity m_spriteAnimator;
-
-    private RenenderSprite m_renenderSprite;
+    private Entity m_entity;
 
     private AnimationData m_animationData;
 
@@ -38,25 +36,31 @@ public class UpdateCollider : MonoBehaviour
 
     private Transform m_collidersZ_parent;
 
-    private void Awake()
+    public void Init(Entity entity)
     {
-        //m_spriteAnimator = GetComponentInChildren<SpriteAnimator>();
-        m_renenderSprite = GetComponentInChildren<RenenderSprite>();
+        m_entity = entity;
         AddUpdateEvent();
-        m_collidersXY_parent = transform.Find("Colliders/colliders_XY");
-        m_collidersZ_parent = transform.Find("colliders_Z");//Z轴不需要跟随跳跃
+        GameObject colliders_XY = new GameObject("colliders_XY");
+        GameObject colliders_Z = new GameObject("colliders_Z");
+        colliders_XY.transform.SetParent(transform);
+        colliders_Z.transform.SetParent(transform);
+        m_collidersXY_parent = colliders_XY.transform;
+        m_collidersZ_parent = colliders_Z.transform;
+        m_collidersXY_parent.localScale = Vector3.one * 0.01f;
+        m_collidersZ_parent.localScale = Vector3.one * 0.01f;
     }
 
     private void Update()
     {
+        m_collidersXY_parent.position = m_entity.skinNode.position;
         RefreshColliderInfo();
     }
 
     private void AddUpdateEvent()
     {
-        m_spriteAnimator.UpdateAnimationEvent += InitCollider;
+        m_entity.UpdateAnimationEvent += InitCollider;
 
-        m_spriteAnimator.UpdateSpriteEvent += RefreshCollider;
+        m_entity.UpdateSpriteEvent += RefreshCollider;
     }
 
     private void InitCollider(AnimationData animationData)
@@ -109,7 +113,7 @@ public class UpdateCollider : MonoBehaviour
     {
         if (m_colliderInfo == null)
         {
-            m_colliderInfo = m_spriteAnimator.current_animationData.colliderInfo;
+            m_colliderInfo = m_entity.current_animationData.colliderInfo;
         }
 
         if (m_colliderInfo == null) return;
@@ -118,7 +122,7 @@ public class UpdateCollider : MonoBehaviour
 
         m_frameCollInfo = m_colliderInfo.frameCollInfos[currentFrame];
 
-        int isFilp = m_renenderSprite.GetCurFlip();
+        int isFilp = m_entity.curFlip;
         Vector3 collScale = new Vector3(isFilp, 1, 1);
 
         //for (int i = 0; i < m_collidersXY.Count; i++)
@@ -247,13 +251,13 @@ public class UpdateCollider : MonoBehaviour
     {
         if (m_colliderInfo == null) return;
 
-        int isFilp = m_renenderSprite.GetCurFlip();
+        int isFilp = m_entity.curFlip;
         for (int i = 0; i < m_frameCollInfo.single_colliderInfo.Count; i++)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(new Vector2(transform.position.x, m_spriteAnimator.transform.position.y) + m_collidersXY[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersXY[i].size * 0.01f);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(new Vector2(transform.position.x, transform.position.y) + m_collidersZ[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersZ[i].size * 0.01f);
+            Gizmos.DrawWireCube(new Vector2(transform.position.x, m_collidersXY_parent.position.y) + m_collidersXY[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersXY[i].size * 0.01f);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(new Vector2(transform.position.x, m_collidersZ_parent.position.y) + m_collidersZ[i].offset * 0.01f * new Vector2(isFilp, 1), m_collidersZ[i].size * 0.01f);
 
         }
     }

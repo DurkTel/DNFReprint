@@ -43,10 +43,10 @@ public partial class Entity
 
     }
 
-    public void Update()
+    public void Update(float deltaTime)
     {
-        TickSpriteAnimation();
-        ConditionRelation(m_lastFrame);
+        //刷新动画
+        UpdateAnimation(deltaTime);
     }
 
     public void LateUpdate()
@@ -105,6 +105,11 @@ public partial class Entity
         //添加属性模块
         EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
         m_motor.entityAttribute = attr;
+
+        //添加碰撞检测
+        GameObject coller = new GameObject("ColliderRoot");
+        coller.transform.SetParent(transform);
+        coller.AddComponent<UpdateCollider>().Init(this);
     }
 
     public enum EntityType
@@ -115,4 +120,5 @@ public partial class Entity
         Robot = 4,
         Npc = 5,
     }
+
 }

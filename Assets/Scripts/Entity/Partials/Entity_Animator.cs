@@ -31,7 +31,6 @@ public partial class Entity
 
     private List<RenenderSprite> m_renenderSprites = new List<RenenderSprite>();
 
-
     private EntityMotor m_motor;
 
     private AnimationData m_next_animationData;
@@ -48,16 +47,18 @@ public partial class Entity
 
     public InputReader inputReader;
 
+    public int curFlip { get { return m_renenderSprites[0].GetCurFlip(); } }
+
     /// <summary>
     /// 每帧刷新动画
     /// </summary>
-    public void TickSpriteAnimation()
+    public void TickSpriteAnimation(float deltaTime)
     {
         if (m_stop || current_animationData == null) return;
         List<AnimationFrameData> aniSprites = current_animationData.frameList;
         AnimationFrameData curSprite = aniSprites[m_currentFrame];
 
-        m_totalTime += Time.deltaTime;
+        m_totalTime += deltaTime;
         if (m_totalTime >= curSprite.interval / current_animationData.speed)
         {
             m_totalTime = 0;
@@ -100,6 +101,13 @@ public partial class Entity
             }
 
         }
+    }
+
+    private void UpdateAnimation(float deltaTime)
+    {
+        TickSpriteAnimation(deltaTime);
+
+        ConditionRelation(m_lastFrame);
     }
 
     private void SetSprites(int index)

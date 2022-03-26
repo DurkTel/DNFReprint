@@ -135,7 +135,7 @@ public class EntityMotor : BaseEvent, IDamage
         m_curSpeed = movePhase == 1 ? entityAttribute.MoveSpeed : entityAttribute.MoveSpeed * 2;
         m_rigidbody.velocity = dir * m_curSpeed * m_moveDirCoefficient;
 
-        int flip = m_renenderSprites[0].GetCurFlip();
+        int flip = entity.curFlip;
 
         if (Mathf.Abs(m_addMoveForce) > 0.1)
         {
@@ -246,5 +246,21 @@ public class EntityMotor : BaseEvent, IDamage
             speedDrop = airForce;
             m_isHitAir = true;
         }
+    }
+
+
+    //绘制着地点/跳跃点
+    public virtual void OnDrawGizmos()
+    {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 0.1f);
+
+        if (entity.skinNode.transform.localPosition.y > 0)
+        {
+            Gizmos.DrawWireSphere(entity.skinNode.transform.position, 0.1f);
+            Gizmos.DrawLine(transform.position, entity.skinNode.transform.parent.position);
+        }
+
     }
 }
