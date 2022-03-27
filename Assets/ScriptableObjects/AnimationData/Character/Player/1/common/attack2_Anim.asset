@@ -60,10 +60,28 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
+    - eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: weapon/beamswda_02
+      parameterFloat: 1
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
   - sprite: {fileID: 21300000, guid: 58724c01300cb1140a58a00bdb4944bd, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent: []
+    frameEvent:
+    - eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
   - sprite: {fileID: 21300000, guid: 9dfedc9f1073a4e43a6cacea16dc70fe, type: 3}
     interval: 0.1
     frameEventLoop: 0

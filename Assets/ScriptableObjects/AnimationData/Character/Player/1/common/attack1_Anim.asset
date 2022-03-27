@@ -25,7 +25,7 @@ MonoBehaviour:
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 0.3
+      parameterFloat: 0
       parameterInt: 0
       parameterBool: 1
       parameterOnEnable: 0

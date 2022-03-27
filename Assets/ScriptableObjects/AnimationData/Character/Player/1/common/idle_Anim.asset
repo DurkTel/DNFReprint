@@ -51,7 +51,7 @@ MonoBehaviour:
     frameEventLoop: 0
     frameEvent: []
   switchingConditions:
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 5}
     animationData: {fileID: 11400000, guid: c9d93ee2e98de1b4caa10beb82f5008b, type: 2}
     conditions:
     - conditionType: 0
@@ -90,46 +90,7 @@ MonoBehaviour:
         inputType: 0
         action: 5
       customCondition: 0
-  - frame: {x: 0, y: 0}
-    animationData: {fileID: 11400000, guid: be47b0b125c6a6e4894745f60edb2653, type: 2}
-    conditions:
-    - conditionType: 0
-      characterAnimation: {fileID: 11400000}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 0
-      customCondition: 0
-    - conditionType: 5
-      characterAnimation: {fileID: 0}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 4
-      customCondition: 0
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 5}
     animationData: {fileID: 11400000, guid: c6554024b18f6c148b878dc96317cb79, type: 2}
     conditions:
     - conditionType: 0
@@ -168,7 +129,7 @@ MonoBehaviour:
         inputType: 0
         action: 0
       customCondition: 2
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 5}
     animationData: {fileID: 11400000, guid: c1d1ce428c9ab4a4ea6b6212a1b84d27, type: 2}
     conditions:
     - conditionType: 0

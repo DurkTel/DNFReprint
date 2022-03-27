@@ -11,21 +11,17 @@ public class Launcher : MonoBehaviour
 
         print("游戏启动！进入加载流程");
 
+        OrbitCamera.Initialize();
+
         GMScenesManager.Initialize();
 
         GMEntityManager.Initialize();
 
-        ResourceRequest sence = AssetLoader.LoadAsync<GameObject>("Map/1");
-        sence.completed += (p) => { Instantiate(sence.asset as GameObject); };
-
-        GameObject mainCam = new GameObject("MainCam",typeof(Camera));
-        mainCam.AddComponent<CinemachineBrain>();
-        GameObject virtualCamObj = new GameObject("vir");
-        CinemachineVirtualCamera virtualCam = virtualCamObj.AddComponent<CinemachineVirtualCamera>();
+        //ResourceRequest sence = AssetLoader.LoadAsync<GameObject>("Map/1");
+        //sence.completed += (p) => { Instantiate(sence.asset as GameObject); };
 
 
         Dictionary<Avatar.AvatarPartType, Entity.ModelInfo> modelInfo = new Dictionary<Avatar.AvatarPartType, Entity.ModelInfo>();
-        Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer, CommonDefine.Career.Swordsman);
         modelInfo.Add(Avatar.AvatarPartType.body, ModelConfig.GetInfoByCode(10000));
         modelInfo.Add(Avatar.AvatarPartType.hair, ModelConfig.GetInfoByCode(10001));
         modelInfo.Add(Avatar.AvatarPartType.pants, ModelConfig.GetInfoByCode(10002));
@@ -36,11 +32,15 @@ public class Launcher : MonoBehaviour
         modelInfo.Add(Avatar.AvatarPartType.weapon, ModelConfig.GetInfoByCode(10007));
         modelInfo.Add(Avatar.AvatarPartType.weaponEx, ModelConfig.GetInfoByCode(10008));
 
+        Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer, CommonDefine.Career.Swordsman);
         entity.models = modelInfo;
         entity.Skin_SetVisible(true);
 
-        virtualCam.Follow = entity.transform;
-        virtualCam.LookAt = entity.transform;
+
+        Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonDefine.Career.Swordsman);
+        entity2.models = modelInfo;
+        //entity2.Skin_SetVisible(true);
+
     }
 
 

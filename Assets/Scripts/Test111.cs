@@ -10,7 +10,7 @@ public class Test111 : MonoBehaviour
     Dictionary<Avatar.AvatarPartType, Entity.ModelInfo> modelInfo = new Dictionary<Avatar.AvatarPartType, Entity.ModelInfo>();
     void Start()
     {
-
+        //GetComponent<Rigidbody>().AddForce(Vector3.forward,ForceMode.Impulse);
         //Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer,CommonDefine.Career.Swordsman);
         //modelInfo.Add(Avatar.AvatarPartType.body, ModelConfig.GetInfoByCode(10000));
         //modelInfo.Add(Avatar.AvatarPartType.hair, ModelConfig.GetInfoByCode(10001));
@@ -28,11 +28,21 @@ public class Test111 : MonoBehaviour
 
         //EntitySkill entitySkill = SkillConfig.GetInfoByCode(10000);
 
+
+        //StartCoroutine(TestEnum());
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+
+    private IEnumerator TestEnum()
+    {
+        print(11111);
+        yield return new WaitUntil(() => { return false; });
+        print(22222);
     }
 }

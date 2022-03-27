@@ -56,10 +56,28 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
+    - eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: sm_atk_03
+      parameterFloat: 1
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
   - sprite: {fileID: 21300000, guid: c8bfb60b152a6624ba0a0096b1284e32, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent: []
+    frameEvent:
+    - eventType: 4
+      paramType: 3
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
   - sprite: {fileID: 21300000, guid: 0f3cc6507f1dbef4c8e6ea521890cfa9, type: 3}
     interval: 0.1
     frameEventLoop: 0

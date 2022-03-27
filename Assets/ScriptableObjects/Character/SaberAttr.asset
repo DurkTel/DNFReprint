@@ -17,6 +17,6 @@ MonoBehaviour:
   Aggressivity: 0
   Defensive: 0
   MoveSpeed: 1.5
-  JumpPower: 1.2
+  JumpHeight: 0.8
   HitRecover: 1000
   AirBorneLimit: 20

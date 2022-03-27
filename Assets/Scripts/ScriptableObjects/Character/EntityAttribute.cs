@@ -15,7 +15,7 @@ public class EntityAttribute : ScriptableObject
 
     public float MoveSpeed;
 
-    public float JumpPower;
+    public float JumpHeight;
 
     public float HitRecover;
 

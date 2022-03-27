@@ -50,7 +50,7 @@ MonoBehaviour:
     frameEventLoop: 0
     frameEvent: []
   switchingConditions:
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 7}
     animationData: {fileID: 11400000, guid: c1d1ce428c9ab4a4ea6b6212a1b84d27, type: 2}
     conditions:
     - conditionType: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
         inputType: 0
         action: 0
       customCondition: 3
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 7}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
     conditions:
     - conditionType: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
         inputType: 0
         action: 4
       customCondition: 0
-  - frame: {x: 0, y: 0}
+  - frame: {x: 0, y: 7}
     animationData: {fileID: 11400000, guid: 4fa3616d6d21a2b40bfefc8190d49971, type: 2}
     conditions:
     - conditionType: 0
