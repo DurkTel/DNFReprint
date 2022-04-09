@@ -8,8 +8,10 @@ using UnityEngine.Events;
 
 public partial class Entity
 {
-    [HideInInspector]
-    public bool m_stop;
+    /// <summary>
+    /// 是否暂停动画
+    /// </summary>
+    private bool m_pause;
     /// <summary>
     /// 每帧使用时间
     /// </summary>
@@ -30,8 +32,6 @@ public partial class Entity
     private bool[] m_isFirstList;
 
     private List<RenenderSprite> m_renenderSprites = new List<RenenderSprite>();
-
-    //private EntityMotor m_motor;
 
     private AnimationData m_next_animationData;
 
@@ -54,7 +54,7 @@ public partial class Entity
     /// </summary>
     public void TickSpriteAnimation(float deltaTime)
     {
-        if (m_stop || current_animationData == null) return;
+        if (m_pause || current_animationData == null) return;
         List<AnimationFrameData> aniSprites = current_animationData.frameList;
         AnimationFrameData curSprite = aniSprites[m_currentFrame];
 
@@ -121,6 +121,11 @@ public partial class Entity
         {
             m_renenderSprites[i].SetSprite(index);
         }
+    }
+
+    public void PauseAni(bool pause)
+    {
+        m_pause = pause;
     }
 
 

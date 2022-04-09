@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GMCullingGroup : MonoBehaviour
+public class GMCullingGroup : MonoBehaviour, IDisposable
 {
     public interface ICulling
     {
@@ -63,28 +64,33 @@ public class GMCullingGroup : MonoBehaviour
     {
         cullingGroup = new CullingGroup();
         cullingGroup.enabled = true;
-        cullingGroup.onStateChanged += OnStateChanged;
+        cullingGroup.onStateChanged += StateChanged;
 
         m_cullingObjectDic = new Dictionary<ICulling, int>();
 
         //按最大数值初始化
         m_boundingSpheres = new BoundingSphere[m_capacitySize];
-        Vector3 pos = new Vector3(0, -999999, 0);
+        Vector3 pos = new Vector3(0, -99999, 0);
         for (int i = 0; i < m_boundingSpheres.Length; i++)
             m_boundingSpheres[i].position = pos; //放在一边备用
-
         m_ICullings = new ICulling[m_capacitySize];
-        cullingGroup.SetBoundingDistances(m_distances);
-        cullingGroup.SetBoundingSphereCount(m_capacitySize);
         cullingGroup.SetBoundingSpheres(m_boundingSpheres);
+        cullingGroup.SetBoundingSphereCount(m_capacitySize);
+        cullingGroup.SetBoundingDistances(m_distances);
         cullingGroup.targetCamera = m_targetCamera;
         if (m_targetCamera && !m_referenceTransform)
             m_referenceTransform = m_targetCamera.transform;
         cullingGroup.SetDistanceReferencePoint(m_referenceTransform);
     }
 
+    private void Update()
+    {
+        //测试代码
+        cullingGroup.SetDistanceReferencePoint(m_referenceTransform);
+    }
 
-    private void OnStateChanged(CullingGroupEvent sphere)
+
+    private void StateChanged(CullingGroupEvent sphere)
     {
         if (sphere.isVisible && sphere.hasBecomeVisible)
         {
@@ -96,7 +102,7 @@ public class GMCullingGroup : MonoBehaviour
             }
         }
         else if (sphere.hasBecomeInvisible)
-        { 
+        {
             ICulling culling = m_ICullings[sphere.index];
             if (culling != null)
             {
@@ -118,33 +124,24 @@ public class GMCullingGroup : MonoBehaviour
 
     public void AddCullingObject(ICulling cullingObject)
     {
-        int saveIndex = 0;
-        if (m_cullingIndex >= m_boundingSpheres.Length - 1)
-        {
-            m_cullingIndex = 0;
-            saveIndex = m_cullingIndex;
-        }
-        else
-            saveIndex = m_cullingIndex + 1;
-
         if (m_cullingObjectDic.ContainsKey(cullingObject))
         {
             Debug.LogErrorFormat("剔除组以添加过该物体 {0}", cullingObject);
             return;
         }
 
-        if (m_ICullings[saveIndex] != null)
+        if (m_ICullings[m_cullingIndex] != null)
         {
             for (int i = 0; i < m_ICullings.Length; i++)
             {
                 if (m_ICullings[i] == null)
                 {
-                    saveIndex = i;
+                    m_cullingIndex = i;
                     break;
                 }
             }
 
-            if (m_ICullings[saveIndex] != null)
+            if (m_ICullings[m_cullingIndex] != null)
             {
                 Debug.LogErrorFormat("剔除组空间不足 {0}", m_cullingIndex);
                 return;
@@ -157,36 +154,39 @@ public class GMCullingGroup : MonoBehaviour
 
     public void RemoveCullingObject(ICulling cullingObject)
     {
-        int index = -1;
-        if (m_cullingObjectDic.TryGetValue(cullingObject, out index))
+        int index = GetCullingObjectIndex(cullingObject);
+        if (index < 0 || index > m_boundingSpheres.Length)
         {
-            m_boundingSpheres[index].position = new Vector3(0, -999999, 0);
-            m_ICullings[index] = null;
-            m_cullingObjectDic.Remove(cullingObject);
-            cullingObject.cullingGroup = null;
+            return;
         }
+        m_boundingSpheres[index].position = new Vector3(0, -999999, 0);
+        m_ICullings[index] = null;
+        m_cullingObjectDic.Remove(cullingObject);
+        cullingObject.cullingGroup = null;
     }
 
     public void UpdateBoundingSphere(ICulling cullingObject, Vector3 pos, float radius)
     {
-        int index = -1;
-        if (m_cullingObjectDic.TryGetValue(cullingObject, out index))
+        int index = GetCullingObjectIndex(cullingObject);
+        if (index < 0 || index > m_boundingSpheres.Length)
         {
-            m_boundingSpheres[index].position = pos;
-            m_boundingSpheres[index].radius = radius;
+            Debug.LogErrorFormat("尝试刷新一个超出索引的剔除{0}", index);
+            return;
         }
-        else
-            Debug.LogErrorFormat("尝试刷新一个超出索引的剔除{0}",index);
+        m_boundingSpheres[index].position = pos;
+        m_boundingSpheres[index].radius = radius;
 
     }
 
     public int GetDistance(ICulling cullingObject)
     {
-        int index = -1;
-        if (m_cullingObjectDic.TryGetValue(cullingObject, out index))
-            return cullingGroup.GetDistance(index);
+        int index = GetCullingObjectIndex(cullingObject);
+        if (index < 0 || index > m_boundingSpheres.Length)
+        {
+            return -1;
+        }
+        return cullingGroup.GetDistance(index);
 
-        return -1;
     }
 
     public bool IsVisible(ICulling cullingObject)
@@ -197,4 +197,40 @@ public class GMCullingGroup : MonoBehaviour
 
         return false;
     }
+
+    private int GetCullingObjectIndex(ICulling cullingObject)
+    {
+        int index = -1;
+        m_cullingObjectDic.TryGetValue(cullingObject, out index);
+        return index;
+    }
+
+    public void Dispose()
+    {
+        if (cullingGroup != null)
+        {
+            cullingGroup.onStateChanged -= StateChanged;
+            cullingGroup.Dispose();
+            cullingGroup = null;
+        }
+
+    }
+
+    private void OnDestroy()
+    {
+        Dispose();
+    }
+
+    #region 辅助线
+
+    private void OnDrawGizmos()
+    {
+        foreach (var item in m_boundingSpheres)
+        {
+            if (item.radius != 0f)
+                Gizmos.DrawWireSphere(item.position, item.radius);
+        }
+    }
+
+    #endregion
 }

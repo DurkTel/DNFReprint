@@ -189,8 +189,7 @@ public partial class Entity
 
     public void Skin_SetAvatarPosition(Vector3 position)
     {
-        if (mainAvatar == null) return;
-        mainAvatar.transform.localPosition = position;
+        transform.localPosition = position;
     }
 
     public void Skin_SetVisible(bool visible)
@@ -204,5 +203,18 @@ public partial class Entity
             skinNode.localPosition = new Vector3(0, 0, 0);
         else
             skinNode.position = new Vector3(0, -99999, 0);
+
+        PauseAni(!visible);
+    }
+
+    private void ReleaseSkin()
+    {
+        skinInitialized = false;
+        //models.Clear();
+        m_allBones = null;
+        if (mainAvatar) mainAvatar.Clear();
+        Object.Destroy(rootBone.gameObject);//先销毁 后面做成对象池回收
+        current_animationData = null;
+        m_renenderSprites.Clear();
     }
 }

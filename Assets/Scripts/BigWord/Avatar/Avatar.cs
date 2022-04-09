@@ -111,5 +111,19 @@ public partial class Avatar : MonoBehaviour
         return avatarPartDic != null && avatarPartDic.ContainsKey(partType) ? avatarPartDic[partType] : null;
     }
 
+    public void Clear()
+    {
+        //停止异步加载
+        StopAllCoroutines();
+        loadCoroutine = null;
+        if (m_waitLoadPartList != null)
+            m_waitLoadPartList.Clear();
+
+        foreach (AvatarPart part in avatarPartDic.Values)
+        {
+            part.Clear();
+        }
+    }
+
 
 }

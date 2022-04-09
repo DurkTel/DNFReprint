@@ -11,6 +11,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     private static Transform m_actives;
 
+    private static Transform m_pool;
+
     private static GMCullingGroup m_entityCullingGroup;
 
     private Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
@@ -24,9 +26,11 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         m_transform.gameObject.AddComponent<GMEntityManager>();
         m_actives = new GameObject("GMEntity_Actives").transform;
         m_actives.SetParent(m_transform);
+        m_pool = new GameObject("GMEntity_Pool").transform;
+        m_pool.SetParent(m_transform);
 
         m_entityCullingGroup = m_transform.gameObject.AddComponent<GMCullingGroup>();
-        m_entityCullingGroup.targetCamera = Camera.main;
+        m_entityCullingGroup.targetCamera = OrbitCamera.regularCamera;
 
         DontDestroyOnLoad(m_transform.gameObject);
     }
@@ -73,8 +77,6 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         }
     }
 
-
-
     public Entity CreateEntity(Entity.EntityType etype, CommonDefine.Career career)
     {
         if (etype == Entity.EntityType.LocalPlayer && localPlayer != null)
@@ -82,15 +84,52 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             Debug.LogError("正在尝试创建多个LocalPlayer！！！");
             return null;
         }
-        Entity entity = new Entity();
-        GameObject go = new GameObject();
+        Entity entity = Pool<Entity>.Get();
+        GameObject go = Pool<GameObject>.Get();
         int eid = GUID;
         entity.Init(eid, etype, career, go);
         entity.transform.SetParent(m_actives);
+        entity.transform.localPosition = Vector3.zero;
         m_entityMap.Add(eid, entity);
-        m_entityCullingGroup.AddCullingObject(entity);
         if (etype == Entity.EntityType.LocalPlayer)
             localPlayer = entity;
+        else
+            m_entityCullingGroup.AddCullingObject(entity);
         return entity;
+    }
+
+    public bool ReleaseEntity(int entityId)
+    {
+
+        if (m_entityMap.ContainsKey(entityId))
+        {
+            Entity entity = m_entityMap[entityId];
+            m_entityMap.Remove(entityId);
+            if (m_waitCreateList.Contains(entity))
+                m_waitCreateList.Remove(entity);
+
+            m_entityCullingGroup.RemoveCullingObject(entity);
+            entity.transform.SetParent(m_pool);
+            entity.transform.localPosition = new Vector3(0, -99999, 0);
+            entity.Release();
+
+            Pool<Entity>.Release(entity);
+            Pool<GameObject>.Release(entity.gameObject);
+
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public Entity GetEntityById(int entityId)
+    {
+        if (m_entityMap.ContainsKey(entityId))
+        {
+            return m_entityMap[entityId];
+        }
+
+        return null;
     }
 }

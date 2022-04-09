@@ -10,11 +10,10 @@ public partial class Entity : GMCullingGroup.ICulling
     public GMCullingGroup cullingGroup { get; set; }
     public bool cullingVisible { get; private set; }
 
-
     private void CullGroupInit()
     {
         cullingGroupEnabled = true;
-        cullingRadius = 1f;
+        cullingRadius = 0.5f;
         if (cullingGroup != null)
         {
             cullingLod = cullingGroup.GetDistance(this);
@@ -24,7 +23,7 @@ public partial class Entity : GMCullingGroup.ICulling
 
     public void OnGMCullingDistance(int lod, int lodMax)
     {
-        
+
     }
 
     public void OnGMCullingVisible(bool visible)
@@ -43,4 +42,12 @@ public partial class Entity : GMCullingGroup.ICulling
         if (cullingGroup)
             cullingGroup.UpdateBoundingSphere(this, transform.position, cullingRadius);
     }
+
+    private void ReleaseCullGroup()
+    {
+        cullingGroupEnabled = false;
+        cullingVisible = false;
+        cullingRadius = 0;
+    }
+
 }

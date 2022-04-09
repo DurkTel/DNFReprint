@@ -14,7 +14,7 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
     /// <summary>
     /// 与焦点的距离
     /// </summary>
-    [SerializeField, Range(1f, 20f)]
+    [SerializeField, Range(0.1f, 20f)]
     private float distance = 5f;
     /// <summary>
     /// 焦点的缓动半径
@@ -38,7 +38,7 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
     /// <summary>
     /// 规则相机
     /// </summary>
-    private static Camera regularCamera;
+    public static Camera regularCamera;
 
     private Vector3 CameraHalfExtends
     {

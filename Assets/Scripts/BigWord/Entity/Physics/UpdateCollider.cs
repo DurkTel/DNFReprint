@@ -52,6 +52,7 @@ public class UpdateCollider : MonoBehaviour
 
     private void Update()
     {
+        if (colliderInfo == null) return;
         m_collidersXY_parent.position = m_entity.skinNode.position;
         RefreshColliderInfo();
     }
@@ -61,6 +62,13 @@ public class UpdateCollider : MonoBehaviour
         m_entity.updateAnimationEvent += InitCollider;
 
         m_entity.updateSpriteEvent += RefreshCollider;
+    }
+
+    private void RemoveUpdateEvent()
+    {
+        m_entity.updateAnimationEvent -= InitCollider;
+
+        m_entity.updateSpriteEvent -= RefreshCollider;
     }
 
     private void InitCollider(AnimationData animationData)
@@ -164,7 +172,7 @@ public class UpdateCollider : MonoBehaviour
         foreach (var coll in m_collIderDic)
         {
             OtherInfo info = coll.Value;
-            if (info.XY && info.Z)
+            if (info.XY && info.Z && info.collider2d.gameObject != null)
             {
                 //对方的碰撞层级
                 switch ((ColliderLayer)info.collider2d.gameObject.layer - 9)
@@ -262,7 +270,13 @@ public class UpdateCollider : MonoBehaviour
         }
     }
 
-    
+    public void Clear()
+    {
+        RemoveUpdateEvent();
+        m_colliderInfo = null;
+        m_animationData = null;
+        Destroy(gameObject);
+    }
 
     
 }

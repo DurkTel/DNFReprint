@@ -90,4 +90,22 @@ public class AvatarPart
 
         return renender.InitSpriteAsync(assetName, fashionCode, OnPartLoadComplete);
     }
+
+    private void ReleaseModel()
+    {
+        if (boneTransform)
+        {
+            //先销毁 后面做成对象池回收
+            Object.Destroy(boneTransform.gameObject);
+        }
+    }
+
+    public void Clear()
+    {
+        m_assetName = null;
+        m_fashionCode = 0;
+        partNode = null;
+        renender = null;
+        ReleaseModel();
+    }
 }

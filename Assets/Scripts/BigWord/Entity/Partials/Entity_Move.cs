@@ -185,4 +185,19 @@ public partial class Entity
         bool attackAnimLimit = !IsInThisAni(animationConfig.AttackAnim) && !IsInThisAni(animationConfig.NotMoveAnim);
         return attackAnimLimit;
     }
+
+    private void ReleaseMove()
+    {
+        m_moveMode = MoveMode.NONE;
+        m_curSpeed = 0f;
+        m_moveDirCoefficient = 1f;
+        m_addMoveForce = 0f;
+        m_isHitAir = false;
+        m_inputEnabled = false;
+        m_curMoveDir = m_velocity = Vector2.zero;
+        movePhase = 0;
+        entityAttribute = null;
+        m_jumpState = JumpState.NONE;
+        m_jumpSpeed = 0;
+    }
 }

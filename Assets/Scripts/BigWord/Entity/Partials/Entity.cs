@@ -48,6 +48,8 @@ public partial class Entity : BaseEvent
 
     public Transform transform;
 
+    public UpdateCollider updateCollider;
+
     public void Init(int uid, EntityType type, CommonDefine.Career career , GameObject go)
     {
         entityId = uid;
@@ -86,6 +88,17 @@ public partial class Entity : BaseEvent
     {
         if (!skinInitialized)
             Skin_CreateAvatar();
+    }
+
+    public void Release()
+    {
+        entityId = -1;
+        m_inputReader = null;
+        skinInitFrameCount = -1;
+        if (updateCollider != null) updateCollider.Clear();
+        ReleaseSkin();
+        ReleaseCullGroup();
+        ReleaseMove();
     }
 
     private void AssembleComponent()
@@ -133,7 +146,8 @@ public partial class Entity : BaseEvent
         //添加碰撞检测
         GameObject coller = new GameObject("ColliderRoot");
         coller.transform.SetParent(transform);
-        coller.AddComponent<UpdateCollider>().Init(this);
+        updateCollider = coller.AddComponent<UpdateCollider>();
+        updateCollider.Init(this);
 
         inputReader.EnableGameplayInput();
         m_inputEnabled = true;
@@ -143,7 +157,7 @@ public partial class Entity : BaseEvent
 
     private void InitOtherCharacter()
     {
-        gameObject.name = "oother_Player";
+        gameObject.name = "other_Player";
 
         //添加动画机
         foreach (AvatarPart part in mainAvatar.avatarPartDic.Values)
@@ -162,7 +176,8 @@ public partial class Entity : BaseEvent
         //添加碰撞检测
         GameObject coller = new GameObject("ColliderRoot");
         coller.transform.SetParent(transform);
-        coller.AddComponent<UpdateCollider>().Init(this);
+        updateCollider = coller.AddComponent<UpdateCollider>();
+        updateCollider.Init(this);
 
         DOSpriteAnimation(animationConfig.idle_Anim);
     }
