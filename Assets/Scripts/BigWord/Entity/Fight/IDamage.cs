@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public interface IDamage
-{
-    void GetDamage(OtherInfo info);
+//public interface IDamage
+//{
+//    void GetDamage(OtherInfo info);
 
-    void GetAirBorne(EntitySkill entitySkill,float air);
-}
+//    void GetAirBorne(EntitySkill entitySkill,float air);
+//}

@@ -15,6 +15,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     private static GMCullingGroup m_entityCullingGroup;
 
+    private static GMUpdateCollider m_entityUpdateCollider;
+
     private Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
 
     private List<Entity> m_waitCreateList = new List<Entity>();
@@ -32,6 +34,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         m_entityCullingGroup = m_transform.gameObject.AddComponent<GMCullingGroup>();
         m_entityCullingGroup.targetCamera = OrbitCamera.regularCamera;
 
+        m_entityUpdateCollider = m_transform.gameObject.AddComponent<GMUpdateCollider>();
+
         DontDestroyOnLoad(m_transform.gameObject);
     }
 
@@ -44,6 +48,7 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             if (entity.mainAvatar != null && entity.mainAvatar.loadCompleted)
                 entity.FixedUpdate(fixedDeltaTime);
         }
+
     }
 
     private void Update()
@@ -75,6 +80,14 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             entity.WaitCreate();
             m_waitCreateList.RemoveAt(0);
         }
+
+
+    }
+
+    private void LateUpdate()
+    {
+        //OnTriggerXXX的生命周期在FixedUpdate之后 造成下一帧才检测到碰撞
+        m_entityUpdateCollider.UpdateColliderContent();
     }
 
     public Entity CreateEntity(Entity.EntityType etype, CommonDefine.Career career)
@@ -95,6 +108,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             localPlayer = entity;
         else
             m_entityCullingGroup.AddCullingObject(entity);
+
+        m_entityUpdateCollider.AddColliderObject(entity);
         return entity;
     }
 
@@ -109,6 +124,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
                 m_waitCreateList.Remove(entity);
 
             m_entityCullingGroup.RemoveCullingObject(entity);
+            m_entityUpdateCollider.RemoveColliderObject(entity);
+
             entity.transform.SetParent(m_pool);
             entity.transform.localPosition = new Vector3(0, -99999, 0);
             entity.Release();

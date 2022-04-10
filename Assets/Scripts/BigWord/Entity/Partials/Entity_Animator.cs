@@ -47,7 +47,7 @@ public partial class Entity
 
     public UnityAction animationFinish;
 
-    public int curFlip { get { return m_renenderSprites[0].GetCurFlip(); } }
+    public int curFlip { get { return m_renenderSprites.Count > 0 ? m_renenderSprites[0].GetCurFlip() : 0; } }
 
     /// <summary>
     /// 每帧刷新动画

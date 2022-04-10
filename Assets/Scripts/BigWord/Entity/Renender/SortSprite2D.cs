@@ -37,8 +37,10 @@ public class SortSprite2D : MonoBehaviour
 
     private void RefreshFloor()
     {
-        m_root.position = new Vector3(m_root.position.x, m_root.position.y, (m_root.position.y - m_spriteLowerBound + m_floorHeight * m_tan30));
-
+        if (m_root != null)
+        {
+            m_root.position = new Vector3(m_root.position.x, m_root.position.y, (m_root.position.y - m_spriteLowerBound + m_floorHeight * m_tan30));
+        }
     }
 
     private void OnDrawGizmos()

@@ -48,7 +48,7 @@ public partial class Entity : BaseEvent
 
     public Transform transform;
 
-    public UpdateCollider updateCollider;
+    //public UpdateCollider updateCollider;
 
     public void Init(int uid, EntityType type, CommonDefine.Career career , GameObject go)
     {
@@ -62,6 +62,7 @@ public partial class Entity : BaseEvent
         MoveInit();
         JumpInit();
         CullGroupInit();
+        ColliderInit();
     }
 
     public void FixedUpdate(float deltaTime)
@@ -95,15 +96,15 @@ public partial class Entity : BaseEvent
         entityId = -1;
         m_inputReader = null;
         skinInitFrameCount = -1;
-        if (updateCollider != null) updateCollider.Clear();
+        //if (updateCollider != null) updateCollider.Clear();
         ReleaseSkin();
         ReleaseCullGroup();
         ReleaseMove();
+        ReleaseCollider();
     }
 
     private void AssembleComponent()
     {
-        skinNode.gameObject.AddComponent<SortSprite2D>();
         switch (entityType)
         {
             case EntityType.LocalPlayer:
@@ -121,6 +122,8 @@ public partial class Entity : BaseEvent
             default:
                 break;
         }
+
+        skinNode.gameObject.AddComponent<SortSprite2D>();
     }
 
     private void InitLocalCharacter()
@@ -144,10 +147,10 @@ public partial class Entity : BaseEvent
         entityAttribute = attr;
 
         //添加碰撞检测
-        GameObject coller = new GameObject("ColliderRoot");
-        coller.transform.SetParent(transform);
-        updateCollider = coller.AddComponent<UpdateCollider>();
-        updateCollider.Init(this);
+        //GameObject coller = new GameObject("ColliderRoot");
+        //coller.transform.SetParent(transform);
+        //updateCollider = coller.AddComponent<UpdateCollider>();
+        //updateCollider.Init(this);
 
         inputReader.EnableGameplayInput();
         m_inputEnabled = true;
@@ -174,10 +177,10 @@ public partial class Entity : BaseEvent
         entityAttribute = attr;
 
         //添加碰撞检测
-        GameObject coller = new GameObject("ColliderRoot");
-        coller.transform.SetParent(transform);
-        updateCollider = coller.AddComponent<UpdateCollider>();
-        updateCollider.Init(this);
+        //GameObject coller = new GameObject("ColliderRoot");
+        //coller.transform.SetParent(transform);
+        //updateCollider = coller.AddComponent<UpdateCollider>();
+        //updateCollider.Init(this);
 
         DOSpriteAnimation(animationConfig.idle_Anim);
     }

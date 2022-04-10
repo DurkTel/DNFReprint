@@ -71,6 +71,8 @@ public partial class Entity
             skinNode = new GameObject("Skins").transform;
             skinNode.SetParent(transform);
         }
+        m_collidersXY_parent.SetParent(skinNode);
+        m_collidersZ_parent.SetParent(skinNode);
 
         if (boxCollider == null)
         {
@@ -83,6 +85,7 @@ public partial class Entity
         {
             rigidbody = gameObject.AddComponent<Rigidbody2D>();
             rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
             rigidbody.gravityScale = 0;
             rigidbody.drag = 10f;
         }
@@ -205,12 +208,13 @@ public partial class Entity
             skinNode.position = new Vector3(0, -99999, 0);
 
         PauseAni(!visible);
+        updateColliderEnabled = visible;
+
     }
 
     private void ReleaseSkin()
     {
         skinInitialized = false;
-        //models.Clear();
         m_allBones = null;
         if (mainAvatar) mainAvatar.Clear();
         Object.Destroy(rootBone.gameObject);//先销毁 后面做成对象池回收

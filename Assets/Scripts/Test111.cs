@@ -38,11 +38,8 @@ public class Test111 : MonoBehaviour
 
     }
 
-
-    private IEnumerator TestEnum()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        print(11111);
-        yield return new WaitUntil(() => { return false; });
-        print(22222);
+        print(collision.name);
     }
 }
