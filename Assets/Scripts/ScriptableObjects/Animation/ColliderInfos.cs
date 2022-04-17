@@ -32,6 +32,7 @@ public struct ColliderInfo
     public Vector2 offset;
 
     public Vector2 size;
+
 }
 
 /// <summary>

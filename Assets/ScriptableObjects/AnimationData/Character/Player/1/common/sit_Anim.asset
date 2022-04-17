@@ -18,32 +18,11 @@ MonoBehaviour:
   speed: 1
   frameList:
   - sprite: {fileID: 21300000, guid: ec2edd8b60a414343a6c18feb05cede9, type: 3}
-    interval: 0.2
+    interval: 0.1
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: ec2edd8b60a414343a6c18feb05cede9, type: 3}
-    interval: 0.3
+    interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  switchingConditions:
-  - frame: {x: 1, y: 1}
-    animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
-    conditions:
-    - conditionType: 0
-      characterAnimation: {fileID: 11400000}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 0
-      customCondition: 0
+  switchingConditions: []

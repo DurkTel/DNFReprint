@@ -17,7 +17,7 @@ public partial class Entity : BaseEvent
     /// <summary>
     /// 职业类型
     /// </summary>
-    public CommonDefine.Career careerType { get; private set; }
+    public CommonUtility.Career careerType { get; private set; }
     /// <summary>
     /// 皮肤是否已经初始化
     /// </summary>
@@ -48,9 +48,9 @@ public partial class Entity : BaseEvent
 
     public Transform transform;
 
-    //public UpdateCollider updateCollider;
+    private DamageData m_hurtSource;
 
-    public void Init(int uid, EntityType type, CommonDefine.Career career , GameObject go)
+    public void Init(int uid, EntityType type, CommonUtility.Career career , GameObject go)
     {
         entityId = uid;
         entityType = type;
@@ -67,15 +67,15 @@ public partial class Entity : BaseEvent
 
     public void FixedUpdate(float deltaTime)
     {
+        //刷新动画
+        UpdateAnimation(deltaTime);
         //刷新移动
         UpdateMove(deltaTime);
     }
 
     public void Update(float deltaTime)
     {
-        //刷新动画
-        UpdateAnimation(deltaTime);
-
+        
         //刷新剔除
         CullGroupUpdate(deltaTime);
     }
@@ -89,6 +89,12 @@ public partial class Entity : BaseEvent
     {
         if (!skinInitialized)
             Skin_CreateAvatar();
+    }
+
+    public void GetHurt(DamageData damage)
+    {
+        m_hurtSource = damage;
+        m_moveMode = MoveMode.HURT;
     }
 
     public void Release()

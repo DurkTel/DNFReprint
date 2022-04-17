@@ -180,12 +180,12 @@ public partial class Entity
     /// </summary>
     /// <param name="animationData">要切换的技能动画</param>
     /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
-    public void ForceDOSkillAnimation(string animationDataName, CommonDefine.Career career, bool onlyOnCommon = true)
+    public void ForceDOSkillAnimation(string animationDataName, CommonUtility.Career career, bool onlyOnCommon = true)
     {
         if (!onlyOnCommon || !IsInThisAni(animationConfig.ForceAnim))
             return;
 
-        string path = string.Format("{0}Character/Player/{1}/skill/{2}.asset", CommonDefine.AnimationDataAssetPath ,(int)career, animationDataName);
+        string path = string.Format("{0}Character/Player/{1}/skill/{2}.asset", CommonUtility.AnimationDataAssetPath ,(int)career, animationDataName);
         AnimationData animationData = AssetDatabase.LoadAssetAtPath(path, typeof(AnimationData)) as AnimationData;
         if (!animationData) return;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntitySkill
+public class EntitySkill : IDamage
 {
     public enum CharacterSkillType
     {
@@ -51,7 +51,7 @@ public class EntitySkill
     /// 每段的伤害
     /// </summary>
     public float Damage;
-    
+
     /// <summary>
     /// 冷却时间
     /// </summary>
@@ -92,4 +92,11 @@ public class EntitySkill
     /// </summary>
     public string AnimationDataName;
 
+    /// <summary>
+    /// 技能归属对象 
+    /// </summary>
+    private GameObject m_hurtObj;
+    public float hurt { get => Damage; }
+    public GameObject hurtObj { get => m_hurtObj; set => m_hurtObj = value; }
+    public Transform hurtTransform { get => m_hurtObj.transform; }
 }

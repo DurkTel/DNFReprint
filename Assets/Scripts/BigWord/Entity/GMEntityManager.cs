@@ -90,7 +90,7 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         m_entityUpdateCollider.UpdateColliderContent();
     }
 
-    public Entity CreateEntity(Entity.EntityType etype, CommonDefine.Career career)
+    public Entity CreateEntity(Entity.EntityType etype, CommonUtility.Career career)
     {
         if (etype == Entity.EntityType.LocalPlayer && localPlayer != null)
         {

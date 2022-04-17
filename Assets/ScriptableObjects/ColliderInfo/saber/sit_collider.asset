@@ -13,21 +13,9 @@ MonoBehaviour:
   m_Name: sit_collider
   m_EditorClassIdentifier: 
   frameCollInfos:
-  - single_colliderInfo:
-    - layer: 3
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 20
-      offset: {x: -1.9, y: 39.1}
-      size: {x: 57.06, y: 67.6}
+  - single_colliderInfo: []
     index: 0
-  - single_colliderInfo:
-    - layer: 3
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 20
-      offset: {x: -1.9, y: 39.1}
-      size: {x: 57.06, y: 67.6}
+  - single_colliderInfo: []
     index: 0
   frameCount: 2
-  entitySkill: {fileID: 0}
+  skillCode: 0

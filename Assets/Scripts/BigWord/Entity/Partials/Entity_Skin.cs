@@ -72,7 +72,7 @@ public partial class Entity
             skinNode.SetParent(transform);
         }
         m_collidersXY_parent.SetParent(skinNode);
-        m_collidersZ_parent.SetParent(skinNode);
+        m_collidersZ_parent.SetParent(transform);
 
         if (boxCollider == null)
         {
@@ -88,6 +88,7 @@ public partial class Entity
             rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
             rigidbody.gravityScale = 0;
             rigidbody.drag = 10f;
+            rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
 
         if (mainAvatar == null)

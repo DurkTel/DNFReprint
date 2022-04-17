@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//public interface IDamage
-//{
-//    void GetDamage(OtherInfo info);
-
-//    void GetAirBorne(EntitySkill entitySkill,float air);
-//}
+public interface IDamage
+{
+    float hurt { get; }
+    GameObject hurtObj { get; set; }
+    Transform hurtTransform { get; }
+}

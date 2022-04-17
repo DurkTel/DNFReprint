@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GMUpdateCollider : MonoBehaviour
 {
+    /// <summary>
+    /// 碰撞轴向 XY轴 或 Z轴
+    /// </summary>
     public enum Axial
     {
         AxialXY = 0,
@@ -13,17 +16,40 @@ public class GMUpdateCollider : MonoBehaviour
     }
     public interface IColliderInfo
     {
+        /// <summary>
+        /// 启动碰撞检测
+        /// </summary>
         bool updateColliderEnabled { get; set; }
+        /// <summary>
+        /// 碰撞管理实例
+        /// </summary>
         GMUpdateCollider colliderUpdate { get; set; }
+        /// <summary>
+        /// 继承接口的实体自身的碰撞信息
+        /// </summary>
         ColliderInfos own_colliderInfo { get; set; }
+        /// <summary>
+        /// Z轴所有的碰撞信息
+        /// </summary>
         List<ColliderTrigger> triggerZ { get; }
+        /// <summary>
+        /// XY轴所有的碰撞信息
+        /// </summary>
         List<ColliderTrigger> triggerXY { get; }
-        List<ColliderInfos> contact_colliderInfos { get; }
-        void OnGMUpdateColliderStayOut(bool stayOut, Entity entity);
+        /// <summary>
+        /// XYZ轴碰撞或离开时的回调
+        /// </summary>
+        /// <param name="stayOut">碰撞或离开</param>
+        /// <param name="collInfo">与自己发生碰撞的信息</param>
+        void OnGMUpdateColliderStayOut(bool stayOut, GameObject obj, ColliderInfos collInfo);
 
     }
 
     private List<IColliderInfo> m_allColliderInfo = new List<IColliderInfo>();
+    /// <summary>
+    /// 添加需要碰撞检测的实体
+    /// </summary>
+    /// <param name="colliderObject">实体</param>
     public void AddColliderObject(IColliderInfo colliderObject)
     {
         if (m_allColliderInfo.Contains(colliderObject))
@@ -35,6 +61,10 @@ public class GMUpdateCollider : MonoBehaviour
         m_allColliderInfo.Add(colliderObject);
         colliderObject.colliderUpdate = this;
     }
+    /// <summary>
+    /// 移除需要碰撞检测的实体
+    /// </summary>
+    /// <param name="colliderObject">实体</param>
     public void RemoveColliderObject(IColliderInfo colliderObject)
     {
         if (!m_allColliderInfo.Contains(colliderObject))
@@ -47,6 +77,9 @@ public class GMUpdateCollider : MonoBehaviour
         colliderObject.colliderUpdate = null;
     }
 
+    /// <summary>
+    /// 检测是否存在XYZ碰撞
+    /// </summary>
     public void UpdateColliderContent()
     {
         foreach (var self in m_allColliderInfo)
@@ -59,10 +92,23 @@ public class GMUpdateCollider : MonoBehaviour
                     List<ColliderTrigger> contectZ = self.triggerZ[i].contectTrigger;
                     if (contectXY.Count > 0 && contectZ.Count > 0)
                     {
-                        bool isContentXYZ = contectXY.All(b => contectZ.Any(a => a.axialInstanceID == b.axialInstanceID));
+                        GameObject obj = null;
+                        ColliderInfos collInfo = null;
+                        //XY轴列表和Z轴列表中存在相同的碰撞信息实例id 意味着那个碰撞在XYZ轴方向上都成立
+                        bool isContentXYZ = contectXY.All(b => contectZ.Any(a => 
+                        {
+                            if (a.hashCode == b.hashCode)
+                            {
+                                collInfo = a.colliderInfos;
+                                obj = a.gameObject;
+                                return true;
+                            }
+
+                            return false;
+                        }));
                         if (isContentXYZ)
                         {
-                            self.OnGMUpdateColliderStayOut(true, self.triggerXY[i].entity);
+                            self.OnGMUpdateColliderStayOut(true, obj, collInfo);
                             //return;
                         }
                     }

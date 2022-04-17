@@ -19,7 +19,7 @@ public partial class Entity
 
     private float m_jumpSpeed;
 
-    private float m_gravity = CommonDefine.GravitationalAcceleration;
+    private float m_gravity = CommonUtility.GravitationalAcceleration;
 
     /// <summary>
     /// 跳跃事件 type 1开始跳跃 2上升阶段 3达到最高点 4下落阶段 5受击掉落 6着地
@@ -79,7 +79,7 @@ public partial class Entity
         m_jumpState = m_jumpSpeed > 0 ? JumpState.RISE : JumpState.DROP;
 
         float deltaY = m_jumpSpeed * fixedDeltaTime - 0.5f * m_gravity * Mathf.Pow(fixedDeltaTime, 2);
-        m_jumpSpeed = m_jumpSpeed - m_gravity * fixedDeltaTime;
+        m_jumpSpeed -= m_gravity * fixedDeltaTime;
 
         Vector3 deltaPosition = skinNode.localPosition;
         deltaPosition.y = deltaY;

@@ -16,11 +16,15 @@ public class ColliderTrigger : MonoBehaviour
     /// <summary>
     /// 碰撞信息的实体ID（XYZ）
     /// </summary>
-    public int axialInstanceID;
+    public int hashCode;
     /// <summary>
     /// 当前轴向接触的碰撞信息
     /// </summary>
     public List<ColliderTrigger> contectTrigger = new List<ColliderTrigger>();
+    /// <summary>
+    /// 碰撞信息
+    /// </summary>
+    public ColliderInfos colliderInfos;
 
     private void OnTriggerStay2D(Collider2D collision)
     {

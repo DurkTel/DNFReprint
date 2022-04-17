@@ -25,11 +25,12 @@ public class Launcher : MonoBehaviour
             modelInfo.Add(Avatar.AvatarPartType.weapon, ModelConfig.GetInfoByCode(10007));
             modelInfo.Add(Avatar.AvatarPartType.weaponEx, ModelConfig.GetInfoByCode(10008));
 
-            Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer, CommonDefine.Career.Swordsman);
+            Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer, CommonUtility.Career.Swordsman);
             entity.models = modelInfo;
             entity.Skin_SetVisible(true);
 
         }));
+
 
     }
 
@@ -39,7 +40,7 @@ public class Launcher : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
 
-            Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonDefine.Career.Swordsman);
+            Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonUtility.Career.Swordsman);
             entity2.models = modelInfo;
             id = entity2.entityId;
             //entity2.Skin_SetAvatarPosition(new Vector3(temp, 0, 0));

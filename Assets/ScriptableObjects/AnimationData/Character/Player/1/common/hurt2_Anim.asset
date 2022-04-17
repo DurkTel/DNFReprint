@@ -30,43 +30,4 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
-  switchingConditions:
-  - frame: {x: 0, y: 1}
-    animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
-    conditions:
-    - conditionType: 0
-      characterAnimation: {fileID: 11400000}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 0
-      customCondition: 0
-    - conditionType: 6
-      characterAnimation: {fileID: 11400000}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 0
-      customCondition: 5
+  switchingConditions: []

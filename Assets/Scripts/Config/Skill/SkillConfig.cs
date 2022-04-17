@@ -19,6 +19,7 @@ public class SkillConfig
 
     public static EntitySkill GetInfoByCode(int skillCode)
     {
+        if (skillCode == 0) return null;
         if (!m_skillDic.ContainsKey(skillCode))
             GetInfo();
 
