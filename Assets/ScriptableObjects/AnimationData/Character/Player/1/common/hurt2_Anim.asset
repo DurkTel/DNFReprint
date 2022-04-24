@@ -20,14 +20,5 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 96266df9372a3e44f9f62c9d12a76e82, type: 3}
     interval: 0.3
     frameEventLoop: 0
-    frameEvent:
-    - eventType: 5
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: -1
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions: []

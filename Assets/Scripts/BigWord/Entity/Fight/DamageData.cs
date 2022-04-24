@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class DamageData
 {
+    public enum DamageAttributeType
+    { 
+        None,
+        Fire,
+        Ice,
+        Light,
+        Dark
+    }
+    /// <summary>
+    /// 序号
+    /// </summary>
+    public int code;
     /// <summary>
     /// 伤害
     /// </summary>
@@ -36,4 +48,8 @@ public class DamageData
     /// 硬直时间
     /// </summary>
     public float RecoverTime;
+    /// <summary>
+    /// 伤害的属性类型
+    /// </summary>
+    public DamageAttributeType damageAttribute;
 }

@@ -14,7 +14,7 @@ public class ColliderTrigger : MonoBehaviour
     /// </summary>
     public GMUpdateCollider.Axial axial;
     /// <summary>
-    /// 碰撞信息的实体ID（XYZ）
+    /// 碰撞盒的实体ID（XYZ）
     /// </summary>
     public int hashCode;
     /// <summary>
@@ -44,6 +44,7 @@ public class ColliderTrigger : MonoBehaviour
             if (trigger.axial == axial && contectTrigger.Contains(trigger))
             {
                 contectTrigger.Remove(trigger);
+                entity.colliderUpdate.ExitColliderContent(this);
             }
         }
     }

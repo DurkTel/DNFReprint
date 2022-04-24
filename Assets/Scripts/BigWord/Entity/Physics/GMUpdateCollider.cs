@@ -41,11 +41,14 @@ public class GMUpdateCollider : MonoBehaviour
         /// </summary>
         /// <param name="stayOut">碰撞或离开</param>
         /// <param name="collInfo">与自己发生碰撞的信息</param>
-        void OnGMUpdateColliderStayOut(bool stayOut, GameObject obj, ColliderInfos collInfo);
+        void OnGMUpdateColliderStayOut(bool stayOut, Entity entity, ColliderInfos collInfo, int layer);
 
     }
 
     private List<IColliderInfo> m_allColliderInfo = new List<IColliderInfo>();
+
+    private Dictionary<ColliderTrigger, IColliderInfo> m_contectDict = new Dictionary<ColliderTrigger, IColliderInfo>();
+
     /// <summary>
     /// 添加需要碰撞检测的实体
     /// </summary>
@@ -82,6 +85,7 @@ public class GMUpdateCollider : MonoBehaviour
     /// </summary>
     public void UpdateColliderContent()
     {
+
         foreach (var self in m_allColliderInfo)
         {
             if (self.updateColliderEnabled)
@@ -92,7 +96,8 @@ public class GMUpdateCollider : MonoBehaviour
                     List<ColliderTrigger> contectZ = self.triggerZ[i].contectTrigger;
                     if (contectXY.Count > 0 && contectZ.Count > 0)
                     {
-                        GameObject obj = null;
+                        int layer = -1;
+                        Entity entity = null;
                         ColliderInfos collInfo = null;
                         //XY轴列表和Z轴列表中存在相同的碰撞信息实例id 意味着那个碰撞在XYZ轴方向上都成立
                         bool isContentXYZ = contectXY.All(b => contectZ.Any(a => 
@@ -100,7 +105,10 @@ public class GMUpdateCollider : MonoBehaviour
                             if (a.hashCode == b.hashCode)
                             {
                                 collInfo = a.colliderInfos;
-                                obj = a.gameObject;
+                                entity = a.entity;
+                                layer = a.gameObject.layer;
+                                if (!m_contectDict.ContainsKey(a))
+                                    m_contectDict.Add(a, self);
                                 return true;
                             }
 
@@ -108,12 +116,24 @@ public class GMUpdateCollider : MonoBehaviour
                         }));
                         if (isContentXYZ)
                         {
-                            self.OnGMUpdateColliderStayOut(true, obj, collInfo);
+                            self.OnGMUpdateColliderStayOut(true, entity, collInfo, layer);
                             //return;
                         }
                     }
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// 有碰撞离开
+    /// </summary>
+    public void ExitColliderContent(ColliderTrigger trigger)
+    {
+        if (m_contectDict.ContainsKey(trigger))
+        {
+            trigger.entity.OnGMUpdateColliderStayOut(false, m_contectDict[trigger] as Entity, m_contectDict[trigger].own_colliderInfo, trigger.gameObject.layer);
+            m_contectDict.Remove(trigger);
         }
     }
 

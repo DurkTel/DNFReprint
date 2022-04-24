@@ -21,5 +21,5 @@ public class CommonUtility
     /// <summary>
     /// 空气阻力
     /// </summary>
-    public const float AirFriction = 1f;
+    public const float AirFriction = 0.1f;
 }

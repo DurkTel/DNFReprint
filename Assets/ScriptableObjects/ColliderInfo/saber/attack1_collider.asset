@@ -71,11 +71,37 @@ MonoBehaviour:
     - layer: 2
       isTrigger: 1
       offset_Z: 0
-      size_Z: 20
-      offset: {x: 85.6, y: 55.9}
-      size: {x: 107.12, y: 73.7}
+      size_Z: 30
+      offset: {x: 78.1, y: 75.7}
+      size: {x: 124, y: 64.6}
     index: 0
   - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.11, y: 24.2}
+      size: {x: 58.3, y: 54.2}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.11, y: 24.2}
+      size: {x: 58.3, y: 54.2}
+    - layer: 2
+      isTrigger: 1
+      offset_Z: 25
+      size_Z: 20
+      offset: {x: 35.3, y: 26.5}
+      size: {x: 116.9, y: 38.5}
+    index: 0
+  - single_colliderInfo:
+    - layer: 2
+      isTrigger: 1
+      offset_Z: 25
+      size_Z: 20
+      offset: {x: -17.3, y: 26.5}
+      size: {x: 114.1, y: 38.5}
     - layer: 3
       isTrigger: 1
       offset_Z: 0
@@ -90,20 +116,12 @@ MonoBehaviour:
       size: {x: 49.7, y: 41}
     index: 0
   - single_colliderInfo:
-    - layer: 3
+    - layer: 2
       isTrigger: 1
-      offset_Z: 0
+      offset_Z: 25
       size_Z: 20
-      offset: {x: 7.11, y: 24.2}
-      size: {x: 58.3, y: 54.2}
-    - layer: 3
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 20
-      offset: {x: 25.1, y: 71.5}
-      size: {x: 49.7, y: 41}
-    index: 0
-  - single_colliderInfo:
+      offset: {x: -17.3, y: 26.5}
+      size: {x: 114.1, y: 38.5}
     - layer: 3
       isTrigger: 1
       offset_Z: 0

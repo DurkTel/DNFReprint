@@ -1,0 +1,5 @@
+[
+{"code":10000,"hurt":50,"lookAttacker":true,"acceleration":10,"velocityX":2.4,"heightY":0,"velocityXY":0,"RecoverTime":0.5,"damageAttribute":0},
+{"code":10001,"hurt":50,"lookAttacker":true,"acceleration":10,"velocityX":0,"heightY":2.4,"velocityXY":2,"RecoverTime":0,"damageAttribute":0},
+{"code":10002,"hurt":50,"lookAttacker":true,"acceleration":10,"velocityX":0,"heightY":3,"velocityXY":2,"RecoverTime":0,"damageAttribute":0}
+]

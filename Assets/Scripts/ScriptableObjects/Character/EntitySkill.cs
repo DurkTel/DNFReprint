@@ -93,6 +93,11 @@ public class EntitySkill : IDamage
     public string AnimationDataName;
 
     /// <summary>
+    /// 伤害code
+    /// </summary>
+    public int DamageCode;
+
+    /// <summary>
     /// 技能归属对象 
     /// </summary>
     private GameObject m_hurtObj;

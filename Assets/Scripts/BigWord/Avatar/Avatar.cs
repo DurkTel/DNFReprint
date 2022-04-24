@@ -46,7 +46,7 @@ public partial class Avatar : MonoBehaviour
 
     private IEnumerator LoadCoroutine()
     {
-        Debug.Log(string.Format("开始异步加载avatar：开始时间：{0}", Time.realtimeSinceStartup));
+        //Debug.Log(string.Format("开始异步加载avatar：开始时间：{0}", Time.realtimeSinceStartup));
         loadCompleted = false;
 
         yield return null;
@@ -66,7 +66,7 @@ public partial class Avatar : MonoBehaviour
         //        m_waitLoadPartList.RemoveAt(0);
         //    Debug.Log(string.Format("异步加载完成{0}：结束帧数：{1}", part.partName, Time.frameCount));
         //}
-        Debug.Log(string.Format("异步加载avatar完成：结束时间：{0}", Time.realtimeSinceStartup));
+        //Debug.Log(string.Format("异步加载avatar完成：结束时间：{0}", Time.realtimeSinceStartup));
         onAvatarLoadComplete?.Invoke();
         loadCoroutine = null;
         loadCompleted = true;

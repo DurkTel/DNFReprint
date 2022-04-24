@@ -4,19 +4,38 @@ using UnityEngine;
 
 public partial class Entity : GMUpdateCollider.IColliderInfo
 {
+    /// <summary>
+    /// XY轴碰撞盒父节点
+    /// </summary>
     private Transform m_collidersXY_parent;
-
+    /// <summary>
+    /// Z轴碰撞盒父节点
+    /// </summary>
     private Transform m_collidersZ_parent;
-
+    /// <summary>
+    /// 已生成的碰撞盒数量（单轴）
+    /// </summary>
     private int m_maxCount;
-
+    /// <summary>
+    /// Z轴触发器列表
+    /// </summary>
     private List<ColliderTrigger> m_triggerZ = new List<ColliderTrigger>();
-
+    /// <summary>
+    /// XY轴触发器列表
+    /// </summary>
     private List<ColliderTrigger> m_triggerXY = new List<ColliderTrigger>();
-
+    /// <summary>
+    /// XY轴碰撞盒列表
+    /// </summary>
     private List<BoxCollider2D> m_collidersXY = new List<BoxCollider2D>();
-
+    /// <summary>
+    /// Z轴碰撞盒列表
+    /// </summary>
     private List<BoxCollider2D> m_collidersZ = new List<BoxCollider2D>();
+    /// <summary>
+    /// 受击碰撞计数
+    /// </summary>
+    private Dictionary<int, ContentDamageHit> m_hitCount = new Dictionary<int, ContentDamageHit>();
     public bool updateColliderEnabled { get; set; }
     public FrameCollInfo frameCollInfo { get; private set; }
     public GMUpdateCollider colliderUpdate { get; set; }
@@ -29,41 +48,23 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     public Transform collidersZ_parent { get => m_collidersZ_parent; }
     public int hurt { get; set; }
 
-    public void OnGMUpdateColliderStayOut(bool inOut, GameObject obj, ColliderInfos collInfo)
+    public void OnGMUpdateColliderStayOut(bool inOut, Entity entity, ColliderInfos collInfo, int layer)
     {
-        if (inOut == true)
+        int newlayer = layer - 9;
+        ColliderLayer layerEnum = (ColliderLayer)newlayer;
+        switch (layerEnum)
         {
-            int newlayer = obj.layer - 9;
-            ColliderLayer layerEnum = (ColliderLayer)newlayer;
-            switch (layerEnum)
-            {
-                case ColliderLayer.Scene:
-                    break;
-                case ColliderLayer.Interact:
-                    break;
-                case ColliderLayer.Damage:
-                    //Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", collInfo.name);
-                    EntitySkill entitySkill = SkillConfig.GetInfoByCode(collInfo.skillCode);
-                    entitySkill.hurtObj = obj;
-                    if (entitySkill != null)
-                    {
-                        //写死测试
-                        DamageData data = new DamageData();
-                        data.attacker = obj;
-                        data.lookAttacker = true;
-                        data.velocityX = collInfo.skillCode == 10003 ? 0f : 2.4f;
-                        data.RecoverTime = collInfo.skillCode == 10003 ? 0f : 0.5f;
-                        data.acceleration = 10f;
-                        data.heightY = collInfo.skillCode == 10003 ? 2.4f : 0f;
-                        data.velocityXY = collInfo.skillCode == 10003 ? 1f : 0f;
-                        MoveHurt_OnStart(data);
-                    }
-                    break;
-                case ColliderLayer.BeDamage:
-                    break;
-                default:
-                    break;
-            }
+            case ColliderLayer.Scene:
+                break;
+            case ColliderLayer.Interact:
+                break;
+            case ColliderLayer.Damage:
+                ContentDamageHandler(inOut, entity, collInfo);
+                break;
+            case ColliderLayer.BeDamage:
+                break;
+            default:
+                break;
         }
     }
 
@@ -192,5 +193,49 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
         triggerList.Add(newCollTrigger);
         newCollider.transform.SetParent(parent, false);
         boxList.Add(newColl);
+    }
+
+
+    private void ContentDamageHandler(bool inOut, Entity entity, ColliderInfos collInfo)
+    {
+        int hashCode = collInfo.GetHashCode();
+        EntitySkill entitySkill = SkillConfig.GetInfoByCode(collInfo.skillCode);
+        if (inOut)
+        {
+            //限制攻击段数 攻击间隔
+            if (!m_hitCount.ContainsKey(hashCode) || (m_hitCount[hashCode].hitCount < entitySkill.NumbeOfAttacks && Time.realtimeSinceStartup - m_hitCount[hashCode].lastHitTime >= entitySkill.NumbeOfInterval))
+            {
+                Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", collInfo.name);
+                entitySkill.hurtObj = entity.gameObject;
+                if (entitySkill != null)
+                {
+                    DamageData data = DamageConfig.GetInfoByCode(entitySkill.DamageCode);
+                    data.attacker = entity.gameObject;
+                    MoveHurt_OnStart(data);
+                }
+
+
+                if (m_hitCount.ContainsKey(hashCode))
+                {
+                    int curHit = m_hitCount[hashCode].hitCount;
+                    m_hitCount[hashCode] = new ContentDamageHit() { hitCount = curHit + 1, lastHitTime = Time.realtimeSinceStartup };
+                }
+                else
+                {
+                    m_hitCount.Add(hashCode, new ContentDamageHit() { hitCount = 1, lastHitTime = Time.realtimeSinceStartup });
+                }
+            }
+        }
+        else
+        {
+            m_hitCount.Remove(hashCode);
+        }
+    }
+
+    public struct ContentDamageHit
+    {
+        public int hitCount;
+
+        public float lastHitTime;
     }
 }
