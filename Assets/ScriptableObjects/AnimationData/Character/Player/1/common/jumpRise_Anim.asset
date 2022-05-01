@@ -113,21 +113,3 @@ MonoBehaviour:
         inputType: 0
         action: 5
       customCondition: 0
-    - conditionType: 6
-      characterAnimation: {fileID: 0}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 4
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 3
-        action: 0
-      customCondition: 4

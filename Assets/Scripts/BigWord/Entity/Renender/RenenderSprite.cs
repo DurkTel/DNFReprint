@@ -78,6 +78,42 @@ public class RenenderSprite : MonoBehaviour
         }
     }
 
+    public void InitSprite(string assetName)
+    {
+        string path = assetName;
+        part_Sprite.Clear();
+        if (path == null)
+        {
+            Debug.LogError("请添加Sprite资源路径");
+            return;
+        }
+        TextAsset tempTA = Resources.Load<TextAsset>(path + "/pointOffsize");
+
+        if (tempTA == null)
+        {
+            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!");
+            return;
+        }
+
+        string str = tempTA.ToString();
+        m_coordinate = str.Split(' ', '\n');
+
+        m_spriteCount = m_coordinate.Length / 2;
+
+        for (int i = 0; i < m_spriteCount; i++)
+        {
+            m_singSprite = AssetLoader.Load<Sprite>(path + '/' + i);
+
+            if (m_singSprite == null)
+            {
+                Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);
+                return;
+            }
+
+            part_Sprite.Add(m_singSprite);
+        }
+    }
+
     /// <summary>
     /// 异步加载
     /// </summary>

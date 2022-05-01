@@ -18,7 +18,7 @@ MonoBehaviour:
   speed: 1
   frameList:
   - sprite: {fileID: 21300000, guid: 96266df9372a3e44f9f62c9d12a76e82, type: 3}
-    interval: 0.3
+    interval: 0.2
     frameEventLoop: 0
     frameEvent: []
   switchingConditions: []

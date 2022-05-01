@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -41,14 +42,22 @@ public partial class Entity : BaseEvent
             return m_inputReader;
         }
     }
-
+    /// <summary>
+    /// 技能管理
+    /// </summary>
     public SkillManager skillManager;
-
+    /// <summary>
+    /// 当前游戏对象
+    /// </summary>
     public GameObject gameObject;
-
+    /// <summary>
+    /// 当前变换组件
+    /// </summary>
     public Transform transform;
-
-    private DamageData m_hurtSource;
+    /// <summary>
+    /// 顿帧时间（卡肉感）
+    /// </summary>
+    private float m_haltFrame;
 
     public void Init(int uid, EntityType type, CommonUtility.Career career , GameObject go)
     {
@@ -67,6 +76,8 @@ public partial class Entity : BaseEvent
 
     public void FixedUpdate(float deltaTime)
     {
+        //卡肉顿帧的处理
+        UpdateHalt(deltaTime);
         //刷新动画
         UpdateAnimation(deltaTime);
         //刷新移动
@@ -219,6 +230,13 @@ public partial class Entity : BaseEvent
         {
             MusicManager.Instance.PlaySound(name);
         });
+    }
+
+
+    private void UpdateHalt(float deltaTime)
+    {
+        if (m_haltFrame > 0) { m_haltFrame -= deltaTime * CommonUtility.HardStraight * 1000; }
+        m_haltFrame = Mathf.Clamp(m_haltFrame, 0, CommonUtility.HaltFrameMax);
     }
 
     public enum EntityType

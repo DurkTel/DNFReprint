@@ -13,9 +13,9 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     private static Transform m_pool;
 
-    private static GMCullingGroup m_entityCullingGroup;
+    public static GMCullingGroup entityCullingGroup;
 
-    private static GMUpdateCollider m_entityUpdateCollider;
+    public static GMUpdateCollider entityUpdateCollider;
 
     private Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
 
@@ -31,10 +31,10 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         m_pool = new GameObject("GMEntity_Pool").transform;
         m_pool.SetParent(m_transform);
 
-        m_entityCullingGroup = m_transform.gameObject.AddComponent<GMCullingGroup>();
-        m_entityCullingGroup.targetCamera = OrbitCamera.regularCamera;
+        entityCullingGroup = m_transform.gameObject.AddComponent<GMCullingGroup>();
+        entityCullingGroup.targetCamera = OrbitCamera.regularCamera;
 
-        m_entityUpdateCollider = m_transform.gameObject.AddComponent<GMUpdateCollider>();
+        entityUpdateCollider = m_transform.gameObject.AddComponent<GMUpdateCollider>();
 
         DontDestroyOnLoad(m_transform.gameObject);
     }
@@ -48,7 +48,6 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             if (entity.mainAvatar != null && entity.mainAvatar.loadCompleted)
                 entity.FixedUpdate(fixedDeltaTime);
         }
-
     }
 
     private void Update()
@@ -81,13 +80,13 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             m_waitCreateList.RemoveAt(0);
         }
 
+        entityUpdateCollider.UpdateColliderContent();
 
     }
 
     private void LateUpdate()
     {
-        //OnTriggerXXX的生命周期在FixedUpdate之后 造成下一帧才检测到碰撞
-        m_entityUpdateCollider.UpdateColliderContent();
+
     }
 
     public Entity CreateEntity(Entity.EntityType etype, CommonUtility.Career career)
@@ -107,9 +106,9 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         if (etype == Entity.EntityType.LocalPlayer)
             localPlayer = entity;
         else
-            m_entityCullingGroup.AddCullingObject(entity);
+            entityCullingGroup.AddCullingObject(entity);
 
-        m_entityUpdateCollider.AddColliderObject(entity);
+        entityUpdateCollider.AddColliderObject(eid, entity);
         return entity;
     }
 
@@ -123,8 +122,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             if (m_waitCreateList.Contains(entity))
                 m_waitCreateList.Remove(entity);
 
-            m_entityCullingGroup.RemoveCullingObject(entity);
-            m_entityUpdateCollider.RemoveColliderObject(entity);
+            entityCullingGroup.RemoveCullingObject(entity);
+            entityUpdateCollider.RemoveColliderObject(entityId, entity);
 
             entity.transform.SetParent(m_pool);
             entity.transform.localPosition = new Vector3(0, -99999, 0);

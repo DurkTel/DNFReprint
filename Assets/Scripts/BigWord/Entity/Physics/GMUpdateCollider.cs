@@ -14,6 +14,15 @@ public class GMUpdateCollider : MonoBehaviour
         AxialXY = 0,
         AxialZ = 1,
     }
+
+    /// <summary>
+    /// 两个连接的碰撞
+    /// </summary>
+    public struct ContactPair
+    {
+        public ColliderTrigger attacker;
+        public ColliderTrigger victim;
+    }
     public interface IColliderInfo
     {
         /// <summary>
@@ -41,43 +50,46 @@ public class GMUpdateCollider : MonoBehaviour
         /// </summary>
         /// <param name="stayOut">碰撞或离开</param>
         /// <param name="collInfo">与自己发生碰撞的信息</param>
-        void OnGMUpdateColliderStayOut(bool stayOut, Entity entity, ColliderInfos collInfo, int layer);
+        void ContactHandle(ContactPair contact, ColliderInfos collInfo);
 
     }
 
-    private List<IColliderInfo> m_allColliderInfo = new List<IColliderInfo>();
+    private Dictionary<int, IColliderInfo> m_allColliderInfo = new Dictionary<int, IColliderInfo>();
 
-    private Dictionary<ColliderTrigger, IColliderInfo> m_contectDict = new Dictionary<ColliderTrigger, IColliderInfo>();
+    private Dictionary<int, List<ContactPair>> m_contactDic = new Dictionary<int, List<ContactPair>>();
+
+    private Dictionary<int, List<int>> m_contectZ = new Dictionary<int, List<int>>();
+
 
     /// <summary>
     /// 添加需要碰撞检测的实体
     /// </summary>
     /// <param name="colliderObject">实体</param>
-    public void AddColliderObject(IColliderInfo colliderObject)
+    public void AddColliderObject(int entityId, IColliderInfo colliderObject)
     {
-        if (m_allColliderInfo.Contains(colliderObject))
+        if (m_allColliderInfo.ContainsKey(entityId))
         {
             Debug.LogErrorFormat("已经添加过该碰撞信息{0}", colliderObject.own_colliderInfo.name);
             return;
         }
 
-        m_allColliderInfo.Add(colliderObject);
+        m_allColliderInfo.Add(entityId,colliderObject);
         colliderObject.colliderUpdate = this;
     }
     /// <summary>
     /// 移除需要碰撞检测的实体
     /// </summary>
     /// <param name="colliderObject">实体</param>
-    public void RemoveColliderObject(IColliderInfo colliderObject)
+    public void RemoveColliderObject(int entityId, IColliderInfo colliderObject)
     {
-        if (!m_allColliderInfo.Contains(colliderObject))
+        if (!m_allColliderInfo.ContainsKey(entityId))
         {
             Debug.LogErrorFormat("没有添加过该碰撞信息{0}", colliderObject.own_colliderInfo.name);
             return;
         }
 
-        m_allColliderInfo.Remove(colliderObject);
         colliderObject.colliderUpdate = null;
+        m_allColliderInfo.Remove(entityId);
     }
 
     /// <summary>
@@ -85,61 +97,91 @@ public class GMUpdateCollider : MonoBehaviour
     /// </summary>
     public void UpdateColliderContent()
     {
-
-        foreach (var self in m_allColliderInfo)
+        foreach (var contacts in m_contactDic.Values)
         {
-            if (self.updateColliderEnabled)
+            for (int i = 0; i < contacts.Count; i++)
             {
-                for (int i = 0; i < self.triggerXY.Count; i++)
+                if (contacts[i].attacker.axial == Axial.AxialXY && contacts[i].victim.axial == Axial.AxialXY)
                 {
-                    List<ColliderTrigger> contectXY = self.triggerXY[i].contectTrigger;
-                    List<ColliderTrigger> contectZ = self.triggerZ[i].contectTrigger;
-                    if (contectXY.Count > 0 && contectZ.Count > 0)
+                    int id = contacts[i].attacker.entity.entityId;
+                    if (m_contectZ.TryGetValue(id, out List<int> zList) && zList.Contains(contacts[i].victim.hashCode))
                     {
-                        int layer = -1;
-                        Entity entity = null;
-                        ColliderInfos collInfo = null;
-                        //XY轴列表和Z轴列表中存在相同的碰撞信息实例id 意味着那个碰撞在XYZ轴方向上都成立
-                        bool isContentXYZ = contectXY.All(b => contectZ.Any(a => 
-                        {
-                            if (a.hashCode == b.hashCode)
-                            {
-                                collInfo = a.colliderInfos;
-                                entity = a.entity;
-                                layer = a.gameObject.layer;
-                                if (!m_contectDict.ContainsKey(a))
-                                    m_contectDict.Add(a, self);
-                                return true;
-                            }
-
-                            return false;
-                        }));
-                        if (isContentXYZ)
-                        {
-                            self.OnGMUpdateColliderStayOut(true, entity, collInfo, layer);
-                            //return;
-                        }
+                        //攻击者  =======》  被击者
+                        m_allColliderInfo[id].ContactHandle(contacts[i], m_allColliderInfo[id].own_colliderInfo);
                     }
                 }
             }
+            contacts.Clear();
+        }
+    }
+
+    public void AddContact(int entityId, ColliderTrigger own, ColliderTrigger other)
+    {
+        if (!m_allColliderInfo.ContainsKey(entityId) || !m_allColliderInfo[entityId].updateColliderEnabled) return;
+        if (m_contactDic.ContainsKey(entityId))
+        {
+            m_contactDic[entityId].TryUniqueAdd(new ContactPair { attacker = own, victim = other });
+        }
+        else
+        {
+            m_contactDic.Add(entityId, new List<ContactPair> { new ContactPair { attacker = own, victim = other } });
+        }
+    }
+
+    public void AddContact(int entityId, int infoId)
+    {
+        if (!m_allColliderInfo.ContainsKey(entityId) || !m_allColliderInfo[entityId].updateColliderEnabled) return;
+        if (m_contectZ.ContainsKey(entityId))
+        {
+            m_contectZ[entityId].TryUniqueAdd(infoId);
+        }
+        else
+        {
+            m_contectZ.Add(entityId, new List<int> { infoId });
+        }
+    }
+
+    public void ClearContact(int entityId)
+    {
+        if (m_contactDic.ContainsKey(entityId))
+        {
+            m_contactDic[entityId].Clear();
+        }
+
+        if (m_contectZ.ContainsKey(entityId))
+        {
+            m_contectZ[entityId].Clear();
+        }
+    }
+
+    public void ClearContactZ(int entityId)
+    {
+        if (m_contectZ.ContainsKey(entityId))
+        {
+            m_contectZ[entityId].Clear();
         }
     }
 
     /// <summary>
     /// 有碰撞离开
     /// </summary>
-    public void ExitColliderContent(ColliderTrigger trigger)
-    {
-        if (m_contectDict.ContainsKey(trigger))
-        {
-            trigger.entity.OnGMUpdateColliderStayOut(false, m_contectDict[trigger] as Entity, m_contectDict[trigger].own_colliderInfo, trigger.gameObject.layer);
-            m_contectDict.Remove(trigger);
-        }
-    }
+    //public void ExitColliderContent(IColliderInfo info ,ColliderTrigger trigger)
+    //{
+    //    if (m_contectDict.ContainsKey(info) && m_contectDict[info].Contains(trigger))
+    //    {
+    //        m_contectDict[info].Remove(trigger);
+    //        info.OnGMUpdateColliderStayOut(false, trigger.entity, trigger.colliderInfos, trigger.layer);
+    //        if (m_contectDict[info].Count <= 0)
+    //        { 
+    //            m_contectDict.Remove(info);
+    //        }
+    //    }
+
+    //}
 
     public virtual void OnDrawGizmos()
     {
-        foreach (Entity entity in m_allColliderInfo)
+        foreach (Entity entity in m_allColliderInfo.Values)
         {
             if (entity.own_colliderInfo == null || entity.frameCollInfo.single_colliderInfo == null || entity.frameCollInfo.single_colliderInfo.Count == 0) return;
 

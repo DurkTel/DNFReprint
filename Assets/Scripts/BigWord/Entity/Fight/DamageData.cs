@@ -47,9 +47,17 @@ public class DamageData
     /// <summary>
     /// 硬直时间
     /// </summary>
-    public float RecoverTime;
+    public float recoverTime;
     /// <summary>
     /// 伤害的属性类型
     /// </summary>
     public DamageAttributeType damageAttribute;
+    /// <summary>
+    /// 打击目标顿帧
+    /// </summary>
+    public int haltFrame_Target;
+    /// <summary>
+    /// 打击自身顿帧
+    /// </summary>
+    public int haltFrame_Self;
 }

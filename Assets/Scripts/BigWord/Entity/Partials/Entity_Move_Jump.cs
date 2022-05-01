@@ -19,6 +19,8 @@ public partial class Entity
 
     private float m_jumpSpeed;
 
+    private int m_jumpAttackTimes;
+
     private float m_gravity = CommonUtility.GravitationalAcceleration;
 
     /// <summary>
@@ -53,7 +55,7 @@ public partial class Entity
     {
         m_jumpState = JumpState.START;
         onJumpEvent?.Invoke(entityId, 1);
-
+        m_jumpAttackTimes = 0;
         //达到目标高度所需的初速度
         m_jumpSpeed = Mathf.Sqrt(2f * m_gravity * entityAttribute.JumpHeight);
 

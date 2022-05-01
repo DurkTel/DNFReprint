@@ -48,24 +48,15 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     public Transform collidersZ_parent { get => m_collidersZ_parent; }
     public int hurt { get; set; }
 
-    public void OnGMUpdateColliderStayOut(bool inOut, Entity entity, ColliderInfos collInfo, int layer)
+    public void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        int newlayer = layer - 9;
-        ColliderLayer layerEnum = (ColliderLayer)newlayer;
-        switch (layerEnum)
-        {
-            case ColliderLayer.Scene:
-                break;
-            case ColliderLayer.Interact:
-                break;
-            case ColliderLayer.Damage:
-                ContentDamageHandler(inOut, entity, collInfo);
-                break;
-            case ColliderLayer.BeDamage:
-                break;
-            default:
-                break;
-        }
+        if (m_hitTarget) return;
+        m_hitTarget = true;
+
+        //攻击者表现
+        ContentAttackerHandler(contact, collInfo);
+        //受击者表现
+        ContentDamageHandler(contact, collInfo);
     }
 
     private void ColliderInit()
@@ -144,6 +135,7 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
         if (own_colliderInfo == null || !updateColliderEnabled) return;
         int totalCollFrame = own_colliderInfo.frameCollInfos.Count;
         if (currentFrame >= totalCollFrame) return;
+        colliderUpdate.ClearContactZ(entityId);
 
         frameCollInfo = own_colliderInfo.frameCollInfos[currentFrame];
 
@@ -162,22 +154,26 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
                 m_collidersXY[i].offset = info.offset;
                 m_collidersXY[i].size = info.size;
                 m_collidersXY[i].isTrigger = info.isTrigger;
-                m_collidersXY[i].gameObject.layer = (int)info.layer + 9;
+                //m_collidersXY[i].gameObject.layer = (int)info.layer + 9;
                 m_collidersXY[i].transform.localScale = collScale;
                 m_triggerXY[i].hashCode = frameCollInfo.single_colliderInfo[i].GetHashCode();
+                m_triggerXY[i].layer = info.layer;
 
                 m_collidersZ[i].offset = new Vector2(info.offset.x, info.offset_Z);
                 m_collidersZ[i].size = new Vector2(info.size.x, info.size_Z);
                 m_collidersZ[i].isTrigger = info.isTrigger;
-                m_collidersZ[i].gameObject.layer = (int)info.layer + 9;
+                //m_collidersZ[i].gameObject.layer = (int)info.layer + 9;
                 m_collidersZ[i].transform.localScale = collScale;
                 m_triggerZ[i].hashCode = frameCollInfo.single_colliderInfo[i].GetHashCode();
+                m_triggerZ[i].layer = info.layer;
 
             }
             m_collidersXY[i].enabled = isActive;
             m_collidersZ[i].enabled = isActive;
-        }
+            m_triggerXY[i].enabled = isActive;
+            m_triggerZ[i].enabled = isActive;
 
+        }
     }
 
     private void CreateCollider(List<BoxCollider2D> boxList, List<ColliderTrigger> triggerList, GMUpdateCollider.Axial axial, ColliderInfos colliderInfos)
@@ -196,39 +192,62 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     }
 
 
-    private void ContentDamageHandler(bool inOut, Entity entity, ColliderInfos collInfo)
+    private void ContentDamageHandler(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        int hashCode = collInfo.GetHashCode();
         EntitySkill entitySkill = SkillConfig.GetInfoByCode(collInfo.skillCode);
-        if (inOut)
+        if (entitySkill != null)
         {
-            //限制攻击段数 攻击间隔
-            if (!m_hitCount.ContainsKey(hashCode) || (m_hitCount[hashCode].hitCount < entitySkill.NumbeOfAttacks && Time.realtimeSinceStartup - m_hitCount[hashCode].lastHitTime >= entitySkill.NumbeOfInterval))
-            {
-                Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", collInfo.name);
-                entitySkill.hurtObj = entity.gameObject;
-                if (entitySkill != null)
-                {
-                    DamageData data = DamageConfig.GetInfoByCode(entitySkill.DamageCode);
-                    data.attacker = entity.gameObject;
-                    MoveHurt_OnStart(data);
-                }
-
-
-                if (m_hitCount.ContainsKey(hashCode))
-                {
-                    int curHit = m_hitCount[hashCode].hitCount;
-                    m_hitCount[hashCode] = new ContentDamageHit() { hitCount = curHit + 1, lastHitTime = Time.realtimeSinceStartup };
-                }
-                else
-                {
-                    m_hitCount.Add(hashCode, new ContentDamageHit() { hitCount = 1, lastHitTime = Time.realtimeSinceStartup });
-                }
-            }
+            Entity entity = contact.victim.entity;
+            entitySkill.hurtObj = entity.gameObject;
+            MusicManager.Instance.PlaySound("sm_dmg_0" + Random.Range(1, 4));
+            Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", collInfo.name);
+            DamageData data = DamageConfig.GetInfoByCode(entitySkill.DamageCode);
+            data.attacker = gameObject;
+            entity.m_haltFrame = data.haltFrame_Target;
+            entity.MoveHurt_OnStart(data);
         }
-        else
+    }
+
+    private void ContentAttackerHandler(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
+    {
+        EntitySkill entitySkill = SkillConfig.GetInfoByCode(collInfo.skillCode);
+        if (entitySkill != null)
         {
-            m_hitCount.Remove(hashCode);
+            DamageData data = DamageConfig.GetInfoByCode(entitySkill.DamageCode);
+            m_haltFrame = data.haltFrame_Self;
+            string hitEffectName = "";
+            switch (data.damageAttribute)
+            {
+                case DamageData.DamageAttributeType.None:
+                    int i = Random.Range(0, 2);
+                    hitEffectName = i == 0 ? "Prefabs/Effect/knockSmall" : "Prefabs/Effect/knockLarge";
+                    break;
+                case DamageData.DamageAttributeType.Fire:
+                    break;
+                case DamageData.DamageAttributeType.Ice:
+                    break;
+                case DamageData.DamageAttributeType.Light:
+                    break;
+                case DamageData.DamageAttributeType.Dark:
+                    break;
+                default:
+                    break;
+            }
+
+            //计算接触点
+            Vector3 contactPoint = contact.attacker.collider2d.bounds.ClosestPoint(contact.victim.collider2d.bounds.center);
+            var startY = Mathf.Min(contact.victim.collider2d.bounds.center.y + contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y + (contact.attacker.collider2d.bounds.extents.y / 2f));
+            var endY = Mathf.Max(contact.victim.collider2d.bounds.center.y - contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y - (contact.attacker.collider2d.bounds.extents.y / 2f));
+            contactPoint.y = Mathf.Lerp(startY, endY, Random.Range(0f, 1f));
+
+            ResourceRequest re = AssetLoader.LoadAsync<GameObject>(hitEffectName);
+            re.completed += (p) =>
+            {
+                GameObject effectObj = Object.Instantiate(re.asset as GameObject);
+                HitEffect effect = effectObj.GetComponent<HitEffect>();
+                effectObj.transform.position = new Vector2(contactPoint.x, contactPoint.y - transform.position.y);
+                effect.Play(() => { GameObject.Destroy(effectObj); });
+            };
         }
     }
 

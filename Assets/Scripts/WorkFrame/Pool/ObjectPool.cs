@@ -21,29 +21,6 @@ public static class ObjectPoolList
     public static List<IPool> poolList = new List<IPool>();
 }
 
-/// <summary>
-/// 通用对象静态池 无工厂构造和回收析构
-/// </summary>
-/// <typeparam name="T"></typeparam>
-public static class Pool<T> where T : new()
-{
-    private static readonly ObjectPool<T> objectPool = new ObjectPool<T>();
-
-    public static T Get()
-    {
-        return objectPool.Get();
-    }
-
-    public static void Release(T item)
-    {
-        objectPool.Release(item);
-    }
-
-    public static void Clear()
-    {
-        objectPool.Clear();
-    }
-}
 
 /// <summary>
 /// 对象池基类
@@ -63,8 +40,8 @@ public class ObjectPool<T> : IPool where T : new()
     /// 无参构造
     /// </summary>
     public ObjectPool()
-    { 
-        
+    {
+
     }
 
     /// <summary>
@@ -95,7 +72,7 @@ public class ObjectPool<T> : IPool where T : new()
     public void Release(T item)
     {
         if (m_stack.Count > 0 && m_stack.Contains(item))
-        { 
+        {
             Debug.LogErrorFormat("{0}该对象池以存在此对象{1}", typeof(T).Name, item.ToString());
             return;
         }
@@ -109,3 +86,52 @@ public class ObjectPool<T> : IPool where T : new()
     }
 
 }
+
+/// <summary>
+/// 通用对象静态池 无工厂构造和回收析构
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public static class Pool<T> where T : new()
+{
+    private static readonly ObjectPool<T> objectPool = new ObjectPool<T>();
+
+    public static T Get()
+    {
+        return objectPool.Get();
+    }
+
+    public static void Release(T item)
+    {
+        objectPool.Release(item);
+    }
+
+    public static void Clear()
+    {
+        objectPool.Clear();
+    }
+}
+
+/// <summary>
+/// 通用游戏对象静态池（如果60秒内不使用 将销毁对象）
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public static class GameObjectPool<T> where T : new()
+{
+    private static readonly ObjectPool<T> objectPool = new ObjectPool<T>();
+
+    public static T Get()
+    {
+        return objectPool.Get();
+    }
+
+    public static void Release(T item)
+    {
+        objectPool.Release(item);
+    }
+
+    public static void Clear()
+    {
+        objectPool.Clear();
+    }
+}
+

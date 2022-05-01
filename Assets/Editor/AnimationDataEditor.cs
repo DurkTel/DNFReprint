@@ -204,13 +204,13 @@ public class AnimationDataEditor : Editor
         float rectHegt = leng > 3 ? leng * 60 + 80 : 240;
 
         GUILayoutUtility.GetRect(300, rectHegt);
-        GUI.Box(new Rect(20, 100, 50, leng * 60), string.Empty, EditorStyles.helpBox);
-        GUI.Box(new Rect(70, 100, 35, leng * 60), string.Empty, EditorStyles.helpBox);
+        GUI.Box(new Rect(20, 100, 50, (leng + 1) * 60), string.Empty, EditorStyles.helpBox);
+        GUI.Box(new Rect(70, 100, 35, (leng + 1) * 60), string.Empty, EditorStyles.helpBox);
 
         for (int i = 0; i < leng; i++)
         {
             DrawFrameBox(i + 1, i == leng - 1);
-            DrawIntervalBox(i + 1, i == leng - 1);
+            DrawIntervalBox(i + 1, i == leng);
         }
 
     }

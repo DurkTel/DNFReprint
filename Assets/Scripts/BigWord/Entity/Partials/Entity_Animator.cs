@@ -31,6 +31,8 @@ public partial class Entity
 
     private bool[] m_isFirstList;
 
+    private bool m_hitTarget;
+
     private List<RenenderSprite> m_renenderSprites = new List<RenenderSprite>();
 
     private AnimationData m_next_animationData;
@@ -54,7 +56,7 @@ public partial class Entity
     /// </summary>
     public void TickSpriteAnimation(float deltaTime)
     {
-        if (m_pause || current_animationData == null) return;
+        if (m_pause || current_animationData == null || m_haltFrame > 0) return;
         List<AnimationFrameData> aniSprites = current_animationData.frameList;
         AnimationFrameData curSprite = aniSprites[m_currentFrame];
 
@@ -128,6 +130,22 @@ public partial class Entity
         m_pause = pause;
     }
 
+    public void PlayHurtAnimation()
+    {
+        if (animationConfig.HitAnim.Count > 0)
+        {
+            DOSpriteAnimation(animationConfig.HitAnim[Random.Range(0, animationConfig.HitAnim.Count)]);
+        }
+    }
+
+    public void PlayAirHurtAnimation()
+    {
+        if (animationConfig.HitAnim.Count > 0)
+        {
+            DOSpriteAnimation(animationConfig.hit2_Anim);
+        }
+    }
+
 
     /// <summary>
     /// 播放动画
@@ -141,9 +159,11 @@ public partial class Entity
             return;
         }
         //if (current_animationData == animationData) return;
+        colliderUpdate.ClearContact(entityId);
         last_animationData = current_animationData;
         current_animationData = animationData;
         updateAnimationEvent?.Invoke(animationData);
+        m_hitTarget = false;
         m_totalTime = 999;
         m_currentFrame = 0;
         m_isFirstList = new bool[animationData.frameList.Count];
@@ -458,8 +478,7 @@ public partial class Entity
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
                                         //CharactMotor charactMotor = (CharactMotor)m_motor;
-                                        //if (!skillManager.characterSkillTree.IsHasSkill(10001) && charactMotor.airAttackCombo > 0) result = false;
-                                        result = false;
+                                        if (!skillManager.characterSkillTree.IsHasSkill(10001)) result = false;
                                         break;
                                     case CustomCondition.HIT_RECOVER:
                                         //if (m_motor.isHitRecover) result = false;
