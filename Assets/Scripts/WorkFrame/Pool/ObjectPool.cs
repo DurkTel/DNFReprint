@@ -112,26 +112,59 @@ public static class Pool<T> where T : new()
 }
 
 /// <summary>
-/// 通用游戏对象静态池（如果60秒内不使用 将销毁对象）
+/// 通用列表静态池
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public static class GameObjectPool<T> where T : new()
+public static class ListPool<T>
 {
-    private static readonly ObjectPool<T> objectPool = new ObjectPool<T>();
-
-    public static T Get()
+    private static readonly ObjectPool<List<T>> s_ListPool = new ObjectPool<List<T>>(null, Clear);
+    static void Clear(List<T> l) { l.Clear(); }
+    public static List<T> Get()
     {
-        return objectPool.Get();
+        return s_ListPool.Get();
     }
 
-    public static void Release(T item)
+    public static void Release(List<T> toRelease)
     {
-        objectPool.Release(item);
-    }
-
-    public static void Clear()
-    {
-        objectPool.Clear();
+        s_ListPool.Release(toRelease);
     }
 }
+
+public static class QueuePool<T>
+{
+    private static readonly ObjectPool<Queue<T>> s_QueuePool = new ObjectPool<Queue<T>>(null, Clear);
+    static void Clear(Queue<T> l) { l.Clear(); }
+    public static Queue<T> Get()
+    {
+        return s_QueuePool.Get();
+    }
+
+    public static void Release(Queue<T> toRelease)
+    {
+        s_QueuePool.Release(toRelease);
+    }
+}
+
+/// <summary>
+/// 通用字典对象池
+/// </summary>
+/// <typeparam name="K"></typeparam>
+/// <typeparam name="V"></typeparam>
+public static class DictionaryPool<K, V>
+{
+    private static readonly ObjectPool<Dictionary<K, V>> s_DicPool = new ObjectPool<Dictionary<K, V>>(null, Clear);
+    static void Clear(Dictionary<K, V> l) { l.Clear(); }
+
+    public static Dictionary<K, V> Get()
+    {
+        return s_DicPool.Get();
+    }
+
+    public static void Release(Dictionary<K, V> toRelease)
+    {
+        s_DicPool.Release(toRelease);
+    }
+}
+
+
 

@@ -28,8 +28,8 @@ public class Launcher : MonoBehaviour
             Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer, CommonUtility.Career.Swordsman);
             entity.models = modelInfo;
             entity.Skin_SetVisible(true);
-            //Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonUtility.Career.Swordsman);
-            //entity2.models = modelInfo;
+            Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonUtility.Career.Swordsman);
+            entity2.models = modelInfo;
             //id = entity2.entityId;
             //entity2.Skin_SetAvatarPosition(new Vector3(30, 0, 0));
             //entity2.Skin_SetVisible(true);

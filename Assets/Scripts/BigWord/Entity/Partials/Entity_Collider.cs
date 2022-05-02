@@ -239,15 +239,12 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
             var startY = Mathf.Min(contact.victim.collider2d.bounds.center.y + contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y + (contact.attacker.collider2d.bounds.extents.y / 2f));
             var endY = Mathf.Max(contact.victim.collider2d.bounds.center.y - contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y - (contact.attacker.collider2d.bounds.extents.y / 2f));
             contactPoint.y = Mathf.Lerp(startY, endY, Random.Range(0f, 1f));
-
-            ResourceRequest re = AssetLoader.LoadAsync<GameObject>(hitEffectName);
-            re.completed += (p) =>
-            {
-                GameObject effectObj = Object.Instantiate(re.asset as GameObject);
+            GameObjectPool pool = GMPoolManager.Instance.TryGet("HitEffect");
+            pool.Get(hitEffectName, (effectObj) => {
                 HitEffect effect = effectObj.GetComponent<HitEffect>();
                 effectObj.transform.position = new Vector2(contactPoint.x, contactPoint.y - transform.position.y);
-                effect.Play(() => { GameObject.Destroy(effectObj); });
-            };
+                effect.Play(() => { pool.Release(hitEffectName, effectObj); });
+            });
         }
     }
 
