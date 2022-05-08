@@ -58,6 +58,8 @@ public class AvatarPart
 
     public Vector3 scale { get; set; }
 
+    public int sort { get; set; }
+
     public AvatarPart(Avatar avatar, Avatar.AvatarPartType partType)
     {
         this.avatar = avatar;
@@ -74,6 +76,7 @@ public class AvatarPart
     private void OnPartLoadComplete(Avatar.AvatarPartType partType)
     {
         partNode.localPosition = position;
+        renender.spriteRenderer.sortingOrder = sort;
         partNode.localScale = scale == Vector3.zero ? Vector3.one : scale;
     }
 

@@ -1,18 +1,19 @@
-﻿using System.Collections;
+﻿using cfg.db;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Entity
 {
-    public Transform skinNode { get; private set; }
+    public Transform skinNode { get; protected set; }
 
-    public Transform rootBone { get; private set; }
+    public Transform rootBone { get; protected set; }
 
-    public BoxCollider2D boxCollider { get; private set; }
+    public BoxCollider2D boxCollider { get; protected set; }
 
-    public Rigidbody2D rigidbody { get; private set; }
+    public Rigidbody2D rigidbody { get; protected set; }
 
-    public Avatar mainAvatar { get; private set; }
+    public Avatar mainAvatar { get; protected set; }
 
     private Dictionary<string, Transform> m_allBones;
     public Dictionary<string,Transform> allBones
@@ -35,32 +36,13 @@ public partial class Entity
         }
     }
 
-    public Dictionary<Avatar.AvatarPartType, ModelInfo> models = new Dictionary<Avatar.AvatarPartType, ModelInfo>();
-
-    public struct ModelInfo
-    {
-        public int modelCode;
-
-        public string des;
-
-        public string modelPath;
-
-        public float modelScale;
-
-        public float modelPositionX;
-
-        public float modelPositionY;
-
-        public float modelPositionZ;
-
-        public string boneName;
-    }
+    public Dictionary<Avatar.AvatarPartType, ModelInfoCfg> models = new Dictionary<Avatar.AvatarPartType, ModelInfoCfg>();
 
 
     /// <summary>
     /// 创建载体
     /// </summary>
-    private void Skin_CreateAvatar()
+    protected virtual void Skin_CreateAvatar()
     {
         skinInitialized = true;
 
@@ -70,50 +52,29 @@ public partial class Entity
         {
             skinNode = new GameObject("Skins").transform;
             skinNode.SetParent(transform);
+            skinNode.transform.localPosition = Vector3.zero;
         }
         m_collidersXY_parent.SetParent(skinNode);
         m_collidersZ_parent.SetParent(transform);
 
-        if (boxCollider == null)
-        {
-            boxCollider = gameObject.AddComponent<BoxCollider2D>();
-            boxCollider.offset = new Vector2(0, 0.08f);
-            boxCollider.size = new Vector2(0.5f, 0.1f);
-        }
 
-        if (rigidbody == null)
-        {
-            rigidbody = gameObject.AddComponent<Rigidbody2D>();
-            rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
-            rigidbody.gravityScale = 0;
-            rigidbody.drag = 10f;
-            rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        }
 
         if (mainAvatar == null)
         {
             GameObject go = new GameObject("MainAvatar");
             mainAvatar = go.AddComponent<Avatar>();
             go.transform.SetParent(skinNode);
+            go.transform.localPosition = Vector3.zero;
             //加载完成后添加组件
             mainAvatar.onAvatarLoadComplete += AssembleComponent;
         }
 
-        //初始化完载体加载各个皮肤部件
-        ResourceRequest re = AssetLoader.LoadAsync<GameObject>(AvatarUtility.commonCharacterBone);
-        re.completed += (p) =>
-        {
-            rootBone = Object.Instantiate(re.asset as GameObject).transform;
-            rootBone.SetParent(mainAvatar.gameObject.transform);
-            Init_Skin();
-        };
     }
 
     /// <summary>
     /// 初始化皮肤部件
     /// </summary>
-    private void Init_Skin()
+    protected void Init_Skin()
     {
         UpdateSkinAll();
     }
@@ -165,16 +126,17 @@ public partial class Entity
         Skin_SetAvatarPart(Avatar.AvatarPartType.shoesEx, models);
     }
 
-    private void Skin_SetAvatarPart(Avatar.AvatarPartType partType, Dictionary<Avatar.AvatarPartType, ModelInfo> modelInfo)
+    private void Skin_SetAvatarPart(Avatar.AvatarPartType partType, Dictionary<Avatar.AvatarPartType, ModelInfoCfg> modelInfo)
     {
         if (mainAvatar == null || !modelInfo.ContainsKey(partType)) return;
         AvatarPart part = mainAvatar.AddPart(partType);
-        ModelInfo info = modelInfo[partType];
-        part.assetName = info.modelPath;
-        part.fashionCode = info.modelCode;
-        part.position = new Vector3(info.modelPositionX, info.modelPositionY, info.modelPositionZ);
-        part.scale = Vector3.one * info.modelScale;
-        part.boneTransform = allBones.ContainsKey(info.boneName) ? allBones[info.boneName] : mainAvatar.transform;
+        ModelInfoCfg info = modelInfo[partType];
+        part.assetName = info.ModelPath;
+        part.fashionCode = info.Id;
+        part.position = new Vector3(info.ModelPositionX, info.ModelPositionY, info.ModelPositionZ);
+        part.scale = Vector3.one * info.ModelScale;
+        part.sort = info.Sort;
+        part.boneTransform = allBones.ContainsKey(info.BoneName) ? allBones[info.BoneName] : mainAvatar.transform;
     }
 
     public void Skin_SetAvatarPartScale(Avatar.AvatarPartType partType, Vector3 scale)
@@ -218,7 +180,8 @@ public partial class Entity
         skinInitialized = false;
         m_allBones = null;
         if (mainAvatar) mainAvatar.Clear();
-        Object.Destroy(rootBone.gameObject);//先销毁 后面做成对象池回收
+        if (rootBone != null)
+            Object.Destroy(rootBone.gameObject);//先销毁 后面做成对象池回收
         current_animationData = null;
         m_renenderSprites.Clear();
     }

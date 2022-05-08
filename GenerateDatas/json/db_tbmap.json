@@ -1,0 +1,46 @@
+[
+  {
+    "id": 10000,
+    "mapName": "赛丽亚旅馆",
+    "mapType": 0,
+    "assetName": "Map/1",
+    "CharacterPosX": 0,
+    "CharacterPosY": -1.33,
+    "cameraMinHeight": -0.37,
+    "cameraMaxHeight": 1.21,
+    "cameraMinWidth": -1.23,
+    "cameraMaxWidth": 1.19,
+    "bgMusic": "gate_new",
+    "Portals": [
+      {
+        "mapId": 10001,
+        "x": -0.24,
+        "y": -2.23,
+        "z": 0,
+        "radius": 0.5
+      }
+    ]
+  },
+  {
+    "id": 10001,
+    "mapName": "艾尔文防线",
+    "mapType": 0,
+    "assetName": "Map/3",
+    "CharacterPosX": 3.340353,
+    "CharacterPosY": 2.26,
+    "cameraMinHeight": 3,
+    "cameraMaxHeight": 4.38,
+    "cameraMinWidth": 0.77,
+    "cameraMaxWidth": 22.54,
+    "bgMusic": "gate_new",
+    "Portals": [
+      {
+        "mapId": 10000,
+        "x": 3.31,
+        "y": 2.58,
+        "z": 0,
+        "radius": 0.5
+      }
+    ]
+  }
+]

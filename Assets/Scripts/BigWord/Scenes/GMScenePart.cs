@@ -5,6 +5,7 @@ using UnityEngine;
 public class GMScenePart
 {
     private int m_partId;
+    public int partId { get { return m_partId; } }
 
     private GameObject m_asset;
 }

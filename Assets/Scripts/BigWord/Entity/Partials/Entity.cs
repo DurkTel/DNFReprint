@@ -74,7 +74,7 @@ public partial class Entity : BaseEvent
         ColliderInit();
     }
 
-    public void FixedUpdate(float deltaTime)
+    public virtual void FixedUpdate(float deltaTime)
     {
         //卡肉顿帧的处理
         UpdateHalt(deltaTime);
@@ -84,7 +84,7 @@ public partial class Entity : BaseEvent
         UpdateMove(deltaTime);
     }
 
-    public void Update(float deltaTime)
+    public virtual void Update(float deltaTime)
     {
         
         //刷新剔除
@@ -100,12 +100,6 @@ public partial class Entity : BaseEvent
     {
         if (!skinInitialized)
             Skin_CreateAvatar();
-    }
-
-    public void GetHurt(DamageData damage)
-    {
-        m_hurtSource = damage;
-        m_moveMode = MoveMode.HURT;
     }
 
     public void Release()
@@ -136,6 +130,8 @@ public partial class Entity : BaseEvent
                 break;
             case EntityType.Npc:
                 break;
+            case EntityType.Portal:
+                break;
             default:
                 break;
         }
@@ -163,12 +159,6 @@ public partial class Entity : BaseEvent
         EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
         entityAttribute = attr;
 
-        //添加碰撞检测
-        //GameObject coller = new GameObject("ColliderRoot");
-        //coller.transform.SetParent(transform);
-        //updateCollider = coller.AddComponent<UpdateCollider>();
-        //updateCollider.Init(this);
-
         inputReader.EnableGameplayInput();
         m_inputEnabled = true;
         OrbitCamera.Instance.focus = allBones["CameraTarget"];
@@ -192,12 +182,6 @@ public partial class Entity : BaseEvent
         //添加属性模块
         EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
         entityAttribute = attr;
-
-        //添加碰撞检测
-        //GameObject coller = new GameObject("ColliderRoot");
-        //coller.transform.SetParent(transform);
-        //updateCollider = coller.AddComponent<UpdateCollider>();
-        //updateCollider.Init(this);
 
         DOSpriteAnimation(animationConfig.idle_Anim);
     }
@@ -246,6 +230,7 @@ public partial class Entity : BaseEvent
         Monster = 3,
         Robot = 4,
         Npc = 5,
+        Portal = 6,
     }
 
 }

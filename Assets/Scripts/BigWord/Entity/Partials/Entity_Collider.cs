@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cfg.db;
 
 public partial class Entity : GMUpdateCollider.IColliderInfo
 {
@@ -19,23 +20,23 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     /// <summary>
     /// Z轴触发器列表
     /// </summary>
-    private List<ColliderTrigger> m_triggerZ = new List<ColliderTrigger>();
+    protected List<ColliderTrigger> m_triggerZ = new List<ColliderTrigger>();
     /// <summary>
     /// XY轴触发器列表
     /// </summary>
-    private List<ColliderTrigger> m_triggerXY = new List<ColliderTrigger>();
+    protected List<ColliderTrigger> m_triggerXY = new List<ColliderTrigger>();
     /// <summary>
     /// XY轴碰撞盒列表
     /// </summary>
-    private List<BoxCollider2D> m_collidersXY = new List<BoxCollider2D>();
+    protected List<BoxCollider2D> m_collidersXY = new List<BoxCollider2D>();
     /// <summary>
     /// Z轴碰撞盒列表
     /// </summary>
-    private List<BoxCollider2D> m_collidersZ = new List<BoxCollider2D>();
+    protected List<BoxCollider2D> m_collidersZ = new List<BoxCollider2D>();
     /// <summary>
     /// 受击碰撞计数
     /// </summary>
-    private Dictionary<int, ContentDamageHit> m_hitCount = new Dictionary<int, ContentDamageHit>();
+    private int m_hitCount;
     public bool updateColliderEnabled { get; set; }
     public FrameCollInfo frameCollInfo { get; private set; }
     public GMUpdateCollider colliderUpdate { get; set; }
@@ -48,15 +49,16 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     public Transform collidersZ_parent { get => m_collidersZ_parent; }
     public int hurt { get; set; }
 
-    public void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
+    public virtual void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        if (m_hitTarget) return;
-        m_hitTarget = true;
+        SkillCfg entitySkill = MDefine.tables.TbSkill.Get(collInfo.skillCode);
+        if (entitySkill == null || ++m_hitCount > entitySkill.NumbeOfAttacks)
+            return;
 
         //攻击者表现
-        ContentAttackerHandler(contact, collInfo);
+        ContentAttackerHandler(contact, entitySkill);
         //受击者表现
-        ContentDamageHandler(contact, collInfo);
+        ContentDamageHandler(contact, entitySkill);
     }
 
     private void ColliderInit()
@@ -176,7 +178,7 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
         }
     }
 
-    private void CreateCollider(List<BoxCollider2D> boxList, List<ColliderTrigger> triggerList, GMUpdateCollider.Axial axial, ColliderInfos colliderInfos)
+    protected void CreateCollider(List<BoxCollider2D> boxList, List<ColliderTrigger> triggerList, GMUpdateCollider.Axial axial, ColliderInfos colliderInfos = null)
     {
         string name = axial == GMUpdateCollider.Axial.AxialXY ? "collider_XY" : "collider_Z";
         Transform parent = axial == GMUpdateCollider.Axial.AxialXY ? m_collidersXY_parent : m_collidersZ_parent;
@@ -192,48 +194,43 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     }
 
 
-    private void ContentDamageHandler(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
+    private void ContentDamageHandler(GMUpdateCollider.ContactPair contact, SkillCfg entitySkill)
     {
-        EntitySkill entitySkill = SkillConfig.GetInfoByCode(collInfo.skillCode);
         if (entitySkill != null)
         {
             Entity entity = contact.victim.entity;
-            entitySkill.hurtObj = entity.gameObject;
             MusicManager.Instance.PlaySound("sm_dmg_0" + Random.Range(1, 4));
-            Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", collInfo.name);
-            DamageData data = DamageConfig.GetInfoByCode(entitySkill.DamageCode);
-            data.attacker = gameObject;
-            entity.m_haltFrame = data.haltFrame_Target;
-            entity.MoveHurt_OnStart(data);
+            Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", entitySkill.SkillName);
+            DamageCfg data = MDefine.tables.TbDamage.Get(entitySkill.DamageCode);
+            entity.m_haltFrame = data.HaltFrameTarget;
+            entity.MoveHurt_OnStart(data, gameObject);
         }
     }
 
-    private void ContentAttackerHandler(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
+    private void ContentAttackerHandler(GMUpdateCollider.ContactPair contact, SkillCfg entitySkill)
     {
-        EntitySkill entitySkill = SkillConfig.GetInfoByCode(collInfo.skillCode);
         if (entitySkill != null)
         {
-            DamageData data = DamageConfig.GetInfoByCode(entitySkill.DamageCode);
-            m_haltFrame = data.haltFrame_Self;
+            DamageCfg data = MDefine.tables.TbDamage.Get(entitySkill.DamageCode);
+            m_haltFrame = data.HaltFrameSelf;
             string hitEffectName = "";
-            switch (data.damageAttribute)
+            switch (data.DamageAttribute)
             {
-                case DamageData.DamageAttributeType.None:
+                case cfg.DamageAttribute.NONE:
                     int i = Random.Range(0, 2);
                     hitEffectName = i == 0 ? "Prefabs/Effect/knockSmall" : "Prefabs/Effect/knockLarge";
                     break;
-                case DamageData.DamageAttributeType.Fire:
+                case cfg.DamageAttribute.FIRE:
                     break;
-                case DamageData.DamageAttributeType.Ice:
+                case cfg.DamageAttribute.ICE:
                     break;
-                case DamageData.DamageAttributeType.Light:
+                case cfg.DamageAttribute.LIGHT:
                     break;
-                case DamageData.DamageAttributeType.Dark:
+                case cfg.DamageAttribute.DARK:
                     break;
                 default:
                     break;
             }
-
             //计算接触点
             Vector3 contactPoint = contact.attacker.collider2d.bounds.ClosestPoint(contact.victim.collider2d.bounds.center);
             var startY = Mathf.Min(contact.victim.collider2d.bounds.center.y + contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y + (contact.attacker.collider2d.bounds.extents.y / 2f));
@@ -242,7 +239,7 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
             GameObjectPool pool = GMPoolManager.Instance.TryGet("HitEffect");
             pool.Get(hitEffectName, (effectObj) => {
                 HitEffect effect = effectObj.GetComponent<HitEffect>();
-                effectObj.transform.position = new Vector2(contactPoint.x, contactPoint.y - transform.position.y);
+                effectObj.transform.position = contactPoint;
                 effect.Play(() => { pool.Release(hitEffectName, effectObj); });
             });
         }

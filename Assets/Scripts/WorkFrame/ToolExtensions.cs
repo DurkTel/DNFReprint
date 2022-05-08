@@ -28,4 +28,14 @@ public static class ToolExtensions
 
         return false;
     }
+
+    public static T TryAddComponent<T>(this GameObject gameObject) where T : MonoBehaviour
+    {
+        if (gameObject.TryGetComponent(out T component))
+        {
+            return component;
+        }
+
+        return gameObject.AddComponent<T>();
+    }
 }

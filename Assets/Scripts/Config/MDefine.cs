@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using cfg;
+using SimpleJSON;
 
-public class MDefine<T>
+public class MDefine
 {
-    private static T[] m_db;
-
-    public static T[] GetCfg(string cfgName)
+    private static Tables m_tables;
+    public static Tables tables { get { return m_tables; } }
+    public static void Initialize()
     {
-        if (m_db == null)
-            m_db = JsonManager.LoadConfig<T[]>(cfgName);
-        return m_db;
+        m_tables = new Tables(Loader);
     }
-    
+
+    private static JSONNode Loader(string fileName)
+    {
+        return JSON.Parse(File.ReadAllText(Application.dataPath + "/../GenerateDatas/json/" + fileName + ".json"));
+    }
+
 }

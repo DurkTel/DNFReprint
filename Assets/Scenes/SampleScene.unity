@@ -19169,12 +19169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1833331faa73c9742a21a5edcd6a7b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_stop: 0
-  current_animationData: {fileID: 0}
-  last_animationData: {fileID: 0}
-  charactRenderer: {fileID: 0}
-  AnimationConfig: {fileID: 11400000, guid: 4cc7593d114932b4bb9e3d1081582600, type: 2}
-  inputReader: {fileID: 0}
 --- !u!1 &711741327
 GameObject:
   m_ObjectHideFlags: 0
@@ -19234,12 +19228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1833331faa73c9742a21a5edcd6a7b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_stop: 0
-  current_animationData: {fileID: 0}
-  last_animationData: {fileID: 0}
-  charactRenderer: {fileID: 0}
-  AnimationConfig: {fileID: 11400000, guid: ceb6d4b72a856414dbf8d3cd69563a8f, type: 2}
-  inputReader: {fileID: 11400000, guid: def6ff5f9bd86e04ba07488cb441228b, type: 2}
 --- !u!1 &711868948
 GameObject:
   m_ObjectHideFlags: 0
@@ -25299,14 +25287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8f8dac13d6f0b4baae626cd47bc959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReader: {fileID: 11400000, guid: def6ff5f9bd86e04ba07488cb441228b, type: 2}
-  runningReady: 0
-  walkingReady: 0
-  movePhase: 0
-  entityAttribute: {fileID: 11400000, guid: dc8cd9ac9c4655b47a249e06ae41a66b, type: 2}
-  isStatic: 0
-  speedDrop: 0
-  airAttackCombo: 0
 --- !u!4 &983931161
 Transform:
   m_ObjectHideFlags: 0
@@ -25349,10 +25329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92fb72013e0e2d42830827735a89a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSkillTree: {fileID: 11400000, guid: a8740c2d922b72b46abb41bda17d0eca, type: 2}
-  inputReader: {fileID: 11400000, guid: def6ff5f9bd86e04ba07488cb441228b, type: 2}
-  jumpAttack: {fileID: 11400000, guid: 28a3f87818fb5b24eb610e5112541421, type: 2}
-  shangtiaoSkill: {fileID: 11400000, guid: eae26bda6b66f484d8a884184cfe924a, type: 2}
 --- !u!213 &985069024
 Sprite:
   m_ObjectHideFlags: 0
@@ -28577,12 +28553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1833331faa73c9742a21a5edcd6a7b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_stop: 0
-  current_animationData: {fileID: 0}
-  last_animationData: {fileID: 0}
-  charactRenderer: {fileID: 0}
-  AnimationConfig: {fileID: 11400000, guid: ceb6d4b72a856414dbf8d3cd69563a8f, type: 2}
-  inputReader: {fileID: 0}
 --- !u!213 &1111357308
 Sprite:
   m_ObjectHideFlags: 0
@@ -29924,13 +29894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4b42fea72ccdd4196dd3db45986c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReader: {fileID: 0}
-  runningReady: 0
-  walkingReady: 0
-  movePhase: 0
-  entityAttribute: {fileID: 11400000, guid: 3b8b0eeb3b75ef44e96ddd3cf6e8115e, type: 2}
-  isStatic: 1
-  speedDrop: 0
 --- !u!213 &1178349074
 Sprite:
   m_ObjectHideFlags: 0
@@ -34145,7 +34108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1350010267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38952,10 +38915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92fb72013e0e2d42830827735a89a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSkillTree: {fileID: 0}
-  inputReader: {fileID: 0}
-  jumpAttack: {fileID: 0}
-  shangtiaoSkill: {fileID: 0}
 --- !u!114 &1499516216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38968,13 +38927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a521315378c86444599906a16599c57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReader: {fileID: 0}
-  runningReady: 0
-  walkingReady: 0
-  movePhase: 0
-  entityAttribute: {fileID: 11400000, guid: dc8cd9ac9c4655b47a249e06ae41a66b, type: 2}
-  isStatic: 0
-  speedDrop: 0
 --- !u!4 &1499516217
 Transform:
   m_ObjectHideFlags: 0

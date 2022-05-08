@@ -89,14 +89,44 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     }
 
-    public Entity CreateEntity(Entity.EntityType etype, CommonUtility.Career career)
+    /// <summary>
+    /// 根据不同的实体类型来实例化子类 子类有不相同的创建流程
+    /// </summary>
+    /// <param name="etype"></param>
+    /// <returns></returns>
+    private Entity GetEntityClassByType(Entity.EntityType etype)
+    {
+        Entity entity = null;
+        switch (etype)
+        {
+            case Entity.EntityType.LocalPlayer:
+                entity = Pool<CharacterEntity>.Get();
+                break;
+            case Entity.EntityType.OtherPlayer:
+                entity = Pool<CharacterEntity>.Get();
+                break;
+            case Entity.EntityType.Monster:
+                break;
+            case Entity.EntityType.Robot:
+                break;
+            case Entity.EntityType.Npc:
+                break;
+            case Entity.EntityType.Portal:
+                entity = Pool<PortalEntity>.Get();
+                break;
+        }
+
+        return entity;
+    }
+
+    public Entity CreateEntity(Entity.EntityType etype, CommonUtility.Career career  = CommonUtility.Career.None)
     {
         if (etype == Entity.EntityType.LocalPlayer && localPlayer != null)
         {
             Debug.LogError("正在尝试创建多个LocalPlayer！！！");
             return null;
         }
-        Entity entity = Pool<Entity>.Get();
+        Entity entity = GetEntityClassByType(etype);
         GameObject go = Pool<GameObject>.Get();
         int eid = GUID;
         entity.Init(eid, etype, career, go);

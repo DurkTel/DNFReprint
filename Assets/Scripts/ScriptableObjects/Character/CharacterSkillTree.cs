@@ -1,21 +1,22 @@
-﻿using System.Collections;
+﻿using cfg.db;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //[CreateAssetMenu(fileName ="SkillTree", menuName = "ScriptableObject/Skill/SkillTree")]
 public class SkillTree
 {
-    private Dictionary<int, EntitySkill> m_skillTree = new Dictionary<int, EntitySkill>();
+    private Dictionary<int, SkillCfg> m_skillTree = new Dictionary<int, SkillCfg>();
     public void AddSkill(int skillCode)
     {
-        EntitySkill skill = SkillConfig.GetInfoByCode(skillCode);
+        SkillCfg skill = MDefine.tables.TbSkill.Get(skillCode);
         if (skill == null) return;
 
         bool conditionSkill = skill.Condition == 0 ? true : m_skillTree.ContainsKey(skill.Condition);
-        bool isStudy = m_skillTree.ContainsKey(skill.SkillCode);
+        bool isStudy = m_skillTree.ContainsKey(skill.Id);
         if (!isStudy && conditionSkill)
         {
-            m_skillTree.Add(skill.SkillCode, skill);
+            m_skillTree.Add(skill.Id, skill);
         }
         else
         {
@@ -38,7 +39,7 @@ public class SkillTree
     //    }
     //}
 
-    public EntitySkill GetSkill(int skillCode)
+    public SkillCfg GetSkill(int skillCode)
     {
         if (m_skillTree.ContainsKey(skillCode))
         {

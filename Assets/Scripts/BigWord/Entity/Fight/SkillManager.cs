@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+using cfg.db;
 
 /// <summary>
 /// 管理攻击或释放技能
@@ -13,7 +14,7 @@ public class SkillManager
 
     private Dictionary<InputActionDefine, int> m_actionSkillCodeMap = new Dictionary<InputActionDefine, int>();
 
-    private Dictionary<EntitySkill, float> m_skillCoolingMap = new Dictionary<EntitySkill, float>();
+    private Dictionary<SkillCfg, float> m_skillCoolingMap = new Dictionary<SkillCfg, float>();
 
     public SkillTree characterSkillTree;
 
@@ -57,7 +58,7 @@ public class SkillManager
         if (m_actionSkillCodeMap.ContainsKey(inputAction))
         {
             int skillCode = m_actionSkillCodeMap[inputAction];
-            EntitySkill skill = characterSkillTree.GetSkill(skillCode);
+            SkillCfg skill = characterSkillTree.GetSkill(skillCode);
             if (skill == null)
             {
                 Debug.LogError(string.Format("技能code{0}在技能树中找不到对应的技能！", skillCode));
@@ -77,7 +78,7 @@ public class SkillManager
     /// 技能是否冷却
     /// </summary>
     /// <param name="skill"></param>
-    private bool CheckSkillCD(EntitySkill skill)
+    private bool CheckSkillCD(SkillCfg skill)
     {
         if (m_skillCoolingMap.ContainsKey(skill))
         {
@@ -96,7 +97,7 @@ public class SkillManager
         }
     }
 
-    public bool CanReleaseSkill(EntitySkill skill)
+    public bool CanReleaseSkill(SkillCfg skill)
     {
         //先测试
         if (true)

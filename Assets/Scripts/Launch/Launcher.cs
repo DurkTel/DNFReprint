@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using cfg.db;
 
 public class Launcher : MonoBehaviour
 {
-    Dictionary<Avatar.AvatarPartType, Entity.ModelInfo> modelInfo;
+    Dictionary<Avatar.AvatarPartType, ModelInfoCfg> modelInfo;
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -14,27 +15,28 @@ public class Launcher : MonoBehaviour
 
 
         StartCoroutine(LaunchGame(() => {
-            modelInfo = new Dictionary<Avatar.AvatarPartType, Entity.ModelInfo>();
-            modelInfo.Add(Avatar.AvatarPartType.body, ModelConfig.GetInfoByCode(10000));
-            modelInfo.Add(Avatar.AvatarPartType.hair, ModelConfig.GetInfoByCode(10001));
-            modelInfo.Add(Avatar.AvatarPartType.pants, ModelConfig.GetInfoByCode(10002));
-            modelInfo.Add(Avatar.AvatarPartType.pantsEx, ModelConfig.GetInfoByCode(10003));
-            modelInfo.Add(Avatar.AvatarPartType.shirt, ModelConfig.GetInfoByCode(10004));
-            modelInfo.Add(Avatar.AvatarPartType.shoes, ModelConfig.GetInfoByCode(10005));
-            modelInfo.Add(Avatar.AvatarPartType.shoesEx, ModelConfig.GetInfoByCode(10006));
-            modelInfo.Add(Avatar.AvatarPartType.weapon, ModelConfig.GetInfoByCode(10007));
-            modelInfo.Add(Avatar.AvatarPartType.weaponEx, ModelConfig.GetInfoByCode(10008));
+            modelInfo = new Dictionary<Avatar.AvatarPartType, ModelInfoCfg>();
+            
+            modelInfo.Add(Avatar.AvatarPartType.body, MDefine.tables.TbModelInfo.Get(10000));
+            modelInfo.Add(Avatar.AvatarPartType.hair, MDefine.tables.TbModelInfo.Get(10001));
+            modelInfo.Add(Avatar.AvatarPartType.pants, MDefine.tables.TbModelInfo.Get(10002));
+            modelInfo.Add(Avatar.AvatarPartType.pantsEx, MDefine.tables.TbModelInfo.Get(10003));
+            modelInfo.Add(Avatar.AvatarPartType.shirt, MDefine.tables.TbModelInfo.Get(10004));
+            modelInfo.Add(Avatar.AvatarPartType.shoes, MDefine.tables.TbModelInfo.Get(10005));
+            modelInfo.Add(Avatar.AvatarPartType.shoesEx, MDefine.tables.TbModelInfo.Get(10006));
+            modelInfo.Add(Avatar.AvatarPartType.weapon, MDefine.tables.TbModelInfo.Get(10007));
+            modelInfo.Add(Avatar.AvatarPartType.weaponEx, MDefine.tables.TbModelInfo.Get(10008));
 
             Entity entity = GMEntityManager.Instance.CreateEntity(Entity.EntityType.LocalPlayer, CommonUtility.Career.Swordsman);
             entity.models = modelInfo;
             entity.Skin_SetVisible(true);
-            Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonUtility.Career.Swordsman);
-            entity2.models = modelInfo;
+            //Entity entity2 = GMEntityManager.Instance.CreateEntity(Entity.EntityType.OtherPlayer, CommonUtility.Career.Swordsman);
+            //entity2.models = modelInfo;
             //id = entity2.entityId;
             //entity2.Skin_SetAvatarPosition(new Vector3(30, 0, 0));
             //entity2.Skin_SetVisible(true);
             //entity2.gameObject.AddComponent<Test111>().entity = entity2;
-
+            GMScenesManager.Instance.SwitchScene(10000);
         }));
     }
 
@@ -62,6 +64,9 @@ public class Launcher : MonoBehaviour
     /// <returns></returns>
     private IEnumerator LaunchGame(UnityAction callback = null)
     {
+        MDefine.Initialize();
+        yield return null;
+
         OrbitCamera.Initialize();
         yield return null;
 
@@ -70,7 +75,6 @@ public class Launcher : MonoBehaviour
 
         GMEntityManager.Initialize();
         yield return null;
-
 
         callback?.Invoke();
 

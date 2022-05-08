@@ -1,3 +1,3 @@
 [
-{"mapCode":10000,"mapType":0,"name":"埃尔文防线","enterLevel":0}
+{"mapId":10000,"mapName":"赛丽亚旅馆","mapType":0,"assetName":"Map/1","CharacterPosX":0,"CharacterPosY":-1.33,"cameraMinHeight":-0.37,"cameraMaxHeight":1.21,"cameraMinWidth":-1.23,"cameraMaxWidth":1.19,"bgMusic":"gate_new"}
 ]

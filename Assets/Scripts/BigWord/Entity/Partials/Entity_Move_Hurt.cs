@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using cfg.db;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,7 +27,7 @@ public partial class Entity
     /// <summary>
     /// 伤害源
     /// </summary>
-    private DamageData m_hurtSource;
+    private DamageCfg m_hurtSource;
     /// <summary>
     /// 受击Y方向速度
     /// </summary>
@@ -149,24 +150,24 @@ public partial class Entity
     /// 受击开始
     /// </summary>
     /// <param name="damage"></param>
-    private void MoveHurt_OnStart(DamageData damage)
+    private void MoveHurt_OnStart(DamageCfg damage, GameObject attacker = null)
     {
         m_hurtSource = damage;
         Move_Stop();
         //伤害来源是实体
-        if (damage.attacker != null)
+        if (attacker != null)
         {
             //面对伤害源
-            if (damage.lookAttacker)
+            if (damage.LookAttacker)
             {
-                float deltaX = damage.attacker.transform.position.x - transform.position.x;
+                float deltaX = attacker.transform.position.x - transform.position.x;
                 SetSpriteFilp(deltaX < 0);
             }
 
             //施加X轴方向移动
-            MoveHurt_X(m_hurtSource.velocityX * -curFlip, m_hurtSource.acceleration, m_hurtSource.recoverTime);
+            MoveHurt_X(m_hurtSource.VelocityX * -curFlip, m_hurtSource.Acceleration, m_hurtSource.RecoverTime);
             //施加Y轴方向移动
-            MoveHurt_Y(m_hurtSource.heightY, m_hurtSource.velocityXY * -curFlip);
+            MoveHurt_Y(m_hurtSource.HeightY, m_hurtSource.VelocityXY * -curFlip);
         }
 
         m_moveMode = MoveMode.HURT;
@@ -184,7 +185,6 @@ public partial class Entity
         rigidbody.velocity = Vector2.zero;
     }
     #endregion
-
 
     #region X方向
     /// <summary>

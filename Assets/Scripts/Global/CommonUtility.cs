@@ -6,6 +6,7 @@ public class CommonUtility
 {
     public enum Career
     {
+        None = 0,
         Swordsman = 1,
         Shooter = 2,
         Fighter = 3,

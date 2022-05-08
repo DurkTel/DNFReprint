@@ -31,8 +31,6 @@ public partial class Entity
 
     private bool[] m_isFirstList;
 
-    private bool m_hitTarget;
-
     private List<RenenderSprite> m_renenderSprites = new List<RenenderSprite>();
 
     private AnimationData m_next_animationData;
@@ -163,7 +161,7 @@ public partial class Entity
         last_animationData = current_animationData;
         current_animationData = animationData;
         updateAnimationEvent?.Invoke(animationData);
-        m_hitTarget = false;
+        m_hitCount = 0;
         m_totalTime = 999;
         m_currentFrame = 0;
         m_isFirstList = new bool[animationData.frameList.Count];

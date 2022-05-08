@@ -23,7 +23,7 @@ public partial class Avatar : MonoBehaviour
 
     private List<AvatarPart> m_waitLoadPartList;
 
-    public bool loadCompleted { get; private set; }
+    public bool loadCompleted { get; set; }
     public Dictionary<AvatarPartType, AvatarPart> avatarPartDic { get; private set; }
 
     public UnityAction onAvatarLoadComplete;
@@ -119,6 +119,7 @@ public partial class Avatar : MonoBehaviour
         if (m_waitLoadPartList != null)
             m_waitLoadPartList.Clear();
 
+        if (avatarPartDic == null || avatarPartDic.Count <= 0) return;
         foreach (AvatarPart part in avatarPartDic.Values)
         {
             part.Clear();

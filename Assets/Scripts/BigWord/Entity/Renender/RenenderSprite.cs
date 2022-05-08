@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 public class RenenderSprite : MonoBehaviour
 {
-    private SpriteRenderer m_spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     private Sprite m_singSprite;
 
@@ -33,7 +33,7 @@ public class RenenderSprite : MonoBehaviour
 
     private void Start()
     {
-        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
@@ -168,13 +168,13 @@ public class RenenderSprite : MonoBehaviour
     { 
         if(part_Sprite.Count - 1 >= index)
         {
-            m_spriteRenderer.sprite = part_Sprite[index];
+            spriteRenderer.sprite = part_Sprite[index];
         }
     }
 
     public void SetSpriteFilp(bool isLeft)
     {
-        m_spriteRenderer.flipX = isLeft;
+        spriteRenderer.flipX = isLeft;
     }
 
     public void Clear()
@@ -188,7 +188,7 @@ public class RenenderSprite : MonoBehaviour
     /// <returns>-1为右</returns>
     public int GetCurFlip()
     {
-        return m_spriteRenderer.flipX ? -1 : 1;
+        return spriteRenderer.flipX ? -1 : 1;
     }
 
 }

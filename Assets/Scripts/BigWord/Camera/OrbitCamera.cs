@@ -36,6 +36,11 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
     /// </summary>
     private Vector3 focusPoint, previousFocusPoint;
     /// <summary>
+    /// 移动的限制
+    /// </summary>
+    [SerializeField]
+    private Vector2 heightLimit, widthLimit;
+    /// <summary>
     /// 规则相机
     /// </summary>
     public static Camera regularCamera;
@@ -120,6 +125,14 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
         }
         else
             focusPoint = targetPoint;
+
+        focusPoint = new Vector3(Mathf.Clamp(focusPoint[0], widthLimit[0], widthLimit[1]), Mathf.Clamp(focusPoint[1], heightLimit[0], heightLimit[1]), focusPoint[2]);
+    }
+
+    public void SetCameraLimit(float minHeight, float maxHeight, float minWidth, float maxWidth)
+    {
+        heightLimit = new Vector2(minHeight, maxHeight);
+        widthLimit = new Vector2(minWidth, maxWidth);
     }
 
 }

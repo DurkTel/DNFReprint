@@ -49,3 +49,9 @@ TagManager:
   - name: 3D
     uniqueID: 417339381
     locked: 0
+  - name: Effect
+    uniqueID: 1747843077
+    locked: 0
+  - name: FG
+    uniqueID: 2779330963
+    locked: 0
