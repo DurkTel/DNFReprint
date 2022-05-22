@@ -5,9 +5,16 @@ using cfg.db;
 
 public class PortalEntity : Entity
 {
+    /// <summary>
+    /// 半径
+    /// </summary>
     private float m_radius = 150f;
-
+    /// <summary>
+    /// 传送到的地图信息
+    /// </summary>
     private MapCfg m_mapCfg;
+
+    private Portal m_portalCfg;
 
     protected override void Skin_CreateAvatar()
     {
@@ -19,9 +26,9 @@ public class PortalEntity : Entity
 
     public override void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        if (contact.victim.entity == GMEntityManager.Instance.localPlayer && m_mapCfg != null)
+        if (contact.victim.entity == GMEntityManager.localPlayer && m_mapCfg != null)
         {
-            GMScenesManager.Instance.SwitchScene(m_mapCfg.Id);
+            GMScenesManager.Instance.SwitchScene(m_mapCfg.Id, new Vector3(m_portalCfg.ToX, m_portalCfg.ToY, m_portalCfg.ToZ));
             Debug.Log("传送到：" + m_mapCfg.MapName);
         }
     }
@@ -33,9 +40,10 @@ public class PortalEntity : Entity
         colliderUpdate.ClearContactZ(entityId);
     }
 
-    public void SetData(MapCfg mapCfg)
+    public void SetData(MapCfg mapCfg, Portal portal)
     {
         m_mapCfg = mapCfg;
+        m_portalCfg = portal;
     }
 
     private void InitPortal()

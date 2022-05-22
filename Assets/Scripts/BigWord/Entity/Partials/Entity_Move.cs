@@ -59,9 +59,9 @@ public partial class Entity
         m_curMoveDir = input;
     }
 
-    private void MovePhaseHandle(string action)
+    protected void MovePhaseHandle(string action)
     {
-        if (!m_inputEnabled || m_moveMode == MoveMode.HURT)
+        if (!m_inputEnabled || m_moveMode == MoveMode.HURT || status == CharacterStatus.PEACE)
             return;
         if (action == "Left" || action == "Right")
         {

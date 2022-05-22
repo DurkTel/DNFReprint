@@ -19,7 +19,7 @@ public class AvatarPart
 
             m_assetName = value;
 
-            if (string.IsNullOrEmpty(m_assetName))
+            if (!string.IsNullOrEmpty(m_assetName))
                 Refresh();
         }
     }
@@ -44,11 +44,13 @@ public class AvatarPart
 
     public Transform boneTransform { get; set; }
 
+    public string boneName { get; set; }
+
     public RenenderSprite renender { get; private set; }
 
     public Avatar avatar { get; private set; }
 
-    public Avatar.AvatarPartType partType { get; private set; }
+    public int partType { get; private set; }
 
     public bool loadComplete { get { return renender != null && renender.loadComplete; } }
 
@@ -60,7 +62,7 @@ public class AvatarPart
 
     public int sort { get; set; }
 
-    public AvatarPart(Avatar avatar, Avatar.AvatarPartType partType)
+    public AvatarPart(Avatar avatar, int partType)
     {
         this.avatar = avatar;
         this.partType = partType;
@@ -73,8 +75,17 @@ public class AvatarPart
         avatar.RefreshPart(partType);
     }
 
+    public void RefreshBoneBinding()
+    {
+        if (partNode != null)
+        {
+            partNode.SetParent(boneTransform);
+        }
+    }
+
     private void OnPartLoadComplete(Avatar.AvatarPartType partType)
     {
+        partNode.SetParent(boneTransform);
         partNode.localPosition = position;
         renender.spriteRenderer.sortingOrder = sort;
         partNode.localScale = scale == Vector3.zero ? Vector3.one : scale;
@@ -88,10 +99,9 @@ public class AvatarPart
             GameObject go = new GameObject(partType.ToString());
             renender = go.AddComponent<RenenderSprite>();
             partNode = go.transform;
-            partNode.SetParent(boneTransform);
         }
 
-        return renender.InitSpriteAsync(assetName, fashionCode, OnPartLoadComplete);
+        return renender.InitSpriteAsync(assetName, OnPartLoadComplete);
     }
 
     private void ReleaseModel()

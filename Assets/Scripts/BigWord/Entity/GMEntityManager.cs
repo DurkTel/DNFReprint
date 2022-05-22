@@ -17,11 +17,11 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     public static GMUpdateCollider entityUpdateCollider;
 
-    private Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
+    private static Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
 
     private List<Entity> m_waitCreateList = new List<Entity>();
     public Dictionary<int ,Entity> entityMap { get { return m_entityMap; } }
-    public Entity localPlayer { get; private set; }
+    public static CharacterEntity localPlayer { get; set; }
     public static void Initialize()
     {
         m_transform = new GameObject("GMEntityManager").transform;
@@ -89,54 +89,29 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     }
 
-    /// <summary>
-    /// 根据不同的实体类型来实例化子类 子类有不相同的创建流程
-    /// </summary>
-    /// <param name="etype"></param>
-    /// <returns></returns>
-    private Entity GetEntityClassByType(Entity.EntityType etype)
+    private void OnDestroy()
     {
-        Entity entity = null;
-        switch (etype)
+        foreach (var item in m_entityMap.Values)
         {
-            case Entity.EntityType.LocalPlayer:
-                entity = Pool<CharacterEntity>.Get();
-                break;
-            case Entity.EntityType.OtherPlayer:
-                entity = Pool<CharacterEntity>.Get();
-                break;
-            case Entity.EntityType.Monster:
-                break;
-            case Entity.EntityType.Robot:
-                break;
-            case Entity.EntityType.Npc:
-                break;
-            case Entity.EntityType.Portal:
-                entity = Pool<PortalEntity>.Get();
-                break;
+            item.Dispose();
         }
-
-        return entity;
     }
 
-    public Entity CreateEntity(Entity.EntityType etype, CommonUtility.Career career  = CommonUtility.Career.None)
+    public static Entity CreateEntity(int etype)
     {
-        if (etype == Entity.EntityType.LocalPlayer && localPlayer != null)
+        if (etype == Entity.LocalPlayer && localPlayer != null)
         {
             Debug.LogError("正在尝试创建多个LocalPlayer！！！");
             return null;
         }
-        Entity entity = GetEntityClassByType(etype);
+        Entity entity = Pool<Entity>.Get();
         GameObject go = Pool<GameObject>.Get();
         int eid = GUID;
-        entity.Init(eid, etype, career, go);
+        entity.Init(eid, etype, CommonUtility.Career.Fighter, go);
         entity.transform.SetParent(m_actives);
         entity.transform.localPosition = Vector3.zero;
         m_entityMap.Add(eid, entity);
-        if (etype == Entity.EntityType.LocalPlayer)
-            localPlayer = entity;
-        else
-            entityCullingGroup.AddCullingObject(entity);
+        entityCullingGroup.AddCullingObject(entity);
 
         entityUpdateCollider.AddColliderObject(eid, entity);
         return entity;

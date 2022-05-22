@@ -41,13 +41,18 @@ public class GMScene
         m_gameObject = null;
     }
 
-    public void Activate()
+    public void Activate(Vector3 pos)
     {
         m_transform.position = Vector3.zero;
-        if (GMEntityManager.Instance.localPlayer != null)
+        if (GMEntityManager.localPlayer != null)
         {
-            GMEntityManager.Instance.localPlayer.transform.position = new Vector3(m_mapData.CharacterPosX, m_mapData.CharacterPosY, 0);
+            //切换和平或战斗状态
+            GMEntityManager.localPlayer.ChangeStatus(m_mapData.MapType == cfg.MapType.MAIN_CITY ? CharacterEntity.CharacterStatus.PEACE : CharacterEntity.CharacterStatus.FIGHT);
+            //重置位置
+            GMEntityManager.localPlayer.transform.position = pos != Vector3.zero? pos : new Vector3(m_mapData.CharacterPosX, m_mapData.CharacterPosY, 0);
+            //限制相机
             OrbitCamera.Instance.SetCameraLimit(m_mapData.CameraMinHeight, m_mapData.CameraMaxHeight, m_mapData.CameraMinWidth, m_mapData.CameraMaxWidth);
+            //背景音乐
             MusicManager.Instance.PlayBkMusic(m_mapData.BgMusic);
             CreateEntityByMapCfg();
         }
@@ -59,7 +64,7 @@ public class GMScene
         m_releaseTime = Time.realtimeSinceStartup;
         foreach (var portEntity in m_portalEntities)
         {
-            portEntity.Release();
+            GMEntityManager.Instance.ReleaseEntity(portEntity.entityId);
         }
         m_portalEntities.Clear();
     }
@@ -68,10 +73,10 @@ public class GMScene
     {
         foreach (var portal in m_mapData.Portals)
         {
-            PortalEntity portEntity = (PortalEntity)GMEntityManager.Instance.CreateEntity(Entity.EntityType.Portal);
+            PortalEntity portEntity = (PortalEntity)GMEntityManager.CreateEntity(5);
             portEntity.Skin_SetAvatarPosition(new Vector3(portal.X, portal.Y, portal.Z));
             MapCfg portMapData = MDefine.tables.TbMap.Get(portal.MapId);
-            portEntity.SetData(portMapData);
+            portEntity.SetData(portMapData, portal);
             m_portalEntities.Add(portEntity);
         }
     }

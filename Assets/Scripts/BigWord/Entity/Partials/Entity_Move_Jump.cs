@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public partial class Entity 
+public partial class Entity
 {
     private enum JumpState : int
     {
@@ -34,9 +34,9 @@ public partial class Entity
         inputReader.buttonPressEvent += InputJump;
     }
 
-    private void InputJump(string name)
+    protected void InputJump(string name)
     {
-        if (!m_inputEnabled)
+        if (!m_inputEnabled || status == CharacterStatus.PEACE)
             return;
         if (name == "Jump")
             Move_Jump();

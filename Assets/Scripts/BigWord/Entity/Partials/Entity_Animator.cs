@@ -504,4 +504,24 @@ public partial class Entity
 
     }
 
+    /// <summary>
+    /// 添加动画机
+    /// </summary>
+    /// <param name="aniCfg">动画配置</param>
+    public void AddEntityAnimator(string aniCfg)
+    {
+        if (string.IsNullOrEmpty(aniCfg) || mainAvatar == null || mainAvatar.avatarPartDic.Count == 0)
+            return;
+
+        foreach (AvatarPart part in mainAvatar.avatarPartDic.Values)
+        {
+            m_renenderSprites.Add(part.renender);
+        }
+
+        //animationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
+        animationConfig = AssetDatabase.LoadAssetAtPath(aniCfg, typeof(AnimationConfig)) as AnimationConfig;
+
+        DOSpriteAnimation(animationConfig.idle_Anim);
+    }
+
 }

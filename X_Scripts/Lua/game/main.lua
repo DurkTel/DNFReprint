@@ -1,0 +1,24 @@
+
+
+local main = function()
+    local SentityData =
+    {
+        type = 0,
+        models = {
+            [0] = 10000,
+            [1] = 10001,
+            [2] = 10002,
+            [3] = 10003,
+            [4] = 10004,
+            [5] = 10005,
+            [6] = 10006,
+            [7] = 10007,
+            [8] = 10008,
+        }
+    }
+
+    GEntityManager.create_entity(SentityData)
+end
+
+
+main()

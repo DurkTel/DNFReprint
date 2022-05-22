@@ -57,8 +57,6 @@ public partial class Entity
         m_collidersXY_parent.SetParent(skinNode);
         m_collidersZ_parent.SetParent(transform);
 
-
-
         if (mainAvatar == null)
         {
             GameObject go = new GameObject("MainAvatar");
@@ -66,91 +64,92 @@ public partial class Entity
             go.transform.SetParent(skinNode);
             go.transform.localPosition = Vector3.zero;
             //加载完成后添加组件
-            mainAvatar.onAvatarLoadComplete += AssembleComponent;
+            mainAvatar.onAvatarLoadComplete = onAvatarLoadComplete;
         }
 
+        if (entityType == Entity.LocalPlayer || entityType == Entity.OtherPlayer)
+        {
+            if (boxCollider == null)
+            {
+                boxCollider = gameObject.AddComponent<BoxCollider2D>();
+                boxCollider.offset = new Vector2(0, 0.08f);
+                boxCollider.size = new Vector2(0.5f, 0.1f);
+            }
+
+
+            if (rigidbody == null)
+            {
+                rigidbody = gameObject.AddComponent<Rigidbody2D>();
+                rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+                rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
+                rigidbody.gravityScale = 0;
+                rigidbody.drag = 10f;
+                rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            }
+        }
+
+        onCreateEvent?.Invoke(entityId);
     }
 
     /// <summary>
-    /// 初始化皮肤部件
+    /// avatar加载完成
     /// </summary>
-    protected void Init_Skin()
+    private void onAvatarLoadComplete()
     {
-        UpdateSkinAll();
+        OrbitCamera.Instance.focus = allBones["CameraTarget"];
+        skinNode.gameObject.AddComponent<SortSprite2D>();
+        onLuaAvatarLoadComplete?.Invoke(entityId);
     }
 
-    public void UpdateSkinAll()
+    public void Skin_SetAvatarSkeleton(string boneAssetName)
     {
-        Update_Skin_Body();
-        Update_Skin_Shirt();
-        Update_Skin_Weapon();
-        Update_Skin_Hair();
-        Update_Skin_Pants();
-        Update_Skin_Shoes();
+        if (mainAvatar == null || string.IsNullOrEmpty(boneAssetName)) return;
+        //初始化完载体加载各个皮肤部件
+        ResourceRequest re = AssetLoader.LoadAsync<GameObject>(boneAssetName);
+        re.completed += (p) =>
+        {
+            rootBone = Object.Instantiate(re.asset as GameObject).transform;
+            rootBone.SetParent(mainAvatar.gameObject.transform);
+            rootBone.localPosition = Vector3.zero;
+
+            //加载完骨骼重新刷一下部件跟随(骨骼和部件都为异步)
+            foreach (AvatarPart part in mainAvatar.avatarPartDic.Values)
+            {
+                Transform transform = allBones.ContainsKey(part.boneName) ? allBones[part.boneName] : mainAvatar.transform;
+                part.boneTransform = transform;
+                part.RefreshBoneBinding();
+            }
+        };
     }
 
-    public void Update_Skin_Body()
+    public void Skin_SetAvatarPart(int partType, string modelAssetName, string boneName)
     {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.body, models);
-    }
-
-    public void Update_Skin_Shirt()
-    {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.shirt, models);
-
-    }
-
-    public void Update_Skin_Weapon()
-    {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.weapon, models);
-        Skin_SetAvatarPart(Avatar.AvatarPartType.weaponEx, models);
-
-    }
-
-    public void Update_Skin_Hair()
-    {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.hair, models);
-
-    }
-
-    public void Update_Skin_Pants()
-    {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.pants, models);
-        Skin_SetAvatarPart(Avatar.AvatarPartType.pantsEx, models);
-
-    }
-
-    public void Update_Skin_Shoes()
-    {
-        Skin_SetAvatarPart(Avatar.AvatarPartType.shoes, models);
-        Skin_SetAvatarPart(Avatar.AvatarPartType.shoesEx, models);
-    }
-
-    private void Skin_SetAvatarPart(Avatar.AvatarPartType partType, Dictionary<Avatar.AvatarPartType, ModelInfoCfg> modelInfo)
-    {
-        if (mainAvatar == null || !modelInfo.ContainsKey(partType)) return;
+        if (mainAvatar == null || string.IsNullOrEmpty(modelAssetName)) return;
         AvatarPart part = mainAvatar.AddPart(partType);
-        ModelInfoCfg info = modelInfo[partType];
-        part.assetName = info.ModelPath;
-        part.fashionCode = info.Id;
-        part.position = new Vector3(info.ModelPositionX, info.ModelPositionY, info.ModelPositionZ);
-        part.scale = Vector3.one * info.ModelScale;
-        part.sort = info.Sort;
-        part.boneTransform = allBones.ContainsKey(info.BoneName) ? allBones[info.BoneName] : mainAvatar.transform;
+        part.assetName = modelAssetName;
+        part.boneName = boneName;
+        part.boneTransform = allBones.ContainsKey(boneName) ? allBones[boneName] : mainAvatar.transform;
     }
 
-    public void Skin_SetAvatarPartScale(Avatar.AvatarPartType partType, Vector3 scale)
+    public void Skin_SetAvatarPartScale(int partType, float scale)
     {
         if (mainAvatar == null) return;
         AvatarPart part = mainAvatar.GetPart(partType);
-        part.partNode.localScale = scale;
+        part.scale = Vector3.one * scale;
     }
 
-    public void Skin_SetAvatarPartPosition(Avatar.AvatarPartType partType, Vector3 position)
+    public void Skin_SetAvatarPartPosition(int partType, Vector3 position)
     {
         if (mainAvatar == null) return;
         AvatarPart part = mainAvatar.GetPart(partType);
         part.partNode.localPosition = position;
+    }
+
+    public void Skin_SetAvatarPartSort(int partType, int sort)
+    {
+        if (mainAvatar == null) return;
+        AvatarPart part = mainAvatar.GetPart(partType);
+        part.sort = sort;
     }
 
     public void Skin_SetAvatarPosition(Vector3 position)

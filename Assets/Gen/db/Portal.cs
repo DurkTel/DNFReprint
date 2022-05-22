@@ -26,16 +26,22 @@ public sealed partial class Portal :  Bright.Config.BeanBase
         { if(!_json["y"].IsNumber) { throw new SerializationException(); }  Y = _json["y"]; }
         { if(!_json["z"].IsNumber) { throw new SerializationException(); }  Z = _json["z"]; }
         { if(!_json["radius"].IsNumber) { throw new SerializationException(); }  Radius = _json["radius"]; }
+        { if(!_json["toX"].IsNumber) { throw new SerializationException(); }  ToX = _json["toX"]; }
+        { if(!_json["toY"].IsNumber) { throw new SerializationException(); }  ToY = _json["toY"]; }
+        { if(!_json["toZ"].IsNumber) { throw new SerializationException(); }  ToZ = _json["toZ"]; }
         PostInit();
     }
 
-    public Portal(int mapId, float x, float y, float z, float radius ) 
+    public Portal(int mapId, float x, float y, float z, float radius, float toX, float toY, float toZ ) 
     {
         this.MapId = mapId;
         this.X = x;
         this.Y = y;
         this.Z = z;
         this.Radius = radius;
+        this.ToX = toX;
+        this.ToY = toY;
+        this.ToZ = toZ;
         PostInit();
     }
 
@@ -64,6 +70,18 @@ public sealed partial class Portal :  Bright.Config.BeanBase
     /// 半径
     /// </summary>
     public float Radius { get; private set; }
+    /// <summary>
+    /// 传送的位置X
+    /// </summary>
+    public float ToX { get; private set; }
+    /// <summary>
+    /// 传送的位置Y
+    /// </summary>
+    public float ToY { get; private set; }
+    /// <summary>
+    /// 传送的位置Z
+    /// </summary>
+    public float ToZ { get; private set; }
 
     public const int __ID__ = -1088248836;
     public override int GetTypeId() => __ID__;
@@ -85,6 +103,9 @@ public sealed partial class Portal :  Bright.Config.BeanBase
         + "Y:" + Y + ","
         + "Z:" + Z + ","
         + "Radius:" + Radius + ","
+        + "ToX:" + ToX + ","
+        + "ToY:" + ToY + ","
+        + "ToZ:" + ToZ + ","
         + "}";
     }
     

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SaberAnimConfig
   m_EditorClassIdentifier: 
   idle_Anim: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
-  idleTown_Anim: {fileID: 0}
+  idleTown_Anim: {fileID: 11400000, guid: 6a0e5dde923d24c48848518f7a93e62f, type: 2}
   walk_Anim: {fileID: 11400000, guid: c1d1ce428c9ab4a4ea6b6212a1b84d27, type: 2}
   run_Anim: {fileID: 11400000, guid: c6554024b18f6c148b878dc96317cb79, type: 2}
   sit_Anim: {fileID: 11400000, guid: bdd1b3607f73e544ebaafe12c8d6ca6c, type: 2}

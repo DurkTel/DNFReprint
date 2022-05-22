@@ -28,14 +28,6 @@ public class CharacterEntity : Entity
         }
 
 
-        //初始化完载体加载各个皮肤部件
-        ResourceRequest re = AssetLoader.LoadAsync<GameObject>(AvatarUtility.commonCharacterBone);
-        re.completed += (p) =>
-        {
-            rootBone = Object.Instantiate(re.asset as GameObject).transform;
-            rootBone.SetParent(mainAvatar.gameObject.transform);
-            rootBone.localPosition = Vector3.zero;
-            Init_Skin();
-        };
+        
     }
 }

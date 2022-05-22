@@ -17,7 +17,11 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
 
     private int m_frameCount;
 
-    public GMScene CurScene;
+    private GMScene m_curScene;
+    public GMScene curScene { get { return m_curScene; } }
+
+    private GMScene m_lastScene;
+    public GMScene lastScene { get { return m_lastScene; } }
     public static void Initialize()
     {
         m_transform = new GameObject("GMScenesManager").transform;
@@ -71,18 +75,20 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
         };
     }
 
-    public void SwitchScene(int mapId)
+    public void SwitchScene(int mapId, Vector3 pos = default(Vector3))
     {
         if (m_allScenes.TryGetValue(mapId, out GMScene scene))
         {
-            if (CurScene != null)
-                CurScene.Inactivation();
-            CurScene = scene;
-            CurScene.Activate();
+            if (m_curScene != null)
+                m_curScene.Inactivation();
+
+            m_lastScene = m_curScene;
+            m_curScene = scene;
+            m_curScene.Activate(pos);
         }
         else
         {
-            LoadSceneAsyn(mapId, () => SwitchScene(mapId));
+            LoadSceneAsyn(mapId, () => SwitchScene(mapId, pos));
         }
     }
 
@@ -93,7 +99,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
         {
             foreach (var scene in m_allScenes)
             {
-                if (CurScene != scene.Value && Time.realtimeSinceStartup - scene.Value.releaseTime >= 600)
+                if (m_curScene != scene.Value && Time.realtimeSinceStartup - scene.Value.releaseTime >= 600)
                 {
                     m_destroyList.Add(scene.Key);
                     

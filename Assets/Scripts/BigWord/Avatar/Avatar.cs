@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public partial class Avatar : MonoBehaviour
 {
@@ -24,9 +24,9 @@ public partial class Avatar : MonoBehaviour
     private List<AvatarPart> m_waitLoadPartList;
 
     public bool loadCompleted { get; set; }
-    public Dictionary<AvatarPartType, AvatarPart> avatarPartDic { get; private set; }
+    public Dictionary<int, AvatarPart> avatarPartDic { get; private set; }
 
-    public UnityAction onAvatarLoadComplete;
+    public Action onAvatarLoadComplete;
     public Coroutine loadCoroutine { get; private set; }
 
 
@@ -58,14 +58,6 @@ public partial class Avatar : MonoBehaviour
         }
         yield return new WaitUntil(() => IsAllComplete(m_waitLoadPartList));
         m_waitLoadPartList.Clear();
-        //while (m_waitLoadPartList.Count > 0)
-        //{
-        //    AvatarPart part = m_waitLoadPartList[0];
-        //    yield return part.LoadAsset();
-        //    if (part.loadComplete)
-        //        m_waitLoadPartList.RemoveAt(0);
-        //    Debug.Log(string.Format("异步加载完成{0}：结束帧数：{1}", part.partName, Time.frameCount));
-        //}
         //Debug.Log(string.Format("异步加载avatar完成：结束时间：{0}", Time.realtimeSinceStartup));
         onAvatarLoadComplete?.Invoke();
         loadCoroutine = null;
@@ -82,7 +74,7 @@ public partial class Avatar : MonoBehaviour
         return true;
     }
 
-    public void RefreshPart(AvatarPartType partType)
+    public void RefreshPart(int partType)
     {
         if (m_waitLoadPartList == null)
             m_waitLoadPartList = new List<AvatarPart>();
@@ -93,10 +85,10 @@ public partial class Avatar : MonoBehaviour
         ActivedLoadCoroutine();
     }
 
-    public AvatarPart AddPart(AvatarPartType partType)
+    public AvatarPart AddPart(int partType)
     {
         if (avatarPartDic == null)
-            avatarPartDic = new Dictionary<AvatarPartType, AvatarPart>();
+            avatarPartDic = new Dictionary<int, AvatarPart>();
         AvatarPart part;
         if (!avatarPartDic.TryGetValue(partType, out part))
         {
@@ -106,7 +98,7 @@ public partial class Avatar : MonoBehaviour
         return part;
     }
 
-    public AvatarPart GetPart(AvatarPartType partType)
+    public AvatarPart GetPart(int partType)
     {
         return avatarPartDic != null && avatarPartDic.ContainsKey(partType) ? avatarPartDic[partType] : null;
     }

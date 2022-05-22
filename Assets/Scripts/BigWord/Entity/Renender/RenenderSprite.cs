@@ -118,10 +118,10 @@ public class RenenderSprite : MonoBehaviour
     /// 异步加载
     /// </summary>
     /// <param name="index"></param>
-    public IEnumerator InitSpriteAsync(string assetName, int fashionCode, UnityAction<Avatar.AvatarPartType> callback)
+    public IEnumerator InitSpriteAsync(string assetName, UnityAction<Avatar.AvatarPartType> callback)
     {
         loadComplete = false;
-        string path = string.Format("{0}/{1}", assetName, fashionCode);
+        string path = assetName;
         part_Sprite.Clear();
         if (path == null)
         {
@@ -132,7 +132,7 @@ public class RenenderSprite : MonoBehaviour
         
         if (tempTA == null)
         {
-            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!");
+            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ path + "/pointOffsize");
             yield break;
         }
 

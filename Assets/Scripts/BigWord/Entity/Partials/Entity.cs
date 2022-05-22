@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using LuaEvent;
 
 public partial class Entity : BaseEvent
 {
@@ -14,11 +15,15 @@ public partial class Entity : BaseEvent
     /// <summary>
     /// 实体类型
     /// </summary>
-    public EntityType entityType { get; private set; }
+    public int entityType { get; private set; }
     /// <summary>
     /// 职业类型
     /// </summary>
     public CommonUtility.Career careerType { get; private set; }
+    /// <summary>
+    /// 实体状态
+    /// </summary>
+    public CharacterStatus status { get; private set; }
     /// <summary>
     /// 皮肤是否已经初始化
     /// </summary>
@@ -58,8 +63,27 @@ public partial class Entity : BaseEvent
     /// 顿帧时间（卡肉感）
     /// </summary>
     private float m_haltFrame;
+    /// <summary>
+    /// 实体创建完成回调
+    /// </summary>
+    public static Action<int> onCreateEvent { get; set; }
+    /// <summary>
+    /// 实体回收完成回调
+    /// </summary>
+    public static Action<int> onDestroyEvent { get; set; }
+    /// <summary>
+    /// avatar加载完成
+    /// </summary>
+    public static Action<int> onLuaAvatarLoadComplete { get; set; }
 
-    public void Init(int uid, EntityType type, CommonUtility.Career career , GameObject go)
+    public static int LocalPlayer = 0;
+    public static int OtherPlayer = 1;
+    public static int Monster = 2;
+    public static int Robot = 3;
+    public static int Npc = 4;
+    public static int Portal = 5;
+
+    public void Init(int uid, int type, CommonUtility.Career career , GameObject go)
     {
         entityId = uid;
         entityType = type;
@@ -114,76 +138,43 @@ public partial class Entity : BaseEvent
         ReleaseCollider();
     }
 
-    private void AssembleComponent()
-    {
-        switch (entityType)
-        {
-            case EntityType.LocalPlayer:
-                InitLocalCharacter();
-                break;
-            case EntityType.OtherPlayer:
-                InitOtherCharacter();
-                break;
-            case EntityType.Monster:
-                break;
-            case EntityType.Robot:
-                break;
-            case EntityType.Npc:
-                break;
-            case EntityType.Portal:
-                break;
-            default:
-                break;
-        }
 
-        skinNode.gameObject.AddComponent<SortSprite2D>();
+    public void Dispose()
+    {
+        onCreateEvent = null;
+        onDestroyEvent = null;
     }
 
-    private void InitLocalCharacter()
+
+    /// <summary>
+    /// 改变实体状态
+    /// </summary>
+    /// <param name="status"></param>
+    public void ChangeStatus(CharacterStatus status)
     {
-        gameObject.name = "local_Player";
-
-        //添加动画机
-        foreach (AvatarPart part in mainAvatar.avatarPartDic.Values)
-        {
-            m_renenderSprites.Add(part.renender);
-        }
-        animationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
-
-        //添加技能模块
-        skillManager = new SkillManager(this);
-        skillManager.inputReader = InputReader.GetInputAsset();
-        skillManager.Init();
-
-        //添加属性模块
-        EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
-        entityAttribute = attr;
-
-        inputReader.EnableGameplayInput();
-        m_inputEnabled = true;
-        OrbitCamera.Instance.focus = allBones["CameraTarget"];
-        DOSpriteAnimation(animationConfig.idle_Anim);
+        this.status = status;
     }
 
-    private void InitOtherCharacter()
+    public void SetInputEnable(bool enable)
     {
-        gameObject.name = "other_Player";
-
-        //添加动画机
-        foreach (AvatarPart part in mainAvatar.avatarPartDic.Values)
+        if (enable)
         {
-            m_renenderSprites.Add(part.renender);
+            inputReader.EnableGameplayInput();
+            m_inputEnabled = true;
         }
-        animationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
+        else
+        {
+            inputReader.DisableAllInPut();
+            m_inputEnabled = false;
+        }
+    }
 
-        //添加技能模块
-        skillManager = new SkillManager(this);
-
-        //添加属性模块
-        EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
+    public void AddEntityAttribute(string name)
+    {
+        //以后改成lua赋值
+        //EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
+        EntityAttribute attr = AssetDatabase.LoadAssetAtPath(name, typeof(EntityAttribute)) as EntityAttribute;
         entityAttribute = attr;
-
-        DOSpriteAnimation(animationConfig.idle_Anim);
     }
 
     private void InitEvent()
@@ -231,6 +222,13 @@ public partial class Entity : BaseEvent
         Robot = 4,
         Npc = 5,
         Portal = 6,
+    }
+
+
+    public enum CharacterStatus
+    {
+        FIGHT,
+        PEACE
     }
 
 }

@@ -20,7 +20,7 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
     /// 焦点的缓动半径
     /// </summary>
     [SerializeField, Min(0f)]
-    private float focusRadius = 1f;
+    private float focusRadius = 0f;
     /// <summary>
     /// 焦点居中系数
     /// </summary>
@@ -66,7 +66,7 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
         regularCamera = go.AddComponent<Camera>();
         regularCamera.orthographic = true;
         regularCamera.orthographicSize = 2f;
-        regularCamera.farClipPlane = 10f;
+        regularCamera.farClipPlane = 100f;
         regularCamera.clearFlags = CameraClearFlags.SolidColor;
         regularCamera.backgroundColor = Color.black;
         regularCamera.tag = "MainCamera";
@@ -126,6 +126,8 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
         else
             focusPoint = targetPoint;
 
+        if (heightLimit == Vector2.zero || widthLimit == Vector2.zero)
+            return;
         focusPoint = new Vector3(Mathf.Clamp(focusPoint[0], widthLimit[0], widthLimit[1]), Mathf.Clamp(focusPoint[1], heightLimit[0], heightLimit[1]), focusPoint[2]);
     }
 

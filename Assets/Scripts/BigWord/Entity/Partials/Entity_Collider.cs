@@ -51,7 +51,7 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
 
     public virtual void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        SkillCfg entitySkill = MDefine.tables.TbSkill.Get(collInfo.skillCode);
+        SkillCfg entitySkill = MDefine.tables.TbSkill.GetOrDefault(collInfo.skillCode);
         if (entitySkill == null || ++m_hitCount > entitySkill.NumbeOfAttacks)
             return;
 
@@ -243,6 +243,11 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
                 effect.Play(() => { pool.Release(hitEffectName, effectObj); });
             });
         }
+    }
+
+    public void AddEntitySkill()
+    { 
+        skillManager = new SkillManager(this);
     }
 
     public struct ContentDamageHit

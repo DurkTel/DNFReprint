@@ -1,0 +1,9 @@
+{
+    "workbench.colorCustomizations": {
+    
+    },
+    "files.associations": {
+        "*.txt": "lua"
+    },
+    "luaide.apiType": "xlua"
+}
