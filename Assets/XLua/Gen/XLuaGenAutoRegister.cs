@@ -19,12 +19,28 @@ namespace XLua.CSObjectWrap
 	{
         
         
+        static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
+        {
+        
+            translator.DelayWrapLoader(typeof(GMEntityManager), GMEntityManagerWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(GMScenesManager), GMScenesManagerWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(Entity), EntityWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(OrbitCamera), OrbitCameraWrap.__Register);
         
         
         
+        }
         
         static void Init(LuaEnv luaenv, ObjectTranslator translator)
         {
+            
+            wrapInit0(luaenv, translator);
             
             
         }

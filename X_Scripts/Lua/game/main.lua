@@ -1,6 +1,8 @@
 
 
 local main = function()
+    local breakSocketHandle,debugXpCall = require("LuaDebug")("localhost",7003)
+
     local SentityData =
     {
         type = 0,
@@ -18,6 +20,8 @@ local main = function()
     }
 
     GEntityManager.create_entity(SentityData)
+
+    GScenesManager.switch_scene(10000)
 end
 
 

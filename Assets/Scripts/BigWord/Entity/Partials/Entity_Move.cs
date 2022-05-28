@@ -61,7 +61,7 @@ public partial class Entity
 
     protected void MovePhaseHandle(string action)
     {
-        if (!m_inputEnabled || m_moveMode == MoveMode.HURT || status == CharacterStatus.PEACE)
+        if (!m_inputEnabled || m_moveMode == MoveMode.HURT || status == EntityUnitily.PEACE)
             return;
         if (action == "Left" || action == "Right")
         {

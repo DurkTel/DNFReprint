@@ -1,7 +1,7 @@
 --主要实现与C#的交互接口
 
 local CEntity = class()
-CEntity.cgmentity = nil
+CEntity.gmentity = nil
 CEntity.cguid = nil
 
 

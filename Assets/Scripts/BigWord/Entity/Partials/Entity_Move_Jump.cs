@@ -36,7 +36,7 @@ public partial class Entity
 
     protected void InputJump(string name)
     {
-        if (!m_inputEnabled || status == CharacterStatus.PEACE)
+        if (!m_inputEnabled || status == EntityUnitily.PEACE)
             return;
         if (name == "Jump")
             Move_Jump();

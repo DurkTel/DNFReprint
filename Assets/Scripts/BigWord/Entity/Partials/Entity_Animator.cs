@@ -520,8 +520,9 @@ public partial class Entity
 
         //animationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
         animationConfig = AssetDatabase.LoadAssetAtPath(aniCfg, typeof(AnimationConfig)) as AnimationConfig;
+        AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
 
-        DOSpriteAnimation(animationConfig.idle_Anim);
+        DOSpriteAnimation(animation);
     }
 
 }

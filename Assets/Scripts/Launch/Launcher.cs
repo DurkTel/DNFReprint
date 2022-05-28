@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using cfg.db;
+using System;
+using XLua;
 
 public class Launcher : MonoBehaviour
 {
@@ -43,7 +45,7 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     /// <summary>
@@ -55,13 +57,9 @@ public class Launcher : MonoBehaviour
         MDefine.Initialize();
         yield return null;
 
-        OrbitCamera.Initialize();
-        yield return null;
-
         GMScenesManager.Initialize();
         yield return null;
 
-        yield return null;
         LuaEnvironment luaEnv = gameObject.AddComponent<LuaEnvironment>();
 
         luaEnv.LuaMain();
@@ -69,4 +67,11 @@ public class Launcher : MonoBehaviour
         callback?.Invoke();
 
     }
+
+    [CSharpCallLua]
+    public static List<Type> CSharpCallLua = new List<Type>()
+    {
+        typeof(Action<int>),
+        typeof(Action<int,int>),
+    };
 }

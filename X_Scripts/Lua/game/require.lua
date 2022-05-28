@@ -7,6 +7,8 @@ local loadTab =
 {
     'game.global',
     'game.bigWorld.manager.EntityManager',
+    'game.bigWorld.manager.ScenesManager',
+    'game.bigWorld.manager.GameCamera',
     function ()
         _G.Vector3 = CS.UnityEngine.Vector3
         _G.Vector2 = CS.UnityEngine.Vector2

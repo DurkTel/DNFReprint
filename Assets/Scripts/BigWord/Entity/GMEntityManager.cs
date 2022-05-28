@@ -19,9 +19,9 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     private static Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
 
-    private List<Entity> m_waitCreateList = new List<Entity>();
+    private static List<Entity> m_waitCreateList = new List<Entity>();
     public Dictionary<int ,Entity> entityMap { get { return m_entityMap; } }
-    public static CharacterEntity localPlayer { get; set; }
+    public static Entity localPlayer { get; set; }
     public static void Initialize()
     {
         m_transform = new GameObject("GMEntityManager").transform;
@@ -62,7 +62,7 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             if (entity.skinInitialized)
                 continue;
 
-            if (entity.skinInitFrameCount > 0 && !m_waitCreateList.Contains(entity))
+            if ((entity == localPlayer || entity.skinInitFrameCount > 0) && !m_waitCreateList.Contains(entity))
             {
                 m_waitCreateList.Add(entity);
             }
@@ -99,7 +99,7 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     public static Entity CreateEntity(int etype)
     {
-        if (etype == Entity.LocalPlayer && localPlayer != null)
+        if (etype == EntityUnitily.LOCALPLAYER && localPlayer != null)
         {
             Debug.LogError("正在尝试创建多个LocalPlayer！！！");
             return null;
@@ -117,7 +117,7 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         return entity;
     }
 
-    public bool ReleaseEntity(int entityId)
+    public static bool ReleaseEntity(int entityId)
     {
 
         if (m_entityMap.ContainsKey(entityId))

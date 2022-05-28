@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using LuaEvent;
 
 public partial class Entity : BaseEvent
 {
@@ -23,7 +22,7 @@ public partial class Entity : BaseEvent
     /// <summary>
     /// 实体状态
     /// </summary>
-    public CharacterStatus status { get; private set; }
+    public int status { get; private set; }
     /// <summary>
     /// 皮肤是否已经初始化
     /// </summary>
@@ -76,12 +75,6 @@ public partial class Entity : BaseEvent
     /// </summary>
     public static Action<int> onLuaAvatarLoadComplete { get; set; }
 
-    public static int LocalPlayer = 0;
-    public static int OtherPlayer = 1;
-    public static int Monster = 2;
-    public static int Robot = 3;
-    public static int Npc = 4;
-    public static int Portal = 5;
 
     public void Init(int uid, int type, CommonUtility.Career career , GameObject go)
     {
@@ -150,9 +143,19 @@ public partial class Entity : BaseEvent
     /// 改变实体状态
     /// </summary>
     /// <param name="status"></param>
-    public void ChangeStatus(CharacterStatus status)
+    public void ChangeStatus(int status)
     {
         this.status = status;
+        if (animationConfig != null)
+        {
+            AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
+            DOSpriteAnimation(animation);
+        }
+    }
+
+    public void SetEntityPosition(Vector3 vector)
+    {
+        transform.localPosition = vector;
     }
 
     public void SetInputEnable(bool enable)
@@ -212,23 +215,6 @@ public partial class Entity : BaseEvent
     {
         if (m_haltFrame > 0) { m_haltFrame -= deltaTime * CommonUtility.HardStraight * 1000; }
         m_haltFrame = Mathf.Clamp(m_haltFrame, 0, CommonUtility.HaltFrameMax);
-    }
-
-    public enum EntityType
-    { 
-        LocalPlayer = 1,
-        OtherPlayer = 2,
-        Monster = 3,
-        Robot = 4,
-        Npc = 5,
-        Portal = 6,
-    }
-
-
-    public enum CharacterStatus
-    {
-        FIGHT,
-        PEACE
     }
 
 }

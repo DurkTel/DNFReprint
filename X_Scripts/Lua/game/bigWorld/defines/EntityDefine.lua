@@ -13,5 +13,21 @@ EntityDefine.AvatarPartType =
     shoesEx 	= 8,      --鞋子额外
 }
 
+EntityDefine.EntityType = 
+{
+    localPlayer = 0,      --本机玩家
+    otherPlayer = 1,      --其他玩家
+    monster     = 2,      --怪物
+    robot       = 3,      --机器人
+    npc         = 4,      --npc
+    portal      = 4,      --传送门
+}
+
+EntityDefine.Status = 
+{
+    peace       = 0,      --和平
+    fight       = 1,      --战斗
+}
+
 
 return EntityDefine

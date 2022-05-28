@@ -14,6 +14,11 @@ function SkinEntity:on_init()
     self.skinInitialized = nil
 end
 
+function SkinEntity:dispose()
+    base.dispose(self)
+    self.skinInitialized = nil
+end
+
 function SkinEntity:onCreateEvent()
     self:init_skin()
     self.skinInitialized = true

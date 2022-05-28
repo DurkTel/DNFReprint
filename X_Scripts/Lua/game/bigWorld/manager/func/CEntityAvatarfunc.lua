@@ -20,9 +20,14 @@ function CEntityAvatarfunc:set_avatarPartSort(partType, sort)
     self.gmentity:Skin_SetAvatarPartSort(partType, sort)
 end
 
---设置模型位置
+--设置模型部位位置
 function CEntityAvatarfunc:set_avatarPartPosition(partType)
     self.gmentity:Skin_SetAvatarPartPosition(partType, Vector3.zero)
+end
+
+--设置模型位置
+function CEntityAvatarfunc:set_avatarPosition(position)
+    self.gmentity:Skin_SetAvatarPosition(position)
 end
 
 return CEntityAvatarfunc

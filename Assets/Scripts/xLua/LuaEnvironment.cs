@@ -62,9 +62,6 @@ public class LuaEnvironment : MonoBehaviour
 
         Initialize();
 
-        //启动lua断点
-        m_luaEnv.DoString(@"require('LuaPanda').start('127.0.0.1',8818)");
-
         //实现lua的类结构
         m_luaEnv.DoString(m_init);
 
@@ -104,10 +101,10 @@ public class LuaEnvironment : MonoBehaviour
 
     private IEnumerator LuaInitLoading()
     {
-        m_luaEnv.DoString(@"require 'xlua.util' ");
+        m_luaEnv.DoString(@"require 'xlua.util' ", "util");
         yield return null;
 
-        LuaTable require = m_luaEnv.DoString(@"return require 'game.require' ")[0] as LuaTable;
+        LuaTable require = m_luaEnv.DoString(@"return require 'game.require' ", "require")[0] as LuaTable;
         require.GetInPath<LuaFunction>("start").Call();
 
         float requireProgress = 0f;
@@ -121,7 +118,7 @@ public class LuaEnvironment : MonoBehaviour
         }
 
         //lua加载完成 启动lua主入口
-        m_luaEnv.DoString(@"require 'game.main' ");
+        m_luaEnv.DoString(@"require 'game.main' ", "main");
     }
 
     private void OnDestroy()

@@ -67,7 +67,7 @@ public partial class Entity
             mainAvatar.onAvatarLoadComplete = onAvatarLoadComplete;
         }
 
-        if (entityType == Entity.LocalPlayer || entityType == Entity.OtherPlayer)
+        if (entityType == EntityUnitily.LOCALPLAYER || entityType == EntityUnitily.OTHERPLAYER)
         {
             if (boxCollider == null)
             {
@@ -96,7 +96,7 @@ public partial class Entity
     /// </summary>
     private void onAvatarLoadComplete()
     {
-        OrbitCamera.Instance.focus = allBones["CameraTarget"];
+        //OrbitCamera.Instance.focus = allBones["CameraTarget"];
         skinNode.gameObject.AddComponent<SortSprite2D>();
         onLuaAvatarLoadComplete?.Invoke(entityId);
     }

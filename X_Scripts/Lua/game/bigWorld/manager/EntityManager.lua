@@ -35,13 +35,16 @@ function EntityManager.create_entity(SentityData)
     --以后可以做对象池
     local entityData = require("game.bigWorld.actors.data.EntityData")()
     entityData:set_srv_data(SentityData)
+    local type = entityData:get_entityType()
     --创建C#实体
-    local cEntity = CGEntityManager.CreateEntity(entityData:get_entityType())
+    local cEntity = CGEntityManager.CreateEntity(type)
     --创建lua实体
     local luaEntity = EntityManager.create_lua_entity(entityData)
 
-    CGEntityManager.localPlayer = cEntity
-    EntityManager.localPlayer = luaEntity
+    if entityData:is_localPlayer() then
+        CGEntityManager.localPlayer = cEntity
+        EntityManager.localPlayer = luaEntity
+    end
     entityData.entityId = cEntity.entityId
     luaEntity:init_data(entityData,cEntity)
 
@@ -49,6 +52,17 @@ function EntityManager.create_entity(SentityData)
     if not entityMap[cEntity.entityId] then
         entityMap[cEntity.entityId] = luaEntity
     end
+
+    return luaEntity, cEntity
+end
+
+function EntityManager.release_entity(entityId)
+    local luaEntity = entityMap[entityId]
+    if luaEntity then
+        luaEntity:dispose()
+    end
+
+    CGEntityManager.ReleaseEntity(entityId)
 end
 
 
@@ -59,6 +73,7 @@ function EntityManager.get_luaEntityById(entityId)
 
     return nil
 end
+
 
 
 return EntityManager

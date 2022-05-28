@@ -73,6 +73,10 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
         DontDestroyOnLoad(go);
     }
 
+    public void SetFocus(Entity entity)
+    {
+        focus = entity.allBones["CameraTarget"];
+    }
 
     private void LateUpdate()
     {

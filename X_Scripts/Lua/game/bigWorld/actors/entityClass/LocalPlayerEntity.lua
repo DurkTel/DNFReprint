@@ -6,6 +6,8 @@ local LocalPlayerEntity = class(base)
 function LocalPlayerEntity:onAvatarLoadComplete()
     base.onAvatarLoadComplete(self)
     self:set_inputEnable(true)
+    GGameCamera.set_focus(self.gmentity)
+
 end
 
 return LocalPlayerEntity

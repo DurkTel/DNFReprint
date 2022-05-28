@@ -10,5 +10,10 @@ function FightEntity:onAvatarLoadComplete()
     self:add_entityAttribute("Assets/ScriptableObjects/Character/SaberAttr.asset")
 end
 
+function FightEntity:changStatus(state)
+    self.entityData:set_entity_status(state)
+    self.gmentity:ChangeStatus(state)
+end
+
 
 return FightEntity

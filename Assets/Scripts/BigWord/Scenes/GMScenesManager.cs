@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using cfg.db;
+using System;
 
 public class GMScenesManager : SingletonMono<GMScenesManager>
 {
@@ -22,6 +23,11 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
 
     private GMScene m_lastScene;
     public GMScene lastScene { get { return m_lastScene; } }
+    public static Action<int> on_LoadEvent { get; set; }
+    public static Action<int> on_CompleteEvent { get; set; }
+    public static Action<int> on_ActivateEvent { get; set; }
+    public static Action<int> on_ReleaseEvent { get; set; }
+
     public static void Initialize()
     {
         m_transform = new GameObject("GMScenesManager").transform;
@@ -34,45 +40,51 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     /// 同步加载场景
     /// </summary>
     /// <param name="mapId"></param>
-    public void LoadScene(int mapId)
+    public GMScene LoadScene(int mapId)
     {
+        on_LoadEvent?.Invoke(mapId);
         GMScene scene = Pool<GMScene>.Get();
         MapCfg map = MDefine.tables.TbMap.Get(mapId);
         GameObject go = AssetLoader.Load<GameObject>(map.AssetName);
         if (go == null)
         {
             Debug.LogError("场景加载错误，资源路径没有该资源");
-            return;
+            return null;
         }
         GameObject sceneObj = Instantiate(go);
-        scene.SetData(sceneObj, map);
         if (!m_allScenes.ContainsKey(mapId))
             m_allScenes.Add(mapId, scene);
         //加载完先放一边
         sceneObj.transform.position = initPos;
+        scene.gameObject = sceneObj;
+        on_CompleteEvent?.Invoke(mapId);
+        return scene;
     }
 
-    public void LoadSceneAsyn(int mapId, UnityAction callBack = null)
+    public GMScene LoadSceneAsyn(int mapId, UnityAction callBack = null)
     {
+        on_LoadEvent?.Invoke(mapId);
         GMScene scene = Pool<GMScene>.Get();
         MapCfg map = MDefine.tables.TbMap.Get(mapId);
         ResourceRequest re = AssetLoader.LoadAsync<GameObject>(map.AssetName);
         if (re == null)
         {
             Debug.LogError("场景加载错误，资源路径没有该资源");
-            return;
+            return null;
         }
         re.completed += (p) =>
         {
             GameObject sceneObj = Instantiate(re.asset as GameObject);
-            scene.SetData(sceneObj, map);
             if (!m_allScenes.ContainsKey(mapId))
                 m_allScenes.Add(mapId, scene);
             //加载完先放一边
             sceneObj.transform.position = initPos;
-
+            scene.gameObject = sceneObj;
+            on_CompleteEvent?.Invoke(mapId);
             callBack?.Invoke();
         };
+
+        return scene;
     }
 
     public void SwitchScene(int mapId, Vector3 pos = default(Vector3))
@@ -84,7 +96,8 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
 
             m_lastScene = m_curScene;
             m_curScene = scene;
-            m_curScene.Activate(pos);
+            m_curScene.Activate();
+            on_ActivateEvent?.Invoke(mapId);
         }
         else
         {
@@ -111,6 +124,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
                 foreach (var key in m_destroyList)
                 {
                     Destroy(m_allScenes[key].gameObject);
+                    on_ReleaseEvent?.Invoke(key);
                     m_allScenes[key].Release();
                 }
             }
