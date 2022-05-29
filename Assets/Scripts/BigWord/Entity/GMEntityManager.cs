@@ -17,6 +17,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     public static GMUpdateCollider entityUpdateCollider;
 
+    public static GMEntityHotRadius entityHotRadius;
+
     private static Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
 
     private static List<Entity> m_waitCreateList = new List<Entity>();
@@ -35,6 +37,8 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         entityCullingGroup.targetCamera = OrbitCamera.regularCamera;
 
         entityUpdateCollider = m_transform.gameObject.AddComponent<GMUpdateCollider>();
+
+        entityHotRadius = m_transform.gameObject.AddComponent<GMEntityHotRadius>();
 
         DontDestroyOnLoad(m_transform.gameObject);
     }
@@ -58,6 +62,7 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
         {
             entity = item.Value;
             entity.Update(deltaTime);
+            entityHotRadius.UpdateByEntity(entity);
             //已经初始化皮肤 直接跳出
             if (entity.skinInitialized)
                 continue;

@@ -40,7 +40,7 @@ public class GMScene
         //}
     }
 
-    public void Inactivation()
+    public void Unactivation()
     {
         transform.position = new Vector3(9999, 9999, 9999);
         m_releaseTime = Time.realtimeSinceStartup;

@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 36, 48, 23);
+			Utils.BeginObjectRegister(type, L, translator, 0, 37, 50, 24);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -49,6 +49,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnGMCullingDistance", _m_OnGMCullingDistance);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnGMCullingVisible", _m_OnGMCullingVisible);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CullGroupUpdate", _m_CullGroupUpdate);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_HotRadius", _m_Set_HotRadius);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Stop", _m_Move_Stop);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveHurt_Y", _m_MoveHurt_Y);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Jump", _m_Move_Jump);
@@ -85,6 +86,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "cullingLod", _g_get_cullingLod);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "cullingGroup", _g_get_cullingGroup);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "cullingVisible", _g_get_cullingVisible);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "hotRadius", _g_get_hotRadius);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "isHitRecover", _g_get_isHitRecover);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "fallDown", _g_get_fallDown);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "airborne", _g_get_airborne);
@@ -103,6 +105,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "updateSpriteEvent", _g_get_updateSpriteEvent);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "updateAnimationEvent", _g_get_updateAnimationEvent);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "animationFinish", _g_get_animationFinish);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "maxHotRadiusNum", _g_get_maxHotRadiusNum);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "movePhase", _g_get_movePhase);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "entityAttribute", _g_get_entityAttribute);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onMoveEvent", _g_get_onMoveEvent);
@@ -127,6 +130,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateSpriteEvent", _s_set_updateSpriteEvent);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateAnimationEvent", _s_set_updateAnimationEvent);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "animationFinish", _s_set_animationFinish);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "maxHotRadiusNum", _s_set_maxHotRadiusNum);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "movePhase", _s_set_movePhase);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "entityAttribute", _s_set_entityAttribute);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "onMoveEvent", _s_set_onMoveEvent);
@@ -965,6 +969,35 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Set_HotRadius(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    int _hotIndex = LuaAPI.xlua_tointeger(L, 2);
+                    float _radius = (float)LuaAPI.lua_tonumber(L, 3);
+                    
+                    gen_to_be_invoked.Set_HotRadius( _hotIndex, _radius );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_Move_Stop(RealStatePtr L)
         {
 		    try {
@@ -1624,6 +1657,20 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_hotRadius(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.hotRadius);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_isHitRecover(RealStatePtr L)
         {
 		    try {
@@ -1869,6 +1916,20 @@ namespace XLua.CSObjectWrap
 			
                 Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.animationFinish);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_maxHotRadiusNum(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.maxHotRadiusNum);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -2248,6 +2309,21 @@ namespace XLua.CSObjectWrap
 			
                 Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.animationFinish = translator.GetDelegate<UnityEngine.Events.UnityAction>(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_maxHotRadiusNum(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.maxHotRadiusNum = LuaAPI.xlua_tointeger(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

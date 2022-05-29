@@ -22,6 +22,9 @@ namespace XLua.CSObjectWrap
         static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
         {
         
+            translator.DelayWrapLoader(typeof(ToolExtensions), ToolExtensionsWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(GMEntityManager), GMEntityManagerWrap.__Register);
         
         
@@ -65,11 +68,81 @@ namespace XLua
 	internal partial class InternalGlobals
     {
 	    
+		delegate UnityEngine.Component __GEN_DELEGATE0( UnityEngine.GameObject gameObject,  string type);
+		
+		delegate UnityEngine.Component __GEN_DELEGATE1( UnityEngine.Transform transform,  string type);
+		
+		delegate void __GEN_DELEGATE2( UnityEngine.Component component,  bool value);
+		
+		delegate void __GEN_DELEGATE3( UnityEngine.Transform transform,  UnityEngine.Transform parent);
+		
+		delegate void __GEN_DELEGATE4( UnityEngine.Transform transform,  UnityEngine.Transform parent);
+		
+		delegate bool __GEN_DELEGATE5( UnityEngine.Object obj);
+		
 	    static InternalGlobals()
 		{
 		    extensionMethodMap = new Dictionary<Type, IEnumerable<MethodInfo>>()
 			{
 			    
+				{typeof(UnityEngine.GameObject), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE0(ToolExtensions.TryAddComponent)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				}},
+				
+				{typeof(UnityEngine.Transform), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE1(ToolExtensions.TryAddComponent)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE3(ToolExtensions.SetParentIgnore)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE4(ToolExtensions.SetParentZero)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				}},
+				
+				{typeof(UnityEngine.Component), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE2(ToolExtensions.SetActive)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				}},
+				
+				{typeof(UnityEngine.Object), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE5(ToolExtensions.IsNull)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				}},
+				
 			};
 			
 			genTryArrayGetPtr = StaticLuaCallbacks.__tryArrayGet;

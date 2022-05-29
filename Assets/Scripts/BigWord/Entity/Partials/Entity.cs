@@ -129,6 +129,7 @@ public partial class Entity : BaseEvent
         ReleaseCullGroup();
         ReleaseMove();
         ReleaseCollider();
+        ReleaseHotRadius();
     }
 
 

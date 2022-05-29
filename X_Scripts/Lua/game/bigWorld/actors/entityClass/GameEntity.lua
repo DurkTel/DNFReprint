@@ -20,7 +20,18 @@ function GameEntity:on_init()
         nameStr = "portal_"
     end
 
+    self:set_hotRadius()
     self.gmentity.gameObject.name = nameStr..self.entityData.entityId
+end
+
+function GameEntity:set_hotRadius()
+    if self.entityData.dbcfg and self.entityData.dbcfg.radius then
+        self.gmentity:Set_HotRadius(0, self.entityData.dbcfg.radius)
+    end
+end
+
+function GameEntity:on_hotRadiusfunc(inOut, index)
+    
 end
 
 function GameEntity:dispose()

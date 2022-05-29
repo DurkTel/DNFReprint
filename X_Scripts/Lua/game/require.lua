@@ -6,6 +6,7 @@ requireData.progress = 0
 local loadTab =
 {
     'game.global',
+    'game.framework.SystemClass',
     'game.bigWorld.manager.EntityManager',
     'game.bigWorld.manager.ScenesManager',
     'game.bigWorld.manager.GameCamera',
@@ -14,6 +15,7 @@ local loadTab =
         _G.Vector2 = CS.UnityEngine.Vector2
         _G.GameObject = CS.UnityEngine.GameObject
         _G.Transform = CS.UnityEngine.Transform
+        _G.Time = CS.UnityEngine.Time
     end
 }
 

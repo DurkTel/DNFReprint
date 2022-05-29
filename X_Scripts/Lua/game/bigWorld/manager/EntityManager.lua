@@ -1,14 +1,16 @@
 local CEntityEventfunc = require("game.bigWorld.manager.func.CEntityEventfunc")
+local CEntityHotRadiusfunc = require("game.bigWorld.manager.func.CEntityHotRadiusfunc")
+local EntitiyTypeToClassfunc = require("game.bigWorld.func.EntitiyTypeToClassfunc")
 
 local EntityManager = {}
 _G.GEntityManager = EntityManager
 
-local EntitiyTypeToClassfunc                = require("game.bigWorld.func.EntitiyTypeToClassfunc")
 
 --初始化C#的实体管理器
 local CGEntityManager = CS.GMEntityManager
 CGEntityManager.Initialize()
 CEntityEventfunc.init()
+CEntityHotRadiusfunc.init()
 
 local entityClassMap = {}
 local entityMap = {}
@@ -73,7 +75,5 @@ function EntityManager.get_luaEntityById(entityId)
 
     return nil
 end
-
-
 
 return EntityManager

@@ -2,6 +2,10 @@
 
 local main = function()
     local breakSocketHandle,debugXpCall = require("LuaDebug")("localhost",7003)
+    local Timerfunc = require("game.framework.func.Timerfunc")
+    Timerfunc:add_timer(function ()
+        breakSocketHandle()
+    end, 1, -1)
 
     local SentityData =
     {
@@ -18,6 +22,8 @@ local main = function()
             [8] = 10008,
         }
     }
+
+
 
     GEntityManager.create_entity(SentityData)
 

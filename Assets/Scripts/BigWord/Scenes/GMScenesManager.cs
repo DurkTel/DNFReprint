@@ -26,6 +26,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     public static Action<int> on_LoadEvent { get; set; }
     public static Action<int> on_CompleteEvent { get; set; }
     public static Action<int> on_ActivateEvent { get; set; }
+    public static Action<int> on_UnActivateEvent { get; set; }
     public static Action<int> on_ReleaseEvent { get; set; }
 
     public static void Initialize()
@@ -92,7 +93,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
         if (m_allScenes.TryGetValue(mapId, out GMScene scene))
         {
             if (m_curScene != null)
-                m_curScene.Inactivation();
+                m_curScene.Unactivation();
 
             m_lastScene = m_curScene;
             m_curScene = scene;

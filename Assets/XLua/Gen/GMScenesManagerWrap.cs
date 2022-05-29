@@ -36,7 +36,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 4, 4);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 5, 5);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "Initialize", _m_Initialize_xlua_st_);
             
 			
@@ -44,11 +44,13 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "on_LoadEvent", _g_get_on_LoadEvent);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "on_CompleteEvent", _g_get_on_CompleteEvent);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "on_ActivateEvent", _g_get_on_ActivateEvent);
+            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "on_UnActivateEvent", _g_get_on_UnActivateEvent);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "on_ReleaseEvent", _g_get_on_ReleaseEvent);
             
 			Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "on_LoadEvent", _s_set_on_LoadEvent);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "on_CompleteEvent", _s_set_on_CompleteEvent);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "on_ActivateEvent", _s_set_on_ActivateEvent);
+            Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "on_UnActivateEvent", _s_set_on_UnActivateEvent);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "on_ReleaseEvent", _s_set_on_ReleaseEvent);
             
 			
@@ -293,6 +295,18 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_on_UnActivateEvent(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, GMScenesManager.on_UnActivateEvent);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_on_ReleaseEvent(RealStatePtr L)
         {
 		    try {
@@ -338,6 +352,19 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			    GMScenesManager.on_ActivateEvent = translator.GetDelegate<System.Action<int>>(L, 1);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_on_UnActivateEvent(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    GMScenesManager.on_UnActivateEvent = translator.GetDelegate<System.Action<int>>(L, 1);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

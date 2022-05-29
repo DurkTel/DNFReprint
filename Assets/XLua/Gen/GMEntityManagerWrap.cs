@@ -33,7 +33,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 4, 3, 3);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 4, 4, 4);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "Initialize", _m_Initialize_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "CreateEntity", _m_CreateEntity_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ReleaseEntity", _m_ReleaseEntity_xlua_st_);
@@ -43,10 +43,12 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "localPlayer", _g_get_localPlayer);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "entityCullingGroup", _g_get_entityCullingGroup);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "entityUpdateCollider", _g_get_entityUpdateCollider);
+            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "entityHotRadius", _g_get_entityHotRadius);
             
 			Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "localPlayer", _s_set_localPlayer);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "entityCullingGroup", _s_set_entityCullingGroup);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "entityUpdateCollider", _s_set_entityUpdateCollider);
+            Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "entityHotRadius", _s_set_entityHotRadius);
             
 			
 			Utils.EndClassRegister(type, L, translator);
@@ -239,6 +241,18 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_entityHotRadius(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, GMEntityManager.entityHotRadius);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -273,6 +287,19 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			    GMEntityManager.entityUpdateCollider = (GMUpdateCollider)translator.GetObject(L, 1, typeof(GMUpdateCollider));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_entityHotRadius(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    GMEntityManager.entityHotRadius = (GMEntityHotRadius)translator.GetObject(L, 1, typeof(GMEntityHotRadius));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

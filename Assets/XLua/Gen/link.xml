@@ -3,7 +3,8 @@
 <linker>
 
 	<assembly fullname="Assembly-CSharp">
-	    <type fullname="GMEntityManager" preserve="all"/>
+	    <type fullname="ToolExtensions" preserve="all"/>
+		<type fullname="GMEntityManager" preserve="all"/>
 		<type fullname="GMScenesManager" preserve="all"/>
 		<type fullname="Entity" preserve="all"/>
 		<type fullname="OrbitCamera" preserve="all"/>

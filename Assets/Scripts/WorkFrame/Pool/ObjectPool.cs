@@ -152,15 +152,15 @@ public static class QueuePool<T>
 /// <typeparam name="V"></typeparam>
 public static class DictionaryPool<K, V>
 {
-    private static readonly ObjectPool<Dictionary<K, V>> s_DicPool = new ObjectPool<Dictionary<K, V>>(null, Clear);
+    private static readonly ObjectPool<DictionaryEx<K, V>> s_DicPool = new ObjectPool<DictionaryEx<K, V>>(null, Clear);
     static void Clear(Dictionary<K, V> l) { l.Clear(); }
 
-    public static Dictionary<K, V> Get()
+    public static DictionaryEx<K, V> Get()
     {
         return s_DicPool.Get();
     }
 
-    public static void Release(Dictionary<K, V> toRelease)
+    public static void Release(DictionaryEx<K, V> toRelease)
     {
         s_DicPool.Release(toRelease);
     }

@@ -12,11 +12,13 @@ local SkinEntity = class(base)
 function SkinEntity:on_init()
     base.on_init(self)
     self.skinInitialized = nil
+    self.skinIsComplete = nil
 end
 
 function SkinEntity:dispose()
     base.dispose(self)
     self.skinInitialized = nil
+    self.skinIsComplete = nil
 end
 
 function SkinEntity:onCreateEvent()
@@ -26,6 +28,7 @@ end
 
 function SkinEntity:onAvatarLoadComplete()
     base.onAvatarLoadComplete(self)
+    self.skinIsComplete = true
     self:init_animator()
 end
 
