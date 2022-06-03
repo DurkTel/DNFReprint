@@ -23,8 +23,6 @@ local main = function()
         }
     }
 
-
-
     GEntityManager.create_entity(SentityData)
 
     GScenesManager.switch_scene(10000)

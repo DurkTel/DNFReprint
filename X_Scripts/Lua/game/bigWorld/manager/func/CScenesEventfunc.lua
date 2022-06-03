@@ -44,6 +44,7 @@ end
 --场景开始加载
 function CScenesEventfunc.onLoadEvent(mapId)
     local scene = GScenesManager.get_sceneById(mapId)
+    Dispatcher.dispatchEvent(EventDefine.ON_SCENE_LOAD, mapId)
 
 end
 
@@ -77,6 +78,7 @@ function CScenesEventfunc.onActivateEvent(mapId)
             localPlayer:set_inputEnable(true)
         end
     end
+    Dispatcher.dispatchEvent(EventDefine.ON_SCENE_ACTIVITE, mapId)
 end
 
 --回收场景

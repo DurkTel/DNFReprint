@@ -12,10 +12,13 @@ CScenesEventfunc.init()
 local curMapID = nil
 local lastMapID = nil
 
+local curMapType = nil
+local lastMapType = nil
+
 local sceneMap = {}
 
 --切换场景
-function GScenesManager.switch_scene(mapId, portalPos)
+function ScenesManager.switch_scene(mapId, portalPos)
     --加载场景时本机不能操控
     local localPlayer = GEntityManager.localPlayer
     if localPlayer then
@@ -33,9 +36,12 @@ function GScenesManager.switch_scene(mapId, portalPos)
     local scene = CGMScenesManager.Instance:SwitchScene(mapId)
     lastMapID = curMapID
     curMapID = mapId
+
+    lastMapType = curMapType
+    curMapType = sceneMap[mapId].mapType
 end
 
-function GScenesManager.get_sceneById(mapId)
+function ScenesManager.get_sceneById(mapId)
     if sceneMap[mapId] then
         return sceneMap[mapId]
     end
@@ -43,12 +49,20 @@ function GScenesManager.get_sceneById(mapId)
     return nil
 end
 
-function GScenesManager.get_curMapId()
+function ScenesManager.get_curMapId()
     return curMapID
 end
 
-function GScenesManager.get_lastMapId()
+function ScenesManager.get_lastMapId()
     return lastMapID
 end
 
-return GScenesManager
+function ScenesManager.get_curMapType()
+    return curMapType
+end
+
+function ScenesManager.get_lastMapType()
+    return lastMapType
+end
+
+return ScenesManager
