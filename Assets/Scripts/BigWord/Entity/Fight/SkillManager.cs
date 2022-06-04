@@ -29,6 +29,8 @@ public class SkillManager
     {
         m_entity = entity;
         characterSkillTree = new SkillTree();
+        inputReader = entity.inputReader;
+        Init();
     }
 
     public void Init()

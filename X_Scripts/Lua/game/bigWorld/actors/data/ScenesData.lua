@@ -1,4 +1,3 @@
-local t_mapInfo = require("db.db_tbmap")
 
 local ScenesData = class()
 

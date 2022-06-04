@@ -117,6 +117,7 @@ public class LuaEnvironment : MonoBehaviour
             yield return null;
         }
 
+        print("lua require完成");
         //lua加载完成 启动lua主入口
         m_luaEnv.DoString(@"require 'game.main' ", "main");
     }

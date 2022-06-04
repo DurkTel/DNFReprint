@@ -65,11 +65,11 @@ public static class ToolExtensions
 
     public static void SetParentIgnore(this Transform transform, Transform parent)
     {
-        Vector3 oriPos = transform.position;
+        Vector3 oriPos = transform.localPosition;
         Vector3 oriRote = transform.localEulerAngles;
         Vector3 oriScale = transform.localScale;
         transform.SetParent(parent);
-        transform.position = oriPos;
+        transform.localPosition = oriPos;
         transform.localEulerAngles = oriRote;
         transform.localScale = oriScale;
     }
@@ -77,7 +77,7 @@ public static class ToolExtensions
     public static void SetParentZero(this Transform transform, Transform parent)
     {
         transform.SetParent(parent);
-        transform.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
         transform.localScale = Vector3.zero;
     }

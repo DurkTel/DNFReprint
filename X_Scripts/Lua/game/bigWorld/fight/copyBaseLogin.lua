@@ -22,8 +22,12 @@ function copyBaseLogin:on_copy_in()
     print("进入副本！！！")
 end
 
+function copyBaseLogin:on_copy_update(mapId)
+    print("更新副本进度！！！")
+end
+
 function copyBaseLogin:on_copy_out()
-    
+    print("退出副本！！！")
 end
 
 

@@ -92,6 +92,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     {
         if (m_allScenes.TryGetValue(mapId, out GMScene scene))
         {
+            on_LoadEvent?.Invoke(mapId);
             if (m_curScene != null)
                 m_curScene.Unactivation();
 

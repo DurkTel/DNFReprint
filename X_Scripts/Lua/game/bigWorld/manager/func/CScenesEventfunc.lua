@@ -1,7 +1,6 @@
 local CGMScenesManager = CS.GMScenesManager
 local ScenesDefine = require("game.bigWorld.defines.ScenesDefine")
 local EntityDefine = require("game.bigWorld.defines.EntityDefine")
-local t_mapInfo = require("db.db_tbmap")
 
 local CScenesEventfunc = {}
 

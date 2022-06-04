@@ -14,6 +14,7 @@ local loadTab =
     end,
     'game.global',
     'game.framework.SystemClass',
+    'game.framework.MDefine',
     'game.framework.EventDefine',
     'game.framework.EventDispatcher',
     'game.framework.Define',

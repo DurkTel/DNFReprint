@@ -4,6 +4,8 @@ local CopyModule = class(base)
 --注册模块
 function CopyModule:on_register()
     base.on_register(self)
+    MDefine.cfg.copy = "game.bigWorld.modules.copy.CopyConfig"
+    MDefine.data.copy = "game.bigWorld.modules.copy.CopyData"
 end
 
 --移除模块
@@ -27,7 +29,6 @@ end
 function CopyModule:on_local_event(cmd, data)
     if cmd == EventDefine.ON_SCENE_LOAD then
         GCopyManager.create_copy_login(data)
-        print(1111)
     elseif cmd == EventDefine.ON_SCENE_ACTIVITE then
         GCopyManager.scene_complete(data)
     end

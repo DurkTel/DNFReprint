@@ -46,6 +46,7 @@ function EntityManager.create_entity(SentityData)
     if entityData:is_localPlayer() then
         CGEntityManager.localPlayer = cEntity
         EntityManager.localPlayer = luaEntity
+        GGameCamera.set_focus(cEntity)
     end
     entityData.entityId = cEntity.entityId
     luaEntity:init_data(entityData,cEntity)

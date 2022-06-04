@@ -1,6 +1,6 @@
 local CScenesEventfunc = require("game.bigWorld.manager.func.CScenesEventfunc")
 local ScenesData = require("game.bigWorld.actors.data.ScenesData")
-local t_mapInfo = require("db.db_tbmap")
+local CopyConfig = MDefine.cfg.copy
 
 local ScenesManager = {}
 _G.GScenesManager = ScenesManager
@@ -26,19 +26,19 @@ function ScenesManager.switch_scene(mapId, portalPos)
     end
     if not sceneMap[mapId] then
         local scenesData = ScenesData()
-        local cfg = t_mapInfo[mapId]
+        local cfg = CopyConfig.getCfgById(mapId)
         scenesData:set_srv_data(cfg)
         scenesData:set_portalPos(portalPos)
         sceneMap[mapId] = scenesData
     else
         sceneMap[mapId]:set_portalPos(portalPos)
     end
-    local scene = CGMScenesManager.Instance:SwitchScene(mapId)
     lastMapID = curMapID
     curMapID = mapId
-
+    
     lastMapType = curMapType
     curMapType = sceneMap[mapId].mapType
+    local scene = CGMScenesManager.Instance:SwitchScene(mapId)
 end
 
 function ScenesManager.get_sceneById(mapId)
