@@ -37,11 +37,10 @@ public class GameObjectPool : MonoBehaviour
         }
         else
         {
-            ResourceRequest re = AssetLoader.LoadAsync<GameObject>(assetName);
-            re.completed += (p) =>
+            AssetLoader.LoadAsync<GameObject>(assetName, (p) =>
             {
-                callBack(Instantiate(re.asset as GameObject));
-            };
+                callBack(Instantiate(p));
+            });
         }
 
     }

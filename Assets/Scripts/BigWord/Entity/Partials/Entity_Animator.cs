@@ -204,10 +204,10 @@ public partial class Entity
             return;
 
         string path = string.Format("{0}Character/Player/{1}/skill/{2}.asset", CommonUtility.AnimationDataAssetPath ,(int)career, animationDataName);
-        AnimationData animationData = AssetDatabase.LoadAssetAtPath(path, typeof(AnimationData)) as AnimationData;
-        if (!animationData) return;
+        //AnimationData animationData = AssetDatabase.LoadAssetAtPath(path, typeof(AnimationData)) as AnimationData;
+        //if (!animationData) return;
 
-        DOSpriteAnimation(animationData);
+        //DOSpriteAnimation(animationData);
     }
 
     public float GetCurAnimationLength()
@@ -519,9 +519,13 @@ public partial class Entity
         }
 
         //animationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
-        animationConfig = AssetDatabase.LoadAssetAtPath(aniCfg, typeof(AnimationConfig)) as AnimationConfig;
-        AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
+        //animationConfig = AssetDatabase.LoadAssetAtPath(aniCfg, typeof(AnimationConfig)) as AnimationConfig;
+        //AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
 
+        //DOSpriteAnimation(animation);
+
+        animationConfig = AssetLoader.Load<AnimationConfig>("so/SaberAnimConfig");
+        AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
         DOSpriteAnimation(animation);
     }
 

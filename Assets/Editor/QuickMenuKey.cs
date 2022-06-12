@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
 [InitializeOnLoad]
 public class QuickMenuKey : ScriptableObject
 {
     static string m_LaunchGameTag = "QuickMenuKey_LaunchGameTag";
+    static string m_LoadModeABTag = "QuickMenuKey_LoadModeABTag";
+
 
     static QuickMenuKey()
     {
@@ -38,8 +41,8 @@ public class QuickMenuKey : ScriptableObject
         System.Reflection.Assembly Assembly = System.Reflection.Assembly.Load("Assembly-CSharp");
         System.Type type = Assembly.GetType("Launcher");
         GameObject game = new GameObject("Game", type);
+        game.GetComponent<Launcher>().useAb = EditorPrefs.GetBool(m_LoadModeABTag);
         DontDestroyOnLoad(game);
-
     }
 
     [MenuItem("Game/Launch #F5", false, 50)]
@@ -52,6 +55,21 @@ public class QuickMenuKey : ScriptableObject
         }
 
         EditorPrefs.SetBool(m_LaunchGameTag, true);
+        EditorPrefs.SetBool(m_LoadModeABTag, false);
+        EditorApplication.isPlaying = true;
+    }
+
+    [MenuItem("Game/Launch  (AB包模式) #F6", false, 60)]
+    static void LaunchGameAB()
+    {
+        if (EditorApplication.isPlaying)
+        {
+            EditorApplication.isPlaying = false;
+            return;
+        }
+
+        EditorPrefs.SetBool(m_LaunchGameTag, true);
+        EditorPrefs.SetBool(m_LoadModeABTag, true);
         EditorApplication.isPlaying = true;
     }
 

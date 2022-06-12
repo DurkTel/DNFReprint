@@ -26,11 +26,11 @@ public class PortalEntity : Entity
 
     public override void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        if (contact.victim.entity == GMEntityManager.localPlayer && m_mapCfg != null)
-        {
-            GMScenesManager.Instance.SwitchScene(m_mapCfg.Id, new Vector3(m_portalCfg.ToX, m_portalCfg.ToY, m_portalCfg.ToZ));
-            Debug.Log("传送到：" + m_mapCfg.MapName);
-        }
+        //if (contact.victim.entity == GMEntityManager.localPlayer && m_mapCfg != null)
+        //{
+        //    GMScenesManager.Instance.SwitchScene(m_mapCfg.Id, new Vector3(m_portalCfg.ToX, m_portalCfg.ToY, m_portalCfg.ToZ));
+        //    Debug.Log("传送到：" + m_mapCfg.MapName);
+        //}
     }
 
     public override void FixedUpdate(float deltaTime)

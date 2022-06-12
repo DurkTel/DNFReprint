@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2458444379
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 89db2b9cb715a31cd1359002365b93f3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9c3ca9dc2627a0cbe4224c0c436a3f30
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 210
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/model/Bone/common_character_bone.prefab
+Dependencies: []

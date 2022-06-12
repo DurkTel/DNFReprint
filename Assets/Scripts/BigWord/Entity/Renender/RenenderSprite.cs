@@ -99,10 +99,11 @@ public class RenenderSprite : MonoBehaviour
         m_coordinate = str.Split(' ', '\n');
 
         m_spriteCount = m_coordinate.Length / 2;
+        string tempName = path.Substring(path.LastIndexOf('/') + 1);
 
         for (int i = 0; i < m_spriteCount; i++)
         {
-            m_singSprite = AssetLoader.Load<Sprite>(path + '/' + i);
+            m_singSprite = AssetLoader.Load<Sprite>(path + '/' + tempName + '_' + i);
 
             if (m_singSprite == null)
             {
@@ -122,17 +123,19 @@ public class RenenderSprite : MonoBehaviour
     {
         loadComplete = false;
         string path = assetName;
+        string tempName = path.Substring(path.LastIndexOf('/') + 1);
+
         part_Sprite.Clear();
         if (path == null)
         {
             Debug.LogError("请添加Sprite资源路径");
             yield break;
         }
-        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + "/pointOffsize");
+        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + '_' + "pointoffsize");
         
         if (tempTA == null)
         {
-            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ path + "/pointOffsize");
+            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ path + '/' + tempName + '_' + "pointoffsize");
             yield break;
         }
 
@@ -144,11 +147,20 @@ public class RenenderSprite : MonoBehaviour
         int i = 0;
         while (i < m_spriteCount)
         {
-            ResourceRequest r = AssetLoader.LoadAsync<Sprite>(path + '/' + i);
+            AsyncOperation r = AssetLoader.LoadAsyncAO<Sprite>(path + '_' + i);
 
             yield return r;
 
-            m_singSprite = r.asset as Sprite;
+            switch (AssetLoader.loadMode)
+            {
+                case AssetLoader.LoadMode.Resources:
+                    m_singSprite = (r as ResourceRequest).asset as Sprite;
+                    break;
+                case AssetLoader.LoadMode.AssetBundle:
+                    m_singSprite = (r as AssetBundleRequest).asset as Sprite;
+                    break;
+            }
+
             if (m_singSprite == null)
             {
                 Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);

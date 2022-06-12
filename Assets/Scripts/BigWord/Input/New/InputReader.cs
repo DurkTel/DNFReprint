@@ -58,19 +58,20 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions
         if (inputReader != null)
             return inputReader;
 
-        if (File.Exists(path))
-        {
-            InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
-            inputReader = input;
+        //if (File.Exists(path))
+        //{
+        //InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
+        //inputReader = input;
 
-        }
-        else
-        {
-            Directory.CreateDirectory(path);
-            var input = ScriptableObject.CreateInstance<InputReader>();
-            AssetDatabase.CreateAsset(input, path);
-            inputReader = input;
-        }
+        //}
+        //else
+        //{
+        //Directory.CreateDirectory(path);
+        //var input = ScriptableObject.CreateInstance<InputReader>();
+        //AssetDatabase.CreateAsset(input, path);
+        //inputReader = input;
+        //}
+        inputReader = AssetLoader.Load<InputReader>("so/InputReader");
         return inputReader;
     }
 

@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 4134459791
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 829a25b1fe6fd00667b455aa75e1a4f4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 019bb72f7abecf2c5816133914ec6763
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6a17a3e22d6e8c24db78e638472818a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e8eaba8a1c9d5940a66b41f24cd9936, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7fd157ec633ebff4db11840e33405588, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/so/SaberAnimConfig.asset
+- Assets/Resources/so/SaberAttr.asset
+- Assets/Resources/so/InputReader.asset
+Dependencies: []

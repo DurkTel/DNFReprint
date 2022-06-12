@@ -4,7 +4,7 @@ local t_modelInfo = require("db.db_tbmodelinfo")
 function EntitySkinUtility.get_skeleton_assetName(career)
     local assetName = nil
     if career == 0 then
-        assetName = "Model/Bone/common_character_bone"
+        assetName = "model/common_character_bone"
     end
 
     return assetName
@@ -20,7 +20,7 @@ function EntitySkinUtility.get_skinPart_Cfg(entityData, skinPart)
     local scale = nil
 
     if cfg then
-        assetName = cfg.modelPath.."/"..cfg.id
+        assetName = cfg.modelPath
         boneName = cfg.boneName
         sort = cfg.sort
         scale = cfg.modelScale
