@@ -21,7 +21,7 @@ public class AssetLoader
     /// <param name="name">资源名称</param>
     /// <param name="abName">ab包名称（如果当前是ab包模式）</param>
     /// <returns></returns>
-    public static T Load<T>(string name, string abName = "") where T : Object
+    public static T Load<T>(string name) where T : Object
     {
         T asset = default;
         switch (loadMode)
@@ -30,9 +30,9 @@ public class AssetLoader
                 asset = LoadByResources<T>(name);
                 break;
             case LoadMode.AssetBundle:
-                string[] ab = name.Split(new[] { '/' }, 2);
-                Debug.Assert(!string.IsNullOrEmpty(ab[0]), "当前为AB包加载模式，请输入ab包名");
-                asset = LoadByAssetBundle<T>(ab[0], ab[1]);
+                GetABPath(name, out string abName, out string assetName);
+                Debug.Assert(!string.IsNullOrEmpty(abName), "当前为AB包加载模式，请输入ab包名");
+                asset = LoadByAssetBundle<T>(abName, assetName);
                 break;
         }
 
@@ -69,14 +69,14 @@ public class AssetLoader
                 LoadAsyncByResources(name, callBack);
                 break;
             case LoadMode.AssetBundle:
-                string[] ab = name.Split(new[] { '/' }, 2);
-                Debug.Assert(!string.IsNullOrEmpty(ab[0]), "当前为AB包加载模式，请输入ab包名");
-                LoadAsyncByAssetBundle(ab[0], ab[1], callBack);
+                GetABPath(name, out string abName, out string assetName);
+                Debug.Assert(!string.IsNullOrEmpty(abName), "当前为AB包加载模式，请输入ab包名");
+                LoadAsyncByAssetBundle(abName, assetName, callBack);
                 break;
         }
     }
 
-    public static AsyncOperation LoadAsyncAO<T>(string name, string abName = "") where T : Object
+    public static AsyncOperation LoadAsyncAO<T>(string name) where T : Object
     {
         switch (loadMode)
         {
@@ -84,9 +84,9 @@ public class AssetLoader
                 ResourceRequest re = LoadAsyncByResources<T>(name);
                 return re;
             case LoadMode.AssetBundle:
-                string[] ab = name.Split(new[] { '/' }, 2);
-                Debug.Assert(!string.IsNullOrEmpty(ab[0]), "当前为AB包加载模式，请输入ab包名");
-                AssetBundleRequest ar = LoadAsyncByAssetBundle<T>(ab[0], ab[1]);
+                GetABPath(name, out string abName, out string assetName);
+                Debug.Assert(!string.IsNullOrEmpty(abName), "当前为AB包加载模式，请输入ab包名");
+                AssetBundleRequest ar = LoadAsyncByAssetBundle<T>(abName, assetName);
                 return ar;
         }
 
@@ -122,4 +122,11 @@ public class AssetLoader
     }
 
     #endregion
+
+
+    private static void GetABPath(string path, out string abName, out string assetName)
+    {
+        abName = path.Substring(0, path.IndexOf('/'));
+        assetName = path.Substring(path.LastIndexOf('/') + 1);
+    }
 }

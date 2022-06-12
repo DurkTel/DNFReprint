@@ -61,13 +61,6 @@ public class AssetBundleManager : SingletonBase<AssetBundleManager>
             ab = AssetBundle.LoadFromFile(Path.Combine(m_abPathUrl, abName));
             m_allAB.Add(abName, ab);
         }
-        if (abName == "fashion")
-        {
-            foreach (var item in ab.AllAssetNames())
-            {
-                Debug.Log(item);
-            }
-        }
 
         T obj = ab.LoadAsset<T>(assetName);
 
@@ -97,7 +90,7 @@ public class AssetBundleManager : SingletonBase<AssetBundleManager>
     public void LoadAsync<T>(string abName, string assetName, System.Action<T> callBack = null) where T : Object
     {
         LoadDependencies(abName);
-        TimerManager.AddCoroutine(LoadAsyncEnumer<T>(abName, assetName, callBack));
+        TimerManager.AddCoroutine(LoadAsyncEnumer(abName, assetName, callBack));
     }
 
     private IEnumerator LoadAsyncEnumer<T>(string abName, string assetName, System.Action<T> callBack) where T : Object

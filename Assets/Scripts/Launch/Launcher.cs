@@ -14,8 +14,8 @@ public class Launcher : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        print("启动游戏计时" + Time.realtimeSinceStartup);
         print("游戏启动！进入加载流程");
-
         StartCoroutine(LaunchGame());
 
 

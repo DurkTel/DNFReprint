@@ -4,7 +4,7 @@ local t_modelInfo = require("db.db_tbmodelinfo")
 function EntitySkinUtility.get_skeleton_assetName(career)
     local assetName = nil
     if career == 0 then
-        assetName = "model/common_character_bone"
+        assetName = "model/Bone/common_character_bone"
     end
 
     return assetName

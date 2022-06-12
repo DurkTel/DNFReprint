@@ -131,7 +131,7 @@ public class RenenderSprite : MonoBehaviour
             Debug.LogError("请添加Sprite资源路径");
             yield break;
         }
-        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + '_' + "pointoffsize");
+        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + '/' + tempName + '_' + "pointoffsize");
         
         if (tempTA == null)
         {
@@ -147,7 +147,7 @@ public class RenenderSprite : MonoBehaviour
         int i = 0;
         while (i < m_spriteCount)
         {
-            AsyncOperation r = AssetLoader.LoadAsyncAO<Sprite>(path + '_' + i);
+            AsyncOperation r = AssetLoader.LoadAsyncAO<Sprite>(path + '/' + tempName + '_' + i);
 
             yield return r;
 
