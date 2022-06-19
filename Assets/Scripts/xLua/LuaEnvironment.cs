@@ -67,17 +67,20 @@ public class LuaEnvironment : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        
-    }
-
     public static void Initialize()
     {
         //初始化lua环境
         m_luaEnv = new LuaEnv();
+
         //重定向
-        m_luaEnv.AddLoader(LuaLoader);
+#if UNITY_EDITOR
+        if (UnityEditor.EditorPrefs.GetBool("QuickMenuKey_LoadModeABTag"))
+            m_luaEnv.AddLoader(LuaLoaderByAB);
+        else
+            m_luaEnv.AddLoader(LuaLoader);
+#else
+            m_luaEnv.AddLoader(LuaLoaderByAB);
+#endif
 
     }
 
@@ -90,6 +93,16 @@ public class LuaEnvironment : MonoBehaviour
         {
             return File.ReadAllBytes(path);
         }
+
+        return null;
+    }
+
+    private static byte[] LuaLoaderByAB(ref string filePath)
+    {
+        filePath = filePath.Replace('.', '/');
+        TextAsset luaTxt = AssetBundleManager.Instance.Load<TextAsset>("lua", "assets/luatemp/" + filePath + ".lua.txt");
+        if (luaTxt != null)
+            return luaTxt.bytes;
 
         return null;
     }

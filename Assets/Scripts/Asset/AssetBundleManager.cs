@@ -8,7 +8,7 @@ public class AssetBundleManager : SingletonBase<AssetBundleManager>
     /// <summary>
     /// 包路径
     /// </summary>
-    private string m_abPathUrl = Application.streamingAssetsPath;
+    private string m_abPathUrl = AssetDefine.localDataPath;
     /// <summary>
     /// 主包
     /// </summary>
@@ -29,7 +29,7 @@ public class AssetBundleManager : SingletonBase<AssetBundleManager>
     {
         if (m_mainAB == null)
         {
-            m_mainAB = AssetBundle.LoadFromFile(Path.Combine(m_abPathUrl, "StandaloneWindows"));
+            m_mainAB = AssetBundle.LoadFromFile(Path.Combine(m_abPathUrl, "StreamingAssets"));
             m_manifest = m_mainAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
 

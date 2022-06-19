@@ -30,4 +30,4 @@ Assets:
 - Assets/Resources/mapprefab/10002.prefab
 - Assets/Resources/mapprefab/10001.prefab
 Dependencies:
-- D:/UnityProject/DNFReprint/AssetBundles/StandaloneWindows/maptexture
+- D:/UnityProject/DNFReprint/Assets/StreamingAssets/maptexture

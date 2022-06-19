@@ -8,18 +8,27 @@ using XLua;
 
 public class Launcher : MonoBehaviour
 {
-    public bool useAb;
+    private bool m_useABLoadMode;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+#if UNITY_EDITOR
+        m_useABLoadMode = UnityEditor.EditorPrefs.GetBool("QuickMenuKey_LoadModeABTag", false);
+#else
+        m_useABLoadMode = true;
+#endif
 
-        print("启动游戏计时" + Time.realtimeSinceStartup);
-        print("游戏启动！进入加载流程");
-        StartCoroutine(LaunchGame());
+        LaunchUpdate update = gameObject.AddComponent<LaunchUpdate>();
+        update.updateComplete = () =>
+        {
+            //print("启动游戏计时" + Time.realtimeSinceStartup);
+            print("游戏更新完成！进入加载流程");
+            StartCoroutine(LaunchGame());
+        };
 
 
-    }
+}
 
     /// <summary>
     /// 异步加载运行游戏所需的组件
@@ -27,7 +36,7 @@ public class Launcher : MonoBehaviour
     /// <returns></returns>
     private IEnumerator LaunchGame(UnityAction callback = null)
     {
-        AssetLoader.loadMode = useAb ? AssetLoader.LoadMode.AssetBundle : AssetLoader.LoadMode.Resources;
+        AssetLoader.loadMode = m_useABLoadMode ? AssetLoader.LoadMode.AssetBundle : AssetLoader.LoadMode.Resources;
 
         print("当前资源加载模式为：" + AssetLoader.loadMode);
 

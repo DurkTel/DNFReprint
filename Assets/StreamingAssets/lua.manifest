@@ -1,0 +1,62 @@
+ManifestFileVersion: 0
+CRC: 3514943695
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b2b9dc9474b1d7ce5f80f10b8d9ade4a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/LuaTemp/db/db_tbdamage.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/func/CEntityEventfunc.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/func/CEntityfunc.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/entityClass/GameEntity.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/data/ScenesData.lua.txt
+- Assets/LuaTemp/game/bigWorld/modules/copy/copyLogin/TestCopy.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/func/CScenesEventfunc.lua.txt
+- Assets/LuaTemp/game/bigWorld/defines/EntityDefine.lua.txt
+- Assets/LuaTemp/game/framework/EventDispatcher.lua.txt
+- Assets/LuaTemp/game/framework/MDefine.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/data/EntityData.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/CopyManager.lua.txt
+- Assets/LuaTemp/LuaDebug.lua.txt
+- Assets/LuaTemp/game/framework/Module.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/entityClass/SkinEntity.lua.txt
+- Assets/LuaTemp/game/framework/EventDefine.lua.txt
+- Assets/LuaTemp/game/bigWorld/modules/copy/CopyData.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/GameCamera.lua.txt
+- Assets/LuaTemp/game/bigWorld/modules/copy/CopyModule.lua.txt
+- Assets/LuaTemp/db/db_tbmap.lua.txt
+- Assets/LuaTemp/db/db_tbskill.lua.txt
+- Assets/LuaTemp/game/bigWorld/utility/EntitySkinUtility.lua.txt
+- Assets/LuaTemp/game/bigWorld/fight/copyBaseLogin.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/entityClass/CEntity.lua.txt
+- Assets/LuaTemp/db/db_tbmodelinfo.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/entityClass/PortalEntity.lua.txt
+- Assets/LuaTemp/game/bigWorld/func/EntitiyTypeToClassfunc.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/entityClass/LocalPlayerEntity.lua.txt
+- Assets/LuaTemp/game/unitily.lua.txt
+- Assets/LuaTemp/game/framework/Define.lua.txt
+- Assets/LuaTemp/game/bigWorld/modules/copy/CopyConfig.lua.txt
+- Assets/LuaTemp/game/framework/SystemClass.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/EntityManager.lua.txt
+- Assets/LuaTemp/game/bigWorld/defines/ScenesDefine.lua.txt
+- Assets/LuaTemp/game/bigWorld/utility/EntityFightUtility.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/ScenesManager.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/func/Copyfunc.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/func/CEntityAvatarfunc.lua.txt
+- Assets/LuaTemp/game/main.lua.txt
+- Assets/LuaTemp/game/require.lua.txt
+- Assets/LuaTemp/game/bigWorld/actors/entityClass/FightEntity.lua.txt
+- Assets/LuaTemp/game/global.lua.txt
+- Assets/LuaTemp/game/framework/ModuleRegister.lua.txt
+- Assets/LuaTemp/game/bigWorld/manager/func/CEntityHotRadiusfunc.lua.txt
+- Assets/LuaTemp/game/framework/func/Timerfunc.lua.txt
+- Assets/LuaTemp/game/bigWorld/utility/EntityAnimatorUtility.lua.txt
+- Assets/LuaTemp/game/framework/Dump.lua.txt
+Dependencies: []

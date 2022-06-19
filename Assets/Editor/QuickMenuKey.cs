@@ -41,7 +41,6 @@ public class QuickMenuKey : ScriptableObject
         System.Reflection.Assembly Assembly = System.Reflection.Assembly.Load("Assembly-CSharp");
         System.Type type = Assembly.GetType("Launcher");
         GameObject game = new GameObject("Game", type);
-        game.GetComponent<Launcher>().useAb = EditorPrefs.GetBool(m_LoadModeABTag);
         DontDestroyOnLoad(game);
     }
 

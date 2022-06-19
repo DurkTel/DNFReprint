@@ -71,10 +71,10 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             {
                 m_waitCreateList.Add(entity);
             }
-            else if (entity.skinInitFrameCount <= 0 && m_waitCreateList.Contains(entity))
-            {
-                m_waitCreateList.Remove(entity);
-            }
+            //else if (entity.skinInitFrameCount <= 0 && m_waitCreateList.Contains(entity))
+            //{
+            //    m_waitCreateList.Remove(entity);
+            //}
         }
 
         //一帧调一次生成
