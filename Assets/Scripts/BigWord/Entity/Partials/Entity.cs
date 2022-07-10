@@ -28,9 +28,9 @@ public partial class Entity : BaseEvent
     /// </summary>
     public bool skinInitialized { get; private set; }
     /// <summary>
-    /// 记录开始初始化的帧数
+    /// 皮肤是否已经开始初始化
     /// </summary>
-    public int skinInitFrameCount { get; private set; }
+    public bool skinIniting { get; private set; }
 
     private InputReader m_inputReader;
     /// <summary>
@@ -123,7 +123,7 @@ public partial class Entity : BaseEvent
     {
         entityId = -1;
         m_inputReader = null;
-        skinInitFrameCount = -1;
+        skinIniting = false;
         //if (updateCollider != null) updateCollider.Clear();
         ReleaseSkin();
         ReleaseCullGroup();

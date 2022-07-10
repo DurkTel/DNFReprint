@@ -7,11 +7,10 @@ using XLua;
 public class LuaEnvironment : MonoBehaviour
 {
     string m_init = @"
-    local logger = CS.XLogger
-    _G.print_info = function(str)logger.INFO('[Lua]: '..str)end
-    _G.print_err  = function(str)logger.ERROR('[Lua]: '..str)end
-    _G.print_war  = function(str)logger.WARNING('[Lua]: '..str)end
-    _G.reportException  = function(name,message,stackTrace)logger.ReportException(name,message,stackTrace)end
+    _G.Debug = CS.UnityEngine.Debug
+    _G.print_info = function(str)Debug.Log('[Lua]: '..str)end
+    _G.print_err  = function(str)Debug.LogError('[Lua]: '..str)end
+    _G.print_war  = function(str)Debug.LogWarning('[Lua]: '..str)end
 
     function class( base ,className , ...)
             local c = {}
@@ -61,7 +60,7 @@ public class LuaEnvironment : MonoBehaviour
         luaPath = Application.dataPath + "/../X_Scripts/Lua/";
 
         Initialize();
-
+        
         //实现lua的类结构
         m_luaEnv.DoString(m_init);
 

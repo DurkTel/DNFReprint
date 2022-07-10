@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "careerType", _g_get_careerType);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "status", _g_get_status);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "skinInitialized", _g_get_skinInitialized);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "skinInitFrameCount", _g_get_skinInitFrameCount);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "skinIniting", _g_get_skinIniting);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "inputReader", _g_get_inputReader);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "curFlip", _g_get_curFlip);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "updateColliderEnabled", _g_get_updateColliderEnabled);
@@ -1355,13 +1355,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_skinInitFrameCount(RealStatePtr L)
+        static int _g_get_skinIniting(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
-                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.skinInitFrameCount);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.skinIniting);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

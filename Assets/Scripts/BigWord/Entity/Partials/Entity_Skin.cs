@@ -159,7 +159,7 @@ public partial class Entity
     public void Skin_SetVisible(bool visible)
     {
         if (!skinInitialized)
-            skinInitFrameCount = visible ? Time.frameCount : 0;
+            skinIniting = visible;
 
         if (skinNode == null) return;
 

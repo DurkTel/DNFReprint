@@ -30,4 +30,9 @@ function CEntityAvatarfunc:set_avatarPosition(position)
     self.gmentity:Skin_SetAvatarPosition(position)
 end
 
+--设置显隐
+function CEntityAvatarfunc:set_skinVisible(visible)
+    self.gmentity:Skin_SetVisible(visible)
+end
+
 return CEntityAvatarfunc

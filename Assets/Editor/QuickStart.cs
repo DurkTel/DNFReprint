@@ -5,13 +5,13 @@ using UnityEngine;
 
 
 [InitializeOnLoad]
-public class QuickMenuKey : ScriptableObject
+public class QuickStart : ScriptableObject
 {
     static string m_LaunchGameTag = "QuickMenuKey_LaunchGameTag";
     static string m_LoadModeABTag = "QuickMenuKey_LoadModeABTag";
 
 
-    static QuickMenuKey()
+    static QuickStart()
     {
         if (EditorApplication.isPlayingOrWillChangePlaymode)
         {

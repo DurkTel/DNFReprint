@@ -43,14 +43,15 @@ function EntityManager.create_entity(SentityData)
     --创建lua实体
     local luaEntity = EntityManager.create_lua_entity(entityData)
 
+    entityData.entityId = cEntity.entityId
+    luaEntity:init_data(entityData,cEntity)
+    
     if entityData:is_localPlayer() then
         CGEntityManager.localPlayer = cEntity
         EntityManager.localPlayer = luaEntity
         GGameCamera.set_focus(cEntity)
+        luaEntity:set_skinVisible(true)
     end
-    entityData.entityId = cEntity.entityId
-    luaEntity:init_data(entityData,cEntity)
-
 
     if not entityMap[cEntity.entityId] then
         entityMap[cEntity.entityId] = luaEntity

@@ -41,7 +41,7 @@ public class LaunchUpdate : MonoBehaviour
             string str = File.ReadAllText(filePath);
             string[] data = str.Split('|');
             m_localVersion = data[1];
-            print("本地版本号:" + m_localVersion);
+            //print("本地版本号:" + m_localVersion);
         }
         else
         {
@@ -70,57 +70,21 @@ public class LaunchUpdate : MonoBehaviour
             string str = webRequest.downloadHandler.text;
             string[] data = str.Split('|');
             m_netVersion = data[1];
-            print("服务器版本号:" + m_netVersion);
+            //print("服务器版本号:" + m_netVersion);
         }
     }
 
 
     private IEnumerator CheckUpdate()
     {
-
         //版本号不同
-        if (m_localVersion != m_netVersion)
-        {
-            //获取资源地址的文件列表
-            using (UnityWebRequest webRequest = UnityWebRequest.Get(AssetDefine.netServerPath + "file.txt"))
-            {
-                yield return webRequest.SendWebRequest();
-                string str = webRequest.downloadHandler.text;
-                string[] lines = str.Split('\n');
-                foreach (string line in lines)
-                {
-                    if (!string.IsNullOrEmpty(line))
-                    {
-                        string[] data = line.Split('|');
+        bool update = m_localVersion != m_netVersion;
 
-                        bool needDown = false;
-
-                        if (File.Exists(AssetDefine.localDataPath + data[0]))
-                        {
-                            //如果存在此文件，比较当前文件md5与资源服务器文件的md5是否一致
-                            string md5 = AssetUtility.GetMD5(AssetDefine.localDataPath + data[0]);
-                            if (md5 != data[1])
-                                needDown = true;
-                        }
-                        else
-                        {
-                            //不存在加入下载清单
-                            needDown = true;
-                        }
-
-                        if (needDown)
-                            m_downloadList.Add(AssetDefine.netServerPath + data[0]);
-                    }
-                }
-                //更新版本文件
-                m_downloadList.Add(AssetDefine.netServerPath + "version.txt");
-            }
-
-        }
+        yield return GetDownLoadList(update);
 
         if (m_downloadList.Count > 0)
         {
-            print("更新启动，开始下载");
+            print(update ? "有可用更新，开始下载" : "文件异常，开始修复");
             DownLoader();
         }
         else
@@ -129,6 +93,45 @@ public class LaunchUpdate : MonoBehaviour
             updateComplete?.Invoke();
         }
 
+    }
+
+    private IEnumerator GetDownLoadList(bool update)
+    {
+        //获取资源地址的文件列表
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(AssetDefine.netServerPath + "file.txt"))
+        {
+            yield return webRequest.SendWebRequest();
+            string str = webRequest.downloadHandler.text;
+            string[] lines = str.Split('\n');
+            foreach (string line in lines)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    string[] data = line.Split('|');
+
+                    bool needDown = false;
+
+                    if (File.Exists(AssetDefine.localDataPath + data[0]))
+                    {
+                        //如果存在此文件，比较当前文件md5与资源服务器文件的md5是否一致
+                        string md5 = AssetUtility.GetMD5(AssetDefine.localDataPath + data[0]);
+                        if (md5 != data[1])
+                            needDown = true;
+                    }
+                    else
+                    {
+                        //不存在加入下载清单
+                        needDown = true;
+                    }
+
+                    if (needDown)
+                        m_downloadList.Add(AssetDefine.netServerPath + data[0]);
+                }
+            }
+            //更新版本文件
+            if (update)
+                m_downloadList.Add(AssetDefine.netServerPath + "version.txt");
+        }
     }
 
     private void DownLoader()

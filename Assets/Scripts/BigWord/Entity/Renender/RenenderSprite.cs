@@ -11,12 +11,6 @@ public class RenenderSprite : MonoBehaviour
 
     private Sprite m_singSprite;
 
-    private Texture2D m_singTexture;
-
-    private Vector2 m_newPivot;
-
-    private Vector2 m_anchorVector;
-
     private int m_spriteCount;
 
     private string[] m_coordinate;
