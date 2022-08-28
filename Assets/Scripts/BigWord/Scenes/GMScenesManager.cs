@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using cfg.db;
+using AI;
 using System;
 
 public class GMScenesManager : SingletonMono<GMScenesManager>
@@ -11,6 +12,8 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     private static Transform m_transform;
 
     private Vector3 initPos = new Vector3(9999, 9999, 9999);
+
+    private Vector3 actPos = new Vector3(0, 0, 50);
 
     private Dictionary<int, GMScene> m_allScenes = new Dictionary<int, GMScene>();
 
@@ -23,6 +26,9 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
 
     private GMScene m_lastScene;
     public GMScene lastScene { get { return m_lastScene; } }
+
+    private Navigation2D m_navigation2D;
+    public Navigation2D navigation2D { get { return m_navigation2D; } }
     public static Action<int> on_LoadEvent { get; set; }
     public static Action<int> on_CompleteEvent { get; set; }
     public static Action<int> on_ActivateEvent { get; set; }
@@ -87,12 +93,21 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
         {
             on_LoadEvent?.Invoke(mapId);
             if (m_curScene != null)
+            { 
                 m_curScene.Unactivation();
+                m_curScene.transform.position = initPos;
+            }
 
             m_lastScene = m_curScene;
             m_curScene = scene;
             m_curScene.Activate();
+            m_curScene.transform.position = actPos;
             on_ActivateEvent?.Invoke(mapId);
+
+            if (!m_curScene.gameObject.TryGetComponent<Navigation2D>(out m_navigation2D))
+            {
+                Debug.LogError("该地图没有寻路网格！" + mapId);
+            }
         }
         else
         {

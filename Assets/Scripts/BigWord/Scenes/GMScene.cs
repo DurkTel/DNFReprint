@@ -22,12 +22,11 @@ public class GMScene
 
     public void Activate()
     {
-        transform.position = Vector3.zero;
+        
     }
 
     public void Unactivation()
     {
-        transform.position = new Vector3(9999, 9999, 9999);
         m_releaseTime = Time.realtimeSinceStartup;
     }
 

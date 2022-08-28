@@ -83,7 +83,7 @@ public partial class Entity : BaseEvent
         careerType = career;
         gameObject = go;
         transform = go.transform;
-
+        
         InitEvent();
         MoveInit();
         JumpInit();

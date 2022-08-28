@@ -70,4 +70,4 @@ MonoBehaviour:
       inputComparison:
         inputType: 0
         action: 0
-      customCondition: 1
+      customCondition: 6

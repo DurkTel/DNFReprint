@@ -27,8 +27,7 @@ public class Launcher : MonoBehaviour
             StartCoroutine(LaunchGame());
         };
 
-
-}
+    }
 
     /// <summary>
     /// 异步加载运行游戏所需的组件
@@ -52,6 +51,21 @@ public class Launcher : MonoBehaviour
 
         callback?.Invoke();
 
+    }
+
+    //测试代码
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 pos = OrbitCamera.regularCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 curPost = GMEntityManager.localPlayer.transform.localPosition;
+            List<AI.PathNode> path = new List<AI.PathNode>();
+            if (GMScenesManager.Instance.navigation2D.CalculatePath(curPost.x, curPost.y, pos.x, pos.y, out path))
+            {
+                GMEntityManager.localPlayer.Move_NavigationPath(path);
+            }
+        }
     }
 
     [CSharpCallLua]

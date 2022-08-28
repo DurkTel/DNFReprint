@@ -482,6 +482,9 @@ public partial class Entity
                                         //if (m_motor.isHitRecover) result = false;
                                         result = false;
                                         break;
+                                    case CustomCondition.NO_MOVE:
+                                        if (movePhase != 0) result = false;
+                                        break;
                                     default:
                                         break;
                                 }

@@ -23,6 +23,7 @@ public enum CustomCondition
     WALK_LIMIT,
     JUMP_ATTACK_LIMIT,
     HIT_RECOVER,
+    NO_MOVE
 }
 
 
