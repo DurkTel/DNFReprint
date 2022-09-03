@@ -1,4 +1,4 @@
-local EntityDefine = {}
+local EntityDefine = {} _G.GEntityDefine = EntityDefine
 
 EntityDefine.AvatarPartType =
 {
@@ -29,5 +29,30 @@ EntityDefine.Status =
     fight       = 1,      --战斗
 }
 
+EntityDefine.AIStateType = 
+{
+    idle = 1,
+    move = 2,
+    aciton = 3,
+    jump = 4,
+    hurt = 5,
+    combat = 6,
+    death = 7,
+    sleep = 8,
+    born = 9
+}
+
+EntityDefine.AIStateClass = 
+{
+    [EntityDefine.AIStateType.idle] = "game.bigWorld.actors.fsm.FSM_Idle",
+    [EntityDefine.AIStateType.move] = "game.bigWorld.actors.fsm.FSM_Move",
+    [EntityDefine.AIStateType.aciton] = "game.bigWorld.actors.fsm.FSM_Action",
+    [EntityDefine.AIStateType.jump] = "game.bigWorld.actors.fsm.FSM_Jump",
+    [EntityDefine.AIStateType.hurt] = "game.bigWorld.actors.fsm.FSM_Hurt",
+    [EntityDefine.AIStateType.combat] = "game.bigWorld.actors.fsm.FSM_Combat",
+    [EntityDefine.AIStateType.death] = "game.bigWorld.actors.fsm.FSM_Death",
+    [EntityDefine.AIStateType.sleep] = "game.bigWorld.actors.fsm.FSM_Sleep",
+    [EntityDefine.AIStateType.born] = "game.bigWorld.actors.fsm.FSM_Born"
+}
 
 return EntityDefine

@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.InputSystem.Utilities;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Input/InputReader", fileName = "InputReader")]
-public class InputReader : ScriptableObject, InputControls.IGameplayActions
+public class InputReader : ScriptableObject, InputControls.IGameplayActions, InputControls.IDebugActions
 {
     public static string path = "Assets/ScriptableObjects/Input/InputReader.asset";
 
@@ -47,6 +48,7 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions
         {
             m_inputs = new InputControls();
             m_inputs.Gameplay.SetCallbacks(this);
+            m_inputs.Debug.SetCallbacks(this);
             m_multiTime = 0.2;
             
             InitGameplayButton();
@@ -58,34 +60,33 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions
         if (inputReader != null)
             return inputReader;
 
-        //if (File.Exists(path))
-        //{
-        //InputReader input = AssetDatabase.LoadAssetAtPath(path, typeof(InputReader)) as InputReader;
-        //inputReader = input;
-
-        //}
-        //else
-        //{
-        //Directory.CreateDirectory(path);
-        //var input = ScriptableObject.CreateInstance<InputReader>();
-        //AssetDatabase.CreateAsset(input, path);
-        //inputReader = input;
-        //}
         inputReader = AssetLoader.Load<InputReader>("so/InputReader");
         return inputReader;
     }
 
     private void InitGameplayButton()
     {
-        InputActionMap gamePlayActionMap = m_inputs.asset.FindActionMap("Gameplay");
-        
-        foreach (var action in gamePlayActionMap)
+        //InputActionMap gamePlayActionMap = m_inputs.asset.FindActionMap("Gameplay");
+
+        //foreach (var action in gamePlayActionMap)
+        //{
+        //    if(!buttonBehaviour.ContainsKey(action.name))
+        //    {
+        //        buttonBehaviour.Add(action.name, new ButtonBehaviour(action.name, action));
+        //    }
+        //}
+
+        ReadOnlyArray<InputActionMap> inputActions = m_inputs.asset.actionMaps;
+        foreach (var actionMap in inputActions)
         {
-            if(!buttonBehaviour.ContainsKey(action.name))
+            foreach (var action in actionMap)
             {
-                buttonBehaviour.Add(action.name, new ButtonBehaviour(action.name, action));
+                if (!buttonBehaviour.ContainsKey(action.name))
+                {
+                    buttonBehaviour.Add(action.name, new ButtonBehaviour(action.name, action));
+                }
             }
-        } 
+        }
     }
 
     public bool GetGamePlayEnabled()
@@ -96,6 +97,25 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions
     public void EnableGameplayInput()
     {
         m_inputs.Gameplay.Enable();
+    }
+
+    public void EnableDebugInput()
+    {
+        m_inputs.Debug.Enable();
+    }
+
+    public void OnlyEnableGameplayInput()
+    {
+        DisableAllInPut();
+        m_inputs.Gameplay.Enable();
+        Debug.Log("切换到游戏输入模式");
+    }
+
+    public void OnlyEnableDebugInput()
+    {
+        DisableAllInPut();
+        m_inputs.Debug.Enable();
+        Debug.Log("切换到Debug输入模式");
     }
 
     public void DisableAllInPut()
@@ -194,6 +214,67 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions
     {
         ButtonHandle(context);
 
+    }
+
+    public void OnF1(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF2(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF3(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF4(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF5(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF6(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF7(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF8(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnF9(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
+    public void OnEnableDebug(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            OnlyEnableDebugInput();
+        }
+    }
+
+    public void OnEnableGameplay(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            OnlyEnableGameplayInput();
+        }
     }
 }
 

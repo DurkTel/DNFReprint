@@ -20,4 +20,19 @@ function CEntityfunc:add_entityAttribute(name)
     self.gmentity:AddEntityAttribute(name)
 end
 
+--添加状态机
+function CEntityfunc:add_entityStateMachine()
+    self.gmentity:AddStateMachine()
+end
+
+--添加状态
+function CEntityfunc:add_entityState(stateId)
+    self.gmentity:AddState(stateId)
+end
+
+--切换状态
+function CEntityfunc:change_entityState(stateId)
+    self.gmentity:ChangeState(stateId)
+end
+
 return CEntityfunc

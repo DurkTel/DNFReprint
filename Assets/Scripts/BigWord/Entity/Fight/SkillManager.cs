@@ -56,7 +56,7 @@ public class SkillManager
 
     private void SkillAction(string actionName)
     {
-        if (m_entity.status == EntityUnitily.FIGHT)
+        if (m_entity.status == EntityUnitily.PEACE)
             return;
         InputActionDefine inputAction = CharacterEventFunc.GetInputStringToEnum(actionName);
         if (m_actionSkillCodeMap.ContainsKey(inputAction))

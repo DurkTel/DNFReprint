@@ -52,8 +52,11 @@ public static class CharacterEventFunc
             if (item.Value.Equals(actionName))
                 return item.Key;
         }
-        InputActionDefine re = (InputActionDefine)System.Enum.Parse(typeof(InputActionDefine), actionName);
-        inputEnumDic.Add(re, actionName);
+        InputActionDefine re;
+        if (System.Enum.TryParse(actionName, false, out re))
+        {
+            inputEnumDic.Add(re, actionName);
+        }
 
         return re;
     }

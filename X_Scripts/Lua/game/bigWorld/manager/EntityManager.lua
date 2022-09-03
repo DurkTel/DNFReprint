@@ -1,3 +1,4 @@
+require("game.bigWorld.defines.EntityDefine")
 local CEntityEventfunc = require("game.bigWorld.manager.func.CEntityEventfunc")
 local CEntityHotRadiusfunc = require("game.bigWorld.manager.func.CEntityHotRadiusfunc")
 local EntitiyTypeToClassfunc = require("game.bigWorld.func.EntitiyTypeToClassfunc")

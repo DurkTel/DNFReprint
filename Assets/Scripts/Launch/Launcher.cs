@@ -54,19 +54,19 @@ public class Launcher : MonoBehaviour
     }
 
     //测试代码
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 pos = OrbitCamera.regularCamera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 curPost = GMEntityManager.localPlayer.transform.localPosition;
-            List<AI.PathNode> path = new List<AI.PathNode>();
-            if (GMScenesManager.Instance.navigation2D.CalculatePath(curPost.x, curPost.y, pos.x, pos.y, out path))
-            {
-                GMEntityManager.localPlayer.Move_NavigationPath(path);
-            }
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Vector3 pos = OrbitCamera.regularCamera.ScreenToWorldPoint(Input.mousePosition);
+    //        Vector3 curPost = GMEntityManager.localPlayer.transform.localPosition;
+    //        List<AI.PathNode> path = new List<AI.PathNode>();
+    //        if (GMScenesManager.Instance.navigation2D.CalculatePath(curPost.x, curPost.y, pos.x, pos.y, out path))
+    //        {
+    //            GMEntityManager.localPlayer.Move_NavigationPath(path);
+    //        }
+    //    }
+    //}
 
     [CSharpCallLua]
     public static List<Type> CSharpCallLua = new List<Type>()

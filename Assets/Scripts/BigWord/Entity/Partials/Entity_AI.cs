@@ -1,41 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AI;
 
 public partial class Entity
 {
-    //private PathNode m_curPathNode;
+    public FSM_StateMachine<int> stateMachine;
 
-    //private List<PathNode> m_curPath;
+    public void AddStateMachine()
+    {
+        stateMachine = new FSM_StateMachine<int>();
+    }
 
-    ///// <summary>
-    ///// 请求开始路径移动
-    ///// </summary>
-    //public void Request_PathMove(int gridX, int gridY, Navigation2D navigation = null)
-    //{
-    //    //计算路径是否可行
-    //    navigation = navigation == null ? GMScenesManager.Instance.navigation2D : navigation;
-    //    if(navigation == null)
-    //    {
-    //        Debug.LogError("当前地图没有导航信息无法寻路");
-    //        return;
-    //    }
+    public void ChangeState(int stateId)
+    {
+        stateMachine.ChangeState(stateId);
+    }
 
-    //    Vector2Int curGrid = Pathfinding.GetGridByPosition(navigation, transform.position);
+    public FSM_Status<int> AddState(int stateId)
+    {
+        FSM_Status<int> state = new FSM_Status<int>();
+        stateMachine.AddStatus(stateId, state);
+        return state;
+    }
 
-    //    List<PathNode> pathList = Pathfinding.AStar_Finding(navigation.navigationData.map, curGrid, new Vector2Int(gridX, gridY));
-
-    //    if (pathList == null && pathList.Count == 0)
-    //    {
-    //        return;
-    //    }
-
-    //    m_curPath = pathList;
-    //    m_curPathNode = m_curPath[0];
-
-    //    //停止当前移动
-    //    Move_Stop();
-
-    //}
+    private void UpdateStateMachine()
+    {
+        if (stateMachine != null)
+        {
+            stateMachine.OnAction();
+        }
+    }
 }

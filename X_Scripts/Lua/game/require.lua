@@ -18,10 +18,10 @@ local loadTab =
     'game.framework.EventDefine',
     'game.framework.EventDispatcher',
     'game.framework.Define',
+    'game.bigWorld.manager.GameCamera',
     'game.bigWorld.manager.EntityManager',
     'game.bigWorld.manager.ScenesManager',
     'game.bigWorld.manager.CopyManager',
-    'game.bigWorld.manager.GameCamera',
 }
 
 

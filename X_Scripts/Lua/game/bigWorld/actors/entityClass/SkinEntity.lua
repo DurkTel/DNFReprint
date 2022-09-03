@@ -2,8 +2,7 @@
 
 local EntitySkinUtility = require("game.bigWorld.utility.EntitySkinUtility")
 local EntityAnimatorUtility = require("game.bigWorld.utility.EntityAnimatorUtility")
-local EntityDefine = require("game.bigWorld.defines.EntityDefine")
-local AvatarPartType = EntityDefine.AvatarPartType
+local AvatarPartType = GEntityDefine.AvatarPartType
 
 local base = require("game.bigWorld.actors.entityClass.GameEntity")
 local SkinEntity = class(base)

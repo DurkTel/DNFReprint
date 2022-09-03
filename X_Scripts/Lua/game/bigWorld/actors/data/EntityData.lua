@@ -1,5 +1,3 @@
-local EntityDefine = require("game.bigWorld.defines.EntityDefine")
-
 local EntityData = class()
 
 
@@ -23,27 +21,27 @@ function EntityData:get_entityType()
 end
 
 function EntityData:is_localPlayer()
-    return self.etype == EntityDefine.EntityType.localPlayer
+    return self.etype == GEntityDefine.EntityType.localPlayer
 end
 
 function EntityData:is_otherPlayer()
-    return self.etype == EntityDefine.EntityType.otherPlayer
+    return self.etype == GEntityDefine.EntityType.otherPlayer
 end
 
 function EntityData:is_monster()
-    return self.etype == EntityDefine.EntityType.monster
+    return self.etype == GEntityDefine.EntityType.monster
 end
 
 function EntityData:is_robot()
-    return self.etype == EntityDefine.EntityType.robot
+    return self.etype == GEntityDefine.EntityType.robot
 end
 
 function EntityData:is_npc()
-    return self.etype == EntityDefine.EntityType.npc
+    return self.etype == GEntityDefine.EntityType.npc
 end
 
 function EntityData:is_portal()
-    return self.etype == EntityDefine.EntityType.portal
+    return self.etype == GEntityDefine.EntityType.portal
 end
 
 function EntityData:get_career()

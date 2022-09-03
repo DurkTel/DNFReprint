@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(GMScenesManager);
-			Utils.BeginObjectRegister(type, L, translator, 0, 3, 2, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 3, 3, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadScene", _m_LoadScene);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadSceneAsyn", _m_LoadSceneAsyn);
@@ -30,6 +30,7 @@ namespace XLua.CSObjectWrap
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "curScene", _g_get_curScene);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "lastScene", _g_get_lastScene);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "navigation2D", _g_get_navigation2D);
             
 			
 			
@@ -240,6 +241,20 @@ namespace XLua.CSObjectWrap
 			
                 GMScenesManager gen_to_be_invoked = (GMScenesManager)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.lastScene);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_navigation2D(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                GMScenesManager gen_to_be_invoked = (GMScenesManager)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.navigation2D);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
