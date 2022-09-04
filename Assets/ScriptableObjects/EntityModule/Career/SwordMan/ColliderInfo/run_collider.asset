@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
+  m_Name: run_collider
+  m_EditorClassIdentifier: 
+  frameCollInfos:
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: -3.3, y: 30.09}
+      size: {x: 48.47, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 27.6, y: 87.9}
+      size: {x: 23.5, y: 25.5}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 14.2, y: 71.04}
+      size: {x: 34.1, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: -3.3, y: 30.09}
+      size: {x: 62.9, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 30, y: 90.6}
+      size: {x: 23.5, y: 21.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16, y: 71.5}
+      size: {x: 31.6, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: -3.3, y: 30.09}
+      size: {x: 62.9, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 30, y: 90.6}
+      size: {x: 23.5, y: 21.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16, y: 71.5}
+      size: {x: 31.6, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: -3.3, y: 30.09}
+      size: {x: 62.9, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 30, y: 90.6}
+      size: {x: 23.5, y: 21.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16, y: 71.5}
+      size: {x: 31.6, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0.5, y: 30.09}
+      size: {x: 42.1, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 28, y: 87.9}
+      size: {x: 23.65, y: 20.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16.2, y: 71.04}
+      size: {x: 29.9, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: -3.3, y: 30.09}
+      size: {x: 62.9, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 30, y: 90.6}
+      size: {x: 23.5, y: 21.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16, y: 71.5}
+      size: {x: 31.6, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0, y: 30.09}
+      size: {x: 62.9, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 30, y: 90.6}
+      size: {x: 23.5, y: 21.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16, y: 71.5}
+      size: {x: 31.6, y: 19.02}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 0.5, y: 30.09}
+      size: {x: 42.1, y: 60.05}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 28, y: 87.9}
+      size: {x: 23.65, y: 20.4}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 16, y: 71.5}
+      size: {x: 31.6, y: 19.02}
+    index: 0
+  frameCount: 8
+  skillCode: 0

@@ -1,0 +1,551 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: hit1_Anim
+  m_EditorClassIdentifier: 
+  aniName: hit1_Anim
+  colliderInfo: {fileID: 0}
+  isLoop: 0
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: b50b486c24eeeeb4fbdbc7ea5e1d33b7, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 9188acd88c3c9bf4ba14bb5b0eec8b6a, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: c3b50ac1a4c94264984ab5541afcaf6e, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 9cf9f961bbdcf3741a686b39f89bd0a9, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: 16729b72aa4192346ae86791e232d3fe, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  - sprite: {fileID: 21300000, guid: f9f55ff7aa5f3ea4d9ec5ceb8bafdaf3, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
+  switchingConditions:
+  - frame: {x: 5, y: 5}
+    animationData: {fileID: 11400000, guid: a672757e69d76af46a76728d9eed1faf, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 0

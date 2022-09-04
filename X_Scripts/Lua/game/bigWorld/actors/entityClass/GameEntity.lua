@@ -1,8 +1,15 @@
 --游戏实体 场景所有实体都由此派生
 
-
 local base = require("game.bigWorld.actors.entityClass.CEntity")
+local Timerfunc = require("game.framework.func.Timerfunc")
 local GameEntity = class(base)
+
+GameEntity.add_timer = Timerfunc.add_timer
+GameEntity.add_framer = Timerfunc.add_framer
+GameEntity.wait_timer = Timerfunc.wait_timer
+GameEntity.reset_timer = Timerfunc.reset_timer
+GameEntity.del_timer = Timerfunc.del_timer
+GameEntity.del_all_timer = Timerfunc.del_all_timer
 
 function GameEntity:init_data(entityData,gmentity)
     base.set_gmentity(self, gmentity)

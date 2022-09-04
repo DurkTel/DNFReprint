@@ -14,6 +14,7 @@ CEntityEventfunc.init()
 CEntityHotRadiusfunc.init()
 
 local entityClassMap = {}
+local entityTypeMap = {}
 local entityMap = {}
 
 --创建lua实体
@@ -58,6 +59,12 @@ function EntityManager.create_entity(SentityData)
         entityMap[cEntity.entityId] = luaEntity
     end
 
+    if not entityTypeMap[entityData.etype] then
+        entityTypeMap[entityData.etype] = {}
+    end
+
+    table.insert(entityTypeMap[entityData.etype], entityData.entityId)
+
     return luaEntity, cEntity
 end
 
@@ -66,6 +73,14 @@ function EntityManager.release_entity(entityId)
     if luaEntity then
         luaEntity:dispose()
     end
+
+    local typeMap = entityTypeMap[luaEntity.entityData.etype]
+    for i = #typeMap, 1, -1 do
+        if typeMap[i] == entityId then
+            table.remove(typeMap, i)
+        end
+    end
+    if #typeMap == 0 then typeMap = nil end
 
     CGEntityManager.ReleaseEntity(entityId)
 end
@@ -77,6 +92,10 @@ function EntityManager.get_luaEntityById(entityId)
     end
 
     return nil
+end
+
+function EntityManager.get_entitiyListByType(etype)
+    return entityTypeMap[etype] or {}
 end
 
 return EntityManager

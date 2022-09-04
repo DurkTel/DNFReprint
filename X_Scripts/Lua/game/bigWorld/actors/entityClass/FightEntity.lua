@@ -15,5 +15,11 @@ function FightEntity:changStatus(state)
     self.gmentity:ChangeStatus(state)
 end
 
+function FightEntity:calculatePathFormOwn(x, y)
+    local pos = self:get_position()
+    local cuccess, path = GFinding.calculatePath(pos.x, pos.y, x, y)
+    return cuccess, path
+end
+
 
 return FightEntity

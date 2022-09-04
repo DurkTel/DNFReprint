@@ -4,7 +4,7 @@ local EntityData = class()
 function EntityData:set_srv_data(SentityInfo)
     self.srvInfo    = SentityInfo
     self.etype      = SentityInfo.type
-    self.dbcfg      = SentityInfo.cfg  --配置
+    self.dbcfg      = SentityInfo.cfg or {}  --配置
     self:init_status()
 end
 

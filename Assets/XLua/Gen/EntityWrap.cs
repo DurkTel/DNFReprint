@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 41, 51, 25);
+			Utils.BeginObjectRegister(type, L, translator, 0, 42, 51, 25);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -55,6 +55,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_HotRadius", _m_Set_HotRadius);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Stop", _m_Move_Stop);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_NavigationPath", _m_Move_NavigationPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveStop_NavigationPath", _m_MoveStop_NavigationPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveHurt_Y", _m_MoveHurt_Y);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Jump", _m_Move_Jump);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Skin_SetAvatarSkeleton", _m_Skin_SetAvatarSkeleton);
@@ -1130,6 +1131,33 @@ namespace XLua.CSObjectWrap
                     System.Collections.Generic.List<AI.PathNode> _path = (System.Collections.Generic.List<AI.PathNode>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<AI.PathNode>));
                     
                     gen_to_be_invoked.Move_NavigationPath( _path );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_MoveStop_NavigationPath(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.MoveStop_NavigationPath(  );
                     
                     
                     

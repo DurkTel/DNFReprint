@@ -52,12 +52,12 @@ end
 
 --刷新骨骼
 function SkinEntity:refresh_skeleton()
-    local career = self.entityData:get_career()
-    if not career then
+    local entityType = self.entityData:get_entityType()
+    if not entityType then
         -- print_err("")
         return
     end
-    local skeletonAssetName = EntitySkinUtility.get_skeleton_assetName(career)
+    local skeletonAssetName = EntitySkinUtility.get_skeleton_assetName(entityType)
     self:set_avatarSkeleton(skeletonAssetName)
 end
 

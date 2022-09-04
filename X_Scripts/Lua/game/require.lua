@@ -22,6 +22,7 @@ local loadTab =
     'game.bigWorld.manager.EntityManager',
     'game.bigWorld.manager.ScenesManager',
     'game.bigWorld.manager.CopyManager',
+    'game.bigWorld.finding.Finding'
 }
 
 

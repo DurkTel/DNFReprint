@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
+  m_Name: idle_collider
+  m_EditorClassIdentifier: 
+  frameCollInfos:
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 1.52, y: 39.4}
+      size: {x: 48, y: 82.7}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.4, y: 93.43}
+      size: {x: 26.2, y: 21.9}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 1.52, y: 39.4}
+      size: {x: 48, y: 82.7}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.4, y: 93.43}
+      size: {x: 26.2, y: 21.9}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 1.52, y: 39.4}
+      size: {x: 48, y: 82.7}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.4, y: 91.74}
+      size: {x: 26.2, y: 21.9}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 1.52, y: 39.4}
+      size: {x: 48, y: 82.7}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.4, y: 93.43}
+      size: {x: 26.2, y: 21.9}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 1.52, y: 39.4}
+      size: {x: 48, y: 82.7}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.4, y: 93.43}
+      size: {x: 26.2, y: 21.9}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 1.52, y: 39.4}
+      size: {x: 48, y: 82.7}
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 7.4, y: 93.43}
+      size: {x: 26.2, y: 21.9}
+    index: 0
+  frameCount: 6
+  skillCode: 0

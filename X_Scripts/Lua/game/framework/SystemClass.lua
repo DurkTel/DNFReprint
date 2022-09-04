@@ -1,10 +1,24 @@
-
 function table.nums(t)
     local count = 0
     for k, v in pairs(t) do
         count = count + 1
     end
     return count
+end
+
+function table.connect(...)
+	local tabs = {...}
+    local re = {}
+    
+    local flag = 0
+    for k, tab in ipairs(tabs) do
+        local num = #tab
+        for i = 1, num do
+            re[flag + i] = tab[i]
+        end
+        flag = flag + num
+    end
+    return re
 end
 
 function table.removeByfunc(tab,func)

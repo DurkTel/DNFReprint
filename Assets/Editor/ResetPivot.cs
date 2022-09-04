@@ -43,9 +43,10 @@ public class ResetPivot : EditorWindow
             Debug.LogError("路径为空！");
             return;
         }
+        string tempName = path.Substring(path.LastIndexOf('/') + 1);
 
-        TextAsset tempTA = Resources.Load<TextAsset>(path + "/pointOffsize");
-        TextAsset offsetTA = Resources.Load<TextAsset>(path + "/offset");
+        TextAsset tempTA = Resources.Load<TextAsset>(path + '/' + tempName + "_pointoffsize");
+        TextAsset offsetTA = Resources.Load<TextAsset>(path + '/' + tempName + "_offset");
 
         if (!tempTA || !offsetTA)
         {
@@ -65,8 +66,8 @@ public class ResetPivot : EditorWindow
 
         for (int i = 0; i < m_spriteCount; i++)
         {
-            m_singSprite = Resources.Load<Sprite>(path + '/' + i);
-            string textPath = "Assets/Resources/" + path + '/' + i + ".png";
+            m_singSprite = Resources.Load<Sprite>(path + '/' + tempName + "_" + i);
+            string textPath = "Assets/Resources/" + path + '/' + tempName + "_" + i + ".png";
             TextureImporter textureImporter = AssetImporter.GetAtPath(textPath) as TextureImporter;
 
 

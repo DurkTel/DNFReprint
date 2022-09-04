@@ -10,21 +10,13 @@ GDebugUtility.onInputEvent = function (key)
             type = 2,
             cfg = {bornPos = {x = 4.7, y = 1.09, z= 0}},
             models = {
-                [0] = 10000,
-                [1] = 10001,
-                [2] = 10002,
-                [3] = 10003,
-                [4] = 10004,
-                [5] = 10005,
-                [6] = 10006,
-                [7] = 10007,
-                [8] = 10008,
+                [0] = 20000,
             }
         }
     
         GEntityManager.create_entity(SentityData)
     elseif key == "F2" then
-
+        
     elseif key == "F3" then
 
     elseif key == "F4" then

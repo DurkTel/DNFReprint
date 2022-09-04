@@ -65,4 +65,8 @@ function ScenesManager.get_lastMapType()
     return lastMapType
 end
 
+function ScenesManager.get_curNavigation()
+    return CGMScenesManager.Instance.navigation2D
+end
+
 return ScenesManager

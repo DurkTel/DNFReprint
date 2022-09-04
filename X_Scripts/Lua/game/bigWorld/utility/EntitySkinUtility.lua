@@ -1,12 +1,14 @@
 local EntitySkinUtility = {}
 local t_modelInfo = require("db.db_tbmodelinfo")
 
-function EntitySkinUtility.get_skeleton_assetName(career)
-    local assetName = nil
-    if career == 0 then
-        assetName = "model/Bone/common_character_bone"
-    end
+EntitySkinUtility.skeletonAssetPath = 
+{
+    [0] = "model/Bone/common_character_bone",
+    [2] = "model/Bone/common_single_bone"
+}
 
+function EntitySkinUtility.get_skeleton_assetName(entityType)
+    local assetName = EntitySkinUtility.skeletonAssetPath[entityType]
     return assetName
 end
 

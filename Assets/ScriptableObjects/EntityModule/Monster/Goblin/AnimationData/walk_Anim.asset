@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: walk_Anim
+  m_EditorClassIdentifier: 
+  aniName: walk_Anim
+  colliderInfo: {fileID: 0}
+  isLoop: 1
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: 88a72ef48aaf5e946b8a4a2eb7e7f75a, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 87087ed50f1272e4c919f78a17c37e2a, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 87087ed50f1272e4c919f78a17c37e2a, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 0ff7cc8eac03dc148bb9d60e16f39c9c, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 17027941975bc104fa95173fd55c8a72, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: dab4a47bcb7b5c347b63dbb3fef69962, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  switchingConditions:
+  - frame: {x: 0, y: 5}
+    animationData: {fileID: 11400000, guid: dc9603470dbfc3c44a4b4abe0ee80a4e, type: 2}
+    conditions:
+    - conditionType: 6
+      characterAnimation: {fileID: 0}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 6

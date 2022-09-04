@@ -81,7 +81,9 @@ public class RenenderSprite : MonoBehaviour
             Debug.LogError("请添加Sprite资源路径");
             return;
         }
-        TextAsset tempTA = Resources.Load<TextAsset>(path + "/pointOffsize");
+        string tempName = path.Substring(path.LastIndexOf('/') + 1);
+
+        TextAsset tempTA = Resources.Load<TextAsset>(path + '/' + tempName + "_pointOffsize");
 
         if (tempTA == null)
         {
@@ -93,7 +95,6 @@ public class RenenderSprite : MonoBehaviour
         m_coordinate = str.Split(' ', '\n');
 
         m_spriteCount = m_coordinate.Length / 2;
-        string tempName = path.Substring(path.LastIndexOf('/') + 1);
 
         for (int i = 0; i < m_spriteCount; i++)
         {
@@ -125,11 +126,11 @@ public class RenenderSprite : MonoBehaviour
             Debug.LogError("请添加Sprite资源路径");
             yield break;
         }
-        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + '/' + tempName + '_' + "pointoffsize");
+        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + '/' + tempName + "_pointoffsize");
         
         if (tempTA == null)
         {
-            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ path + '/' + tempName + '_' + "pointoffsize");
+            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ path + '/' + tempName + "_pointoffsize");
             yield break;
         }
 

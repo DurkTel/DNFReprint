@@ -62,8 +62,7 @@ public partial class Entity
         if (m_totalTime >= curSprite.interval / current_animationData.speed)
         {
             m_totalTime = 0;
-            
-            m_currentIndex = int.Parse(curSprite.sprite.name);
+            m_currentIndex = int.Parse(curSprite.sprite.name.Substring(curSprite.sprite.name.LastIndexOf('_') + 1));//这样写有可能造成性能问题 暂时
             SetSprites(m_currentIndex);
             
             m_lastFrame = m_currentFrame;
@@ -521,15 +520,9 @@ public partial class Entity
             m_renenderSprites.Add(part.renender);
         }
 
-        //animationConfig = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/AnimationConfig/Character/Player/SaberAnimConfig.asset", typeof(AnimationConfig)) as AnimationConfig;
-        //animationConfig = AssetDatabase.LoadAssetAtPath(aniCfg, typeof(AnimationConfig)) as AnimationConfig;
+        animationConfig = AssetLoader.Load<AnimationConfig>("so/" + aniCfg);
         //AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
-
-        //DOSpriteAnimation(animation);
-
-        animationConfig = AssetLoader.Load<AnimationConfig>("so/SaberAnimConfig");
-        AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
-        DOSpriteAnimation(animation);
+        DOSpriteAnimation(animationConfig.idleTown_Anim);
     }
 
 }

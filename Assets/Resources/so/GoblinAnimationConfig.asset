@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17a3e22d6e8c24db78e638472818a2, type: 3}
+  m_Name: GoblinAnimationConfig
+  m_EditorClassIdentifier: 
+  idle_Anim: {fileID: 11400000, guid: dc9603470dbfc3c44a4b4abe0ee80a4e, type: 2}
+  idleTown_Anim: {fileID: 11400000, guid: dc9603470dbfc3c44a4b4abe0ee80a4e, type: 2}
+  walk_Anim: {fileID: 11400000, guid: 5ae5685aac35dcf48856a3e88e06b85e, type: 2}
+  run_Anim: {fileID: 0}
+  sit_Anim: {fileID: 11400000, guid: 7c0ad78d39143a74ead111ad3b628477, type: 2}
+  airBorne_Anim: {fileID: 0}
+  rebound_Anim: {fileID: 11400000, guid: 22b2f3fab917b704ea98a0b689643674, type: 2}
+  lie_Anim: {fileID: 11400000, guid: 063281bad36ea644484f7a05cc754408, type: 2}
+  jump_Anim: {fileID: 0}
+  jumpRise_Anim: {fileID: 0}
+  jumpDrop_Anim: {fileID: 11400000, guid: d4ca3d8d8fa3b8844b6dbc88d9476e24, type: 2}
+  jumpEnd_Anim: {fileID: 0}
+  attack1_Anim: {fileID: 11400000, guid: a4360e33d60a25f4699d4dd9018a62da, type: 2}
+  attack2_Anim: {fileID: 0}
+  attack3_Anim: {fileID: 0}
+  jumpAttack_Anim: {fileID: 0}
+  runAttack_Anim: {fileID: 0}
+  hit1_Anim: {fileID: 11400000, guid: 79758c9c76ae54344bc3e776d5db50f6, type: 2}
+  hit2_Anim: {fileID: 11400000, guid: d9a7dd388a93e0c419577aaf6ec12d97, type: 2}
+  hit3_Anim: {fileID: 0}
+  CommonAnim:
+  - {fileID: 11400000, guid: dc9603470dbfc3c44a4b4abe0ee80a4e, type: 2}
+  - {fileID: 11400000, guid: 7c0ad78d39143a74ead111ad3b628477, type: 2}
+  - {fileID: 11400000, guid: 5ae5685aac35dcf48856a3e88e06b85e, type: 2}
+  - {fileID: 11400000, guid: 063281bad36ea644484f7a05cc754408, type: 2}
+  - {fileID: 11400000, guid: 22b2f3fab917b704ea98a0b689643674, type: 2}
+  JumpAnim:
+  - {fileID: 11400000, guid: d4ca3d8d8fa3b8844b6dbc88d9476e24, type: 2}
+  AttackAnim:
+  - {fileID: 11400000, guid: a4360e33d60a25f4699d4dd9018a62da, type: 2}
+  HitAnim:
+  - {fileID: 11400000, guid: 79758c9c76ae54344bc3e776d5db50f6, type: 2}
+  - {fileID: 11400000, guid: d9a7dd388a93e0c419577aaf6ec12d97, type: 2}
+  ForceAnim: []
+  NotMoveAnim: []

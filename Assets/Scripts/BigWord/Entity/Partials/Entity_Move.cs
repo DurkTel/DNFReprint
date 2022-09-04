@@ -169,6 +169,13 @@ public partial class Entity
         movePhase = 0;
     }
 
+    public void MoveStop_NavigationPath()
+    {
+        m_movePathPosList.Clear();
+        rigidbody.velocity = Vector2.zero;
+        Move_OnEnd();
+    }
+
     private void Move_UpdatePath(float fixedDeltaTime)
     {
         if (m_movePathPosList.Count < 1)
@@ -281,7 +288,6 @@ public partial class Entity
             item.SetSpriteFilp(isLeft);
         }
     }
-
 
     private bool FilpLimit()
     {

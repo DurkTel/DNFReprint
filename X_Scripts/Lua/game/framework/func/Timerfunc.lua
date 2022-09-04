@@ -7,7 +7,7 @@ local removeMap = {}
 
 local function get_timerId()
     timerId = timerId + 1
-    return Timerfunc
+    return timerId
 end
 
 function Timerfunc.add_timer(self, func, interval, duration, delay)

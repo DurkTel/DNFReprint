@@ -26,6 +26,10 @@ function CEntity:get_transform()
     return self.gmentity and self.gmentity.transform or nil
 end
 
+function CEntity:get_position()
+    return self.gmentity and self.gmentity.transform and self.gmentity.transform.position or nil
+end
+
 function CEntity:onCreateEvent() end
 
 function CEntity:onAvatarLoadComplete() end

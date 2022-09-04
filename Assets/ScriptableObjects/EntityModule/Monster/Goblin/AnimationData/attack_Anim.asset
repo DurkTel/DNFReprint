@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: attack_Anim
+  m_EditorClassIdentifier: 
+  aniName: attack_Anim
+  colliderInfo: {fileID: 0}
+  isLoop: 0
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: e4e5a1eeafe273c468a37c3f9e83c338, type: 3}
+    interval: 0.2
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 9514d402bd7e04045b8801dfea403c71, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 9d900a8695299ce4ca6cf572f2171e15, type: 3}
+    interval: 0.15
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 81755a6057260534ea14f956c255bcb6, type: 3}
+    interval: 0.3
+    frameEventLoop: 0
+    frameEvent: []
+  switchingConditions:
+  - frame: {x: 3, y: 3}
+    animationData: {fileID: 11400000, guid: dc9603470dbfc3c44a4b4abe0ee80a4e, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 0
