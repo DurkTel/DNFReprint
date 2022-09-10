@@ -44,7 +44,7 @@ public class GMEntityHotRadius : MonoBehaviour
                 float dis = Vector2.Distance(entity.transform.position, localPlayer.transform.position);
                 if (dis <= entity.hotRadius[i])
                 {
-                    //在热半径范围内，但不在进入范围
+                    //在热半径范围内，但不在进入列表
                     //代表新进入
                     int entityId = entity.entityId;
                     if (!hotRadius.enterIds.ContainsKey(entityId))

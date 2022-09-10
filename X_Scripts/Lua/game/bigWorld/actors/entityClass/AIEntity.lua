@@ -26,12 +26,12 @@ end
 
 function AIEntity:on_init()
     base.on_init(self)
-    self:add_entityStateMachine()
 end
 
 function AIEntity:onAvatarLoadComplete()
     base.onAvatarLoadComplete(self)
-    self:on_initAI()
+    --皮肤加载完成后进入出生状态
+    self:enter_state(GEntityDefine.AIStateType.born)
 end
 
 function AIEntity:on_initAI()
@@ -44,7 +44,9 @@ function AIEntity:on_initAI()
 end
 
 function AIEntity:on_updateAILogic(timeCount)
-
+    if self.curstate then
+        self.curstate:on_action()
+    end
 end
 
 function AIEntity:start_pathMove(path)
@@ -59,27 +61,31 @@ function AIEntity:stop_pathMove()
     self:moveStop_entityNavigationPath()
 end
 
+function AIEntity:enter_defaultState()
+    self:enter_state(GEntityDefine.AIStateType.idle)
+end
+
 function AIEntity:enter_state(stateId)
 
     if self.curstate then
-
         if self.curstate.stateId == stateId then
+            self.curstate:on_enter()
             return
+        else
+            self.curstate:on_exit()
         end
     end
 
     local state = self.status[stateId]
     if not state then
-        local gmstate = self:add_entityState(stateId) --添加C#状态
         local stateClass = getClassByAiState(stateId)
-        state = stateClass(self, gmstate)
+        state = stateClass(self)
         self.status[stateId] = state --添加lua状态
     end
     
-    self:change_entityState(stateId)
     self.lastState = self.curstate
     self.curstate = state
-    
+    self.curstate:on_enter()
 end
 
 function AIEntity:dispose()

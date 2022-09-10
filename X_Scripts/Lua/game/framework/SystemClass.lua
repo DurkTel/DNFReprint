@@ -1,3 +1,7 @@
+function table.isNull(tab)
+    return tab == nil or next(tab) == nil
+end
+
 function table.nums(t)
     local count = 0
     for k, v in pairs(t) do
@@ -40,4 +44,23 @@ function table.removeItem(tab,a)
         end
 
     end
+end
+
+
+function string.isEmptyOrNull(str)
+    return str == nil or str ==''
+end
+
+function string.split(str, delimiter, ignoreEmpty)
+    if str == nil or str == '' or delimiter == nil then
+        return nil
+    end
+    
+    local result = {}
+    for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+        if not ignoreEmpty or match ~= "" then
+            table.insert(result, match)
+        end
+    end
+    return result
 end

@@ -1,7 +1,7 @@
 local CEntityHotRadiusfunc = {}
 local CGMEntityManager = CS.GMEntityManager
 
-local enterIds = {}
+local enterHotIds = {}
 
 function CEntityHotRadiusfunc.init()
     CGMEntityManager.entityHotRadius.onHotGroupChange = CEntityHotRadiusfunc.onHotGroupChange
@@ -9,7 +9,7 @@ end
 
 
 local function groupHandle(idx, group)
-    enterIds[idx] = group
+    enterHotIds[idx] = group
 
     for id,change in pairs(group.enterIds) do
         if change then
@@ -33,6 +33,10 @@ function CEntityHotRadiusfunc.onHotGroupChange()
             groupHandle(k, group)
         end
     end
+end
+
+function CEntityHotRadiusfunc.get_enterHotIds()
+    return enterHotIds
 end
 
 

@@ -70,9 +70,6 @@ end
 
 function EntityManager.release_entity(entityId)
     local luaEntity = entityMap[entityId]
-    if luaEntity then
-        luaEntity:dispose()
-    end
 
     local typeMap = entityTypeMap[luaEntity.entityData.etype]
     for i = #typeMap, 1, -1 do
@@ -82,6 +79,9 @@ function EntityManager.release_entity(entityId)
     end
     if #typeMap == 0 then typeMap = nil end
 
+    if luaEntity then
+        luaEntity:dispose()
+    end
     CGEntityManager.ReleaseEntity(entityId)
 end
 
@@ -94,8 +94,51 @@ function EntityManager.get_luaEntityById(entityId)
     return nil
 end
 
-function EntityManager.get_entitiyListByType(etype)
+function EntityManager.get_entitiyIdListByType(etype)
     return entityTypeMap[etype] or {}
 end
+
+function EntityManager.get_playerEntityId()
+    local player1 = GEntityManager.get_entitiyIdListByType(GEntityDefine.EntityType.otherPlayer)
+    local player2 = GEntityManager.get_entitiyIdListByType(GEntityDefine.EntityType.localPlayer)
+
+    local players = table.connect(player1, player2)
+    return players
+end
+
+--获取玩家是否在这个实体的热半径中 返回热半径范围
+function EntityManager.get_entitiyEnterHotLevel(entityId)
+    local enterHotIds = CEntityHotRadiusfunc.get_enterHotIds()
+
+    for level, group in pairs(enterHotIds) do
+        for id, change in pairs(group.enterIds) do
+            if entityId == id then
+                return level
+            end
+        end
+    end
+
+    return -1
+end
+
+
+function EntityManager.create_monster(refreshId)
+    local refreshCfg = MDefine.cfg.monster.getMonsterRefreshCfgById(refreshId)
+    local monsterCfg = MDefine.cfg.monster.getMonsterCfgById(refreshId)
+    if not table.isNull(refreshCfg) and not table.isNull(monsterCfg) then
+        local SentityData =
+        {
+            type = 2,
+            cfg = refreshCfg,
+            models = {
+                [0] = monsterCfg.modelCode,
+            }
+        }
+    
+        local entity = GEntityManager.create_entity(SentityData)
+        return entity
+    end
+end
+
 
 return EntityManager

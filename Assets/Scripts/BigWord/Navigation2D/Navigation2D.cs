@@ -41,8 +41,8 @@ namespace AI
 
             float nodeSize = navigationData.nodeSize;
 
-            int gridX = (int)Mathf.Floor(x / nodeSize);
-            int gridY = (int)Mathf.Floor(y / nodeSize);
+            int gridX = (int)Mathf.Max(Mathf.Floor(x / nodeSize), 0);
+            int gridY = (int)Mathf.Max(Mathf.Floor(y / nodeSize), 0);
 
             Vector2Int grid = new Vector2Int(gridX, gridY);
             return grid;
@@ -58,8 +58,8 @@ namespace AI
 
             float nodeSize = navigationData.nodeSize;
 
-            int gridX = (int)Mathf.Floor(x / nodeSize);
-            int gridY = (int)Mathf.Floor(y / nodeSize);
+            int gridX = (int)Mathf.Max(Mathf.Floor(x / nodeSize), 0);
+            int gridY = (int)Mathf.Max(Mathf.Floor(y / nodeSize), 0);
 
             Vector2Int grid = new Vector2Int(gridX, gridY);
             return grid;
@@ -92,11 +92,12 @@ namespace AI
         private static List<AstarPathNode> m_closeList = new List<AstarPathNode>();
         public static List<PathNode> AStar_Finding(PathNode[,] map, Vector2Int startNode, Vector2Int targetNode)
         {
-            if (startNode[0] > map.GetLength(0) || startNode[1] > map.GetLength(1) || targetNode[0] > map.GetLength(0) || targetNode[1] > map.GetLength(1))
+            if (startNode[0] >= map.GetLength(0) || startNode[1] >= map.GetLength(1) || targetNode[0] >= map.GetLength(0) || targetNode[1] >= map.GetLength(1))
             {
                 Error();
                 return new List<PathNode>(0);
             }
+
             //重置地图数据
             m_openList.Clear();
             m_closeList.Clear();
@@ -105,13 +106,12 @@ namespace AI
             sNode.status = AstarPathNode.NODE_START;
             AstarPathNode eNode = map[targetNode[0], targetNode[1]] as AstarPathNode;
             eNode.status = AstarPathNode.NODE_End;
-
             //重置起点 将父节点置空
             sNode.G = 0;
             sNode.H = sNode.GetH(eNode);
             sNode.Parent = null;
-
             m_openList.Add(sNode);
+
             while (m_openList.Count > 0)
             {
                 //取到开启列表中最小F值的点
@@ -144,7 +144,6 @@ namespace AI
             path.Reverse();
 
             return path;
-
         }
 
         /// <summary>
@@ -230,7 +229,7 @@ namespace AI
 
         private static void Error()
         {
-            Debug.LogError("当前寻路不可达");
+            //Debug.LogError("当前寻路不可达");
         }
 
         #endregion

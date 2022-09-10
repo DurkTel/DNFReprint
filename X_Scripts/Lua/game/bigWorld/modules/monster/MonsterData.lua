@@ -1,0 +1,3 @@
+local MonsterData = {}
+
+return MonsterData

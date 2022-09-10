@@ -37,8 +37,15 @@ function GameEntity:on_init()
 end
 
 function GameEntity:set_hotRadius()
-    if self.entityData.dbcfg and self.entityData.dbcfg.radius then
-        self.gmentity:Set_HotRadius(0, self.entityData.dbcfg.radius)
+    if self.entityData.dbcfg and not string.isEmptyOrNull(self.entityData.dbcfg.radius) then
+        local hotRadius = string.split(self.entityData.dbcfg.radius, ',', true)
+        self.hotRadius = hotRadius
+        table.sort(self.hotRadius, function (a, b)
+            return a < b
+        end)
+        for i, r in ipairs(self.hotRadius) do
+            self.gmentity:Set_HotRadius(i, tonumber(r))
+        end
     end
 end
 
@@ -46,9 +53,22 @@ function GameEntity:on_hotRadiusfunc(inOut, index)
     
 end
 
+function GameEntity:get_distance(entitiyId)
+    local entity = GEntityManager.get_luaEntityById(entitiyId)
+    local distance = -1
+    if entity then
+        local pos1 = entity:get_position()
+        local pos2 = self:get_position()
+        distance = Vector2.Distance(Vector2(pos1.x, pos1.y), Vector2(pos2.x, pos2.y));
+    end
+
+    return distance
+end
+
 function GameEntity:dispose()
     base.dispose(self)
     self.entityData = nil
+    self.hotRadius = nil
 end
 
 return GameEntity

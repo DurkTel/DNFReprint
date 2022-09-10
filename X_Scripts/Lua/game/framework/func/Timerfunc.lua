@@ -97,7 +97,7 @@ end
 local function remove()
     local num = table.nums(removeMap)
     if num > 0 then
-        for k,id in pairs(removeMap) do
+        for id, v in pairs(removeMap) do
             local timer = timerMap[id]
             if timer then
                 if timer.self and timer.self.__timers and timer.self.__timers[id] then
@@ -120,9 +120,11 @@ local function update()
     local now = Time.time
     for k,timer in pairs(timerMap) do
         if timer and now > timer.nextTime then
-            timer.duration = timer.duration + 1
-            if timer.duration ~= -1 and timer.times >= timer.duration then
-                removeMap[timer.guid] = timer
+            if timer.duration ~= -1 then
+                timer.duration = timer.duration + 1
+                if timer.times >= timer.duration then
+                    removeMap[timer.guid] = timer
+                end
             end
 
             timer.nextTime = now + timer.interval

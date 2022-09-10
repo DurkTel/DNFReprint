@@ -1,36 +1,21 @@
 local FSM_BaseState = class()
 
 
-function FSM_BaseState:ctor(entity, gmstate)
+function FSM_BaseState:ctor(entity)
     self.entity = entity
-    self.gmstate = gmstate
-    self:init_wrapper()
+    self.entityData = entity.entityData
 end
 
 
-function FSM_BaseState:init_wrapper()
-    self.gmstate.onAction = function (gmstate)
-        self:on_action()
-    end
-
-    self.gmstate.onEnter = function (gmstate)
-        self:on_enter()
-    end
-
-    self.gmstate.onExit = function (gmstate)
-        self:on_exit()
-    end
-end
-
-function FSM_BaseState:on_enter(gmstate)
+function FSM_BaseState:on_enter()
     
 end
 
-function FSM_BaseState:on_action(gmstate)
+function FSM_BaseState:on_action()
     
 end
 
-function FSM_BaseState:on_exit(gmstate)
+function FSM_BaseState:on_exit()
     
 end
 

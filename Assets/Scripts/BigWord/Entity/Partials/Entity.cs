@@ -107,7 +107,6 @@ public partial class Entity : BaseEvent
         //刷新剔除
         CullGroupUpdate(deltaTime);
 
-        UpdateStateMachine();
     }
 
     public void LateUpdate()
