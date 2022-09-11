@@ -114,15 +114,15 @@ public partial class Entity
         rigidbody.velocity = m_passiveSpeed_Rigi;
 
 
-        if (isHitRecover || m_haltFrame > 0) return;
+        if (isHitRecover || haltFrame > 0f) return;
 
         skinNode.localPosition += Vector3.up * fixedDeltaTime * m_hitVelocityY;
 
-        if (skinNode.localPosition.y > 0)
+        if (skinNode.localPosition.y > 0f)
         {
             if ((m_jumpState != JumpState.NONE && m_enableDropDown == true) || m_jumpState == JumpState.NONE)
             {
-                if (m_hitVelocityY > 0)
+                if (m_hitVelocityY > 0f)
                 {
                     m_hitVelocityY -= fixedDeltaTime * CommonUtility.GravitationalAcceleration * CommonUtility.AirFriction * 1;
                 }
@@ -135,13 +135,13 @@ public partial class Entity
         }
 
 
-        if (skinNode.localPosition.y <= 0 && m_rebound == false)
+        if (skinNode.localPosition.y <= 0f && m_rebound == false)
         {
-            m_hitVelocityY = 0;
+            m_hitVelocityY = 0f;
         }
 
 
-        skinNode.localPosition = new Vector3(skinNode.localPosition.x, Mathf.Clamp(skinNode.localPosition.y, 0, Mathf.Infinity), skinNode.localPosition.z);
+        skinNode.localPosition = new Vector3(skinNode.localPosition.x, Mathf.Clamp(skinNode.localPosition.y, 0f, Mathf.Infinity), skinNode.localPosition.z);
 
     }
 
@@ -150,24 +150,23 @@ public partial class Entity
     /// 受击开始
     /// </summary>
     /// <param name="damage"></param>
-    private void MoveHurt_OnStart(DamageCfg damage, GameObject attacker = null)
+    public void MoveHurt_OnStart(Transform tarn, bool lookAt, float velocityX, float velocityXY, float heightY, float acceleration, float recoverTime)
     {
-        m_hurtSource = damage;
         Move_Stop();
         //伤害来源是实体
-        if (attacker != null)
+        if (tarn != null)
         {
             //面对伤害源
-            if (damage.LookAttacker)
+            if (lookAt)
             {
-                float deltaX = attacker.transform.position.x - transform.position.x;
-                SetSpriteFilp(deltaX < 0);
+                float deltaX = tarn.position.x - transform.position.x;
+                SetSpriteFilp(deltaX < 0f);
             }
 
             //施加X轴方向移动
-            MoveHurt_X(m_hurtSource.VelocityX * -curFlip, m_hurtSource.Acceleration, m_hurtSource.RecoverTime);
+            MoveHurt_X(velocityX * -curFlip, acceleration, recoverTime);
             //施加Y轴方向移动
-            MoveHurt_Y(m_hurtSource.HeightY, m_hurtSource.VelocityXY * -curFlip);
+            MoveHurt_Y(heightY, velocityXY * -curFlip);
         }
 
         m_moveMode = MoveMode.HURT;
@@ -193,22 +192,22 @@ public partial class Entity
     private void EVENT_MoveHurt_X()
     {
         //受击恢复后
-        if (m_hitRecoverTime <= 0)
+        if (m_hitRecoverTime <= 0f)
         {
             m_callBack_MoveHurtX?.Invoke();
             physicsEvent_HitStop.TryRemove(m_moveHurtX, (p) => { isHitRecover = false; });
-            m_passiveSpeed_Rigi -= new Vector2(m_hitVelocityX, 0);
+            m_passiveSpeed_Rigi -= new Vector2(m_hitVelocityX, 0f);
             m_hitVelocityX = 0;
             m_moveHurtX = null;
-            if (physicsEvent_HitStop.Count <= 0)
+            if (physicsEvent_HitStop.Count <= 0f)
                 MoveHurt_OnEnd();
 
         }
 
-        m_passiveSpeed_Rigi = new Vector2(m_hitVelocityX, 0);
-        if (Mathf.Abs(m_hitVelocityX) > 0)
+        m_passiveSpeed_Rigi = new Vector2(m_hitVelocityX, 0f);
+        if (Mathf.Abs(m_hitVelocityX) > 0f)
         {
-            if (m_hitVelocityX > 0)
+            if (m_hitVelocityX > 0f)
                 m_hitVelocityX -= Time.deltaTime * m_acceleration * CommonUtility.AirFriction;
             else
             {

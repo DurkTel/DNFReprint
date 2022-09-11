@@ -67,6 +67,16 @@ public partial class Entity
             mainAvatar.onAvatarLoadComplete = onAvatarLoadComplete;
         }
 
+        if (rigidbody == null)
+        {
+            rigidbody = gameObject.AddComponent<Rigidbody2D>();
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
+            rigidbody.gravityScale = 0;
+            rigidbody.drag = 10f;
+            rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        }
+
         if (entityType == EntityUnitily.LOCALPLAYER || entityType == EntityUnitily.OTHERPLAYER)
         {
             if (boxCollider == null)
@@ -77,15 +87,6 @@ public partial class Entity
             }
 
 
-            if (rigidbody == null)
-            {
-                rigidbody = gameObject.AddComponent<Rigidbody2D>();
-                rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-                rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
-                rigidbody.gravityScale = 0;
-                rigidbody.drag = 10f;
-                rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-            }
         }
 
         onCreateEvent?.Invoke(entityId);

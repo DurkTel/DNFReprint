@@ -1,4 +1,5 @@
 local CEntityAvatarfunc = {}
+--实体模型的C#方法
 
 --设置骨骼
 function CEntityAvatarfunc:set_avatarSkeleton(boneAssetName)

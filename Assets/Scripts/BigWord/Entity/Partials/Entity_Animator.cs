@@ -47,6 +47,8 @@ public partial class Entity
 
     public UnityAction animationFinish;
 
+    public static UnityAction<int, int> attackFinishEvent;
+
     public int curFlip { get { return m_renenderSprites.Count > 0 ? m_renenderSprites[0].GetCurFlip() : 0; } }
 
     /// <summary>
@@ -54,10 +56,10 @@ public partial class Entity
     /// </summary>
     public void TickSpriteAnimation(float deltaTime)
     {
-        if (m_pause || current_animationData == null || m_haltFrame > 0) return;
+        if (m_pause || current_animationData == null || haltFrame > 0) return;
         List<AnimationFrameData> aniSprites = current_animationData.frameList;
         AnimationFrameData curSprite = aniSprites[m_currentFrame];
-
+        
         m_totalTime += deltaTime;
         if (m_totalTime >= curSprite.interval / current_animationData.speed)
         {
@@ -156,11 +158,12 @@ public partial class Entity
             return;
         }
         //if (current_animationData == animationData) return;
+        if (last_animationData != null && last_animationData.colliderInfo != null && last_animationData.colliderInfo.skillCode != 0)
+            attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode);
         colliderUpdate.ClearContact(entityId);
         last_animationData = current_animationData;
         current_animationData = animationData;
         updateAnimationEvent?.Invoke(animationData);
-        m_hitCount = 0;
         m_totalTime = 999;
         m_currentFrame = 0;
         m_isFirstList = new bool[animationData.frameList.Count];

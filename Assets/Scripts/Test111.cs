@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
 
+
 public class Test111 : MonoBehaviour
 {
-    public Entity entity;
-    public bool isHitRecover;
-    public bool airborne;
-    public bool fallDown;
-
     void Start()
     {
         
@@ -19,12 +15,6 @@ public class Test111 : MonoBehaviour
     void Update()
     {
 
-        if (entity != null)
-        {
-            isHitRecover = entity.isHitRecover;
-            airborne = entity.airborne;
-            fallDown = entity.fallDown;
-        }
     }
 
 }

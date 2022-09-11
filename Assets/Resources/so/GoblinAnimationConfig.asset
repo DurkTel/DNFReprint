@@ -17,7 +17,7 @@ MonoBehaviour:
   walk_Anim: {fileID: 11400000, guid: 5ae5685aac35dcf48856a3e88e06b85e, type: 2}
   run_Anim: {fileID: 0}
   sit_Anim: {fileID: 11400000, guid: 7c0ad78d39143a74ead111ad3b628477, type: 2}
-  airBorne_Anim: {fileID: 0}
+  airBorne_Anim: {fileID: 11400000, guid: d4ca3d8d8fa3b8844b6dbc88d9476e24, type: 2}
   rebound_Anim: {fileID: 11400000, guid: 22b2f3fab917b704ea98a0b689643674, type: 2}
   lie_Anim: {fileID: 11400000, guid: 063281bad36ea644484f7a05cc754408, type: 2}
   jump_Anim: {fileID: 0}

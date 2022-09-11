@@ -38,7 +38,8 @@ function CEntity:onAvatarLoadComplete() end
 local extensions = 
 {
     "game.bigWorld.manager.func.CEntityAvatarfunc",
-    "game.bigWorld.manager.func.CEntityfunc"
+    "game.bigWorld.manager.func.CEntityfunc",
+    "game.bigWorld.manager.func.CEntityFightfunc"
 }
 
 local function initExtensionsfuns()

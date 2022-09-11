@@ -129,7 +129,7 @@ public class ColliderInfoEditor : Editor
             if (Event.current.type == EventType.MouseDown)
             {
                 curSelectCollBox = index;
-
+                Repaint();
             }
         }
         GUI.color = normalColor;

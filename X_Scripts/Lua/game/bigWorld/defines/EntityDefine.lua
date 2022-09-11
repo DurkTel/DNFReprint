@@ -55,4 +55,5 @@ EntityDefine.AIStateClass =
     [EntityDefine.AIStateType.born] = "game.bigWorld.actors.fsm.FSM_Born"
 }
 
+
 return EntityDefine

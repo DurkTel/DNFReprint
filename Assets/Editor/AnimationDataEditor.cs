@@ -235,7 +235,7 @@ public class AnimationDataEditor : Editor
             if (Event.current.type == EventType.MouseDown)
             {
                 m_frameIndex = index;
-
+                Repaint();
             }
         }
         GUI.color = normalColor;

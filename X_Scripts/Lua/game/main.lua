@@ -24,7 +24,8 @@ local main = function()
     }
 
     GEntityManager.create_entity(SentityData)
-
+    local monsterEntity = GEntityManager.create_monster(10000)
+    monsterEntity:set_avatarPosition(Vector3(4.7,1.09,0))
     GScenesManager.switch_scene(10000)
 end
 

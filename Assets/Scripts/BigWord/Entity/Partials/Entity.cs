@@ -61,7 +61,7 @@ public partial class Entity : BaseEvent
     /// <summary>
     /// 顿帧时间（卡肉感）
     /// </summary>
-    private float m_haltFrame;
+    public float haltFrame { get; set; }
     /// <summary>
     /// 实体创建完成回调
     /// </summary>
@@ -217,8 +217,11 @@ public partial class Entity : BaseEvent
 
     private void UpdateHalt(float deltaTime)
     {
-        if (m_haltFrame > 0) { m_haltFrame -= deltaTime * CommonUtility.HardStraight * 1000; }
-        m_haltFrame = Mathf.Clamp(m_haltFrame, 0, CommonUtility.HaltFrameMax);
+        if (haltFrame > 0) 
+        { 
+            haltFrame -= deltaTime * CommonUtility.HardStraight * 100f;
+            haltFrame = Mathf.Clamp(haltFrame, 0, CommonUtility.HaltFrameMax);
+        }
     }
 
 }

@@ -31,6 +31,11 @@ namespace AI
             }
         }
 
+        public bool GridInMap(int x, int y)
+        {
+            return x > 0 && y > 0 && x < navigationData.width && y < navigationData.length;
+        }
+
         public Vector2 GetPositionByGrid(float x, float y)
         {
             if (navigationData == null)
@@ -82,6 +87,53 @@ namespace AI
             path = AStar_Finding(mapData, startNode, endNode);
 
             return path.Count > 0;
+        }
+
+        public bool CalculatePath(float sx, float sy, PathNode enode, out List<PathNode> path)
+        {
+            InitMap();
+            Vector2Int startNode = GetGridByPosition(sx, sy);
+            Vector2Int endNode = new Vector2Int(enode.X, enode.Y);
+            path = AStar_Finding(mapData, startNode, endNode);
+
+            return path.Count > 0;
+        }
+
+        /// <summary>
+        /// 计算可行走区域
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="radius"></param>
+        /// <returns></returns>
+        public List<PathNode> CalculateArea(float x, float y, float radius)
+        {
+            InitMap();
+            List<PathNode> area = new List<PathNode>(0);
+            Vector2Int node = GetGridByPosition(x, y);
+            for (int i = 1; i <= radius; i++)
+            {
+                for (int j = 1; j <= radius; j++)
+                {
+                    int right = node.x + i;
+                    int left = node.x - i;
+                    int up = node.y + j;
+                    int down = node.y - j;
+
+                    if (GridInMap(right, up) && mapData[right, up].status != PathNode.NODE_BLOCK)
+                        area.Add(mapData[right, up]);
+
+                    if (GridInMap(right, down) && mapData[right, down].status != PathNode.NODE_BLOCK)
+                        area.Add(mapData[right, down]);
+
+                    if (GridInMap(left, up) && mapData[left, up].status != PathNode.NODE_BLOCK)
+                        area.Add(mapData[left, up]);
+
+                    if (GridInMap(left, down) && mapData[left, down].status != PathNode.NODE_BLOCK)
+                        area.Add(mapData[left, down]);
+                }
+            }
+            return area;
         }
 
 

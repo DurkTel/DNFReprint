@@ -105,7 +105,16 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: f3d3e09e8c99c874fa1494758158f35d, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent: []
+    frameEvent:
+    - eventType: 0
+      paramType: 0
+      parameterObject: {fileID: 0}
+      parameterString: 
+      parameterFloat: 0
+      parameterInt: 0
+      parameterBool: 0
+      parameterOnEnable: 0
+      parameterOnDisable: 0
   switchingConditions:
   - frame: {x: 7, y: 10}
     animationData: {fileID: 11400000, guid: 1dfad26c1d52ba14e931e37ebb67be90, type: 2}

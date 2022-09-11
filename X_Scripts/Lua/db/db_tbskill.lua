@@ -1,8 +1,8 @@
 return
 {
-[10000] = {id=10000,SameID=10000,SkillName="普通攻击",SkillType=0,SkillLevel=1,NumbeOfAttacks=1,NumbeOfInterval=0,Damage=10,CD=0.1,Condition=0,OpenLevel=0,NeedMP=0,NeedHP=0,AirBorneForce=0,CanAirBorne=false,AnimationDataName="",Des="",DamageCode=10000,},
-[10001] = {id=10001,SameID=10001,SkillName="普通攻击",SkillType=0,SkillLevel=1,NumbeOfAttacks=1,NumbeOfInterval=0,Damage=10,CD=0.1,Condition=0,OpenLevel=0,NeedMP=0,NeedHP=0,AirBorneForce=24,CanAirBorne=true,AnimationDataName="",Des="",DamageCode=10001,},
-[10002] = {id=10002,SameID=10002,SkillName="跳跃攻击",SkillType=0,SkillLevel=1,NumbeOfAttacks=1,NumbeOfInterval=0,Damage=10,CD=0.1,Condition=0,OpenLevel=0,NeedMP=0,NeedHP=0,AirBorneForce=0,CanAirBorne=false,AnimationDataName="",Des="",DamageCode=10000,},
-[10003] = {id=10003,SameID=10003,SkillName="上挑",SkillType=0,SkillLevel=1,NumbeOfAttacks=1,NumbeOfInterval=0,Damage=10,CD=3,Condition=0,OpenLevel=0,NeedMP=0,NeedHP=0,AirBorneForce=26,CanAirBorne=true,AnimationDataName="ShangTiao_Anim",Des="",DamageCode=10002,},
-[10004] = {id=10004,SameID=10004,SkillName="连突刺",SkillType=0,SkillLevel=1,NumbeOfAttacks=1,NumbeOfInterval=0,Damage=10,CD=0.1,Condition=0,OpenLevel=0,NeedMP=0,NeedHP=0,AirBorneForce=0,CanAirBorne=false,AnimationDataName="LianTuCi_Anim",Des="",DamageCode=10000,},
+[10000] = {id=10000,sameID=10000,skillName="普通攻击",skillType=0,skillLevel=1,numbeOfAttacks=1,numbeOfInterval=0,damage=10,cd=0.1,condition=0,openLevel=0,needMP=0,needHP=0,airBorneForce=0,canAirBorne=false,animationDataName="",des="",damageCode=10000,},
+[10001] = {id=10001,sameID=10001,skillName="普通攻击",skillType=0,skillLevel=1,numbeOfAttacks=1,numbeOfInterval=0,damage=10,cd=0.1,condition=0,openLevel=0,needMP=0,needHP=0,airBorneForce=24,canAirBorne=true,animationDataName="",des="",damageCode=10001,},
+[10002] = {id=10002,sameID=10002,skillName="跳跃攻击",skillType=0,skillLevel=1,numbeOfAttacks=1,numbeOfInterval=0,damage=10,cd=0.1,condition=0,openLevel=0,needMP=0,needHP=0,airBorneForce=0,canAirBorne=false,animationDataName="",des="",damageCode=10000,},
+[10003] = {id=10003,sameID=10003,skillName="上挑",skillType=0,skillLevel=1,numbeOfAttacks=1,numbeOfInterval=0,damage=10,cd=3,condition=0,openLevel=0,needMP=0,needHP=0,airBorneForce=26,canAirBorne=true,animationDataName="ShangTiao_Anim",des="",damageCode=10002,},
+[10004] = {id=10004,sameID=10004,skillName="连突刺",skillType=0,skillLevel=1,numbeOfAttacks=1,numbeOfInterval=0,damage=10,cd=0.1,condition=0,openLevel=0,needMP=0,needHP=0,airBorneForce=0,canAirBorne=false,animationDataName="LianTuCi_Anim",des="",damageCode=10000,},
 }

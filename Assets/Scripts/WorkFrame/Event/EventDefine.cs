@@ -16,5 +16,4 @@ public enum EventDefine
     EVENT_REST_MOVE_SPEED,                                                         //重置移动速度
     EVENT_PLAY_SOUND,                                                              //播放音效
     EVENT_RESET_MOVEPHASE,                                                         //重置移动阶段
-
 }

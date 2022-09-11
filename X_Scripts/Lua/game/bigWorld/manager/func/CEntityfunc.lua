@@ -1,4 +1,5 @@
 local CEntityfunc = {}
+--实体通用的C#方法
 
 --实体启用输入
 function CEntityfunc:set_inputEnable(enable)

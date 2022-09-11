@@ -150,7 +150,7 @@ public partial class Entity
 
     public void Move_NavigationPath(List<PathNode> path)
     {
-        if (m_jumpState != JumpState.NONE)
+        if (m_jumpState != JumpState.NONE || m_moveMode == MoveMode.HURT)
             return;
 
         if (path.Count < 1)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using cfg.db;
+using UnityEngine.Events;
 
 public partial class Entity : GMUpdateCollider.IColliderInfo
 {
@@ -33,10 +34,6 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     /// Z轴碰撞盒列表
     /// </summary>
     protected List<BoxCollider2D> m_collidersZ = new List<BoxCollider2D>();
-    /// <summary>
-    /// 受击碰撞计数
-    /// </summary>
-    private int m_hitCount;
     public bool updateColliderEnabled { get; set; }
     public FrameCollInfo frameCollInfo { get; private set; }
     public GMUpdateCollider colliderUpdate { get; set; }
@@ -47,18 +44,20 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     public List<BoxCollider2D> collidersXY { get => m_collidersXY; }
     public Transform collidersXY_parent { get => m_collidersXY_parent; }
     public Transform collidersZ_parent { get => m_collidersZ_parent; }
-    public int hurt { get; set; }
+
+    public static UnityAction<int, int, int> onContactHandlerEvent;
 
     public virtual void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        SkillCfg entitySkill = MDefine.tables.TbSkill.GetOrDefault(collInfo.skillCode);
-        if (entitySkill == null || ++m_hitCount > entitySkill.NumbeOfAttacks)
-            return;
+        onContactHandlerEvent?.Invoke(contact.attacker.entity.entityId, contact.victim.entity.entityId, collInfo.skillCode);
+        //SkillCfg entitySkill = MDefine.tables.TbSkill.GetOrDefault(collInfo.skillCode);
+        //if (entitySkill == null || ++hitCount > entitySkill.NumbeOfAttacks)
+        //    return;
 
-        //攻击者表现
-        ContentAttackerHandler(contact, entitySkill);
-        //受击者表现
-        ContentDamageHandler(contact, entitySkill);
+        ////攻击者表现
+        //ContentAttackerHandler(contact, entitySkill);
+        ////受击者表现
+        //ContentDamageHandler(contact, entitySkill);
     }
 
     private void ColliderInit()
@@ -194,56 +193,56 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     }
 
 
-    private void ContentDamageHandler(GMUpdateCollider.ContactPair contact, SkillCfg entitySkill)
-    {
-        if (entitySkill != null)
-        {
-            Entity entity = contact.victim.entity;
-            MusicManager.Instance.PlaySound("sm_dmg_0" + Random.Range(1, 4));
-            Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", entitySkill.SkillName);
-            DamageCfg data = MDefine.tables.TbDamage.Get(entitySkill.DamageCode);
-            entity.m_haltFrame = data.HaltFrameTarget;
-            entity.MoveHurt_OnStart(data, gameObject);
-        }
-    }
+    //private void ContentDamageHandler(GMUpdateCollider.ContactPair contact, SkillCfg entitySkill)
+    //{
+    //    if (entitySkill != null)
+    //    {
+    //        Entity entity = contact.victim.entity;
+    //        MusicManager.Instance.PlaySound("sm_dmg_0" + Random.Range(1, 4));
+    //        Debug.LogFormat("造成伤害！！！伤害来源实体是：{0}", entitySkill.SkillName);
+    //        DamageCfg data = MDefine.tables.TbDamage.Get(entitySkill.DamageCode);
+    //        entity.haltFrame = data.HaltFrameTarget;
+    //        entity.MoveHurt_OnStart(data, gameObject);
+    //    }
+    //}
 
-    private void ContentAttackerHandler(GMUpdateCollider.ContactPair contact, SkillCfg entitySkill)
-    {
-        if (entitySkill != null)
-        {
-            DamageCfg data = MDefine.tables.TbDamage.Get(entitySkill.DamageCode);
-            m_haltFrame = data.HaltFrameSelf;
-            string hitEffectName = "";
-            switch (data.DamageAttribute)
-            {
-                case cfg.DamageAttribute.NONE:
-                    int i = Random.Range(0, 2);
-                    hitEffectName = i == 0 ? "Prefabs/Effect/knockSmall" : "Prefabs/Effect/knockLarge";
-                    break;
-                case cfg.DamageAttribute.FIRE:
-                    break;
-                case cfg.DamageAttribute.ICE:
-                    break;
-                case cfg.DamageAttribute.LIGHT:
-                    break;
-                case cfg.DamageAttribute.DARK:
-                    break;
-                default:
-                    break;
-            }
-            //计算接触点
-            Vector3 contactPoint = contact.attacker.collider2d.bounds.ClosestPoint(contact.victim.collider2d.bounds.center);
-            var startY = Mathf.Min(contact.victim.collider2d.bounds.center.y + contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y + (contact.attacker.collider2d.bounds.extents.y / 2f));
-            var endY = Mathf.Max(contact.victim.collider2d.bounds.center.y - contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y - (contact.attacker.collider2d.bounds.extents.y / 2f));
-            contactPoint.y = Mathf.Lerp(startY, endY, Random.Range(0f, 1f));
-            GameObjectPool pool = GMPoolManager.Instance.TryGet("HitEffect");
-            pool.Get(hitEffectName, (effectObj) => {
-                HitEffect effect = effectObj.GetComponent<HitEffect>();
-                effectObj.transform.position = contactPoint;
-                effect.Play(() => { pool.Release(hitEffectName, effectObj); });
-            });
-        }
-    }
+    //private void ContentAttackerHandler(GMUpdateCollider.ContactPair contact, SkillCfg entitySkill)
+    //{
+    //    if (entitySkill != null)
+    //    {
+    //        DamageCfg data = MDefine.tables.TbDamage.Get(entitySkill.DamageCode);
+    //        haltFrame = data.HaltFrameSelf;
+    //        string hitEffectName = "";
+    //        switch (data.DamageAttribute)
+    //        {
+    //            case cfg.DamageAttribute.NONE:
+    //                int i = Random.Range(0, 2);
+    //                hitEffectName = i == 0 ? "Prefabs/Effect/knockSmall" : "Prefabs/Effect/knockLarge";
+    //                break;
+    //            case cfg.DamageAttribute.FIRE:
+    //                break;
+    //            case cfg.DamageAttribute.ICE:
+    //                break;
+    //            case cfg.DamageAttribute.LIGHT:
+    //                break;
+    //            case cfg.DamageAttribute.DARK:
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //        //计算接触点
+    //        Vector3 contactPoint = contact.attacker.collider2d.bounds.ClosestPoint(contact.victim.collider2d.bounds.center);
+    //        var startY = Mathf.Min(contact.victim.collider2d.bounds.center.y + contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y + (contact.attacker.collider2d.bounds.extents.y / 2f));
+    //        var endY = Mathf.Max(contact.victim.collider2d.bounds.center.y - contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y - (contact.attacker.collider2d.bounds.extents.y / 2f));
+    //        contactPoint.y = Mathf.Lerp(startY, endY, Random.Range(0f, 1f));
+    //        GameObjectPool pool = GMPoolManager.Instance.TryGet("HitEffect");
+    //        pool.Get(hitEffectName, (effectObj) => {
+    //            HitEffect effect = effectObj.GetComponent<HitEffect>();
+    //            effectObj.transform.position = contactPoint;
+    //            effect.Play(() => { pool.Release(hitEffectName, effectObj); });
+    //        });
+    //    }
+    //}
 
     public void AddEntitySkill()
     { 

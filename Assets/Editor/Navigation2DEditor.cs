@@ -159,6 +159,8 @@ public class Navigation2DEditor : Editor
                     Vector2Int lockPos = new Vector2Int(x, y);
                     if (!lockNodes.Contains(lockPos))
                         lockNodes.Add(lockPos);
+
+                    HandleUtility.Repaint();
                 }
             }
         }

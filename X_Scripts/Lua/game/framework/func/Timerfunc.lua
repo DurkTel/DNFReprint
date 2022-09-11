@@ -43,7 +43,7 @@ end
 function Timerfunc.wait_timer(self, func, interval, flag)
     flag = flag or func
 
-    interval = interval or 0.033
+    interval = interval or 0.02
 
     if self.__wait_timer and self.__wait_timer[flag] then
         return
@@ -120,11 +120,9 @@ local function update()
     local now = Time.time
     for k,timer in pairs(timerMap) do
         if timer and now > timer.nextTime then
-            if timer.duration ~= -1 then
-                timer.duration = timer.duration + 1
-                if timer.times >= timer.duration then
-                    removeMap[timer.guid] = timer
-                end
+            timer.times = timer.times + 1
+            if timer.duration == -1 or timer.times >= timer.duration then
+                removeMap[timer.guid] = timer
             end
 
             timer.nextTime = now + timer.interval

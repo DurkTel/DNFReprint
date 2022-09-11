@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using XLua;
 
 public static class LuaWarp
@@ -16,7 +17,15 @@ public static class LuaWarp
         typeof(Action<float,float>),
         typeof(Action<float,float,float>),
         typeof(Action<bool>),
-        typeof(Action<bool,bool>)
+        typeof(Action<bool,bool>),
+        typeof(UnityAction<int>),
+        typeof(UnityAction<int,int>),
+        typeof(UnityAction<int,int,int>),
+        typeof(UnityAction<float>),
+        typeof(UnityAction<float,float>),
+        typeof(UnityAction<float,float,float>),
+        typeof(UnityAction<bool>),
+        typeof(UnityAction<bool,bool>),
     };
 
     [LuaCallCSharp]

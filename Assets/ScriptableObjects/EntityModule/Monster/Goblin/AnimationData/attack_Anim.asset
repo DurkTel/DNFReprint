@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: attack_Anim
   m_EditorClassIdentifier: 
   aniName: attack_Anim
-  colliderInfo: {fileID: 0}
+  colliderInfo: {fileID: 11400000, guid: 712ee73ff13b9784881391ae703c43cb, type: 2}
   isLoop: 0
   speed: 1
   frameList:

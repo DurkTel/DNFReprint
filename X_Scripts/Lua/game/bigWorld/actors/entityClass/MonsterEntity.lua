@@ -57,12 +57,13 @@ function MonsterEntity:get_path(target, offset)
     offset = offset or 1
     local targetPos = target:get_position()
     math.randomseed(self.entityData.entityId + os.time())
-    local randomX = math.random()
-    math.randomseed(self.entityData.entityId + os.time() + 1)
-    local randomY = math.random()
-    math.randomseed(self.entityData.entityId + os.time() + 2)
-    local pn = math.random(2) == 1 and -1 or 1
-    local cuccess, path = self:calculatePathFormOwn(targetPos.x + randomX * pn * offset, targetPos.y + randomY * pn * offset)
+    local radius = math.random(1, 2) * offset
+    local area = GFinding.getNavBorder(targetPos.x, targetPos.y, radius)
+    if area.Count == 0 then return false end
+    local node = area[math.random(0, area.Count - 1)]
+
+    local selfPos = self:get_position()
+    local cuccess, path = GFinding.calculatePathByNode(selfPos.x, selfPos.y, node)
     return cuccess, path
 end
 
