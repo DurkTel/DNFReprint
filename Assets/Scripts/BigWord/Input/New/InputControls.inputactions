@@ -11,39 +11,8 @@
                     "id": "5beb4aea-975b-4e7f-941b-7c9f54f9862a",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "62835c92-37cf-466a-a9e3-dfb56f3958e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)"
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "c28a45c5-736c-4c83-9fd1-293d38987524",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)"
-                },
-                {
-                    "name": "Left",
-                    "type": "Button",
-                    "id": "75f56647-db3e-4819-b2ea-54aecf7ae345",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)"
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "830c7845-9e0d-4f12-90bd-939281d696a5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -51,7 +20,8 @@
                     "id": "f3bd0495-1a84-48a7-878f-d259caf2ccb5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Attack_1",
@@ -59,7 +29,8 @@
                     "id": "739e924d-e5dc-4ff1-ad43-7d4b53f936f4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Attack_2",
@@ -67,7 +38,8 @@
                     "id": "dc26c7c7-7221-472b-b29d-4c89e481a439",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_1",
@@ -75,7 +47,8 @@
                     "id": "e82fd099-8750-493d-9381-5b467deda157",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_2",
@@ -83,7 +56,8 @@
                     "id": "7b2c4176-4109-41f2-9d0a-7f7a368baecd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_3",
@@ -91,7 +65,8 @@
                     "id": "7f9ce7be-27ff-41f3-b1f7-a5c33bbb1fac",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_4",
@@ -99,7 +74,8 @@
                     "id": "707d9ee8-5c15-4a52-81be-92918ea0409b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "EnableDebug",
@@ -107,54 +83,11 @@
                     "id": "f2cc5641-6000-4b55-ba60-25b174126181",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "278049df-2d1b-4069-80e5-465cfe48dac3",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "25e37341-15f2-49a4-8229-aa163fa1d69a",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "50dfbe18-6648-4a31-9dbf-d42520f88d7b",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ab3ecebd-01f3-4fd8-8b80-c044c950b5b9",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "957ef54d-2754-4c92-a4ee-55461bebfd1f",
@@ -165,61 +98,6 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "6acd24ea-c533-44a5-b045-60badb5e7003",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "0cbf0746-0124-491b-9eaf-ffcf8e842dd0",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "824e896c-93f0-4964-b7f8-7f96058d647d",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "8409b88b-1b8d-4ada-8aca-2eaa5386ad13",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "ce1719b2-8333-4458-9a1b-1c76e31a6762",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -301,7 +179,7 @@
                 {
                     "name": "button",
                     "id": "cc4edf5e-6f5e-4b35-ac7a-9b2457d84bd9",
-                    "path": "<Keyboard>/f1",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -319,6 +197,61 @@
                     "action": "EnableDebug",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "6acd24ea-c533-44a5-b045-60badb5e7003",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "0cbf0746-0124-491b-9eaf-ffcf8e842dd0",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "824e896c-93f0-4964-b7f8-7f96058d647d",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "8409b88b-1b8d-4ada-8aca-2eaa5386ad13",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ce1719b2-8333-4458-9a1b-1c76e31a6762",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -332,7 +265,8 @@
                     "id": "ad1923dc-9e75-4068-97bb-7b5827d44d54",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F2",
@@ -340,7 +274,8 @@
                     "id": "0f47a871-98e5-4dbc-875b-c3eaed5c11e9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F3",
@@ -348,7 +283,8 @@
                     "id": "ce4b5301-79bc-469a-8d86-a744a3dcb8d7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F4",
@@ -356,7 +292,8 @@
                     "id": "9e249dc8-a893-4ecd-b5a7-a0478968e9b9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F5",
@@ -364,7 +301,8 @@
                     "id": "3c6e4669-adfc-4b5d-b04a-417b66dfd156",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F6",
@@ -372,7 +310,8 @@
                     "id": "c3cfb6d1-c14c-4069-9dd2-32b95ae287de",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F7",
@@ -380,7 +319,8 @@
                     "id": "8e00b6a2-32dd-479a-9b82-5ecccae36eed",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F8",
@@ -388,7 +328,8 @@
                     "id": "1fe9d49b-7563-414d-b37c-cdd00e1b4644",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F9",
@@ -396,7 +337,8 @@
                     "id": "226dba30-f91b-496b-85cf-5f094aa4a860",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "EnableGameplay",
@@ -404,7 +346,8 @@
                     "id": "17f59aeb-8492-45e2-be0d-8d6dd485b7fe",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -521,7 +464,7 @@
                 {
                     "name": "button",
                     "id": "cc834fac-2ace-416e-a6ef-fa25e7ac6f01",
-                    "path": "<Keyboard>/f1",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

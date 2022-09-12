@@ -7,17 +7,21 @@ public class AnimationMap : ScriptableObject
 {
     public List<string> names;
 
-    public List<AnimationData> animations;
+    public List<AnimationPiars> animationPiars;
 
-    public List<AniType> aniType;
+    public class AnimationPiars
+    {
+        public AnimationData animations;
 
-    public void AddAnimation(string name, AnimationData animation)
+        public AniType aniType;
+    }
+
+    public void AddAnimation(string name, AnimationPiars animation)
     {
         if (!names.Contains(name))
         {
             names.Add(name);
-            animations.Add(animation);
-            aniType.Add(AniType.COMMON);
+            animationPiars.Add(animation);
         }
     }
 
@@ -27,7 +31,7 @@ public class AnimationMap : ScriptableObject
         if (index != -1)
         {
             names.RemoveAt(index);
-            animations.RemoveAt(index);
+            animationPiars.RemoveAt(index);
         }
 
         return false;

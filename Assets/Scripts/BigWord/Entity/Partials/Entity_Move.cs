@@ -59,6 +59,7 @@ public partial class Entity
 
     private void Move_Input(Vector2 input)
     {
+        Debug.Log(input);
         if (!m_inputEnabled || (m_moveMode == MoveMode.PATH && input == Vector2.zero) || m_moveMode == MoveMode.HURT)
             return;
 
@@ -70,7 +71,7 @@ public partial class Entity
     {
         if (!m_inputEnabled || m_moveMode == MoveMode.HURT || status == EntityUnitily.PEACE)
             return;
-        if (action == "Left" || action == "Right")
+        if (action == "Move")
         {
             movePhase = 2;
         }

@@ -66,15 +66,6 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
 
     private void InitGameplayButton()
     {
-        //InputActionMap gamePlayActionMap = m_inputs.asset.FindActionMap("Gameplay");
-
-        //foreach (var action in gamePlayActionMap)
-        //{
-        //    if(!buttonBehaviour.ContainsKey(action.name))
-        //    {
-        //        buttonBehaviour.Add(action.name, new ButtonBehaviour(action.name, action));
-        //    }
-        //}
 
         ReadOnlyArray<InputActionMap> inputActions = m_inputs.asset.actionMaps;
         foreach (var actionMap in inputActions)
@@ -126,7 +117,7 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
     private void ButtonHandle(InputAction.CallbackContext context)
     {
         buttonBehaviour[context.action.name].onMulti = false;
-
+        
         if (context.phase == InputActionPhase.Started)
         {
             buttonPressEvent.Invoke(context.action.name);
@@ -149,6 +140,7 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
     }
     public void OnMove(InputAction.CallbackContext context)
     {
+        ButtonHandle(context);
         moveInputEvent.Invoke(context.ReadValue<Vector2>());
     }
 
@@ -160,13 +152,11 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
     public void OnLeft(InputAction.CallbackContext context)
     {
         ButtonHandle(context);
-
     }
 
     public void OnRight(InputAction.CallbackContext context)
     {
         ButtonHandle(context);
-
     }
 
     public void OnUp(InputAction.CallbackContext context)
