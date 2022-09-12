@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
-  m_Name: ile_Anim
+  m_Name: lie_Anim
   m_EditorClassIdentifier: 
-  aniName: ile_Anim
-  colliderInfo: {fileID: 0}
+  aniName: LIE_ANIM
+  colliderInfo: {fileID: 11400000, guid: 4c855b734695ff143865354c0ea75a0b, type: 2}
   isLoop: 0
   speed: 1
   frameList:

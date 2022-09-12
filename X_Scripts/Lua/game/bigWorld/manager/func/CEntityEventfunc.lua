@@ -37,6 +37,9 @@ end
 function CEntityEventfunc.onContactHandlerEvent(attackerEntityId, victimEneityId, skillCode)
     local attacker = GEntityManager.get_luaEntityById(attackerEntityId)
     local victim = GEntityManager.get_luaEntityById(victimEneityId)
+    if (attacker.entityData:is_localPlayer() and victim.entityData:is_otherPlayer()) or (attacker.entityData:is_monster() and victim.entityData:is_monster()) then
+        return
+    end
     local cfg = MDefine.cfg.skill.getSkillCfgById(skillCode)
     if not attacker.attackHitMarks then
         attacker.attackHitMarks = {}

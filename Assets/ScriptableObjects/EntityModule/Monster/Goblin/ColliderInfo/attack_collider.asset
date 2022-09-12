@@ -64,4 +64,4 @@ MonoBehaviour:
       size: {x: 50.3, y: 25.9}
     index: 0
   frameCount: 4
-  skillCode: 0
+  skillCode: 30000

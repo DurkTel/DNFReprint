@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
   m_Name: run_Anim
   m_EditorClassIdentifier: 
-  aniName: run_Anim
+  aniName: RUN_ANIM
   colliderInfo: {fileID: 11400000, guid: ae71befd874803e438a6e1dcb1e3ef3f, type: 2}
   isLoop: 1
   speed: 1

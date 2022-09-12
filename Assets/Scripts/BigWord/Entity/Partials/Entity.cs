@@ -148,9 +148,10 @@ public partial class Entity : BaseEvent
     public void ChangeStatus(int status)
     {
         this.status = status;
-        if (animationConfig != null)
+        if (animationMap != null)
         {
-            AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
+            string name = this.status == EntityUnitily.PEACE ? "IDLE_TOWN_ANIM" : "IDLE_ANIM";
+            AnimationData animation = animationMap.TryGetAnimation(name);
             DOSpriteAnimation(animation);
         }
     }

@@ -72,7 +72,7 @@ function MonsterEntity:update_decision()
     if not self.curTarget then return 3 end
     local dis = self:get_distance(self.curTarget.entityData.entityId)
 
-    local hotRadius = self.hotRadius or {0.1, 2, 4} --没有配置热半径 用默认值
+    local hotRadius = self.hotRadius or {0.3, 2, 4} --没有配置热半径 用默认值
     for i, rad in ipairs(hotRadius) do
         if dis <= rad then
             return i
@@ -95,7 +95,7 @@ end
 
 --执行攻击
 function MonsterEntity:execute_attack()
-    print("攻击")
+    self:attack_start()
 end
 
 --执行追击

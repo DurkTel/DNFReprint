@@ -4,6 +4,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static AnimationMap;
 
 
 public partial class Entity
@@ -39,7 +40,7 @@ public partial class Entity
 
     public AnimationData last_animationData;
 
-    public AnimationConfig animationConfig;
+    public AnimationMap animationMap;
 
     public UnityAction<int> updateSpriteEvent;
 
@@ -131,26 +132,20 @@ public partial class Entity
 
     public void PlayHurtAnimation()
     {
-        if (animationConfig.HitAnim.Count > 0)
+        List<AnimationData> anis = animationMap.GetAnimationsByTag(AnimationMap.AniType.HURT);
+        if (anis.Count > 0)
         {
-            DOSpriteAnimation(animationConfig.HitAnim[Random.Range(0, animationConfig.HitAnim.Count)]);
+            DOSpriteAnimation(anis[Random.Range(0, anis.Count)]);
         }
     }
 
     public void PlayAirHurtAnimation()
     {
-        if (animationConfig.HitAnim.Count > 0)
-        {
-            DOSpriteAnimation(animationConfig.hit2_Anim);
-        }
+        DOSpriteAnimation(animationMap.TryGetAnimation("HURT_2_ANIM"));
     }
 
 
-    /// <summary>
-    /// 播放动画
-    /// </summary>
-    /// <param name="animationData">要播放的动画</param>
-    public void DOSpriteAnimation(AnimationData animationData)
+    private void PlayAni(AnimationData animationData)
     {
         if (animationData == null)
         {
@@ -167,6 +162,24 @@ public partial class Entity
         m_totalTime = 999;
         m_currentFrame = 0;
         m_isFirstList = new bool[animationData.frameList.Count];
+    }
+
+    /// <summary>
+    /// 播放动画
+    /// </summary>
+    /// <param name="animationData">要播放的动画</param>
+    public void DOSpriteAnimation(AnimationData animationData)
+    {
+        PlayAni(animationData);
+    }
+
+    /// <summary>
+    /// 播放动画
+    /// </summary>
+    /// <param name="animationData">要播放的动画</param>
+    public void DOSpriteAnimation(string aniName)
+    {
+        PlayAni(animationMap.TryGetAnimation(aniName));
     }
 
     /// <summary>
@@ -190,7 +203,7 @@ public partial class Entity
     /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
     public void ForceDOSkillAnimation(AnimationData animationData, bool onlyOnCommon = true)
     {
-        if (!onlyOnCommon || !IsInThisAni(animationConfig.ForceAnim))
+        if (!onlyOnCommon || !IsInThisAni(AnimationMap.AniType.FORCE))
             return;
         DOSpriteAnimation(animationData);
     }
@@ -202,7 +215,7 @@ public partial class Entity
     /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
     public void ForceDOSkillAnimation(string animationDataName, CommonUtility.Career career, bool onlyOnCommon = true)
     {
-        if (!onlyOnCommon || !IsInThisAni(animationConfig.ForceAnim))
+        if (!onlyOnCommon || !IsInThisAni(AnimationMap.AniType.FORCE))
             return;
 
         string path = string.Format("{0}Character/Player/{1}/skill/{2}.asset", CommonUtility.AnimationDataAssetPath ,(int)career, animationDataName);
@@ -242,9 +255,9 @@ public partial class Entity
     /// </summary>
     /// <param name="baseAnim">动画类型</param>
     /// <returns></returns>
-    public bool IsInThisAni(List<AnimationData> animations)
+    public bool IsInThisAni(AnimationMap.AniType aniType)
     {
-        return animations.Contains(current_animationData);
+        return animationMap.ContainsTag(current_animationData.aniName, aniType);
     }
 
     /// <summary>
@@ -523,9 +536,9 @@ public partial class Entity
             m_renenderSprites.Add(part.renender);
         }
 
-        animationConfig = AssetLoader.Load<AnimationConfig>("so/" + aniCfg);
+        animationMap = AssetLoader.Load<AnimationMap>("so/" + aniCfg);
         //AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
-        DOSpriteAnimation(animationConfig.idleTown_Anim);
+        DOSpriteAnimation(animationMap.TryGetAnimation("IDLE_TOWN_ANIM"));
     }
 
 }

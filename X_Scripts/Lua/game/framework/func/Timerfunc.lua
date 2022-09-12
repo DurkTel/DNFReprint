@@ -121,7 +121,7 @@ local function update()
     for k,timer in pairs(timerMap) do
         if timer and now > timer.nextTime then
             timer.times = timer.times + 1
-            if timer.duration == -1 or timer.times >= timer.duration then
+            if timer.duration ~= -1 and timer.times >= timer.duration then
                 removeMap[timer.guid] = timer
             end
 

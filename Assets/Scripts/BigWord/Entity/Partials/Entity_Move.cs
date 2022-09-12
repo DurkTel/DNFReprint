@@ -59,7 +59,6 @@ public partial class Entity
 
     private void Move_Input(Vector2 input)
     {
-        Debug.Log(input);
         if (!m_inputEnabled || (m_moveMode == MoveMode.PATH && input == Vector2.zero) || m_moveMode == MoveMode.HURT)
             return;
 
@@ -72,10 +71,7 @@ public partial class Entity
         if (!m_inputEnabled || m_moveMode == MoveMode.HURT || status == EntityUnitily.PEACE)
             return;
         if (action == "Move")
-        {
             movePhase = 2;
-        }
-
     }
     public void Move_Stop()
     {
@@ -120,7 +116,7 @@ public partial class Entity
             Move_OnStart();
         }
 
-        if (IsInThisAni(animationConfig.NotMoveAnim))
+        if (IsInThisAni(AnimationMap.AniType.NOTMOVE))
             m_curMoveDir = Vector2.zero;
        
         Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
@@ -128,7 +124,7 @@ public partial class Entity
         m_velocity = dir * m_curSpeed * m_moveDirCoefficient;
         rigidbody.velocity = m_velocity;
 
-        bool onAttack = IsInThisAni(animationConfig.AttackAnim);
+        bool onAttack = IsInThisAni(AnimationMap.AniType.ATTACK);
 
         //攻击时不能上下移动
         if (onAttack)
@@ -292,7 +288,7 @@ public partial class Entity
 
     private bool FilpLimit()
     {
-        bool attackAnimLimit = !IsInThisAni(animationConfig.AttackAnim) && !IsInThisAni(animationConfig.NotMoveAnim);
+        bool attackAnimLimit = !IsInThisAni(AnimationMap.AniType.ATTACK) && !IsInThisAni(AnimationMap.AniType.NOTMOVE);
         return attackAnimLimit;
     }
     #endregion

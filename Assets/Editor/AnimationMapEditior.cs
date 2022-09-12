@@ -11,17 +11,16 @@ public class AnimationMapEditior : Editor
 
     public void OnEnable()
     {
-        animationMap = target as AnimationMap;
-        if (animationMap.animationPiars == null || animationMap.animationPiars.Count <= 0)
+        animationMap = (AnimationMap)target;
+        if (animationMap.names.Count <= 0)
         {
             string[] totalNames = Enum.GetNames(typeof(AnimationMap.AnimationEnum));
-            animationMap.names = new List<string>();
-            animationMap.animationPiars = new List<AnimationMap.AnimationPiars>();
             for (int i = 0; i < totalNames.Length; i++)
             {
-                animationMap.AddAnimation(totalNames[i], new AnimationMap.AnimationPiars());
+                animationMap.AddAnimation(totalNames[i], null);
             }
         }
+
     }
 
     public override void OnInspectorGUI()
@@ -37,8 +36,9 @@ public class AnimationMapEditior : Editor
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(animationMap.names[i]);
-            animationMap.animationPiars[i].aniType = (AnimationMap.AniType)EditorGUILayout.EnumFlagsField(animationMap.animationPiars[i].aniType);
-            animationMap.animationPiars[i].animations = (AnimationData)EditorGUILayout.ObjectField(animationMap.animationPiars[i].animations, typeof(AnimationData), true);
+            animationMap.animationFlags[i] = (AnimationMap.AniType)EditorGUILayout.EnumFlagsField(animationMap.animationFlags[i]);
+            animationMap.animations[i] = (AnimationData)EditorGUILayout.ObjectField(animationMap.animations[i], typeof(AnimationData), false);
+            EditorUtility.SetDirty(animationMap);
             EditorGUILayout.EndHorizontal();
         }
     }

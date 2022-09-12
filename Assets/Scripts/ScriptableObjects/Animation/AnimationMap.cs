@@ -1,27 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Animation/AnimationMap")]
 public class AnimationMap : ScriptableObject
 {
-    public List<string> names;
+    public List<string> names = new List<string>();
 
-    public List<AnimationPiars> animationPiars;
+    public List<AnimationData> animations = new List<AnimationData>();
 
-    public class AnimationPiars
-    {
-        public AnimationData animations;
+    public List<AniType> animationFlags = new List<AniType>();
 
-        public AniType aniType;
-    }
-
-    public void AddAnimation(string name, AnimationPiars animation)
+    public void AddAnimation(string name, AnimationData animation)
     {
         if (!names.Contains(name))
         {
             names.Add(name);
-            animationPiars.Add(animation);
+            animations.Add(animation);
+            animationFlags.Add(0);
         }
     }
 
@@ -31,7 +29,8 @@ public class AnimationMap : ScriptableObject
         if (index != -1)
         {
             names.RemoveAt(index);
-            animationPiars.RemoveAt(index);
+            animations.RemoveAt(index);
+            animationFlags.RemoveAt(index);
         }
 
         return false;
@@ -46,6 +45,86 @@ public class AnimationMap : ScriptableObject
         }
 
         return -1;
+    }
+
+    /// <summary>
+    /// 通过名字获取动画
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public AnimationData TryGetAnimation(string name)
+    {
+        int index = GetIndex(name);
+        if (index != -1)
+            return animations[index];
+
+        return null;
+    }
+
+    /// <summary>
+    /// 这个动画是否包含这个标签
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="aniType"></param>
+    /// <returns></returns>
+    public bool ContainsTag(string name, AniType aniType)
+    { 
+        int index = GetIndex(name);
+        if (index != -1)
+            return (animationFlags[index] & aniType) != 0;
+
+        return false;
+    }
+
+    /// <summary>
+    /// 这个动画是否包含这个标签
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="aniType"></param>
+    /// <returns></returns>
+    public bool ContainsTag(string name, int aniType)
+    {
+        int index = GetIndex(name);
+        if (index != -1)
+            return (animationFlags[index] & (AniType)aniType) != 0;
+
+        return false;
+    }
+
+    /// <summary>
+    /// 获取有该标签的所有动画
+    /// </summary>
+    /// <param name="aniType"></param>
+    /// <returns></returns>
+    public List<AnimationData> GetAnimationsByTag(AniType aniType)
+    {
+        List<AnimationData> list = new List<AnimationData>();
+
+        for (int i = 0; i < animationFlags.Count; i++)
+        {
+            if ((animationFlags[i] & aniType) != 0 && animations[i])
+                list.Add(animations[i]);
+        }
+
+        return list;
+    }
+
+    /// <summary>
+    /// 获取有该标签的所有动画
+    /// </summary>
+    /// <param name="aniType"></param>
+    /// <returns></returns>
+    public List<AnimationData> GetAnimationsByTag(int aniType)
+    {
+        List<AnimationData> list = new List<AnimationData>();
+
+        for (int i = 0; i < animationFlags.Count; i++)
+        {
+            if ((animationFlags[i] & (AniType)aniType) != 0 && animations[i])
+                list.Add(animations[i]);
+        }
+
+        return list;
     }
 
     [System.Flags]
