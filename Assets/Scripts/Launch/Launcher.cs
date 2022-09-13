@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using cfg.db;
 using System;
 using XLua;
 
@@ -38,9 +37,6 @@ public class Launcher : MonoBehaviour
         AssetLoader.loadMode = m_useABLoadMode ? AssetLoader.LoadMode.AssetBundle : AssetLoader.LoadMode.Resources;
 
         print("当前资源加载模式为：" + AssetLoader.loadMode);
-
-        MDefine.Initialize();
-        yield return null;
 
         GMScenesManager.Initialize();
         yield return null;

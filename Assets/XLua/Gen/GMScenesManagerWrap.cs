@@ -122,11 +122,27 @@ namespace XLua.CSObjectWrap
                 GMScenesManager gen_to_be_invoked = (GMScenesManager)translator.FastGetCSObj(L, 1);
             
             
-                
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 4&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& (LuaAPI.lua_isnil(L, 3) || LuaAPI.lua_type(L, 3) == LuaTypes.LUA_TSTRING)&& translator.Assignable<UnityEngine.Events.UnityAction>(L, 4)) 
                 {
                     int _mapId = LuaAPI.xlua_tointeger(L, 2);
+                    string _path = LuaAPI.lua_tostring(L, 3);
+                    UnityEngine.Events.UnityAction _callBack = translator.GetDelegate<UnityEngine.Events.UnityAction>(L, 4);
                     
-                        var gen_ret = gen_to_be_invoked.LoadScene( _mapId );
+                        var gen_ret = gen_to_be_invoked.LoadScene( _mapId, _path, _callBack );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 3&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& (LuaAPI.lua_isnil(L, 3) || LuaAPI.lua_type(L, 3) == LuaTypes.LUA_TSTRING)) 
+                {
+                    int _mapId = LuaAPI.xlua_tointeger(L, 2);
+                    string _path = LuaAPI.lua_tostring(L, 3);
+                    
+                        var gen_ret = gen_to_be_invoked.LoadScene( _mapId, _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -137,6 +153,8 @@ namespace XLua.CSObjectWrap
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to GMScenesManager.LoadScene!");
             
         }
         

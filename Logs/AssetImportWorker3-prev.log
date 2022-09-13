@@ -1,0 +1,628 @@
+Using pre-set license
+Built from '2021.3/china_unity/release' branch; Version is '2021.3.9f1c1 (0fa35b602de1) revision 1024859'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22000) 64bit Professional' Language: 'zh' Physical Memory: 16206 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\SoftWare\UnityEditor\2021.3.9f1c1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+D:/UnityProject/DNFReprint
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+49443
+Successfully changed project path to: D:/UnityProject/DNFReprint
+D:/UnityProject/DNFReprint
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+AS: AutoStreaming module initializing.
+Refreshing native plugins compatible for Editor in 106.10 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.9f1c1 (0fa35b602de1)
+[Subsystems] Discovering subsystems at path D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/UnityProject/DNFReprint/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
+    Vendor:   NVIDIA
+    VRAM:     6023 MB
+    Driver:   30.0.15.1181
+Initialize mono
+Mono path[0] = 'D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/Managed'
+Mono path[1] = 'D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56876
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Register platform support module: D:/SoftWare/UnityEditor/2021.3.9f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003554 seconds.
+Native extension for WindowsStandalone target not found
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 99.69 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.718 seconds
+Domain Reload Profiling:
+	ReloadAssembly (719ms)
+		BeginReloadAssembly (68ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (540ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (118ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (33ms)
+			SetupLoadedEditorAssemblies (331ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (80ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (100ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (102ms)
+				ProcessInitializeOnLoadMethodAttributes (48ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.012253 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 93.23 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.389 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1390ms)
+		BeginReloadAssembly (329ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (237ms)
+		EndReloadAssembly (965ms)
+			LoadAssemblies (80ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (223ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (545ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (27ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (93ms)
+				BeforeProcessingInitializeOnLoad (79ms)
+				ProcessInitializeOnLoadAttributes (298ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.03 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3192 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 67 unused Assets / (128.5 KB). Loaded Objects now: 3644.
+Memory consumption went from 141.7 MB to 141.6 MB.
+Total: 3.797700 ms (FindLiveObjects: 0.410100 ms CreateObjectMapping: 0.357900 ms MarkObjects: 2.912300 ms  DeleteObjects: 0.116300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 166624.783470 seconds.
+  path: Assets/Resources/Textrue/HitEffect/SlashSmall3/body/1.png
+  artifactKey: Guid(f254bf0e86e08ed459da2f490ae319b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/SlashSmall3/body/1.png using Guid(f254bf0e86e08ed459da2f490ae319b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66da1b4f78f90a8b4813ee8888d6fa86') in 0.114236 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Resources/Textrue/HitEffect/iceHit/iceHit02/body/1.png
+  artifactKey: Guid(dd2a57a445cb0cb46944dbca690ede30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/iceHit/iceHit02/body/1.png using Guid(dd2a57a445cb0cb46944dbca690ede30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852f4b74a78dd2200173e2a9b904b4a7') in 0.015709 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/Textrue/Character/saber/10000/body/10.png
+  artifactKey: Guid(6dd7bab829aab834ba54ee2ca73c9007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/saber/10000/body/10.png using Guid(6dd7bab829aab834ba54ee2ca73c9007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b79b514e6505ade52c42ee497885c38a') in 0.021835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/HitEffect/fireHit/body/10.png
+  artifactKey: Guid(1fdff3dccd0e61d41b92b2d4bbb94199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/fireHit/body/10.png using Guid(1fdff3dccd0e61d41b92b2d4bbb94199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97b76acad4e66858716510db104c929a') in 0.014910 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/body/1.png
+  artifactKey: Guid(ae911bdd9eb5bd14d944331ef6fdcb5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/body/1.png using Guid(ae911bdd9eb5bd14d944331ef6fdcb5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bffecbf40605f1f1909d7e2d7e87273') in 0.015046 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_object/tree.img/1.png
+  artifactKey: Guid(6fb01e1038e84314b813d6c36cfd99ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_object/tree.img/1.png using Guid(6fb01e1038e84314b813d6c36cfd99ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a3fb973048e7e721c7cf909a7dee74a') in 0.025954 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Texture/赛利亚房间/leaf_2.img/1.png
+  artifactKey: Guid(33d1f3c6daec67b4f8f3ab88bc601bf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/赛利亚房间/leaf_2.img/1.png using Guid(33d1f3c6daec67b4f8f3ab88bc601bf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3efb8dadfc3af68962f4c4566ae8eea') in 0.016275 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/10.png
+  artifactKey: Guid(67d07374080391d4c97160eb28d41270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/10.png using Guid(67d07374080391d4c97160eb28d41270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eba78ccf3d1c84ef276ad51734d9edf9') in 0.011214 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/HitEffect/iceHit/iceHit01/body/10.png
+  artifactKey: Guid(d02c25c77e596384a920db3a1ba276d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/iceHit/iceHit01/body/10.png using Guid(d02c25c77e596384a920db3a1ba276d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '689cfa96c7ffce71fb1472b73bc95c87') in 0.021206 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/pants/1.png
+  artifactKey: Guid(a1b359a5976551b41968929c82f6ad9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/pants/1.png using Guid(a1b359a5976551b41968929c82f6ad9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b00bdf4c26a99b6e2263baf58e8fda5e') in 0.011416 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/1.png
+  artifactKey: Guid(862769e6d48b47742b5af4f3bb2e3b88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/1.png using Guid(862769e6d48b47742b5af4f3bb2e3b88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '976a010d503fa26625a305588ca2cf83') in 0.010225 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/1.png
+  artifactKey: Guid(d3c40d84e999a95409288db09a077484) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/1.png using Guid(d3c40d84e999a95409288db09a077484) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64ed096a0c436fa9b11eea01683eb8e3') in 0.025825 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_background/back_far.img/1.png
+  artifactKey: Guid(1ffc9dda6a9b6ad43ad0b45442cb7e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_background/back_far.img/1.png using Guid(1ffc9dda6a9b6ad43ad0b45442cb7e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aba0f719cc245ad48f5ac98daa0300dc') in 0.026911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Resources/Textrue/HitEffect/iceHit/iceHit01/body/1.png
+  artifactKey: Guid(5bb8e682102b8234a9f352cb4e872661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/iceHit/iceHit01/body/1.png using Guid(5bb8e682102b8234a9f352cb4e872661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7c630d8b44e23bd6bc37f4daa986679') in 0.015183 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.541330 seconds.
+  path: Assets/Texture/赛利亚房间/gate_new_glow_eff.img/11.png
+  artifactKey: Guid(8a8474d6401fadb468803fbb24c4a5a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/赛利亚房间/gate_new_glow_eff.img/11.png using Guid(8a8474d6401fadb468803fbb24c4a5a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfcdadf23d40846c150a73bb6353215e') in 0.024987 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/pants/11.png
+  artifactKey: Guid(3706e0bf49417044cb4572a01d3fdc86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/pants/11.png using Guid(3706e0bf49417044cb4572a01d3fdc86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62b4c4cc1f40d1ffb577a867e7bbb020') in 0.012486 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_3/11.png
+  artifactKey: Guid(9ac70f3b08847164da7732089bc09863) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_3/11.png using Guid(9ac70f3b08847164da7732089bc09863) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbd532cd975460e336b873f2483ae119') in 0.013687 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.296859 seconds.
+  path: Assets/Resources/Textrue/HitEffect/iceHit/iceHit02/body/11.png
+  artifactKey: Guid(dff4566045a471d408ce5f53023c19fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/iceHit/iceHit02/body/11.png using Guid(dff4566045a471d408ce5f53023c19fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '981ff24b8adbe5c7c3f82e1193fc4f31') in 0.014721 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Moster/shabao/10000/body/11.png
+  artifactKey: Guid(62a7defe98994d84185ce459dee46995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Moster/shabao/10000/body/11.png using Guid(62a7defe98994d84185ce459dee46995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '463ec6d429041ecac87ef597fdf6e2d2') in 0.019577 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.326483 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/12.png
+  artifactKey: Guid(010dd21934ab914438cd225b70cc4cef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/12.png using Guid(010dd21934ab914438cd225b70cc4cef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0191e377ad14ccc08b5e62d6ced5c1a') in 0.023037 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/Textrue/HitEffect/iceHit/iceHit01/body/12.png
+  artifactKey: Guid(01e7295971c7b78418db1f5c53f2c436) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/iceHit/iceHit01/body/12.png using Guid(01e7295971c7b78418db1f5c53f2c436) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1ea22d0429992bf265a6ebddaa78381') in 0.018419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.031505 seconds.
+  path: Assets/Resources/Textrue/Character/saber/10000/body/12.png
+  artifactKey: Guid(990ec91952a558f48a70b6739b63961c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/saber/10000/body/12.png using Guid(990ec91952a558f48a70b6739b63961c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a34c90159b781f22de95266fa63c9da') in 0.019317 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/13.png
+  artifactKey: Guid(2b5f06c6f1fc5db41a603dd2c2212b58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/13.png using Guid(2b5f06c6f1fc5db41a603dd2c2212b58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac49d18696e1d1bca1c36a6699399a94') in 0.016506 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/12.png
+  artifactKey: Guid(a533267d0dbbd264dbd2e531b70fb20c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/12.png using Guid(a533267d0dbbd264dbd2e531b70fb20c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf19e24a1da24958843950adce351149') in 0.010835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_1/13.png
+  artifactKey: Guid(614fee71a2a2ea7498ea4c54e7151b00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_1/13.png using Guid(614fee71a2a2ea7498ea4c54e7151b00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed9e193d1d5f229d189dbc027aed0ab1') in 0.015177 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.141334 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/pants/13.png
+  artifactKey: Guid(caa1b3477332bd9439b801debbc4f17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/pants/13.png using Guid(caa1b3477332bd9439b801debbc4f17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1f4ca5f7201c5cb84571db10a83de55') in 0.024359 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Texture/修炼场/地形/14.png
+  artifactKey: Guid(b5ed6f6cb26c89b4eade8d265bcaf0b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/修炼场/地形/14.png using Guid(b5ed6f6cb26c89b4eade8d265bcaf0b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d44b480a0b97207284ad2104f4f9591') in 0.023873 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_3/14.png
+  artifactKey: Guid(4816ce4ab890dc742b7be916ace1f8ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_3/14.png using Guid(4816ce4ab890dc742b7be916ace1f8ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '826e305b0df3647c3dbde194d5d934bd') in 0.016314 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/15.png
+  artifactKey: Guid(7fe6add9a8430b54eab708f1f9b95283) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/15.png using Guid(7fe6add9a8430b54eab708f1f9b95283) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61335f017b965f192ad049f66dfd8a39') in 0.021168 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_1/16.png
+  artifactKey: Guid(bfd08122c24e6f149923697dcdc32613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_1/16.png using Guid(bfd08122c24e6f149923697dcdc32613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26a3d9c0de347671f6f0935d471cff17') in 0.019633 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Character/saber/10000/body/15.png
+  artifactKey: Guid(9dfedc9f1073a4e43a6cacea16dc70fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/saber/10000/body/15.png using Guid(9dfedc9f1073a4e43a6cacea16dc70fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73a63953ed93fe12ab5fc3b27351c68e') in 0.029531 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Textrue/Moster/shabao/10000/body/15.png
+  artifactKey: Guid(0c75af824c4739a4694bbe68495316a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Moster/shabao/10000/body/15.png using Guid(0c75af824c4739a4694bbe68495316a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b82caa7057cab50be2d0cbbf1324f953') in 0.020978 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/body/16.png
+  artifactKey: Guid(c1027311c2ffa9e4bbf2bd176bad1685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/body/16.png using Guid(c1027311c2ffa9e4bbf2bd176bad1685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '450125f4e271a3d97933d824f18674b8') in 0.017639 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.046409 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_2/17.png
+  artifactKey: Guid(fcffd0d64027ff043912ed1fb3c6d340) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_2/17.png using Guid(fcffd0d64027ff043912ed1fb3c6d340) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34acd17fca021f7b26a32a8c1f5b1433') in 0.056519 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_1/18.png
+  artifactKey: Guid(7a6c49aebe562b34a9cf6ee4b5c50b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_1/18.png using Guid(7a6c49aebe562b34a9cf6ee4b5c50b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57e0b826743771995f85f44b765928c8') in 0.039210 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/17.png
+  artifactKey: Guid(6ba0b726bd6731c48889fb7fe85cc859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/17.png using Guid(6ba0b726bd6731c48889fb7fe85cc859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98993905774912d57b13de7054d0d3cb') in 0.017796 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/17.png
+  artifactKey: Guid(c2b55ab699bbead4493bc46abcd95d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/17.png using Guid(c2b55ab699bbead4493bc46abcd95d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6463931949ddfae9e85537253cfb17e1') in 0.011913 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/18.png
+  artifactKey: Guid(4531018c5fa23304f9bb03fff21cf6ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/18.png using Guid(4531018c5fa23304f9bb03fff21cf6ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '559ce456cb8cf44321c0f57613fa4e80') in 0.013411 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/pants/18.png
+  artifactKey: Guid(0b59fb9a8b856a146bf70afe15ca67e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/pants/18.png using Guid(0b59fb9a8b856a146bf70afe15ca67e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f63a00087c7153af5be3cd4ac7f5ab6') in 0.014801 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/body/19.png
+  artifactKey: Guid(b6db12430f0e27546a4f1f02944ff737) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/body/19.png using Guid(b6db12430f0e27546a4f1f02944ff737) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af51867a6464782feb6aa1e700ff08e5') in 0.024490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Texture/赛利亚房间/gate_new_glow_eff.img/17.png
+  artifactKey: Guid(ed2855d101b753245bca640b7ae26b16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/赛利亚房间/gate_new_glow_eff.img/17.png using Guid(ed2855d101b753245bca640b7ae26b16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eebe75f541641deb9cd556ff8200a596') in 0.019903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.093304 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_1/21.png
+  artifactKey: Guid(686da77fb401ddb4696732c0d1f755b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_1/21.png using Guid(686da77fb401ddb4696732c0d1f755b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1a4cac26abc21e46c17369186120814') in 0.020928 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Resources/Textrue/Character/saber/10000/body/21.png
+  artifactKey: Guid(8b3a2c28730258e40ab78ae64db246d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/saber/10000/body/21.png using Guid(8b3a2c28730258e40ab78ae64db246d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ac0a853410b350f12699a819b986f5e') in 0.015703 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/body/21.png
+  artifactKey: Guid(efd2115969097c04f88f495420f8ffb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/body/21.png using Guid(efd2115969097c04f88f495420f8ffb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43c703c4ac7454c8a683cde5364fb367') in 0.020642 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/41.png
+  artifactKey: Guid(8461ceeb975ea5c4197cccf34581ec60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/41.png using Guid(8461ceeb975ea5c4197cccf34581ec60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c418feff24f15146775e765c72860c97') in 0.014613 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/41.png
+  artifactKey: Guid(7bc3366bd7292d54b87552489005bf07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/41.png using Guid(7bc3366bd7292d54b87552489005bf07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d8acb0b70fdc9bac48f1843a1aba7ee') in 0.014643 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/61.png
+  artifactKey: Guid(5cce35b94db3504489a705e68d926ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/61.png using Guid(5cce35b94db3504489a705e68d926ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec44f2c7edbda75f3bd8a6937205dfdc') in 0.014443 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Moster/shabao/10000/body/51.png
+  artifactKey: Guid(43e242aa3c508c047829eec8ff7d6c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Moster/shabao/10000/body/51.png using Guid(43e242aa3c508c047829eec8ff7d6c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51638e9b21654351d3519af6201ff164') in 0.018637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_1/61.png
+  artifactKey: Guid(726428d5e48a81d4d9bef003f118f87d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_1/61.png using Guid(726428d5e48a81d4d9bef003f118f87d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ce86d60f778299b49454ddf4124df87') in 0.010671 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Textrue/Character/saber/10000/body/41.png
+  artifactKey: Guid(023c15f30cbde3a41a4aff6a2609e69b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/saber/10000/body/41.png using Guid(023c15f30cbde3a41a4aff6a2609e69b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4ed19bd783bed8b1f550035819378ce') in 0.020193 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/51.png
+  artifactKey: Guid(9b9845ddd5ec90b47b58f210dbaaa0b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/51.png using Guid(9b9845ddd5ec90b47b58f210dbaaa0b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd98522c7b81af2eb9ef81292d5e5d78') in 0.008699 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.048053 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/pants/61.png
+  artifactKey: Guid(e922f62b260d00b41a7a721175a663a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/pants/61.png using Guid(e922f62b260d00b41a7a721175a663a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75166c30a3cf645aca4464daf40278aa') in 0.015676 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/weapon_2/61.png
+  artifactKey: Guid(1db3be2459e5caa4db58719fb8d6214c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/weapon_2/61.png using Guid(1db3be2459e5caa4db58719fb8d6214c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8454c4296ff5e24156a42ac6a13040a') in 0.016403 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/71.png
+  artifactKey: Guid(6fdf13bd7593ad7408d558eeafbeb9f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/71.png using Guid(6fdf13bd7593ad7408d558eeafbeb9f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a208dcea3b703c447022844df6bc734') in 0.010993 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Resources/Textrue/Character/saber/10000/body/81.png
+  artifactKey: Guid(cb502448d0333cb4c9d08034648c2352) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/saber/10000/body/81.png using Guid(cb502448d0333cb4c9d08034648c2352) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a708866aca463f4bcc3d4ec1bab5402') in 0.019202 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_2/91.png
+  artifactKey: Guid(6bc3a56796151c3449109a7692ca6789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_2/91.png using Guid(6bc3a56796151c3449109a7692ca6789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76673e0dcb5fd35e938fa6106015aff1') in 0.010653 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_3/61.png
+  artifactKey: Guid(166a14cde3e37d14d9aa6e984794490d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_3/61.png using Guid(166a14cde3e37d14d9aa6e984794490d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c87da2cd4fd2c186461ac965c2244ad') in 0.009871 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/body/81.png
+  artifactKey: Guid(5ac1f6c970d30a64a97fa4c5a0ac9ef5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/body/81.png using Guid(5ac1f6c970d30a64a97fa4c5a0ac9ef5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8019e347bedae4438abb675846d1d91') in 0.021263 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012773 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.103 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1104ms)
+		BeginReloadAssembly (140ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (47ms)
+		EndReloadAssembly (865ms)
+			LoadAssemblies (87ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (238ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (68ms)
+			SetupLoadedEditorAssemblies (418ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (26ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (76ms)
+				ProcessInitializeOnLoadAttributes (272ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 4.64 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3181 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (102.6 KB). Loaded Objects now: 3751.
+Memory consumption went from 145.6 MB to 145.5 MB.
+Total: 3.432600 ms (FindLiveObjects: 0.209700 ms CreateObjectMapping: 0.193900 ms MarkObjects: 2.993300 ms  DeleteObjects: 0.034900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1543.534032 seconds.
+  path: Assets/MapMatrial/New Material.mat
+  artifactKey: Guid(642d37c95e41b874dbab804b60306410) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MapMatrial/New Material.mat using Guid(642d37c95e41b874dbab804b60306410) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1667e93f64a60224df68c69df7427c3e') in 0.319335 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 667.679136 seconds.
+  path: Assets/Resources/Textrue/HitEffect/knockLarge/1.png
+  artifactKey: Guid(a5997c374d342554a8555687a18b646a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/knockLarge/1.png using Guid(a5997c374d342554a8555687a18b646a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9957b5b20ca1b3a648a42dbbe045b021') in 0.044770 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Textrue/Character/swordman-f/hair_3/2.png
+  artifactKey: Guid(d566b6ec40f8e7240ab50dc6d4c2d786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/Character/swordman-f/hair_3/2.png using Guid(d566b6ec40f8e7240ab50dc6d4c2d786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f26c160c9343e5b9ce528e3c8db0fcc') in 0.016959 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/Textrue/HitEffect/SlashSmall3/body/2.png
+  artifactKey: Guid(1dc245b9607c5514ab05d3d24960444c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/SlashSmall3/body/2.png using Guid(1dc245b9607c5514ab05d3d24960444c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95e2966b68688386df2dd1004a1a8bac') in 0.027244 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Texture/赛利亚房间/leaf_2.img/2.png
+  artifactKey: Guid(348cf9ca0d426024e9b8f85aa9221345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/赛利亚房间/leaf_2.img/2.png using Guid(348cf9ca0d426024e9b8f85aa9221345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d391a4acc3b2669daa4afd1b1d10c62') in 0.013484 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Textrue/HitEffect/SlashSmall2/body/2.png
+  artifactKey: Guid(46e0e0592e3e1cb4a8a5506d7a0265d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Textrue/HitEffect/SlashSmall2/body/2.png using Guid(46e0e0592e3e1cb4a8a5506d7a0265d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fc1dc0a20a58e58bbb9159cce67257d') in 0.019709 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Texture/赛利亚房间/leaf_3.img/2.png
+  artifactKey: Guid(10a649db01746774893e0b6f21321bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/赛利亚房间/leaf_3.img/2.png using Guid(10a649db01746774893e0b6f21321bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1c4e0e97ddb0bef1e66797dbb87d9eb') in 0.018286 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Texture/赛利亚房间/leaf_1.img/2.png
+  artifactKey: Guid(23ba972705deb774baf99ef235b6677b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/赛利亚房间/leaf_1.img/2.png using Guid(23ba972705deb774baf99ef235b6677b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f408073721e39c06f40e70853ace5c6') in 0.014651 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_object/blacksmith.img/2.png
+  artifactKey: Guid(467235d0b993d4242917b7b09dc8de2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/艾尔文防线/sprite_map_town_04_elvengard_object/blacksmith.img/2.png using Guid(467235d0b993d4242917b7b09dc8de2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9ff6b850b57af38537f8b42597dd174') in 0.014865 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

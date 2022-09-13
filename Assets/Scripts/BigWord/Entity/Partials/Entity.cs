@@ -47,10 +47,6 @@ public partial class Entity : BaseEvent
         }
     }
     /// <summary>
-    /// 技能管理
-    /// </summary>
-    public SkillManager skillManager;
-    /// <summary>
     /// 当前游戏对象
     /// </summary>
     public GameObject gameObject;

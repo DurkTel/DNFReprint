@@ -1,5 +1,4 @@
-﻿using cfg.db;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,8 +34,6 @@ public partial class Entity
             return m_allBones;
         }
     }
-
-    public Dictionary<Avatar.AvatarPartType, ModelInfoCfg> models = new Dictionary<Avatar.AvatarPartType, ModelInfoCfg>();
 
 
     /// <summary>

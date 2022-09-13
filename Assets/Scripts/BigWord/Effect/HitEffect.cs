@@ -30,7 +30,6 @@ public class HitEffect : MonoBehaviour
 
     public void Play(UnityAction action = null)
     {
-        m_animator.DOSpriteAnimation(animationData);
-        m_animator.animationFinish = action;
+        
     }
 }

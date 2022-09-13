@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 40, 50, 24);
+			Utils.BeginObjectRegister(type, L, translator, 0, 40, 48, 22);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -99,7 +99,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "rigidbody", _g_get_rigidbody);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "mainAvatar", _g_get_mainAvatar);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "allBones", _g_get_allBones);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "skillManager", _g_get_skillManager);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "gameObject", _g_get_gameObject);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "transform", _g_get_transform);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "current_animationData", _g_get_current_animationData);
@@ -114,7 +113,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onMoveEvent", _g_get_onMoveEvent);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "physicsEvent_HitStop", _g_get_physicsEvent_HitStop);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onJumpEvent", _g_get_onJumpEvent);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "models", _g_get_models);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "haltFrame", _s_set_haltFrame);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateColliderEnabled", _s_set_updateColliderEnabled);
@@ -124,7 +122,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "cullingRadius", _s_set_cullingRadius);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "cullingGroup", _s_set_cullingGroup);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "isHitRecover", _s_set_isHitRecover);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "skillManager", _s_set_skillManager);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "gameObject", _s_set_gameObject);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "transform", _s_set_transform);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "current_animationData", _s_set_current_animationData);
@@ -139,7 +136,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "onMoveEvent", _s_set_onMoveEvent);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "physicsEvent_HitStop", _s_set_physicsEvent_HitStop);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "onJumpEvent", _s_set_onJumpEvent);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "models", _s_set_models);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -1907,20 +1903,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_skillManager(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.skillManager);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_gameObject(RealStatePtr L)
         {
 		    try {
@@ -2140,20 +2122,6 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_models(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.models);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -2308,21 +2276,6 @@ namespace XLua.CSObjectWrap
 			
                 Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.isHitRecover = LuaAPI.lua_toboolean(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_skillManager(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.skillManager = (SkillManager)translator.GetObject(L, 2, typeof(SkillManager));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -2559,21 +2512,6 @@ namespace XLua.CSObjectWrap
 			
                 Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.onJumpEvent = translator.GetDelegate<UnityEngine.Events.UnityAction<int, int>>(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_models(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.models = (System.Collections.Generic.Dictionary<Avatar.AvatarPartType, cfg.db.ModelInfoCfg>)translator.GetObject(L, 2, typeof(System.Collections.Generic.Dictionary<Avatar.AvatarPartType, cfg.db.ModelInfoCfg>));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

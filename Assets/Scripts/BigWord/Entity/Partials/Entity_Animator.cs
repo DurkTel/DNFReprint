@@ -491,7 +491,7 @@ public partial class Entity
                                         break;
                                     case CustomCondition.JUMP_ATTACK_LIMIT:
                                         //CharactMotor charactMotor = (CharactMotor)m_motor;
-                                        if (!skillManager.characterSkillTree.IsHasSkill(10001)) result = false;
+                                        result = false;
                                         break;
                                     case CustomCondition.HIT_RECOVER:
                                         //if (m_motor.isHitRecover) result = false;

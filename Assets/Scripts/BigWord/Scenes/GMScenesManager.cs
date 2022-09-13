@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using cfg.db;
 using AI;
 using System;
 
@@ -47,12 +46,11 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     /// 同步加载场景
     /// </summary>
     /// <param name="mapId"></param>
-    public GMScene LoadScene(int mapId)
+    public GMScene LoadScene(int mapId, string path, UnityAction callBack = null)
     {
         on_LoadEvent?.Invoke(mapId);
         GMScene scene = Pool<GMScene>.Get();
-        MapCfg map = MDefine.tables.TbMap.Get(mapId);
-        GameObject go = AssetLoader.Load<GameObject>(map.AssetName);
+        GameObject go = AssetLoader.Load<GameObject>(path);
         if (go == null)
         {
             Debug.LogError("场景加载错误，资源路径没有该资源");
@@ -65,6 +63,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
         sceneObj.transform.position = initPos;
         scene.gameObject = sceneObj;
         on_CompleteEvent?.Invoke(mapId);
+        callBack?.Invoke();
         return scene;
     }
 
