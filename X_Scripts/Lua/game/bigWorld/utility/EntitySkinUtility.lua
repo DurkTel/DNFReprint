@@ -13,7 +13,7 @@ function EntitySkinUtility.get_skeleton_assetName(entityType)
 end
 
 function EntitySkinUtility.get_skinPart_Cfg(entityData, skinPart)
-    local models = entityData.srvInfo.models
+    local models = entityData.totalInfo.models
     local code = models[skinPart]
     local cfg = t_modelInfo[code]
     local assetName = nil

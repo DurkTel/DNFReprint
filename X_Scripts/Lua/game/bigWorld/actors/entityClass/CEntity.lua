@@ -30,9 +30,9 @@ function CEntity:get_position()
     return self.gmentity and self.gmentity.transform and self.gmentity.transform.position or nil
 end
 
-function CEntity:onCreateEvent() end
+function CEntity:on_create() end
 
-function CEntity:onAvatarLoadComplete() end
+function CEntity:on_avatar_loadComplete() end
 
 
 local extensions = 

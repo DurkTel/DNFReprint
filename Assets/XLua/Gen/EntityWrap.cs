@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 40, 48, 22);
+			Utils.BeginObjectRegister(type, L, translator, 0, 41, 48, 22);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -39,6 +39,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PlayHurtAnimation", _m_PlayHurtAnimation);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PlayAirHurtAnimation", _m_PlayAirHurtAnimation);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DOSpriteAnimation", _m_DOSpriteAnimation);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DOSpriteAnimationCondition", _m_DOSpriteAnimationCondition);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DOSpriteAnimationNext", _m_DOSpriteAnimationNext);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ForceDOSkillAnimation", _m_ForceDOSkillAnimation);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetCurAnimationLength", _m_GetCurAnimationLength);
@@ -641,12 +642,52 @@ namespace XLua.CSObjectWrap
                     
                     return 0;
                 }
+                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<UnityEngine.Events.UnityAction>(L, 3)) 
+                {
+                    string _aniName = LuaAPI.lua_tostring(L, 2);
+                    UnityEngine.Events.UnityAction _finish = translator.GetDelegate<UnityEngine.Events.UnityAction>(L, 3);
+                    
+                    gen_to_be_invoked.DOSpriteAnimation( _aniName, _finish );
+                    
+                    
+                    
+                    return 0;
+                }
                 
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to Entity.DOSpriteAnimation!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_DOSpriteAnimationCondition(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _condAniName = LuaAPI.lua_tostring(L, 2);
+                    string _aniName = LuaAPI.lua_tostring(L, 3);
+                    
+                    gen_to_be_invoked.DOSpriteAnimationCondition( _condAniName, _aniName );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
             
         }
         
@@ -790,6 +831,17 @@ namespace XLua.CSObjectWrap
                     AnimationData _animationData = (AnimationData)translator.GetObject(L, 2, typeof(AnimationData));
                     
                         var gen_ret = gen_to_be_invoked.IsInThisAni( _animationData );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _aniName = LuaAPI.lua_tostring(L, 2);
+                    
+                        var gen_ret = gen_to_be_invoked.IsInThisAni( _aniName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -2421,7 +2473,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    Entity.onContactHandlerEvent = translator.GetDelegate<UnityEngine.Events.UnityAction<int, int, int>>(L, 1);
+			    Entity.onContactHandlerEvent = translator.GetDelegate<UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>>(L, 1);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

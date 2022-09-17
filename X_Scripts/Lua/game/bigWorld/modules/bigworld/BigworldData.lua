@@ -1,0 +1,3 @@
+local BigworldData = {}
+
+return BigworldData

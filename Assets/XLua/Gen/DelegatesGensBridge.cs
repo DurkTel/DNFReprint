@@ -199,6 +199,30 @@ namespace XLua
 #endif
 		}
         
+		public void __Gen_Delegate_Imp8(ColliderTrigger p0, ColliderTrigger p1, int p2)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                translator.Push(L, p1);
+                LuaAPI.xlua_pushinteger(L, p2);
+                
+                PCall(L, 3, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
         
 		static DelegateBridge()
 		{
@@ -286,6 +310,11 @@ namespace XLua
 		    if (type == typeof(UnityEngine.Events.UnityAction<bool, bool>))
 			{
 			    return new UnityEngine.Events.UnityAction<bool, bool>(__Gen_Delegate_Imp7);
+			}
+		
+		    if (type == typeof(UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>))
+			{
+			    return new UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>(__Gen_Delegate_Imp8);
 			}
 		
 		    return null;

@@ -11,9 +11,4 @@ function CEntityFightfunc:move_hurt_start(transform, lookAt, velocityX, velocity
     self.gmentity:MoveHurt_OnStart(transform, lookAt, velocityX, velocityXY, heightY, acceleration, recoverTime)
 end
 
---发起攻击
-function CEntityFightfunc:attack_start()
-    self.gmentity:DOSpriteAnimation("ATTACK_1_ANIM")
-end
-
 return CEntityFightfunc

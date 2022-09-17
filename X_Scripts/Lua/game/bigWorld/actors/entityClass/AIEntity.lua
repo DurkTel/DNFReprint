@@ -1,16 +1,16 @@
-local base = require("game.bigWorld.actors.entityClass.FightEntity")
+local base = require("game.bigWorld.actors.entityClass.SkinEntity")
 local AIEntity = class(base)
 
 local function getClassByAiState(stateId)
-    local stateClass = GEntityDefine.AIStateClass[stateId]
+    local stateClass = GEntityDefine.ai_stateClass[stateId]
     if not stateClass then
-        stateClass = GEntityDefine.AIStateClass[1]
+        stateClass = GEntityDefine.ai_stateClass[1]
         print_err("无该状态的脚本！！"..stateId)
     end
 
     if type(stateClass) == "string" then
         stateClass = require(stateClass)
-        GEntityDefine.AIStateClass[stateId] = stateClass
+        GEntityDefine.ai_stateClass[stateId] = stateClass
     end
 
     return stateClass
@@ -28,10 +28,10 @@ function AIEntity:on_init()
     base.on_init(self)
 end
 
-function AIEntity:onAvatarLoadComplete()
-    base.onAvatarLoadComplete(self)
+function AIEntity:on_avatar_loadComplete()
+    base.on_avatar_loadComplete(self)
     --皮肤加载完成后进入出生状态
-    self:enter_state(GEntityDefine.AIStateType.born)
+    self:enter_state(GEntityDefine.ai_stateType.born)
 end
 
 function AIEntity:on_initAI()
@@ -49,20 +49,33 @@ function AIEntity:on_updateAILogic(timeCount)
     end
 end
 
+function AIEntity:on_stopAiLogic()
+    self:del_timer(self.logicAI)
+    self.logicAI = nil
+end
+
+function AIEntity:start_inputMove()
+    
+end
+
+function AIEntity:stop_inputMove()
+    
+end
+
 function AIEntity:start_pathMove(path)
     self.pathList = path
-    self:enter_state(GEntityDefine.AIStateType.move)
+    self:enter_state(GEntityDefine.ai_stateType.move)
     self:move_entityNavigationPath(path)
 end
 
 function AIEntity:stop_pathMove()
     self.pathList = nil
-    self:enter_state(GEntityDefine.AIStateType.idle)
+    self:enter_state(GEntityDefine.ai_stateType.idle)
     self:moveStop_entityNavigationPath()
 end
 
 function AIEntity:enter_defaultState()
-    self:enter_state(GEntityDefine.AIStateType.idle)
+    self:enter_state(GEntityDefine.ai_stateType.idle)
 end
 
 function AIEntity:enter_state(stateId)
@@ -90,8 +103,7 @@ end
 
 function AIEntity:dispose()
     base.dispose(self)
-    self:del_timer(self.logicAI)
-    self.logicAI = nil
+    self:on_stopAiLogic()
 end
 
 return AIEntity

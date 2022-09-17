@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,15 +13,19 @@ public class AnimationMapEditior : Editor
     public void OnEnable()
     {
         animationMap = (AnimationMap)target;
-        if (animationMap.names.Count <= 0)
-        {
+        //if (animationMap.names.Count <= 0)
+        //{
             string[] totalNames = Enum.GetNames(typeof(AnimationMap.AnimationEnum));
             for (int i = 0; i < totalNames.Length; i++)
             {
                 animationMap.AddAnimation(totalNames[i], null);
             }
+        //}
+        for (int i = 0; i < animationMap.names.Count; i++)
+        {
+            if (!totalNames.Contains(animationMap.names[i]))
+                animationMap.RemoveAnimation(animationMap.names[i]);
         }
-
     }
 
     public override void OnInspectorGUI()

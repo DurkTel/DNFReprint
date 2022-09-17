@@ -1,4 +1,4 @@
-local base = require("game.bigWorld.actors.entityClass.AIEntity")
+local base = require("game.bigWorld.actors.entityClass.FightEntity")
 local MonsterEntity = class(base)
 
 function MonsterEntity:ctor()
@@ -95,7 +95,7 @@ end
 
 --执行攻击
 function MonsterEntity:execute_attack()
-    self:attack_start()
+    self:play_sprite_animation("ATTACK_1_ANIM")
 end
 
 --执行追击

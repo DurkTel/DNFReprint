@@ -15,7 +15,7 @@ end
 
 function CEntityEventfunc.onCreateEvent(entityId)
     local entity = GEntityManager.get_luaEntityById(entityId)
-    entity:onCreateEvent()
+    entity:on_create()
 end
 
 function CEntityEventfunc.onDestroyEvent()
@@ -24,7 +24,7 @@ end
 
 function CEntityEventfunc.onLuaAvatarLoadComplete(entityId)
     local entity = GEntityManager.get_luaEntityById(entityId)
-    entity:onAvatarLoadComplete()
+    entity:on_avatar_loadComplete()
 end
 
 function CEntityEventfunc.attackFinishEvent(entityId, skillCode)
@@ -34,9 +34,15 @@ function CEntityEventfunc.attackFinishEvent(entityId, skillCode)
     end
 end
 
-function CEntityEventfunc.onContactHandlerEvent(attackerEntityId, victimEneityId, skillCode)
-    local attacker = GEntityManager.get_luaEntityById(attackerEntityId)
-    local victim = GEntityManager.get_luaEntityById(victimEneityId)
+function CEntityEventfunc.onContactHandlerEvent(attackerTrigger, victimTrigger, skillCode)
+    local attackerId = attackerTrigger.entity.entityId
+    local victimId = victimTrigger.entity.entityId
+
+    local attacker = GEntityManager.get_luaEntityById(attackerId)
+    local victim = GEntityManager.get_luaEntityById(victimId)
+
+    if victim.entityData:get_life() <= 0 then return end
+
     if (attacker.entityData:is_localPlayer() and victim.entityData:is_otherPlayer()) or (attacker.entityData:is_monster() and victim.entityData:is_monster()) then
         return
     end
@@ -47,14 +53,14 @@ function CEntityEventfunc.onContactHandlerEvent(attackerEntityId, victimEneityId
     if not attacker.attackHitMarks[skillCode] then
         attacker.attackHitMarks[skillCode] = {}
     end
-    attacker.attackHitMarks[skillCode][victimEneityId] = (attacker.attackHitMarks[skillCode][victimEneityId] or 0) + 1
+    attacker.attackHitMarks[skillCode][victimId] = (attacker.attackHitMarks[skillCode][victimId] or 0) + 1
 
-    if not cfg or attacker.attackHitMarks[skillCode][victimEneityId] > cfg.numbeOfAttacks then --计算攻击次数
+    if not cfg or attacker.attackHitMarks[skillCode][victimId] > cfg.numbeOfAttacks then --计算攻击次数
         return 
     end
     
-    attacker:attacker_performance(victimEneityId, cfg)
-    victim:victim_performance(attackerEntityId, cfg)
+    attacker:attacker_performance(attackerTrigger, victimTrigger, cfg)
+    victim:victim_performance(attackerTrigger, victimTrigger, cfg)
 end
 
 return CEntityEventfunc

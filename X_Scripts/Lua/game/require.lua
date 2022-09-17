@@ -18,6 +18,7 @@ local loadTab =
     'game.framework.EventDefine',
     'game.framework.EventDispatcher',
     'game.framework.Define',
+    'game.framework.func.Loaderfunc',
     'game.bigWorld.manager.GameCamera',
     'game.bigWorld.manager.EntityManager',
     'game.bigWorld.manager.ScenesManager',

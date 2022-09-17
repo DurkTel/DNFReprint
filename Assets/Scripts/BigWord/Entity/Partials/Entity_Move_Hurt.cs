@@ -174,8 +174,8 @@ public partial class Entity
     private void MoveHurt_OnEnd()
     {
         m_moveMode = MoveMode.NONE;
-        DOSpriteAnimation(animationMap.TryGetAnimation("IDLE_ANIM"));
         rigidbody.velocity = Vector2.zero;
+        DOSpriteAnimationCondition("DEATH_ANIM", "IDLE_ANIM");
     }
     #endregion
 
@@ -293,7 +293,7 @@ public partial class Entity
         if (m_fallDown)
         {
             //播放动画
-            DOSpriteAnimation(animationMap.TryGetAnimation("AIR_BORNE_ANIM"));
+            DOSpriteAnimationCondition("DEATH_ANIM", "AIR_BORNE_ANIM");
             DoHitDown();
             //僵硬时间减少
             m_hitRecoverTime = hitRecoverTime * 0.5f;
@@ -323,15 +323,15 @@ public partial class Entity
                     if (m_rebound)
                         PlayAirHurtAnimation();
                     else
-                        DOSpriteAnimation(animationMap.TryGetAnimation("AIR_BORNE_ANIM"));
+                        DOSpriteAnimationCondition("DEATH_ANIM", "AIR_BORNE_ANIM");
                 }
                 if (m_hitVelocityY < m_inithitVelocityY * 0.1f)
                 {
 
                     if (m_rebound)
-                        DOSpriteAnimation(animationMap.TryGetAnimation("AIR_BORNE_ANIM"));
+                        DOSpriteAnimationCondition("DEATH_ANIM", "AIR_BORNE_ANIM");
                     else
-                        DOSpriteAnimation(animationMap.TryGetAnimation("REBOUND_ANIM"));
+                        DOSpriteAnimationCondition("DEATH_ANIM", "REBOUND_ANIM");
                 }
 
             }
@@ -339,16 +339,15 @@ public partial class Entity
             {
                 if (m_hitVelocityY >= m_inithitVelocityY * 0.1f)
                 {
-
-                    DOSpriteAnimation(animationMap.TryGetAnimation("AIR_BORNE_ANIM"));
+                    DOSpriteAnimationCondition("DEATH_ANIM", "AIR_BORNE_ANIM");
                 }
                 if (m_hitVelocityY < m_inithitVelocityY * 0.1f)
                 {
 
                     if (m_rebound)
-                        DOSpriteAnimation(animationMap.TryGetAnimation("AIR_BORNE_ANIM"));
+                        DOSpriteAnimationCondition("DEATH_ANIM", "AIR_BORNE_ANIM");
                     else
-                        DOSpriteAnimation(animationMap.TryGetAnimation("REBOUND_ANIM"));
+                        DOSpriteAnimationCondition("DEATH_ANIM", "REBOUND_ANIM");
                 }
             }
         }
@@ -480,11 +479,11 @@ public partial class Entity
             m_standTime -= Time.fixedDeltaTime;
             if (m_standTime > 1 * 1 / 5f)
             {
-                DOSpriteAnimation(animationMap.TryGetAnimation("LIE_ANIM"));
+                DOSpriteAnimationCondition("DEATH_ANIM", "LIE_ANIM");
             }
             if (m_standTime < 1 * 1 / 5f)
             {
-                DOSpriteAnimation(animationMap.TryGetAnimation("SIT_ANIM"));
+                DOSpriteAnimationCondition("DEATH_ANIM", "SIT_ANIM");
                 if (m_standTime <= 0)
                 {
                     m_fallDown = false;

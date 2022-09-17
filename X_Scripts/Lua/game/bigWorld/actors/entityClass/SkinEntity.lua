@@ -2,7 +2,7 @@
 
 local EntitySkinUtility = require("game.bigWorld.utility.EntitySkinUtility")
 local EntityAnimatorUtility = require("game.bigWorld.utility.EntityAnimatorUtility")
-local AvatarPartType = GEntityDefine.AvatarPartType
+local avatarPartType = GEntityDefine.avatarPartType
 
 local base = require("game.bigWorld.actors.entityClass.GameEntity")
 local SkinEntity = class(base)
@@ -20,13 +20,13 @@ function SkinEntity:dispose()
     self.skinIsComplete = nil
 end
 
-function SkinEntity:onCreateEvent()
+function SkinEntity:on_create()
     self:init_skin()
     self.skinInitialized = true
 end
 
-function SkinEntity:onAvatarLoadComplete()
-    base.onAvatarLoadComplete(self)
+function SkinEntity:on_avatar_loadComplete()
+    base.on_avatar_loadComplete(self)
     self.skinIsComplete = true
     self:init_animator()
 end
@@ -64,65 +64,65 @@ end
 
 --刷新身体皮肤
 function SkinEntity:refresh_skin_body()
-    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.body)
-    self:set_avatarPart(AvatarPartType.body, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.body, scale)
-    self:set_avatarPartSort(AvatarPartType.body, sort)
+    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.body)
+    self:set_avatarPart(avatarPartType.body, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.body, scale)
+    self:set_avatarPartSort(avatarPartType.body, sort)
 end
 
 --刷新上衣皮肤
 function SkinEntity:refresh_skin_shirt()
-    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.shirt)
-    self:set_avatarPart(AvatarPartType.shirt, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.shirt, scale)
-    self:set_avatarPartSort(AvatarPartType.shirt, sort)
+    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.shirt)
+    self:set_avatarPart(avatarPartType.shirt, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.shirt, scale)
+    self:set_avatarPartSort(avatarPartType.shirt, sort)
 end
 
 --刷新武器皮肤
 function SkinEntity:refresh_skin_weapon()
-    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.weapon)
-    self:set_avatarPart(AvatarPartType.weapon, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.weapon, scale)
-    self:set_avatarPartSort(AvatarPartType.weapon, sort)
+    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.weapon)
+    self:set_avatarPart(avatarPartType.weapon, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.weapon, scale)
+    self:set_avatarPartSort(avatarPartType.weapon, sort)
 
-    assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.weaponEx)
-    self:set_avatarPart(AvatarPartType.weaponEx, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.weaponEx, scale)
-    self:set_avatarPartSort(AvatarPartType.weaponEx, sort)
+    assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.weaponEx)
+    self:set_avatarPart(avatarPartType.weaponEx, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.weaponEx, scale)
+    self:set_avatarPartSort(avatarPartType.weaponEx, sort)
 end
 
 --刷新裤子皮肤
 function SkinEntity:refresh_skin_pants()
-    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.pants)
-    self:set_avatarPart(AvatarPartType.pants, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.pants, scale)
-    self:set_avatarPartSort(AvatarPartType.pants, sort)
+    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.pants)
+    self:set_avatarPart(avatarPartType.pants, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.pants, scale)
+    self:set_avatarPartSort(avatarPartType.pants, sort)
 
-    assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.pantsEx)
-    self:set_avatarPart(AvatarPartType.pantsEx, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.pantsEx, scale)
-    self:set_avatarPartSort(AvatarPartType.pantsEx, sort)
+    assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.pantsEx)
+    self:set_avatarPart(avatarPartType.pantsEx, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.pantsEx, scale)
+    self:set_avatarPartSort(avatarPartType.pantsEx, sort)
 end
 
 --刷新鞋子皮肤
 function SkinEntity:refresh_skin_shoes()
-    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.shoes)
-    self:set_avatarPart(AvatarPartType.shoes, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.shoes, scale)
-    self:set_avatarPartSort(AvatarPartType.shoes, sort)
+    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.shoes)
+    self:set_avatarPart(avatarPartType.shoes, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.shoes, scale)
+    self:set_avatarPartSort(avatarPartType.shoes, sort)
 
-    assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.shoesEx)
-    self:set_avatarPart(AvatarPartType.shoesEx, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.shoesEx, scale)
-    self:set_avatarPartSort(AvatarPartType.shoesEx, sort)
+    assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.shoesEx)
+    self:set_avatarPart(avatarPartType.shoesEx, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.shoesEx, scale)
+    self:set_avatarPartSort(avatarPartType.shoesEx, sort)
 end
 
 --刷新头发皮肤
 function SkinEntity:refresh_skin_hair()
-    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, AvatarPartType.hair)
-    self:set_avatarPart(AvatarPartType.hair, assetName, boneName)
-    self:set_avatarPartScale(AvatarPartType.hair, scale)
-    self:set_avatarPartSort(AvatarPartType.hair, sort)
+    local assetName, boneName, scale, sort = EntitySkinUtility.get_skinPart_Cfg(self.entityData, avatarPartType.hair)
+    self:set_avatarPart(avatarPartType.hair, assetName, boneName)
+    self:set_avatarPartScale(avatarPartType.hair, scale)
+    self:set_avatarPartSort(avatarPartType.hair, sort)
 end
 
 

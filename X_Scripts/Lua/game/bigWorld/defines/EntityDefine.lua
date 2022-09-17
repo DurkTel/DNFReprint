@@ -1,6 +1,6 @@
 local EntityDefine = {} _G.GEntityDefine = EntityDefine
 
-EntityDefine.AvatarPartType =
+EntityDefine.avatarPartType =
 {
     body		= 0,      --身体
     shirt		= 1,      --上衣
@@ -13,7 +13,7 @@ EntityDefine.AvatarPartType =
     shoesEx 	= 8,      --鞋子额外
 }
 
-EntityDefine.EntityType = 
+EntityDefine.entityType = 
 {
     localPlayer = 0,      --本机玩家
     otherPlayer = 1,      --其他玩家
@@ -23,13 +23,13 @@ EntityDefine.EntityType =
     portal      = 4,      --传送门
 }
 
-EntityDefine.Status = 
+EntityDefine.status = 
 {
     peace       = 0,      --和平
     fight       = 1,      --战斗
 }
 
-EntityDefine.AIStateType = 
+EntityDefine.ai_stateType = 
 {
     idle = 1,
     move = 2,
@@ -42,18 +42,25 @@ EntityDefine.AIStateType =
     born = 9
 }
 
-EntityDefine.AIStateClass = 
+EntityDefine.ai_stateClass = 
 {
-    [EntityDefine.AIStateType.idle] = "game.bigWorld.actors.fsm.FSM_Idle",
-    [EntityDefine.AIStateType.move] = "game.bigWorld.actors.fsm.FSM_Move",
-    [EntityDefine.AIStateType.aciton] = "game.bigWorld.actors.fsm.FSM_Action",
-    [EntityDefine.AIStateType.jump] = "game.bigWorld.actors.fsm.FSM_Jump",
-    [EntityDefine.AIStateType.hurt] = "game.bigWorld.actors.fsm.FSM_Hurt",
-    [EntityDefine.AIStateType.combat] = "game.bigWorld.actors.fsm.FSM_Combat",
-    [EntityDefine.AIStateType.death] = "game.bigWorld.actors.fsm.FSM_Death",
-    [EntityDefine.AIStateType.sleep] = "game.bigWorld.actors.fsm.FSM_Sleep",
-    [EntityDefine.AIStateType.born] = "game.bigWorld.actors.fsm.FSM_Born"
+    [EntityDefine.ai_stateType.idle] = "game.bigWorld.actors.fsm.FSM_Idle",
+    [EntityDefine.ai_stateType.move] = "game.bigWorld.actors.fsm.FSM_Move",
+    [EntityDefine.ai_stateType.aciton] = "game.bigWorld.actors.fsm.FSM_Action",
+    [EntityDefine.ai_stateType.jump] = "game.bigWorld.actors.fsm.FSM_Jump",
+    [EntityDefine.ai_stateType.hurt] = "game.bigWorld.actors.fsm.FSM_Hurt",
+    [EntityDefine.ai_stateType.combat] = "game.bigWorld.actors.fsm.FSM_Combat",
+    [EntityDefine.ai_stateType.death] = "game.bigWorld.actors.fsm.FSM_Death",
+    [EntityDefine.ai_stateType.sleep] = "game.bigWorld.actors.fsm.FSM_Sleep",
+    [EntityDefine.ai_stateType.born] = "game.bigWorld.actors.fsm.FSM_Born"
 }
 
+EntityDefine.entity_attribute = 
+{
+    attribute_life = 1,                         --生命值更新
+    attribute_magic = 2,                        --法力值更新
+    attribute_move_seed = 3,                    --移动速度更新
+    attribute_jump_height = 4,                  --跳跃高度更新
+}
 
 return EntityDefine

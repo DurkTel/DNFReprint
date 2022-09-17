@@ -33,13 +33,13 @@ public class GameObjectPool : MonoBehaviour
                 QueuePool<GameObjectInfo>.Release(m_poolMap[assetName]);
                 m_poolMap.Remove(assetName);
             }
-            callBack(info.gameObject);
+            callBack?.Invoke(info.gameObject);
         }
         else
         {
             AssetLoader.LoadAsync<GameObject>(assetName, (p) =>
             {
-                callBack(Instantiate(p));
+                callBack?.Invoke(Instantiate(p));
             });
         }
 

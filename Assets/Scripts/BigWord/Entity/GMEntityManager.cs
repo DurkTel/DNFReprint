@@ -19,10 +19,11 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
 
     public static GMEntityHotRadius entityHotRadius;
 
-    private static Dictionary<int, Entity> m_entityMap = new Dictionary<int, Entity>();
+    private static DictionaryEx<int, Entity> m_entityMap = new DictionaryEx<int, Entity>(); //foreach遍历添加删除会异常
 
     private static List<Entity> m_waitCreateList = new List<Entity>();
-    public Dictionary<int ,Entity> entityMap { get { return m_entityMap; } }
+
+    public DictionaryEx<int ,Entity> entityMap { get { return m_entityMap; } }
     public static Entity localPlayer { get; set; }
     public static void Initialize()
     {
@@ -46,8 +47,11 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
     private void FixedUpdate()
     {
         float fixedDeltaTime = Time.fixedDeltaTime;
-        foreach (Entity entity in m_entityMap.Values)
+        Entity entity = null;
+        for (int i = 0; i < m_entityMap.keyList.Count; i++)
         {
+            int entityId = m_entityMap.keyList[i];
+            entity = m_entityMap[entityId];
             //fixedUpdate跑移动等逻辑 未加载完不执行
             if (entity.mainAvatar != null && entity.mainAvatar.loadCompleted)
                 entity.FixedUpdate(fixedDeltaTime);
@@ -58,9 +62,10 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
     {
         Entity entity = null;
         float deltaTime = Time.deltaTime;
-        foreach (var item in m_entityMap)
+        for (int i = 0; i < m_entityMap.keyList.Count; i++)
         {
-            entity = item.Value;
+            int entityId = m_entityMap.keyList[i];
+            entity = m_entityMap[entityId];
             entity.Update(deltaTime);
             entityHotRadius.UpdateByEntity(entity);
             //已经初始化皮肤 直接跳出

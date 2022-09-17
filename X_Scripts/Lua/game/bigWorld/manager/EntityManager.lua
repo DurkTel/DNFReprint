@@ -1,4 +1,3 @@
-require("game.bigWorld.defines.EntityDefine")
 local CEntityEventfunc = require("game.bigWorld.manager.func.CEntityEventfunc")
 local CEntityHotRadiusfunc = require("game.bigWorld.manager.func.CEntityHotRadiusfunc")
 local EntitiyTypeToClassfunc = require("game.bigWorld.func.EntitiyTypeToClassfunc")
@@ -38,7 +37,7 @@ end
 function EntityManager.create_entity(SentityData)
     --以后可以做对象池
     local entityData = require("game.bigWorld.actors.data.EntityData")()
-    entityData:set_srv_data(SentityData)
+    entityData:set_total_data(SentityData)
     local type = entityData:get_entityType()
     --创建C#实体
     local cEntity = CGEntityManager.CreateEntity(type)
@@ -99,8 +98,8 @@ function EntityManager.get_entitiyIdListByType(etype)
 end
 
 function EntityManager.get_playerEntityId()
-    local player1 = GEntityManager.get_entitiyIdListByType(GEntityDefine.EntityType.otherPlayer)
-    local player2 = GEntityManager.get_entitiyIdListByType(GEntityDefine.EntityType.localPlayer)
+    local player1 = GEntityManager.get_entitiyIdListByType(GEntityDefine.entityType.otherPlayer)
+    local player2 = GEntityManager.get_entitiyIdListByType(GEntityDefine.entityType.localPlayer)
 
     local players = table.connect(player1, player2)
     return players
@@ -129,6 +128,7 @@ function EntityManager.create_monster(refreshId)
         local SentityData =
         {
             type = 2,
+            code = refreshId,
             cfg = refreshCfg,
             models = {
                 [0] = monsterCfg.modelCode,

@@ -61,8 +61,8 @@ function CScenesEventfunc.onActivateEvent(mapId)
 
     if localPlayer then
         --切换和平或战斗状态
-        local state = mapCfg.mapType == ScenesDefine.mapType.unique and GEntityDefine.Status.peace or GEntityDefine.Status.fight
-        localPlayer:changStatus(state)
+        local state = mapCfg.mapType == ScenesDefine.mapType.unique and GEntityDefine.status.peace or GEntityDefine.status.fight
+        localPlayer:chang_status(state)
         --如果时传送门切换的话 优先重置为转送门配置的位置
         local pos = sceneData:get_portalPos() or Vector3(mapCfg.CharacterPosX,mapCfg.CharacterPosY,0)
         sceneData.portalPos = nil

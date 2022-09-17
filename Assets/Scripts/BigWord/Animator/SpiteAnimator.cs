@@ -26,13 +26,15 @@ public class SpiteAnimator : MonoBehaviour
 
     public List<Sprite> sprites;
 
+    public UnityAction onFinish;
+
     public void Awake()
     {
         if (m_spriteRenderer == null)
         {
             GameObject go = new GameObject("sprite");
             go.transform.SetParent(transform, false);
-            m_spriteRenderer = go.AddComponent<SpriteRenderer>(); ;
+            m_spriteRenderer = go.AddComponent<SpriteRenderer>();
         }
 
         if (playOnAwake)
@@ -84,6 +86,7 @@ public class SpiteAnimator : MonoBehaviour
                 {
                     m_spriteRenderer.enabled = false;
                     m_running = false;
+                    onFinish?.Invoke();
                 }
             }
         }

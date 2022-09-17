@@ -44,11 +44,11 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
     public Transform collidersXY_parent { get => m_collidersXY_parent; }
     public Transform collidersZ_parent { get => m_collidersZ_parent; }
 
-    public static UnityAction<int, int, int> onContactHandlerEvent;
+    public static UnityAction<ColliderTrigger, ColliderTrigger, int> onContactHandlerEvent;
 
     public virtual void ContactHandle(GMUpdateCollider.ContactPair contact, ColliderInfos collInfo)
     {
-        onContactHandlerEvent?.Invoke(contact.attacker.entity.entityId, contact.victim.entity.entityId, collInfo.skillCode);
+        onContactHandlerEvent?.Invoke(contact.attacker, contact.victim, collInfo.skillCode);
     }
 
     private void ColliderInit()

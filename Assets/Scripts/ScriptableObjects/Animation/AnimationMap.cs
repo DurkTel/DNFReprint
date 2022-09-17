@@ -159,6 +159,7 @@ public class AnimationMap : ScriptableObject
         RUN_ATTACK_ANIM,
         HURT_1_ANIM,
         HURT_2_ANIM,
-        HURT_3_ANIM
+        HURT_3_ANIM,
+        DEATH_ANIM,
     }
 }

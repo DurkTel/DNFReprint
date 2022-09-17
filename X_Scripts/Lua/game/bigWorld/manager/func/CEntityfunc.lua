@@ -31,4 +31,9 @@ function CEntityfunc:moveStop_entityNavigationPath()
     self.gmentity:MoveStop_NavigationPath()
 end
 
+--实体播放动画
+function CEntityfunc:play_sprite_animation(animationName, finishFunc)
+    self.gmentity:DOSpriteAnimation(animationName, finishFunc)
+end
+
 return CEntityfunc

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Microsoft.Cci;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
@@ -75,11 +76,6 @@ public partial class Entity
 
             if (m_currentFrame >= aniSprites.Count)
             {
-                if (animationFinish != null)
-                {
-                    animationFinish.Invoke();
-                    animationFinish = null;
-                }
                 if (m_next_animationData != null)
                 {
                     DOSpriteAnimation(m_next_animationData);
@@ -92,6 +88,12 @@ public partial class Entity
                 else
                 {
                     m_currentFrame = aniSprites.Count - 1;
+                }
+
+                if (animationFinish != null)
+                {
+                    animationFinish.Invoke();
+                    animationFinish = null;
                 }
             }
 
@@ -132,6 +134,7 @@ public partial class Entity
 
     public void PlayHurtAnimation()
     {
+        if (IsInThisAni("DEATH_ANIM")) return;
         List<AnimationData> anis = animationMap.GetAnimationsByTag(AnimationMap.AniType.HURT);
         if (anis.Count > 0)
         {
@@ -141,7 +144,7 @@ public partial class Entity
 
     public void PlayAirHurtAnimation()
     {
-        DOSpriteAnimation(animationMap.TryGetAnimation("HURT_2_ANIM"));
+        DOSpriteAnimationCondition("DEATH_ANIM", "HURT_2_ANIM");
     }
 
 
@@ -152,7 +155,6 @@ public partial class Entity
             Debug.LogError("动画数据为空");
             return;
         }
-        //if (current_animationData == animationData) return;
         if (last_animationData != null && last_animationData.colliderInfo != null && last_animationData.colliderInfo.skillCode != 0)
             attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode);
         colliderUpdate.ClearContact(entityId);
@@ -180,6 +182,23 @@ public partial class Entity
     public void DOSpriteAnimation(string aniName)
     {
         PlayAni(animationMap.TryGetAnimation(aniName));
+    }
+
+    /// <summary>
+    /// 如果不在这个动画中的话才可以播
+    /// </summary>
+    /// <param name="aniName"></param>
+    /// <param name="aniName"></param>
+    public void DOSpriteAnimationCondition(string condAniName, string aniName)
+    {
+        if (IsInThisAni(condAniName)) return;
+        PlayAni(animationMap.TryGetAnimation(aniName));
+    }
+
+    public void DOSpriteAnimation(string aniName, UnityAction finish)
+    {
+        PlayAni(animationMap.TryGetAnimation(aniName));
+        animationFinish = finish;
     }
 
     /// <summary>
@@ -245,9 +264,17 @@ public partial class Entity
     /// <returns></returns>
     public bool IsInThisAni(AnimationData animationData)
     {
-        FieldInfo[] fieldInfos = typeof(AnimationConfig).GetFields();
-
         return current_animationData == animationData;
+    }
+
+    /// <summary>
+    /// 当前播放的是否是这个动画
+    /// </summary>
+    /// <param name="animationData">要检测的动画</param>
+    /// <returns></returns>
+    public bool IsInThisAni(string aniName)
+    {
+        return current_animationData == animationMap.TryGetAnimation(aniName);
     }
 
     /// <summary>

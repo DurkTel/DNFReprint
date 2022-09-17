@@ -3,8 +3,8 @@
 local base = require("game.bigWorld.actors.entityClass.FightEntity")
 local LocalPlayerEntity = class(base)
 
-function LocalPlayerEntity:onAvatarLoadComplete()
-    base.onAvatarLoadComplete(self)
+function LocalPlayerEntity:on_avatar_loadComplete()
+    base.on_avatar_loadComplete(self)
     self:set_inputEnable(true)
     -- print("启动游戏结束"..Time.realtimeSinceStartup)
 end

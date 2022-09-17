@@ -1,0 +1,4 @@
+local BigworldConfig = {}
+
+
+return BigworldConfig
