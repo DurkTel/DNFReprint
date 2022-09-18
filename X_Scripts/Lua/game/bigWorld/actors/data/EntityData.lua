@@ -55,6 +55,8 @@ function EntityData:get_level() return self.totalInfo.level or 1 end
 
 function EntityData:get_move_seep() return self.totalInfo.moveSeep or 5 end
 
+function EntityData:get_jump_height() return self.totalInfo.jumpHeight or 0 end
+
 function EntityData:get_aggressivity() return self.totalInfo.aggressivity or 0 end
 
 function EntityData:get_defense() return self.totalInfo.defense or 0 end

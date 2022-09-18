@@ -1,3 +1,4 @@
+--所有能移动的实体
 local base = require("game.bigWorld.actors.entityClass.SkinEntity")
 local AIEntity = class(base)
 
@@ -26,6 +27,8 @@ end
 
 function AIEntity:on_init()
     base.on_init(self)
+    self:set_moveSeed(self.entityData:get_move_seep())
+    self:set_jumpHeight(self.entityData:get_jump_height())
 end
 
 function AIEntity:on_avatar_loadComplete()

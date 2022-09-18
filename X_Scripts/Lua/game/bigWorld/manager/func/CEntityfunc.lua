@@ -16,9 +16,14 @@ function CEntityfunc:add_entitySkill()
     self.gmentity:AddEntitySkill()
 end
 
---初始化属性
-function CEntityfunc:add_entityAttribute(name)
-    self.gmentity:AddEntityAttribute(name)
+--设置移动速度
+function CEntityfunc:set_moveSeed(seed)
+    self.gmentity:Set_MoveSeed(seed)
+end
+
+--设置跳跃高度
+function CEntityfunc:set_jumpHeight(height)
+    self.gmentity:Set_JumpHeight(height)
 end
 
 --进行实体路径移动

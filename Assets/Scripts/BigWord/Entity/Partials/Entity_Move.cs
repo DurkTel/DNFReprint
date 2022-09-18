@@ -38,12 +38,12 @@ public partial class Entity
 
     private float m_moveStartTime;
 
+    private float m_moveSeed;
+
     /// <summary>
     /// 0 没有移动 1 走路 2跑步
     /// </summary>
     public int movePhase;
-
-    public EntityAttribute entityAttribute;
     /// <summary>
     /// type 0 停止移动 1 开始移动 2 正在移动
     /// </summary>
@@ -83,6 +83,11 @@ public partial class Entity
         }
     }
 
+    public void Set_MoveSeed(float moveSeed)
+    {
+        m_moveSeed = Mathf.Max(0, moveSeed);
+    }
+
     private void ReleaseMove()
     {
         m_moveMode = MoveMode.NONE;
@@ -93,7 +98,6 @@ public partial class Entity
         m_inputEnabled = false;
         m_curMoveDir = m_velocity = m_moveStartPos = Vector2.zero;
         movePhase = 0;
-        entityAttribute = null;
         m_jumpState = JumpState.NONE;
         m_jumpSpeed = 0;
         m_movePathPosList.Clear();
@@ -120,7 +124,7 @@ public partial class Entity
             m_curMoveDir = Vector2.zero;
        
         Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
-        m_curSpeed = movePhase == 1 ? entityAttribute.MoveSpeed : entityAttribute.MoveSpeed * 2;
+        m_curSpeed = movePhase == 1 ? m_moveSeed : m_moveSeed * 2;
         m_velocity = dir * m_curSpeed * m_moveDirCoefficient;
         rigidbody.velocity = m_velocity;
 
@@ -184,7 +188,7 @@ public partial class Entity
         if (movePhase == 0)
         { 
             Move_OnStart();
-            m_curSpeed = movePhase == 1 ? entityAttribute.MoveSpeed : entityAttribute.MoveSpeed * 2;
+            m_curSpeed = movePhase == 1 ? m_moveSeed : m_moveSeed * 2;
             m_moveStartTime = Time.realtimeSinceStartup;
         }
 

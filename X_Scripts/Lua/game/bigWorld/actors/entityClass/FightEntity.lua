@@ -7,7 +7,6 @@ local FightEntity = class(base)
 function FightEntity:on_avatar_loadComplete()
     base.on_avatar_loadComplete(self)
     self:add_entitySkill()
-    self:add_entityAttribute("Assets/ScriptableObjects/Character/SaberAttr.asset")
 end
 
 function FightEntity:chang_status(state)

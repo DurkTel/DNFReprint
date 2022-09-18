@@ -20,7 +20,9 @@ local main = function()
             [6] = 10006,
             [7] = 10007,
             [8] = 10008,
-        }
+        },
+        moveSeep = 1.5,
+        jumpHeight = 0.8
     }
 
     GEntityManager.create_entity(SentityData)

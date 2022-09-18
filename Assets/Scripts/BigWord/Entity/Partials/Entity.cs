@@ -171,16 +171,6 @@ public partial class Entity : BaseEvent
         }
     }
 
-    public void AddEntityAttribute(string name)
-    {
-        //以后改成lua赋值
-        //EntityAttribute attr = AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/Character/SaberAttr.asset", typeof(EntityAttribute)) as EntityAttribute;
-        //EntityAttribute attr = AssetDatabase.LoadAssetAtPath(name, typeof(EntityAttribute)) as EntityAttribute;
-        //entityAttribute = attr;
-
-        entityAttribute = AssetLoader.Load<EntityAttribute>("so/SaberAttr");
-    }
-
     private void InitEvent()
     {
 

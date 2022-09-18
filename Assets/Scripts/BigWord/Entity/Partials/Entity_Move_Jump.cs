@@ -21,6 +21,8 @@ public partial class Entity
 
     private float m_gravity = CommonUtility.GravitationalAcceleration;
 
+    private float m_jumpHeigh;
+
     /// <summary>
     /// 跳跃事件 type 1开始跳跃 2上升阶段 3达到最高点 4下落阶段 5受击掉落 6着地
     /// </summary>
@@ -54,7 +56,7 @@ public partial class Entity
         m_jumpState = JumpState.START;
         onJumpEvent?.Invoke(entityId, 1);
         //达到目标高度所需的初速度
-        m_jumpSpeed = Mathf.Sqrt(2f * m_gravity * entityAttribute.JumpHeight);
+        m_jumpSpeed = Mathf.Sqrt(2f * m_gravity * m_jumpHeigh);
 
         //播放起跳动画
         DOSpriteAnimation(animationMap.TryGetAnimation("JUMP_ANIM"));
@@ -95,5 +97,10 @@ public partial class Entity
         }
 
         onJumpEvent?.Invoke(entityId, (int)m_jumpState);
+    }
+
+    public void Set_JumpHeight(float height)
+    {
+        m_jumpHeigh = Mathf.Max(0, height);
     }
 }
