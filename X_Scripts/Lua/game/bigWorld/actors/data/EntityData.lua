@@ -36,6 +36,12 @@ function EntityData:init_cfg()
         self.totalInfo.aggressivity = refreshCfg.aggressivity
         --得到防御力
         self.totalInfo.defense = refreshCfg.defense
+        --配置音效
+        self.dbcfg.attackAudio = string.split(monsterCfg.attackAudio, ',', true) or {}
+        self.dbcfg.hitAudio = string.split(monsterCfg.hitAudio, ',', true) or {}
+        self.dbcfg.hurtAudio = string.split(monsterCfg.hurtAudio, ',', true) or {}
+        self.dbcfg.dieAudio = string.split(monsterCfg.dieAudio, ',', true) or {}
+        self.dbcfg.talkAudio = string.split(monsterCfg.talkAudio, ',', true) or {}
     end
 end
 

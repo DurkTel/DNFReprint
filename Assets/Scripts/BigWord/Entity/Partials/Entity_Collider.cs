@@ -183,21 +183,6 @@ public partial class Entity : GMUpdateCollider.IColliderInfo
         boxList.Add(newColl);
     }
 
-    private void ContentAttackerHandler(GMUpdateCollider.ContactPair contact)
-    {
-            //计算接触点
-            Vector3 contactPoint = contact.attacker.collider2d.bounds.ClosestPoint(contact.victim.collider2d.bounds.center);
-            var startY = Mathf.Min(contact.victim.collider2d.bounds.center.y + contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y + (contact.attacker.collider2d.bounds.extents.y / 2f));
-            var endY = Mathf.Max(contact.victim.collider2d.bounds.center.y - contact.victim.collider2d.bounds.extents.y, contact.attacker.collider2d.bounds.center.y - (contact.attacker.collider2d.bounds.extents.y / 2f));
-            contactPoint.y = Mathf.Lerp(startY, endY, Random.Range(0f, 1f));
-            GameObjectPool pool = GMPoolManager.Instance.TryGet("HitEffect");
-            pool.Get("dd", (effectObj) =>
-            {
-                HitEffect effect = effectObj.GetComponent<HitEffect>();
-                effectObj.transform.position = contactPoint;
-                effect.Play(() => { pool.Release("dd", effectObj); });
-            });
-    }
 
     public void AddEntitySkill()
     { 

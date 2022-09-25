@@ -14,7 +14,12 @@ function FightEntity:chang_status(state)
     self.gmentity:ChangeStatus(state)
 end
 
---攻击表现
+--执行攻击
+function FightEntity:execute_attack()
+    self:enter_state(GEntityDefine.ai_stateType.combat)
+end
+
+--攻击表现（击中后）
 function FightEntity:attacker_performance(attackerTrigger, victimTrigger, skillCfg)
     local damageCfg = MDefine.cfg.skill.getDamageCfgById(skillCfg.damageCode)
     --卡肉
@@ -46,6 +51,7 @@ function FightEntity:victim_performance(attackerTrigger, victimTrigger, skillCfg
 
     local damageCfg = MDefine.cfg.skill.getDamageCfgById(skillCfg.damageCode)
     if not damageCfg then return end
+    self:enter_state(GEntityDefine.ai_stateType.hurt)
     --被击动画
     self:move_hurt_start(entity:get_transform(), damageCfg.lookAttacker, damageCfg.velocityX, damageCfg.velocityXY, damageCfg.heightY, damageCfg.acceleration, damageCfg.recoverTime)
 
@@ -57,6 +63,13 @@ function FightEntity:victim_performance(attackerTrigger, victimTrigger, skillCfg
     --扣血
     local curLife = self.entityData:get_life()
     Dispatcher.dispatchEvent(EventDefine.ON_ENTIT_ATTRIBUTE_UPDATE, self, GEntityDefine.entity_attribute.attribute_life, curLife - damageCfg.hurt)
+
+    --音效
+    if self.entityData.dbcfg.hurtAudio then
+        math.randomseed(os.time())
+        local random = math.random(1, #self.entityData.dbcfg.hurtAudio)
+        GAudioManager.play_hurt(self.entityData.dbcfg.hurtAudio[random])
+    end
 end
 
 function FightEntity:dispose()

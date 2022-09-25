@@ -9,8 +9,7 @@ GDebugUtility.onInputEvent = function (key)
         monsterEntity:set_avatarPosition(Vector3(4.7,1.09,0))
         
     elseif key == "F3" then
-        Dispatcher.dispatchEvent(EventDefine.ON_ENTIT_ATTRIBUTE_UPDATE, 1, 1, 20, 100)
-
+        GAudioManager.play("CityLoopAudio", "sounds/music/gate_new")
     elseif key == "F4" then
 
     elseif key == "F5" then

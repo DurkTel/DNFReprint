@@ -39,6 +39,7 @@ function ScenesManager.switch_scene(mapId, portalPos)
     lastMapType = curMapType
     curMapType = sceneMap[mapId].mapType
     local scene = CGMScenesManager.Instance:SwitchScene(mapId, sceneMap[mapId].dbcfg.assetName)
+    GAudioManager.play_bg_loop_city(sceneMap[mapId].dbcfg.bgMusic)
 end
 
 function ScenesManager.get_sceneById(mapId)

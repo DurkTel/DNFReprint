@@ -93,11 +93,6 @@ function MonsterEntity:execute_decision(decision)
     end
 end
 
---执行攻击
-function MonsterEntity:execute_attack()
-    self:play_sprite_animation("ATTACK_1_ANIM")
-end
-
 --执行追击
 function MonsterEntity:execute_pursuit()
     local cuccess, path = self:get_path() --计算目标的路径

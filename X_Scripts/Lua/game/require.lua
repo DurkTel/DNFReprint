@@ -12,6 +12,7 @@ local loadTab =
         _G.Transform = CS.UnityEngine.Transform
         _G.Time = CS.UnityEngine.Time
     end,
+    -- yield(0)
     'game.global',
     'game.framework.SystemClass',
     'game.framework.MDefine',
@@ -21,6 +22,7 @@ local loadTab =
     'game.framework.func.Loaderfunc',
     'game.bigWorld.manager.GameCamera',
     'game.bigWorld.manager.EntityManager',
+    'game.bigWorld.manager.AudioManager',
     'game.bigWorld.manager.ScenesManager',
     'game.bigWorld.manager.CopyManager',
     'game.bigWorld.finding.Finding'

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 public class GameObjectPool : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class GameObjectPool : MonoBehaviour
 
     private Vector3 m_releasePos = new Vector3(9999, 9999, 9999);
 
+    public UnityAction<GameObject> constructor;
+
+    public UnityAction<GameObject> destructor;
 
     public void Get(string assetName, UnityAction<GameObject> callBack)
     {
@@ -34,17 +38,18 @@ public class GameObjectPool : MonoBehaviour
                 m_poolMap.Remove(assetName);
             }
             callBack?.Invoke(info.gameObject);
+            constructor?.Invoke(info.gameObject);
         }
         else
         {
             AssetLoader.LoadAsync<GameObject>(assetName, (p) =>
             {
-                callBack?.Invoke(Instantiate(p));
+                GameObject go = Instantiate(p);
+                callBack?.Invoke(go);
+                constructor?.Invoke(go);
             });
         }
-
     }
-
 
     public void Release(string assetName, GameObject item)
     {
@@ -55,6 +60,7 @@ public class GameObjectPool : MonoBehaviour
             GameObjectInfo info = Pool<GameObjectInfo>.Get();
             info.gameObject = item;
             info.releaseTime = Time.realtimeSinceStartup;
+            destructor?.Invoke(item);
             m_poolMap[assetName].Enqueue(info);
         }
         else
@@ -63,6 +69,7 @@ public class GameObjectPool : MonoBehaviour
             GameObjectInfo info = Pool<GameObjectInfo>.Get();
             info.gameObject = item;
             info.releaseTime = Time.realtimeSinceStartup;
+            destructor?.Invoke(item);
             queue.Enqueue(info);
             m_poolMap.Add(assetName, queue);
         }
