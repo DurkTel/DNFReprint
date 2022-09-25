@@ -16,8 +16,6 @@ public partial class Entity
 
     private MoveMode m_moveMode = MoveMode.NONE;
 
-    private Vector2 m_offsetSpeed = new Vector2(1f, 0.7f);
-
     private float m_curSpeed;
 
     private float m_moveDirCoefficient = 1f;
@@ -123,11 +121,12 @@ public partial class Entity
         if (IsInThisAni(AnimationMap.AniType.NOTMOVE))
             m_curMoveDir = Vector2.zero;
        
-        Vector2 dir = m_curMoveDir.normalized * m_offsetSpeed;
-        m_curSpeed = movePhase == 1 ? m_moveSeed : m_moveSeed * 2;
+        Vector2 dir = m_curMoveDir;
+        m_curSpeed = movePhase == 1 ? m_moveSeed : m_moveSeed * 1.8f;
+        m_curSpeed = m_jumpState == JumpState.NONE ? m_curSpeed : 1.2f; //跳跃固定位置速度
         m_velocity = dir * m_curSpeed * m_moveDirCoefficient;
         rigidbody.velocity = m_velocity;
-
+        
         bool onAttack = IsInThisAni(AnimationMap.AniType.ATTACK);
 
         //攻击时不能上下移动

@@ -52,8 +52,8 @@ MonoBehaviour:
       isTrigger: 1
       offset_Z: 0
       size_Z: 25
-      offset: {x: 86.2, y: 70}
-      size: {x: 119.2, y: 34}
+      offset: {x: 90.2, y: 63.1}
+      size: {x: 119.2, y: 47.8}
     - layer: 3
       isTrigger: 1
       offset_Z: 0

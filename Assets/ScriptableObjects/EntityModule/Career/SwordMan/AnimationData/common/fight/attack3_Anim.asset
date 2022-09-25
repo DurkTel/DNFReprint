@@ -56,7 +56,7 @@ MonoBehaviour:
       parameterBool: 0
       parameterOnEnable: 0
       parameterOnDisable: 0
-    - eventType: 4
+    - eventType: 0
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: sm_atk_03

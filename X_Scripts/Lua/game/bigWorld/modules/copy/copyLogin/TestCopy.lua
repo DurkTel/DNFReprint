@@ -1,4 +1,4 @@
-local base = require("game.bigWorld.fight.copyBaseLogin")
+local base = require("game.bigWorld.fight.CopyBaseLogin")
 local TestCopy = class(base)
 
 function TestCopy:on_copy_update(mapId)

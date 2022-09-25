@@ -49,7 +49,7 @@ public partial class Entity
 
     public UnityAction animationFinish;
 
-    public static UnityAction<int, int> attackFinishEvent;
+    public static UnityAction<int, int, string> attackFinishEvent;
 
     public int curFlip { get { return m_renenderSprites.Count > 0 ? m_renenderSprites[0].GetCurFlip() : 0; } }
 
@@ -58,12 +58,12 @@ public partial class Entity
     /// </summary>
     public void TickSpriteAnimation(float deltaTime)
     {
-        if (m_pause || current_animationData == null || haltFrame > 0) return;
+        if (m_pause || current_animationData == null) return;
         List<AnimationFrameData> aniSprites = current_animationData.frameList;
         AnimationFrameData curSprite = aniSprites[m_currentFrame];
         
         m_totalTime += deltaTime;
-        if (m_totalTime >= curSprite.interval / current_animationData.speed)
+        if (m_totalTime >= (curSprite.interval + haltFrame) / current_animationData.speed)
         {
             m_totalTime = 0;
             m_currentIndex = int.Parse(curSprite.sprite.name.Substring(curSprite.sprite.name.LastIndexOf('_') + 1));//这样写有可能造成性能问题 暂时
@@ -156,7 +156,7 @@ public partial class Entity
             return;
         }
         if (last_animationData != null && last_animationData.colliderInfo != null && last_animationData.colliderInfo.skillCode != 0)
-            attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode);
+            attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode, last_animationData.colliderInfo.name);
         colliderUpdate.ClearContact(entityId);
         last_animationData = current_animationData;
         current_animationData = animationData;

@@ -1,12 +1,16 @@
 --所有能战斗的实体都由此派生
 
 local base = require("game.bigWorld.actors.entityClass.AIEntity")
+local EntitySkillTree = require("game.bigWorld.fight.EntitySkillTree")
 local FightEntity = class(base)
-
 
 function FightEntity:on_avatar_loadComplete()
     base.on_avatar_loadComplete(self)
-    self:add_entitySkill()
+    -- self:add_entitySkill()
+    if self.totalSkillList then
+        self.skillTree = EntitySkillTree()
+        self.skillTree:init_tree(self.totalSkillList)
+    end
 end
 
 function FightEntity:chang_status(state)

@@ -21,12 +21,13 @@ public static class LuaWarp
         typeof(UnityAction<int>),
         typeof(UnityAction<int,int>),
         typeof(UnityAction<int,int,int>),
+        typeof(UnityAction<int,int,string>),
         typeof(UnityAction<float>),
         typeof(UnityAction<float,float>),
         typeof(UnityAction<float,float,float>),
         typeof(UnityAction<bool>),
         typeof(UnityAction<bool,bool>),
-        typeof(UnityAction<ColliderTrigger,ColliderTrigger,int>),
+        typeof(UnityAction<ColliderTrigger,ColliderTrigger,int, string>),
     };
 
     [LuaCallCSharp]
