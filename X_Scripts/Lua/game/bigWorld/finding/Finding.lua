@@ -1,5 +1,9 @@
 local Finding = {} _G.GFinding = Finding
 
+GInputUtility.onInputEvent = GInputUtility.onInputEvent + function (action)
+    Dispatcher.dispatchEvent(EventDefine.ON_INPUT_UPDATE, action)
+end
+
 --计算路径
 function Finding.calculatePathByPos(sx, sy, ex, ey)
     local navigation2D = GScenesManager.get_curNavigation()

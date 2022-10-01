@@ -99,10 +99,9 @@ public partial class Entity : BaseEvent
 
     public virtual void Update(float deltaTime)
     {
-        
+
         //刷新剔除
         CullGroupUpdate(deltaTime);
-
     }
 
     public void LateUpdate()

@@ -1,3 +1,5 @@
+local SkillFunc = require("game.bigWorld.modules.skill.func.SkillFunc")
+
 local base = require("game.framework.Module")
 local SkillModule = class(base)
 
@@ -15,12 +17,14 @@ end
 
 --注册本地事件
 function SkillModule:get_local_evnets()
-   
+   return EventDefine.ON_INPUT_UPDATE
 end
 
 --监听本地事件
 function SkillModule:on_local_event(cmd, data)
-    
+    if cmd == EventDefine.ON_INPUT_UPDATE then
+        SkillFunc.skill_discharge_handle(data)
+    end
 end
 
 return SkillModule

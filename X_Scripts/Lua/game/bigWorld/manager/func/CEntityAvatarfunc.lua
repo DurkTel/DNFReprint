@@ -41,4 +41,21 @@ function CEntityAvatarfunc:set_skinVisible(visible)
     self.gmentity:Skin_SetVisible(visible)
 end
 
+--当前是否播放这个动画
+function CEntityAvatarfunc:in_animation(animationName)
+    return self.gmentity:IsInThisAni(animationName)
+end
+
+--当前是否播放带这个标签的动画
+function CEntityAvatarfunc:in_tag_animation(tag)
+    return self.gmentity:IsInThisTagAni(tag)
+end
+
+--获取当前播放的动画状态 动画名称 动画帧
+function CEntityAvatarfunc:get_current_animation_state()
+    local aniName = self.gmentity:GetCurrentAni()
+    local frame = self.gmentity:GetCurrentFrame()
+    return aniName, frame
+end
+
 return CEntityAvatarfunc

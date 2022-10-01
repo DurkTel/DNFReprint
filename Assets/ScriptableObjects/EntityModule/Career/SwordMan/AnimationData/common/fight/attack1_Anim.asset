@@ -85,45 +85,6 @@ MonoBehaviour:
     frameEventLoop: 0
     frameEvent: []
   switchingConditions:
-  - frame: {x: 7, y: 9}
-    animationData: {fileID: 11400000, guid: f19a6ec6bb177ef49bbb3ee92d98ee41, type: 2}
-    conditions:
-    - conditionType: 0
-      characterAnimation: {fileID: 11400000}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 0
-      customCondition: 0
-    - conditionType: 5
-      characterAnimation: {fileID: 0}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 5
-      customCondition: 0
   - frame: {x: 9, y: 9}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
     conditions:

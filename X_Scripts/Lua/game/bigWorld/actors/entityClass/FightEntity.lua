@@ -7,10 +7,8 @@ local FightEntity = class(base)
 function FightEntity:on_avatar_loadComplete()
     base.on_avatar_loadComplete(self)
     -- self:add_entitySkill()
-    if self.totalSkillList then
-        self.skillTree = EntitySkillTree()
-        self.skillTree:init_tree(self.totalSkillList)
-    end
+    self.skillTree = EntitySkillTree()
+    self.skillTree:init_tree(self.totalSkillList or {})
 end
 
 function FightEntity:chang_status(state)
@@ -18,9 +16,27 @@ function FightEntity:chang_status(state)
     self.gmentity:ChangeStatus(state)
 end
 
+--请求攻击
+function FightEntity:request_attack()
+    local limit = self:limit_attack()
+    if limit then return end
+    self:execute_attack()
+end
+
+--攻击限制
+function FightEntity:limit_attack()
+    return not self:in_animation("IDLE_ANIM")
+end
+
 --执行攻击
 function FightEntity:execute_attack()
     self:enter_state(GEntityDefine.ai_stateType.combat)
+    self:play_sprite_animation("ATTACK_1_ANIM")
+    if self.entityData.dbcfg.attackAudio then
+        math.randomseed(os.time())
+        local random = math.random(1, #self.entityData.dbcfg.attackAudio)
+        GAudioManager.play_hit(self.entityData.dbcfg.attackAudio[random])
+    end
 end
 
 --攻击表现（击中后）

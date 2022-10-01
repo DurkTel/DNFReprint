@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 42, 47, 21);
+			Utils.BeginObjectRegister(type, L, translator, 0, 45, 47, 21);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -43,6 +43,9 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ForceDOSkillAnimation", _m_ForceDOSkillAnimation);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetCurAnimationLength", _m_GetCurAnimationLength);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsInThisAni", _m_IsInThisAni);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsInThisTagAni", _m_IsInThisTagAni);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetCurrentAni", _m_GetCurrentAni);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetCurrentFrame", _m_GetCurrentFrame);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddEntityAnimator", _m_AddEntityAnimator);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ContactHandle", _m_ContactHandle);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddEntitySkill", _m_AddEntitySkill);
@@ -819,11 +822,31 @@ namespace XLua.CSObjectWrap
                     
                     return 1;
                 }
-                if(gen_param_count == 2&& translator.Assignable<AnimationMap.AniType>(L, 2)) 
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to Entity.IsInThisAni!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_IsInThisTagAni(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
                 {
                     AnimationMap.AniType _aniType;translator.Get(L, 2, out _aniType);
                     
-                        var gen_ret = gen_to_be_invoked.IsInThisAni( _aniType );
+                        var gen_ret = gen_to_be_invoked.IsInThisTagAni( _aniType );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -835,7 +858,61 @@ namespace XLua.CSObjectWrap
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
-            return LuaAPI.luaL_error(L, "invalid arguments to Entity.IsInThisAni!");
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetCurrentAni(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        var gen_ret = gen_to_be_invoked.GetCurrentAni(  );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetCurrentFrame(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        var gen_ret = gen_to_be_invoked.GetCurrentFrame(  );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
             
         }
         

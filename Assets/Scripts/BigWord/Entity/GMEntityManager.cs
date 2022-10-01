@@ -90,13 +90,11 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
             m_waitCreateList.RemoveAt(0);
         }
 
-        entityUpdateCollider.UpdateColliderContent();
-
     }
 
     private void LateUpdate()
     {
-
+        entityUpdateCollider.UpdateColliderContent();
     }
 
     private void OnDestroy()

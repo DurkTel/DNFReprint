@@ -4,7 +4,8 @@ local EntitySkillData = require("game.bigWorld.fight.EntitySkillData")
 local skillCount = 0
 
 function EntitySkillTree:ctor()
-    self.skillTreeMap = {}
+    self.skillTreeMap = {} --技能树code - 数据
+    self.skillBindMap = {} --技能绑定action - code
 end
 
 function EntitySkillTree:init_tree(treeData) --拥有的技能table
@@ -24,16 +25,29 @@ function EntitySkillTree:add_skill(skillData)
     if skill then
         skill.level = skillData.level
     else
-        local skillData = EntitySkillData()
-        skillData:set_data(skillData)
-        self.skillTreeMap[skillData.code] = skillData
+        local data = EntitySkillData()
+        data:set_data(skillData)
+        self.skillTreeMap[skillData.code] = data
         skillCount = skillCount + 1
     end
 end
 
 function EntitySkillTree:remove_skill(skillCode)
-    if not self.skillTreeMap[skillCode] then return end
+    if not self:get_skill(skillCode) then return end
     self.skillTreeMap[skillCode] = nil
+end
+
+function EntitySkillTree:bind_skill(action, skillCode)
+    if not self:get_skill(skillCode) then return end --没学不能绑定
+    self.skillBindMap[action] = skillCode
+end
+
+function EntitySkillTree:unbind_skill(action)
+    self.skillBindMap[action] = nil
+end
+
+function EntitySkillTree:get_bind_skill(action)
+    return self.skillBindMap[action]
 end
 
 function EntitySkillTree:get_skill(skillCode)
@@ -42,6 +56,11 @@ end
 
 function EntitySkillTree:get_skill_level(skillCode)
     return self.skillTreeMap[skillCode] and self.skillTreeMap[skillCode].level or nil
+end
+
+function EntitySkillTree:set_skill_release_time(skillCode)
+    if not self:get_skill(skillCode) then return end
+    self.skillTreeMap[skillCode]:record_release_time(os.time())
 end
 
 function EntitySkillTree:get_skill_release_time(skillCode)

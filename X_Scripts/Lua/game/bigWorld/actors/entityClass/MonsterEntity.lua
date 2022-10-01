@@ -85,7 +85,7 @@ end
 --执行决策
 function MonsterEntity:execute_decision(decision)
     if decision == 1 then
-        self:execute_attack()
+        self:request_attack()
     elseif decision == 2 then
         self:execute_pursuit()
     else 

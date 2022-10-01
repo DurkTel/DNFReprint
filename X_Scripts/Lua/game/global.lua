@@ -1,8 +1,8 @@
-_G.GDebugUtility = CS.DebugUtility
+_G.GInputUtility = CS.InputUtility
 
-GDebugUtility.Init()
+GInputUtility.Init()
 --测试快捷键 Ctrl+F1 切换到debug模式
-GDebugUtility.onInputEvent = function (key)
+GInputUtility.onInputEvent = function (key)
     if key == "F1" then
     elseif key == "F2" then
         local monsterEntity = GEntityManager.create_monster(10000)

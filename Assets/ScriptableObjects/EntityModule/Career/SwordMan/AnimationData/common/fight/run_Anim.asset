@@ -15,7 +15,7 @@ MonoBehaviour:
   aniName: RUN_ANIM
   colliderInfo: {fileID: 11400000, guid: ae71befd874803e438a6e1dcb1e3ef3f, type: 2}
   isLoop: 1
-  speed: 1
+  speed: 1.2
   frameList:
   - sprite: {fileID: 21300000, guid: fd07065278f84724b8d77f7cb8e04ffd, type: 3}
     interval: 0.1

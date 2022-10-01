@@ -116,45 +116,6 @@ MonoBehaviour:
       parameterOnEnable: 0
       parameterOnDisable: 0
   switchingConditions:
-  - frame: {x: 7, y: 10}
-    animationData: {fileID: 11400000, guid: 1dfad26c1d52ba14e931e37ebb67be90, type: 2}
-    conditions:
-    - conditionType: 0
-      characterAnimation: {fileID: 11400000}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 0
-      customCondition: 0
-    - conditionType: 5
-      characterAnimation: {fileID: 0}
-      spritePostionY:
-        relation: 0
-        targetValue: 0
-      spriteSpeedY:
-        relation: 0
-        targetValue: 0
-      inputSpeedX:
-        relation: 0
-        targetValue: 0
-      inputSpeedY:
-        relation: 0
-        targetValue: 0
-      inputComparison:
-        inputType: 0
-        action: 5
-      customCondition: 0
   - frame: {x: 10, y: 10}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
     conditions:

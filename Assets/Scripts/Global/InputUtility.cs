@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DebugUtility
+public class InputUtility
 {
     public static InputReader inputReader { get { return InputReader.GetInputAsset(); } }
 

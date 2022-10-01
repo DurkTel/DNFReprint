@@ -15,25 +15,19 @@ public class AnimationMap : ScriptableObject
 
     public void AddAnimation(string name, AnimationData animation)
     {
-        if (!names.Contains(name))
-        {
+        //if (!names.Contains(name))
+        //{
             names.Add(name);
             animations.Add(animation);
             animationFlags.Add(0);
-        }
+        //}
     }
 
-    public bool RemoveAnimation(string name)
+    public void RemoveAnimation(int index)
     {
-        int index = GetIndex(name);
-        if (index != -1)
-        {
-            names.RemoveAt(index);
-            animations.RemoveAt(index);
-            animationFlags.RemoveAt(index);
-        }
-
-        return false;
+        names.RemoveAt(index);
+        animations.RemoveAt(index);
+        animationFlags.RemoveAt(index);
     }
 
     private int GetIndex(string name)

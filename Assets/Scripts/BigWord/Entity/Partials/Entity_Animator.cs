@@ -222,7 +222,7 @@ public partial class Entity
     /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
     public void ForceDOSkillAnimation(AnimationData animationData, bool onlyOnCommon = true)
     {
-        if (!onlyOnCommon || !IsInThisAni(AnimationMap.AniType.FORCE))
+        if (!onlyOnCommon || !IsInThisTagAni(AnimationMap.AniType.FORCE))
             return;
         DOSpriteAnimation(animationData);
     }
@@ -234,7 +234,7 @@ public partial class Entity
     /// <param name="onlyOnCommon">是否只在移动、普通攻击时强制</param>
     public void ForceDOSkillAnimation(string animationDataName, CommonUtility.Career career, bool onlyOnCommon = true)
     {
-        if (!onlyOnCommon || !IsInThisAni(AnimationMap.AniType.FORCE))
+        if (!onlyOnCommon || !IsInThisTagAni(AnimationMap.AniType.FORCE))
             return;
 
         string path = string.Format("{0}Character/Player/{1}/skill/{2}.asset", CommonUtility.AnimationDataAssetPath ,(int)career, animationDataName);
@@ -274,7 +274,7 @@ public partial class Entity
     /// <returns></returns>
     public bool IsInThisAni(string aniName)
     {
-        return current_animationData == animationMap.TryGetAnimation(aniName);
+        return IsInThisAni(animationMap.TryGetAnimation(aniName));
     }
 
     /// <summary>
@@ -282,9 +282,27 @@ public partial class Entity
     /// </summary>
     /// <param name="baseAnim">动画类型</param>
     /// <returns></returns>
-    public bool IsInThisAni(AnimationMap.AniType aniType)
+    public bool IsInThisTagAni(AnimationMap.AniType aniType)
     {
         return animationMap.ContainsTag(current_animationData.aniName, aniType);
+    }
+
+    /// <summary>
+    /// 获取当前正在播放的动画名称
+    /// </summary>
+    /// <returns></returns>
+    public string GetCurrentAni()
+    {
+        return current_animationData.aniName;
+    }
+
+    /// <summary>
+    /// 获取当前正在播放的动画进行到哪一帧
+    /// </summary>
+    /// <returns></returns>
+    public int GetCurrentFrame()
+    {
+        return m_currentFrame;
     }
 
     /// <summary>
