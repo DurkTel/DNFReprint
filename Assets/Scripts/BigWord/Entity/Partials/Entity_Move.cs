@@ -281,7 +281,7 @@ public partial class Entity
 
     }
 
-    private void SetSpriteFilp(bool isLeft)
+    public void SetSpriteFilp(bool isLeft)
     {
         foreach (var item in m_renenderSprites)
         {

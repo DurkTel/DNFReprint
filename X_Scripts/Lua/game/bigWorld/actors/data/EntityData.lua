@@ -83,6 +83,8 @@ function EntityData:is_npc() return self.etype == GEntityDefine.entityType.npc e
 
 function EntityData:is_portal() return self.etype == GEntityDefine.entityType.portal end
 
+function EntityData:is_effect() return self.etype == GEntityDefine.entityType.effect end
+
 function EntityData:get_career() return self.SentityInfo and self.SentityInfo.career or 0 end
 
 return EntityData

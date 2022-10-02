@@ -4,6 +4,22 @@ local CEntity = class()
 CEntity.gmentity = nil
 CEntity.cguid = nil
 
+--[[
+    ctor
+        ⬇
+    init_data
+        ⬇
+    on_init
+        ⬇
+    set_hotRadius
+        ⬇
+    on_create
+        ⬇
+    init_skin
+        ⬇
+    on_avatar_loadComplete
+]]
+
 
 function CEntity:ctor() end
 
@@ -28,6 +44,14 @@ end
 
 function CEntity:get_position()
     return self.gmentity and self.gmentity.transform and self.gmentity.transform.position or nil
+end
+
+function CEntity:get_local_position()
+    return self.gmentity and self.gmentity.transform and self.gmentity.transform.localPosition or nil
+end
+
+function CEntity:get_flip()
+    return self.gmentity and self.gmentity.curFlip or nil
 end
 
 function CEntity:on_create() end

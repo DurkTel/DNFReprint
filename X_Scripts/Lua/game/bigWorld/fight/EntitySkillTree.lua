@@ -60,7 +60,7 @@ end
 
 function EntitySkillTree:set_skill_release_time(skillCode)
     if not self:get_skill(skillCode) then return end
-    self.skillTreeMap[skillCode]:record_release_time(os.time())
+    self.skillTreeMap[skillCode]:record_release_time(Time.time)
 end
 
 function EntitySkillTree:get_skill_release_time(skillCode)

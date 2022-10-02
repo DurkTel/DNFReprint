@@ -27,7 +27,7 @@ public static class LuaWarp
         typeof(UnityAction<float,float,float>),
         typeof(UnityAction<bool>),
         typeof(UnityAction<bool,bool>),
-        typeof(UnityAction<ColliderTrigger,ColliderTrigger,int, string>),
+        typeof(UnityAction<ColliderTrigger,ColliderTrigger,int>),
     };
 
     [LuaCallCSharp]

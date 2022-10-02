@@ -127,10 +127,11 @@ function EntityManager.create_monster(refreshId)
     if not table.isNull(refreshCfg) and not table.isNull(monsterCfg) then
         local SentityData =
         {
-            type = 2,
+            type = GEntityDefine.entityType.monster,
             code = refreshId,
             cfg = refreshCfg,
-            models = {
+            models = 
+            {
                 [0] = monsterCfg.modelCode,
             }
         }
@@ -140,5 +141,38 @@ function EntityManager.create_monster(refreshId)
     end
 end
 
+
+function EntityManager.create_skill_effect(skillCode, bindEntityId)
+    local skillCfg = MDefine.cfg.skill.getSkillCfgById(skillCode)
+    if not table.isNull(skillCfg) then
+        local master = bindEntityId
+        if type(bindEntityId) == "number" then
+            master = EntityManager.get_luaEntityById(bindEntityId)
+        end
+        local effectTab = string.split(skillCfg.effect, ',', true)
+        local effectTabEx = string.split(skillCfg.effectEx, ',', true)
+        local effectCfg = MDefine.cfg.skill.getEffectCfgById(tonumber(effectTab[1]))
+        local SentityData =
+        {
+            type = GEntityDefine.entityType.effect,
+            code = skillCode,
+            master = master,
+            cfg = 
+            {
+                animation = skillCfg.animationDataName,
+                bornPos = master:get_local_position(),
+                offsetPos = Vector3(effectCfg.modelPositionX, effectCfg.modelPositionY, 0)
+            },
+            models = 
+            {
+                [2] = tonumber(effectTab[1]),
+                [3] = tonumber(effectTabEx[1]),
+            }
+        }
+    
+        local entity = GEntityManager.create_entity(SentityData)
+        return entity
+    end
+end
 
 return EntityManager

@@ -25,6 +25,8 @@ function GameEntity:on_init()
         nameStr = "monster_"
     elseif self.entityData:is_portal() then
         nameStr = "portal_"
+    elseif self.entityData:is_effect() then
+        nameStr = "effect_"
     end
 
     self:set_hotRadius()

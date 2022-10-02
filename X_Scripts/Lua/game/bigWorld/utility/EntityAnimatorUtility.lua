@@ -6,6 +6,8 @@ function EntityAnimatorUtility.get_animatorCfg(etype)
         assetName = "SwordManAnimMap"
     elseif etype == 2 then
         assetName = "GoblinAnimationMap"
+    elseif etype == 5 then
+        assetName = "CommonSkillAnimMap"
     end
 
     return assetName

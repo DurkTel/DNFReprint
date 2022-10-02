@@ -27,18 +27,21 @@ function CEntityEventfunc.onLuaAvatarLoadComplete(entityId)
     entity:on_avatar_loadComplete()
 end
 
-function CEntityEventfunc.attackFinishEvent(entityId, skillCode, colliderName)
+function CEntityEventfunc.attackFinishEvent(entityId, skillCode)
     local entity = GEntityManager.get_luaEntityById(entityId)
     if entity and not table.isNull(entity.attackHitMarks) then
-        entity.attackHitMarks[colliderName..skillCode] = nil --攻击完成 清空计数
+        entity.attackHitMarks[entityId.."_"..skillCode] = nil --攻击完成 清空计数
     end
 end
 
-function CEntityEventfunc.onContactHandlerEvent(attackerTrigger, victimTrigger, skillCode, colliderName)
+function CEntityEventfunc.onContactHandlerEvent(attackerTrigger, victimTrigger, skillCode)
     local attackerId = attackerTrigger.entity.entityId
     local victimId = victimTrigger.entity.entityId
 
     local attacker = GEntityManager.get_luaEntityById(attackerId)
+    if attacker.entityData:is_effect() then --攻击特效
+        attacker = attacker.entityData.totalInfo.master
+    end
     local victim = GEntityManager.get_luaEntityById(victimId)
 
     if victim.entityData:get_life() <= 0 then return end
@@ -50,7 +53,7 @@ function CEntityEventfunc.onContactHandlerEvent(attackerTrigger, victimTrigger, 
     if not attacker.attackHitMarks then
         attacker.attackHitMarks = {}
     end
-    local colliderFlag = colliderName..skillCode
+    local colliderFlag = attackerId.."_"..skillCode
     if not attacker.attackHitMarks[colliderFlag] then
         attacker.attackHitMarks[colliderFlag] = {}
     end

@@ -21,6 +21,7 @@ EntityDefine.entityType =
     robot       = 3,      --机器人
     npc         = 4,      --npc
     portal      = 4,      --传送门
+    effect      = 5,      --特效
 }
 
 EntityDefine.status = 

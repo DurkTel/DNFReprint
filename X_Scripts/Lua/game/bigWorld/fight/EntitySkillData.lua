@@ -19,7 +19,7 @@ end
 
 function EntitySkillData:is_ready()
     if not self.cfg then return false end
-    return os.time() - self.lastRelease > self.cfg.cd
+    return Time.time - self.lastRelease > self.cfg.cd
 end
 
 return EntitySkillData

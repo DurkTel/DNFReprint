@@ -15,7 +15,7 @@ MonoBehaviour:
   aniName: ATTACK_3_ANIM
   colliderInfo: {fileID: 11400000, guid: 2db9653373bd87b4fb07ea79f86a1338, type: 2}
   isLoop: 0
-  speed: 3
+  speed: 2.5
   frameList:
   - sprite: {fileID: 21300000, guid: ae6b423a65cdbd447af0bfdf8fe95cb2, type: 3}
     interval: 0.1

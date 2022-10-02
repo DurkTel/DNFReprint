@@ -11,12 +11,16 @@ function LocalPlayerEntity:on_avatar_loadComplete()
         [10002] = 1,
         [10003] = 1,
         [10004] = 1,
+        [10006] = 1,
+        [10007] = 1,
     }
     base.on_avatar_loadComplete(self)
     self:set_inputEnable(true)
     -- print("启动游戏结束"..Time.realtimeSinceStartup)
     self.skillTree:bind_skill("Attack_1", 10000)
     self.skillTree:bind_skill("Attack_2", 10004)
+    self.skillTree:bind_skill("Skill_1", 10006)
+    self.skillTree:bind_skill("Skill_3", 10007)
 end
 
 --请求攻击
@@ -28,14 +32,15 @@ end
 
 --攻击限制
 function LocalPlayerEntity:limit_attack()
-    -- return not self:in_animation("IDLE_ANIM")
     local curAniName, curFrame = self:get_current_animation_state()
     local isJump = self:in_tag_animation(2)
     local limitFlag = true
     local attackName = ""
     if isJump then
-        attackName = "JUMP_ATTACK_ANIM"
-        limitFlag = false
+        if curFrame >= 4 then
+            attackName = "JUMP_ATTACK_ANIM"
+            limitFlag = false
+        end
     elseif curAniName == "ATTACK_1_ANIM" then
         if curFrame >= 6 then --后摇
             attackName = "ATTACK_2_ANIM"
@@ -81,6 +86,28 @@ end
 --执行浮空攻击
 function LocalPlayerEntity:execute_levitation_attack()
     self:play_sprite_animation("LEVITATION_ANIM")
+    
+end
+
+--请求后跳
+function LocalPlayerEntity:request_back_jump()
+    local limit = self:limit_back_jump()
+    if limit then return end
+    self:execute_back_jump()
+end
+
+--后跳限制
+function LocalPlayerEntity:limit_back_jump()
+    local inJump = self:in_tag_animation(2)
+    local inAttack = self:in_tag_animation(4)
+    local inSkill = self:in_tag_animation(64)
+
+    return inJump or inAttack or inSkill
+end
+
+--执行后跳
+function LocalPlayerEntity:execute_back_jump()
+    self:play_sprite_animation("BACKJUMP_ANIM")
     
 end
 

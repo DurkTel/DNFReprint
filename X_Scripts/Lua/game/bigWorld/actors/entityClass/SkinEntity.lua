@@ -29,6 +29,11 @@ function SkinEntity:on_avatar_loadComplete()
     base.on_avatar_loadComplete(self)
     self.skinIsComplete = true
     self:init_animator()
+    self:play_default_animation()
+end
+
+function SkinEntity:play_default_animation()
+    self:play_sprite_animation("IDLE_TOWN_ANIM")
 end
 
 function SkinEntity:init_animator()
@@ -57,7 +62,7 @@ function SkinEntity:refresh_skeleton()
         -- print_err("")
         return
     end
-    local skeletonAssetName = EntitySkinUtility.get_skeleton_assetName(entityType)
+    local skeletonAssetName = EntitySkinUtility.get_skeleton_assetName(entityType) or "model/Bone/common_single_bone"
     self:set_avatarSkeleton(skeletonAssetName)
 end
 

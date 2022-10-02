@@ -223,7 +223,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp9(ColliderTrigger p0, ColliderTrigger p1, int p2, string p3)
+		public void __Gen_Delegate_Imp9(ColliderTrigger p0, ColliderTrigger p1, int p2)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -235,9 +235,8 @@ namespace XLua
                 translator.Push(L, p0);
                 translator.Push(L, p1);
                 LuaAPI.xlua_pushinteger(L, p2);
-                LuaAPI.lua_pushstring(L, p3);
                 
-                PCall(L, 4, 0, errFunc);
+                PCall(L, 3, 0, errFunc);
                 
                 
                 
@@ -342,9 +341,9 @@ namespace XLua
 			    return new UnityEngine.Events.UnityAction<int, int, string>(__Gen_Delegate_Imp8);
 			}
 		
-		    if (type == typeof(UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int, string>))
+		    if (type == typeof(UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>))
 			{
-			    return new UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int, string>(__Gen_Delegate_Imp9);
+			    return new UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>(__Gen_Delegate_Imp9);
 			}
 		
 		    return null;

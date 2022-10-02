@@ -47,18 +47,22 @@ function FightEntity:attacker_performance(attackerTrigger, victimTrigger, skillC
 
     --特效
     if not string.isEmptyOrNull(damageCfg.effectName) then
+        math.randomseed(os.time())
+        local effects = string.split(damageCfg.effectName, ',', true)
+        local random = math.random(1, #effects)
+        local name = "prefabs/effect/"..effects[random]
         --计算接触点
         local attackerBounds = attackerTrigger.collider2d.bounds
         local victimBounds = victimTrigger.collider2d.bounds
 
         local contactPoint = attackerBounds:ClosestPoint(victimBounds.center)
-        GLoaderfunc.load_object_fromPool(damageCfg.effectName, GLoaderfunc.game_poolType.effect, function (obj)
+        GLoaderfunc.load_object_fromPool(name, GLoaderfunc.game_poolType.effect, function (obj)
             obj.transform.position = contactPoint;
             local spriteAnimator = obj:GetComponent(typeof(CS.SpiteAnimator))
             if spriteAnimator then
                 spriteAnimator:Play()
                 spriteAnimator.onFinish = function ()
-                    GLoaderfunc.release_object_fromPool(damageCfg.effectName, GLoaderfunc.game_poolType.effect, obj)
+                    GLoaderfunc.release_object_fromPool(name, GLoaderfunc.game_poolType.effect, obj)
                 end
             end
         end)

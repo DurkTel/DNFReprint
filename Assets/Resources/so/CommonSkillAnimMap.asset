@@ -10,16 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78b23b12b20bd5445a34f73df4aa9283, type: 3}
-  m_Name: New Animation Map
+  m_Name: CommonSkillAnimMap
   m_EditorClassIdentifier: 
   names:
-  - "\u5927\u82CF\u6253\u6492\u65E6"
-  - 
-  - "\u5927\u82CF\u6253"
-  - "\u9876\u9876\u9876\u9876\u9876\u9876\u9876"
+  - GUIZHAN_ANIM
   animations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  animationFlags: 00000000000000000000000000000000
+  - {fileID: 11400000, guid: 7be3240404ae4184c9475005aac5d580, type: 2}
+  animationFlags: 04000000

@@ -49,7 +49,7 @@ public partial class Entity
 
     public UnityAction animationFinish;
 
-    public static UnityAction<int, int, string> attackFinishEvent;
+    public static UnityAction<int, int> attackFinishEvent;
 
     public int curFlip { get { return m_renenderSprites.Count > 0 ? m_renenderSprites[0].GetCurFlip() : 0; } }
 
@@ -156,7 +156,7 @@ public partial class Entity
             return;
         }
         if (last_animationData != null && last_animationData.colliderInfo != null && last_animationData.colliderInfo.skillCode != 0)
-            attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode, last_animationData.colliderInfo.name);
+            attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode);
         colliderUpdate.ClearContact(entityId);
         last_animationData = current_animationData;
         current_animationData = animationData;
@@ -195,10 +195,11 @@ public partial class Entity
         PlayAni(animationMap.TryGetAnimation(aniName));
     }
 
-    public void DOSpriteAnimation(string aniName, UnityAction finish)
+    public void DOSpriteAnimation(string aniName, UnityAction<int> frameAction, UnityAction finishAction)
     {
         PlayAni(animationMap.TryGetAnimation(aniName));
-        animationFinish = finish;
+        updateSpriteEvent += frameAction;
+        animationFinish += finishAction;
     }
 
     /// <summary>
@@ -583,7 +584,7 @@ public partial class Entity
 
         animationMap = AssetLoader.Load<AnimationMap>("so/" + aniCfg);
         //AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
-        DOSpriteAnimation(animationMap.TryGetAnimation("IDLE_TOWN_ANIM"));
+        //DOSpriteAnimation(animationMap.TryGetAnimation("IDLE_TOWN_ANIM"));
     }
 
 }

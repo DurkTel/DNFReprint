@@ -129,7 +129,8 @@ public class AnimationMap : ScriptableObject
         ATTACK = 4,
         HURT = 8,
         FORCE = 16,
-        NOTMOVE = 32
+        NOTMOVE = 32,
+        SKILL = 64,
     }
 
     public enum AnimationEnum

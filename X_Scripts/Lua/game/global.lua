@@ -5,11 +5,9 @@ GInputUtility.Init()
 GInputUtility.onInputEvent = function (key)
     if key == "F1" then
     elseif key == "F2" then
-        local monsterEntity = GEntityManager.create_monster(10000)
-        monsterEntity:set_avatarPosition(Vector3(4.7,1.09,0))
-        
+        local entity = GEntityManager.create_skill_effect(10006, GEntityManager.localPlayer.entityData.entityId)
     elseif key == "F3" then
-        GAudioManager.play("CityLoopAudio", "sounds/music/gate_new")
+
     elseif key == "F4" then
 
     elseif key == "F5" then

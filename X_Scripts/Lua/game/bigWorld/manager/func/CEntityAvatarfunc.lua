@@ -41,6 +41,11 @@ function CEntityAvatarfunc:set_skinVisible(visible)
     self.gmentity:Skin_SetVisible(visible)
 end
 
+--设置面朝
+function CEntityAvatarfunc:set_flip(isLeft)
+    self.gmentity:SetSpriteFilp(isLeft)
+end
+
 --当前是否播放这个动画
 function CEntityAvatarfunc:in_animation(animationName)
     return self.gmentity:IsInThisAni(animationName)
