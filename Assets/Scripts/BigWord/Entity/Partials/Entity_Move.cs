@@ -38,6 +38,8 @@ public partial class Entity
 
     private float m_moveSeed;
 
+    private bool m_enableMoveInput = true;
+
     /// <summary>
     /// 0 没有移动 1 走路 2跑步
     /// </summary>
@@ -61,7 +63,7 @@ public partial class Entity
             return;
 
         m_moveMode = MoveMode.INPUT;
-        m_curMoveDir = input;
+        m_curMoveDir = m_enableMoveInput ? input : Vector2.zero;
     }
 
     protected void MovePhaseHandle(string action)
@@ -84,6 +86,16 @@ public partial class Entity
     public void Set_MoveSeed(float moveSeed)
     {
         m_moveSeed = Mathf.Max(0, moveSeed);
+    }
+
+    public void Set_InputEnable(bool enable)
+    {
+        m_enableMoveInput = enable;
+    }
+
+    public void Add_MoveForce(float force)
+    { 
+        m_addMoveForce = force;
     }
 
     private void ReleaseMove()

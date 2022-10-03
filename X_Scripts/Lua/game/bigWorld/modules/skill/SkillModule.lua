@@ -21,9 +21,9 @@ function SkillModule:get_local_evnets()
 end
 
 --监听本地事件
-function SkillModule:on_local_event(cmd, data)
+function SkillModule:on_local_event(cmd, data, data1)
     if cmd == EventDefine.ON_INPUT_UPDATE then
-        SkillFunc.skill_discharge_handle(data)
+        SkillFunc.skill_discharge_handle_local(data, data1)
     end
 end
 

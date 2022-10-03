@@ -13,6 +13,7 @@ local loadTab =
         _G.Time = CS.UnityEngine.Time
     end,
     -- yield(0)
+    'game.bigWorld.manager.InputManager',
     'game.global',
     'game.framework.SystemClass',
     'game.framework.MDefine',

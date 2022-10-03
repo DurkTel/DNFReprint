@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: boDongZhanEffect_Anim
+  m_EditorClassIdentifier: 
+  aniName: BODONGZHAN_ANIM
+  colliderInfo: {fileID: 11400000, guid: f08f21bc28f17ce4aad97d4db5d3cafe, type: 2}
+  isLoop: 0
+  speed: 0.1
+  frameList:
+  - sprite: {fileID: 21300000, guid: e698ab15108677f439ba14e59b9d1f3a, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: a1b77b0fd43e2834aae9ad1ec2d2246d, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: a037f911255d1054cbdcf69cdad25cce, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: cd30fcb8d38a1fa4f8bb850ab5d26584, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 9b76c999893c6ab418bd951a868a9503, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  switchingConditions: []

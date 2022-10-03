@@ -15,10 +15,35 @@ function EntityData:init_status()
 end
 
 function EntityData:init_cfg()
-    if self.etype == GEntityDefine.entityType.monster then
+    if self.etype == GEntityDefine.entityType.localPlayer or self.etype == GEntityDefine.entityType.otherPlayer then
+        --得到皮肤配置
+        if not self.totalInfo.models then
+            self.totalInfo.models = {}
+            local tab = string.formatToArray(self.dbcfg.models)
+            for k, v in ipairs(tab) do
+                self.totalInfo.models[tonumber(v[1])] = tonumber(v[2])
+            end
+        end
+
+        --得到等级
+        self.totalInfo.level = self.dbcfg.level
+        --得到血量
+        self.totalInfo.life = self.dbcfg.hp
+        self.totalInfo.maxLife = self.dbcfg.hp
+        --得到移动速度
+        self.totalInfo.moveSeep = self.dbcfg.speed
+        --得到跳跃高度
+        self.totalInfo.jumpHeight = self.dbcfg.jumpHeight
+        --得到攻击力
+        self.totalInfo.aggressivity = self.dbcfg.aggressivity
+        --得到防御力
+        self.totalInfo.defense = self.dbcfg.defense
+        --配置音效
+        self.dbcfg.hurtAudio = string.split(self.dbcfg.hurtAudio, ',', true) or {}
+        self.dbcfg.dieAudio = string.split(self.dbcfg.dieAudio, ',', true) or {}
+    elseif self.etype == GEntityDefine.entityType.monster then
         --这个code是refrehid
-        local refreshCfg = MDefine.cfg.monster.getMonsterRefreshCfgById(self.code)
-        local monsterCfg = MDefine.cfg.monster.getMonsterCfgById(refreshCfg.monsterCode)
+        local monsterCfg = MDefine.cfg.monster.getMonsterCfgById(self.dbcfg.monsterCode)
 
         --得到皮肤配置
         self.totalInfo.models = 
@@ -26,16 +51,16 @@ function EntityData:init_cfg()
             [0] = monsterCfg.modelCode,
         }
         --得到等级
-        self.totalInfo.level = refreshCfg.level
+        self.totalInfo.level = self.dbcfg.level
         --得到血量
-        self.totalInfo.life = refreshCfg.hp
-        self.totalInfo.maxLife = refreshCfg.hp
+        self.totalInfo.life = self.dbcfg.hp
+        self.totalInfo.maxLife = self.dbcfg.hp
         --得到移动速度
-        self.totalInfo.moveSeep = refreshCfg.speed
+        self.totalInfo.moveSeep = self.dbcfg.speed
         --得到攻击力
-        self.totalInfo.aggressivity = refreshCfg.aggressivity
+        self.totalInfo.aggressivity = self.dbcfg.aggressivity
         --得到防御力
-        self.totalInfo.defense = refreshCfg.defense
+        self.totalInfo.defense = self.dbcfg.defense
         --配置音效
         self.dbcfg.attackAudio = string.split(monsterCfg.attackAudio, ',', true) or {}
         self.dbcfg.hitAudio = string.split(monsterCfg.hitAudio, ',', true) or {}
@@ -86,5 +111,10 @@ function EntityData:is_portal() return self.etype == GEntityDefine.entityType.po
 function EntityData:is_effect() return self.etype == GEntityDefine.entityType.effect end
 
 function EntityData:get_career() return self.SentityInfo and self.SentityInfo.career or 0 end
+
+function EntityData:set_defenseing(enable) self.totalInfo.defenseing = enable end
+
+function EntityData:get_defenseing() return self.totalInfo.defenseing end
+
 
 return EntityData

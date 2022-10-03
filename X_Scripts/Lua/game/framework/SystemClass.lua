@@ -1,3 +1,25 @@
+
+-- 把[a,b,c,d ...][1000,3,...] 转成table {{a,b,c,d ...},{1000,3 ...}}
+local formatToArrayCacge = {}
+string.___formatToArrayCacge = formatToArrayCacge
+local cacheData = nil
+function string.formatToArray(str)
+    -- 增加缓存
+    cacheData = formatToArrayCacge[str]
+    if cacheData then return cacheData end
+
+    local r = {}
+    if str and #str > 0 then
+        for k in string.gmatch(str,"%b[]") do
+            k = string.sub(k,2,-2)
+            table.insert(r,string.split(k,","))
+        end
+        -- 存放缓存
+        formatToArrayCacge[str] = r
+    end
+    return r
+end
+
 function table.isNull(tab)
     return tab == nil or next(tab) == nil
 end

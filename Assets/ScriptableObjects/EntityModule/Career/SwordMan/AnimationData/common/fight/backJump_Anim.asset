@@ -20,12 +20,16 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 488e9cc3b9a0ec147b45ec0984b61c38, type: 3}
     interval: 0.1
     frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 488e9cc3b9a0ec147b45ec0984b61c38, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
     frameEvent:
     - eventType: 5
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: -8
+      parameterFloat: -8.5
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -34,16 +38,7 @@ MonoBehaviour:
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 0.15
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
-    - eventType: 4
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
+      parameterFloat: 0.2
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -51,18 +46,9 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 488e9cc3b9a0ec147b45ec0984b61c38, type: 3}
     interval: 0.3
     frameEventLoop: 0
-    frameEvent:
-    - eventType: 4
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 1
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
-  - frame: {x: 1, y: 1}
+  - frame: {x: 2, y: 2}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
     conditions:
     - conditionType: 0

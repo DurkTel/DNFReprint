@@ -20,7 +20,7 @@
                     "id": "f3bd0495-1a84-48a7-878f-d259caf2ccb5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -29,7 +29,7 @@
                     "id": "739e924d-e5dc-4ff1-ad43-7d4b53f936f4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -38,7 +38,7 @@
                     "id": "dc26c7c7-7221-472b-b29d-4c89e481a439",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -47,7 +47,7 @@
                     "id": "e82fd099-8750-493d-9381-5b467deda157",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -56,7 +56,7 @@
                     "id": "7b2c4176-4109-41f2-9d0a-7f7a368baecd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -65,7 +65,7 @@
                     "id": "7f9ce7be-27ff-41f3-b1f7-a5c33bbb1fac",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -74,7 +74,16 @@
                     "id": "707d9ee8-5c15-4a52-81be-92918ea0409b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skill_5",
+                    "type": "Button",
+                    "id": "6d68f5aa-01f2-440a-8f3f-430023e09523",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -252,6 +261,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5f289beb-f5ac-4e84-9a51-ca175899c1df",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill_5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

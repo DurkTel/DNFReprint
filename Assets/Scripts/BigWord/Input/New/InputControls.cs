@@ -42,7 +42,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""f3bd0495-1a84-48a7-878f-d259caf2ccb5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -51,7 +51,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""739e924d-e5dc-4ff1-ad43-7d4b53f936f4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -60,7 +60,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""dc26c7c7-7221-472b-b29d-4c89e481a439"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -69,7 +69,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""e82fd099-8750-493d-9381-5b467deda157"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -78,7 +78,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""7b2c4176-4109-41f2-9d0a-7f7a368baecd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -87,7 +87,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""7f9ce7be-27ff-41f3-b1f7-a5c33bbb1fac"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -96,7 +96,16 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""id"": ""707d9ee8-5c15-4a52-81be-92918ea0409b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill_5"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d68f5aa-01f2-440a-8f3f-430023e09523"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -274,6 +283,17 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f289beb-f5ac-4e84-9a51-ca175899c1df"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill_5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -520,6 +540,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         m_Gameplay_Skill_2 = m_Gameplay.FindAction("Skill_2", throwIfNotFound: true);
         m_Gameplay_Skill_3 = m_Gameplay.FindAction("Skill_3", throwIfNotFound: true);
         m_Gameplay_Skill_4 = m_Gameplay.FindAction("Skill_4", throwIfNotFound: true);
+        m_Gameplay_Skill_5 = m_Gameplay.FindAction("Skill_5", throwIfNotFound: true);
         m_Gameplay_EnableDebug = m_Gameplay.FindAction("EnableDebug", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
@@ -600,6 +621,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Skill_2;
     private readonly InputAction m_Gameplay_Skill_3;
     private readonly InputAction m_Gameplay_Skill_4;
+    private readonly InputAction m_Gameplay_Skill_5;
     private readonly InputAction m_Gameplay_EnableDebug;
     public struct GameplayActions
     {
@@ -613,6 +635,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         public InputAction @Skill_2 => m_Wrapper.m_Gameplay_Skill_2;
         public InputAction @Skill_3 => m_Wrapper.m_Gameplay_Skill_3;
         public InputAction @Skill_4 => m_Wrapper.m_Gameplay_Skill_4;
+        public InputAction @Skill_5 => m_Wrapper.m_Gameplay_Skill_5;
         public InputAction @EnableDebug => m_Wrapper.m_Gameplay_EnableDebug;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -647,6 +670,9 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                 @Skill_4.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_4;
                 @Skill_4.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_4;
                 @Skill_4.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_4;
+                @Skill_5.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_5;
+                @Skill_5.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_5;
+                @Skill_5.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_5;
                 @EnableDebug.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEnableDebug;
                 @EnableDebug.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEnableDebug;
                 @EnableDebug.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEnableDebug;
@@ -678,6 +704,9 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                 @Skill_4.started += instance.OnSkill_4;
                 @Skill_4.performed += instance.OnSkill_4;
                 @Skill_4.canceled += instance.OnSkill_4;
+                @Skill_5.started += instance.OnSkill_5;
+                @Skill_5.performed += instance.OnSkill_5;
+                @Skill_5.canceled += instance.OnSkill_5;
                 @EnableDebug.started += instance.OnEnableDebug;
                 @EnableDebug.performed += instance.OnEnableDebug;
                 @EnableDebug.canceled += instance.OnEnableDebug;
@@ -800,6 +829,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         void OnSkill_2(InputAction.CallbackContext context);
         void OnSkill_3(InputAction.CallbackContext context);
         void OnSkill_4(InputAction.CallbackContext context);
+        void OnSkill_5(InputAction.CallbackContext context);
         void OnEnableDebug(InputAction.CallbackContext context);
     }
     public interface IDebugActions

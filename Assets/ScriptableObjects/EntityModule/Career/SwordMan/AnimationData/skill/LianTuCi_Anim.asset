@@ -20,107 +20,35 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: b9375ac232c6a0444a16fc42a98955be, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 0f163e9a08274c543a55fd8bfacd8042, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 2209600a51a20ee4894286b21a72f133, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 2bb06d062741e3b4e88cd3aceb02b77e, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 544cd15a1ac7d8d43bddc576b25749ea, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: a50791ede76f050449ff9a0788983526, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: b4dd358557db64345b44bb7ecb0a3e58, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 0
-      paramType: 0
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: 503090d1444ae604bb3f4ae3c31c8e44, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-      eventType: 6
-      paramType: 3
-      parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 1.5
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   switchingConditions:
   - frame: {x: 7, y: 7}
     animationData: {fileID: 11400000, guid: 59d11df43b67d224e801215a8a6b3d5a, type: 2}
@@ -141,5 +69,5 @@ MonoBehaviour:
         targetValue: 0
       inputComparison:
         inputType: 0
-        keyCode: 0
+        action: 0
       customCondition: 0

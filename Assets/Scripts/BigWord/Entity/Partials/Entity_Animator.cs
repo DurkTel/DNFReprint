@@ -49,6 +49,10 @@ public partial class Entity
 
     public UnityAction animationFinish;
 
+    public UnityAction<int> updateEventLua;
+
+    public UnityAction finsihEventLua;
+
     public static UnityAction<int, int> attackFinishEvent;
 
     public int curFlip { get { return m_renenderSprites.Count > 0 ? m_renenderSprites[0].GetCurFlip() : 0; } }
@@ -66,12 +70,13 @@ public partial class Entity
         if (m_totalTime >= (curSprite.interval + haltFrame) / current_animationData.speed)
         {
             m_totalTime = 0;
-            m_currentIndex = int.Parse(curSprite.sprite.name.Substring(curSprite.sprite.name.LastIndexOf('_') + 1));//这样写有可能造成性能问题 暂时
+            m_currentIndex = curSprite.sprite != null ? int.Parse(curSprite.sprite.name.Substring(curSprite.sprite.name.LastIndexOf('_') + 1)) : -1;//这样写有可能造成性能问题 暂时
             SetSprites(m_currentIndex);
             
             m_lastFrame = m_currentFrame;
 
             updateSpriteEvent?.Invoke(m_lastFrame);
+            updateEventLua?.Invoke(m_lastFrame);
             m_currentFrame++;
 
             if (m_currentFrame >= aniSprites.Count)
@@ -95,6 +100,7 @@ public partial class Entity
                     animationFinish.Invoke();
                     animationFinish = null;
                 }
+                finsihEventLua?.Invoke();
             }
 
             if (curSprite.frameEventLoop || !m_isFirstList[m_lastFrame])
@@ -161,6 +167,8 @@ public partial class Entity
         last_animationData = current_animationData;
         current_animationData = animationData;
         updateAnimationEvent?.Invoke(animationData);
+        updateEventLua = null;
+        finsihEventLua = null;
         m_totalTime = 999;
         m_currentFrame = 0;
         m_isFirstList = new bool[animationData.frameList.Count];

@@ -24,6 +24,11 @@ EntityDefine.entityType =
     effect      = 5,      --特效
 }
 
+EntityDefine.career = 
+{
+    swordMan = 0,      --男剑
+}
+
 EntityDefine.status = 
 {
     peace       = 0,      --和平

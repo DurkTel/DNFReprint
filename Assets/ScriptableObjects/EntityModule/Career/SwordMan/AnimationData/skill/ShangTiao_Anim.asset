@@ -37,25 +37,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: fb512091f82bc8c41b64dc1c061f92b7, type: 3}
     interval: 0.1
     frameEventLoop: 0
-    frameEvent:
-    - eventType: 8
-      paramType: 4
-      parameterObject: {fileID: 0}
-      parameterString: sm_upslash
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
-    - eventType: 8
-      paramType: 4
-      parameterObject: {fileID: 0}
-      parameterString: weapon/beamswda_03
-      parameterFloat: 0
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: c8bfb60b152a6624ba0a0096b1284e32, type: 3}
     interval: 0.1
     frameEventLoop: 0
@@ -73,7 +55,7 @@ MonoBehaviour:
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: 45aec6ed014478e45b49bb1acfd120c6, type: 3}
-    interval: 0.1
+    interval: 0.3
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: 023c15f30cbde3a41a4aff6a2609e69b, type: 3}

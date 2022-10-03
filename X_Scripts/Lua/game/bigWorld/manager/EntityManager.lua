@@ -120,6 +120,20 @@ function EntityManager.get_entitiyEnterHotLevel(entityId)
     return -1
 end
 
+function EntityManager.create_local_player(career)
+    local cfg = MDefine.cfg.role.getRoleCfgByCareer(career)
+    if not table.isNull(cfg) then
+        local SentityData =
+        {
+            type = GEntityDefine.entityType.localPlayer,
+            code = career,
+            cfg = cfg,
+        }
+    
+        local entity = GEntityManager.create_entity(SentityData)
+        return entity
+    end
+end
 
 function EntityManager.create_monster(refreshId)
     local refreshCfg = MDefine.cfg.monster.getMonsterRefreshCfgById(refreshId)
@@ -150,7 +164,6 @@ function EntityManager.create_skill_effect(skillCode, bindEntityId)
             master = EntityManager.get_luaEntityById(bindEntityId)
         end
         local effectTab = string.split(skillCfg.effect, ',', true)
-        local effectTabEx = string.split(skillCfg.effectEx, ',', true)
         local effectCfg = MDefine.cfg.skill.getEffectCfgById(tonumber(effectTab[1]))
         local SentityData =
         {
@@ -166,7 +179,7 @@ function EntityManager.create_skill_effect(skillCode, bindEntityId)
             models = 
             {
                 [2] = tonumber(effectTab[1]),
-                [3] = tonumber(effectTabEx[1]),
+                [3] = tonumber(effectTab[2]),
             }
         }
     

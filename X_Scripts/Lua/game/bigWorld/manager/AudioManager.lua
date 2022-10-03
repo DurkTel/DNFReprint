@@ -42,14 +42,17 @@ function AudioManager.play(groupName, assetName)
 end
 
 function AudioManager.play_bg_loop_city(assetName)
+    if string.isEmptyOrNull(assetName) then return end
     AudioManager.play("CityLoopAudio", assetName)
 end
 
 function AudioManager.play_hit(assetName)
+    if string.isEmptyOrNull(assetName) then return end
     AudioManager.play("HitAudio", assetName)
 end
 
 function AudioManager.play_hurt(assetName)
+    if string.isEmptyOrNull(assetName) then return end
     AudioManager.play("HurtAudio", assetName)
 end
 

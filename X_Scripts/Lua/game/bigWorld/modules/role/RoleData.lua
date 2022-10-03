@@ -1,0 +1,3 @@
+local RoleData = {}
+
+return RoleData

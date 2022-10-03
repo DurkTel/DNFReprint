@@ -46,7 +46,9 @@ function CEntityEventfunc.onContactHandlerEvent(attackerTrigger, victimTrigger, 
 
     if victim.entityData:get_life() <= 0 then return end
 
-    if (attacker.entityData:is_localPlayer() and victim.entityData:is_otherPlayer()) or (attacker.entityData:is_monster() and victim.entityData:is_monster()) then
+    if (attacker.entityData:is_localPlayer() and victim.entityData:is_otherPlayer()) 
+    or (attacker.entityData:is_monster() and victim.entityData:is_monster())
+    or (attacker.entityData:is_localPlayer() and victim.entityData:is_localPlayer()) then
         return
     end
     local cfg = MDefine.cfg.skill.getSkillCfgById(skillCode)
@@ -64,7 +66,7 @@ function CEntityEventfunc.onContactHandlerEvent(attackerTrigger, victimTrigger, 
     end
     
     attacker:attacker_performance(attackerTrigger, victimTrigger, cfg)
-    victim:victim_performance(attackerTrigger, victimTrigger, cfg)
+    victim:request_victim(attackerTrigger, victimTrigger, cfg)
 end
 
 return CEntityEventfunc

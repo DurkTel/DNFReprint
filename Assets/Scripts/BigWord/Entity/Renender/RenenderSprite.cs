@@ -175,7 +175,7 @@ public class RenenderSprite : MonoBehaviour
     { 
         if(part_Sprite.Count - 1 >= index)
         {
-            spriteRenderer.sprite = part_Sprite[index];
+            spriteRenderer.sprite = index == -1 ? null : part_Sprite[index];
         }
     }
 
@@ -192,7 +192,7 @@ public class RenenderSprite : MonoBehaviour
     /// <summary>
     /// 返回面朝方向
     /// </summary>
-    /// <returns>-1为右</returns>
+    /// <returns>-1向左</returns>
     public int GetCurFlip()
     {
         return spriteRenderer.flipX ? -1 : 1;

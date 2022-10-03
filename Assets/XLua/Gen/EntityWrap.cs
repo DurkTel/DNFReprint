@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 46, 47, 21);
+			Utils.BeginObjectRegister(type, L, translator, 0, 48, 49, 23);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -55,6 +55,8 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_HotRadius", _m_Set_HotRadius);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Stop", _m_Move_Stop);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_MoveSeed", _m_Set_MoveSeed);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_InputEnable", _m_Set_InputEnable);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Add_MoveForce", _m_Add_MoveForce);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_NavigationPath", _m_Move_NavigationPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveStop_NavigationPath", _m_MoveStop_NavigationPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetSpriteFilp", _m_SetSpriteFilp);
@@ -113,6 +115,8 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "updateSpriteEvent", _g_get_updateSpriteEvent);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "updateAnimationEvent", _g_get_updateAnimationEvent);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "animationFinish", _g_get_animationFinish);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "updateEventLua", _g_get_updateEventLua);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "finsihEventLua", _g_get_finsihEventLua);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "maxHotRadiusNum", _g_get_maxHotRadiusNum);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "movePhase", _g_get_movePhase);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onMoveEvent", _g_get_onMoveEvent);
@@ -135,6 +139,8 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateSpriteEvent", _s_set_updateSpriteEvent);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateAnimationEvent", _s_set_updateAnimationEvent);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "animationFinish", _s_set_animationFinish);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "updateEventLua", _s_set_updateEventLua);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "finsihEventLua", _s_set_finsihEventLua);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "maxHotRadiusNum", _s_set_maxHotRadiusNum);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "movePhase", _s_set_movePhase);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "onMoveEvent", _s_set_onMoveEvent);
@@ -1159,6 +1165,62 @@ namespace XLua.CSObjectWrap
                     float _moveSeed = (float)LuaAPI.lua_tonumber(L, 2);
                     
                     gen_to_be_invoked.Set_MoveSeed( _moveSeed );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Set_InputEnable(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    bool _enable = LuaAPI.lua_toboolean(L, 2);
+                    
+                    gen_to_be_invoked.Set_InputEnable( _enable );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Add_MoveForce(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    float _force = (float)LuaAPI.lua_tonumber(L, 2);
+                    
+                    gen_to_be_invoked.Add_MoveForce( _force );
                     
                     
                     
@@ -2201,6 +2263,34 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_updateEventLua(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.updateEventLua);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_finsihEventLua(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.finsihEventLua);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_attackFinishEvent(RealStatePtr L)
         {
 		    try {
@@ -2568,6 +2658,36 @@ namespace XLua.CSObjectWrap
 			
                 Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.animationFinish = translator.GetDelegate<UnityEngine.Events.UnityAction>(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_updateEventLua(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.updateEventLua = translator.GetDelegate<UnityEngine.Events.UnityAction<int>>(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_finsihEventLua(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.finsihEventLua = translator.GetDelegate<UnityEngine.Events.UnityAction>(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

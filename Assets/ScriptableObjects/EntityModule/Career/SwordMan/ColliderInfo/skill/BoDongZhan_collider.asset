@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
-  m_Name: jumpAttack_collider
+  m_Name: BoDongZhan_collider
   m_EditorClassIdentifier: 
   frameCollInfos:
   - single_colliderInfo:
@@ -18,54 +18,72 @@ MonoBehaviour:
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: -7, y: 69.27}
-      size: {x: 31.8, y: 72.8}
+      offset: {x: -3.5, y: 39.8}
+      size: {x: 35.96, y: 78.6}
     index: 0
   - single_colliderInfo:
     - layer: 3
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: -4.4, y: 68}
-      size: {x: 31.8, y: 86.4}
+      offset: {x: 2.3, y: 39.8}
+      size: {x: 35.96, y: 78.6}
     index: 0
   - single_colliderInfo:
     - layer: 3
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: 6.7, y: 60}
-      size: {x: 31.8, y: 71.31}
-    - layer: 2
-      isTrigger: 1
-      offset_Z: 0
-      size_Z: 20
-      offset: {x: 44.6, y: 23.38}
-      size: {x: 31.8, y: 82.5}
+      offset: {x: 55.88, y: 39.8}
+      size: {x: 35.96, y: 78.6}
     index: 0
   - single_colliderInfo:
     - layer: 3
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: 6.7, y: 60}
-      size: {x: 31.8, y: 71.31}
+      offset: {x: 62.8, y: 45}
+      size: {x: 35.96, y: 86.7}
     index: 0
   - single_colliderInfo:
     - layer: 3
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: 6.7, y: 60}
-      size: {x: 31.8, y: 71.31}
+      offset: {x: 61.7, y: 46.3}
+      size: {x: 35.96, y: 88.5}
     index: 0
   - single_colliderInfo:
     - layer: 3
       isTrigger: 1
       offset_Z: 0
       size_Z: 20
-      offset: {x: 6.7, y: 60}
-      size: {x: 31.8, y: 71.31}
+      offset: {x: 62.9, y: 48.4}
+      size: {x: 35.96, y: 88.5}
     index: 0
-  frameCount: 6
-  skillCode: 10003
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 62.9, y: 48.4}
+      size: {x: 35.96, y: 88.5}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 62.9, y: 48.4}
+      size: {x: 35.96, y: 88.5}
+    index: 0
+  - single_colliderInfo:
+    - layer: 3
+      isTrigger: 1
+      offset_Z: 0
+      size_Z: 20
+      offset: {x: 62.9, y: 48.4}
+      size: {x: 35.96, y: 88.5}
+    index: 0
+  frameCount: 9
+  skillCode: 0

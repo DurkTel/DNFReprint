@@ -23,11 +23,20 @@ public class ResetPivot : EditorWindow
         resetPivot.Show();
     }
 
+    private void OnEnable()
+    {
+        Selection.selectionChanged = () =>
+        {
+            path = AssetDatabase.GetAssetPath(Selection.activeInstanceID).Replace("Assets/Resources/", "");
+            Repaint();
+        };
+    }
+
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 300, 20), "请输入资源文件夹路径：");
 
-        path = GUI.TextField(new Rect(10, 50, 300, 20), path, 80);
+        GUI.Label(new Rect(10, 50, 300, 20), path);
 
         if (GUI.Button(new Rect(80, 100, 150, 35), "开始批量处理中心点偏移"))
         {

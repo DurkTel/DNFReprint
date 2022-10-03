@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   names:
   - GUIZHAN_ANIM
+  - BODONGZHAN_ANIM
   animations:
   - {fileID: 11400000, guid: 7be3240404ae4184c9475005aac5d580, type: 2}
-  animationFlags: 04000000
+  - {fileID: 11400000, guid: 074654a2c1e677241ba4c0c5b45ac7dc, type: 2}
+  animationFlags: 4000000040000000

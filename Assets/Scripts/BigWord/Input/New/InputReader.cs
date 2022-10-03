@@ -41,6 +41,10 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
     /// 按键双击事件
     /// </summary>
     public event UnityAction<string> buttonMultiEvent = delegate { };
+    /// <summary>
+    /// 按键长按事件
+    /// </summary>
+    public event UnityAction<string> buttonHoldEvent = delegate { };
 
     private void OnEnable()
     {
@@ -121,7 +125,7 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
         if (context.phase == InputActionPhase.Started)
         {
             buttonPressEvent.Invoke(context.action.name);
-            //需求要按下算一次点击，自带的双击判断是松开算一次点击，自己封装一下
+            //需求要按下算一次点击，自带的双击判断是松开算一次点击，自己模拟一下
             if (context.startTime - buttonBehaviour[context.action.name].startTime <= m_multiTime)
             {
                 buttonBehaviour[context.action.name].onMulti = true;
@@ -129,13 +133,17 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
             }
             buttonBehaviour[context.action.name].startTime = context.startTime;
         }
-        if (context.phase == InputActionPhase.Performed)
+        else if (context.phase == InputActionPhase.Performed)
         {
-            if (context.interaction is PressInteraction)
+            if (context.interaction is HoldInteraction)
             {
-                buttonReleaseEvent.Invoke(context.action.name);
+                buttonHoldEvent.Invoke(context.action.name);
 
             }
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            buttonReleaseEvent.Invoke(context.action.name);
         }
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -206,6 +214,11 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
 
     }
 
+    public void OnSkill_5(InputAction.CallbackContext context)
+    {
+        ButtonHandle(context);
+    }
+
     public void OnF1(InputAction.CallbackContext context)
     {
         ButtonHandle(context);
@@ -266,6 +279,7 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
             OnlyEnableGameplayInput();
         }
     }
+
 }
 
 /// <summary>

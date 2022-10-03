@@ -36,33 +36,6 @@ MonoBehaviour:
     - eventType: 5
       paramType: 3
       parameterObject: {fileID: 0}
-      parameterString: 
-      parameterFloat: 1.2
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
-    - eventType: 8
-      paramType: 4
-      parameterObject: {fileID: 0}
-      parameterString: sm_atk_02
-      parameterFloat: 2
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
-    - eventType: 8
-      paramType: 4
-      parameterObject: {fileID: 0}
-      parameterString: weapon/beamswda_02
-      parameterFloat: 2
-      parameterInt: 0
-      parameterBool: 0
-      parameterOnEnable: 0
-      parameterOnDisable: 0
-    - eventType: 0
-      paramType: 3
-      parameterObject: {fileID: 0}
       parameterString: weapon/beamswda_02
       parameterFloat: 1.2
       parameterInt: 0

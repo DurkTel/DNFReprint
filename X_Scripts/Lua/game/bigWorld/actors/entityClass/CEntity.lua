@@ -54,6 +54,7 @@ function CEntity:get_flip()
     return self.gmentity and self.gmentity.curFlip or nil
 end
 
+
 function CEntity:on_create() end
 
 function CEntity:on_avatar_loadComplete() end

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+  m_Name: GeDangIng_Anim
+  m_EditorClassIdentifier: 
+  aniName: GEDANGEFFECT_ANIM
+  colliderInfo: {fileID: 0}
+  isLoop: 0
+  speed: 1
+  frameList:
+  - sprite: {fileID: 21300000, guid: 88a64e0948458754a846022e7c860985, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 8de2352fe13623447b2c3bd6860f84cb, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: 88a64e0948458754a846022e7c860985, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
+  switchingConditions:
+  - frame: {x: 2, y: 2}
+    animationData: {fileID: 11400000, guid: 18de581ff6dcf684a8086b3a6ddf2ac7, type: 2}
+    conditions:
+    - conditionType: 0
+      characterAnimation: {fileID: 11400000}
+      spritePostionY:
+        relation: 0
+        targetValue: 0
+      spriteSpeedY:
+        relation: 0
+        targetValue: 0
+      inputSpeedX:
+        relation: 0
+        targetValue: 0
+      inputSpeedY:
+        relation: 0
+        targetValue: 0
+      inputComparison:
+        inputType: 0
+        action: 0
+      customCondition: 0

@@ -69,11 +69,30 @@ function FightEntity:attacker_performance(attackerTrigger, victimTrigger, skillC
     end
 end
 
---受击表现
-function FightEntity:victim_performance(attackerTrigger, victimTrigger, skillCfg)
+--请求受击
+function FightEntity:request_victim(attackerTrigger, victimTrigger, skillCfg)
     local entity = GEntityManager.get_luaEntityById(attackerTrigger.entity.entityId)
-
     local damageCfg = MDefine.cfg.skill.getDamageCfgById(skillCfg.damageCode)
+
+    local isDefenseing = self.entityData:get_defenseing()
+    local effect = true
+    if isDefenseing then
+        local faceToFace = self:calculate_orientation(entity)
+        if faceToFace then --格挡成功
+            effect = false
+            self:play_sprite_animation("GEDANGEFFECT_ANIM")
+            GAudioManager.play_hit("sounds/Character/swordman/weapon/swd_eff_01")
+            self:set_mvoe_force(-3)
+        end
+    end
+
+    if effect then --进行受击表现
+        self:victim_performance(entity, damageCfg)
+    end
+end
+
+--受击表现
+function FightEntity:victim_performance(entity, damageCfg)
     if not damageCfg then return end
     self:enter_state(GEntityDefine.ai_stateType.hurt)
     --被击动画
