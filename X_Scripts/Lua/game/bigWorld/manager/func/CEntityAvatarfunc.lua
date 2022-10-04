@@ -41,9 +41,30 @@ function CEntityAvatarfunc:set_skinVisible(visible)
     self.gmentity:Skin_SetVisible(visible)
 end
 
+--设置sort
+function CEntityAvatarfunc:enable_sort_sprite(floorHeight)
+    self.gmentity:EnableSortSprite(floorHeight)
+end
+
 --设置面朝
 function CEntityAvatarfunc:set_flip(isLeft)
     self.gmentity:SetSpriteFilp(isLeft)
+end
+
+--添加骨骼特效
+function CEntityAvatarfunc:add_bone_effect(bone, effect, pos)
+    pos = pos or Vector3.zero
+    self.gmentity:Add_BoneEffect(bone, effect, pos)
+end
+
+--移除骨骼特效
+function CEntityAvatarfunc:remove_bone_effect(bone, effect)
+    self.gmentity:Remove_BoneEffect(bone, effect)
+end
+
+--获得骨骼特效
+function CEntityAvatarfunc:get_bone_effect(bone)
+    self.gmentity:Get_BoneEffect(bone)
 end
 
 --当前是否播放这个动画

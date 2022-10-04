@@ -95,6 +95,14 @@ public class GMEntityManager : SingletonMono<GMEntityManager>
     private void LateUpdate()
     {
         entityUpdateCollider.UpdateColliderContent();
+        Entity entity = null;
+        for (int i = 0; i < m_entityMap.keyList.Count; i++)
+        {
+            int entityId = m_entityMap.keyList[i];
+            entity = m_entityMap[entityId];
+            if (entity.mainAvatar != null && entity.mainAvatar.loadCompleted)
+                entity.LateUpdate();
+        }
     }
 
     private void OnDestroy()

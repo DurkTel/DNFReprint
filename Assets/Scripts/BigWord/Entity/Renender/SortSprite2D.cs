@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SortSprite2D : MonoBehaviour
 {
-    [SerializeField]
-    private float m_floorHeight = 0.5f;
-    [SerializeField]
+    
+    public float floorHeight = 0.5f;
+    
     private bool isStatic;
 
     private float m_spriteLowerBound;
@@ -39,7 +39,7 @@ public class SortSprite2D : MonoBehaviour
     {
         if (m_root != null)
         {
-            m_root.position = new Vector3(m_root.position.x, m_root.position.y, (m_root.position.y - m_spriteLowerBound + m_floorHeight * m_tan30));
+            m_root.position = new Vector3(m_root.position.x, m_root.position.y, (m_root.position.y - m_spriteLowerBound + floorHeight * m_tan30));
         }
     }
 
@@ -47,7 +47,7 @@ public class SortSprite2D : MonoBehaviour
     {
         if (m_root != null)
         {
-            Vector3 floorHeightPos = new Vector3(m_root.position.x, m_root.position.y - m_spriteLowerBound + m_floorHeight, m_root.position.z);
+            Vector3 floorHeightPos = new Vector3(m_root.position.x, m_root.position.y - m_spriteLowerBound + floorHeight, m_root.position.z);
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(floorHeightPos + Vector3.left * m_spriteHalfWidth, floorHeightPos + Vector3.right * m_spriteHalfWidth);
 

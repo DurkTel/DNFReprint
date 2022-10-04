@@ -23,6 +23,8 @@ public partial class Entity
 
     private float m_jumpHeigh;
 
+    private float m_dropForce; 
+
     /// <summary>
     /// 跳跃事件 type 1开始跳跃 2上升阶段 3达到最高点 4下落阶段 5受击掉落 6着地
     /// </summary>
@@ -51,10 +53,17 @@ public partial class Entity
         Move_JumpOnStart();
 
     }
+
+    public void Add_DropForce(float force)
+    {
+        m_dropForce = force;
+    }
+
     private void Move_JumpOnStart()
     {
         m_jumpState = JumpState.START;
         onJumpEvent?.Invoke(entityId, 1);
+        m_dropForce = 0f;
         //达到目标高度所需的初速度
         m_jumpSpeed = Mathf.Sqrt(2f * m_gravity * m_jumpHeigh);
 
@@ -68,6 +77,7 @@ public partial class Entity
 
     private void Move_JumpOnEnd()
     {
+        m_dropForce = 0f;
         m_jumpSpeed = 0f;
         m_jumpState = JumpState.NONE;
         skinNode.localPosition = Vector3.zero;
@@ -79,9 +89,9 @@ public partial class Entity
         if (m_jumpSpeed == 0f) return;
         m_jumpState = m_jumpSpeed > 0 ? JumpState.RISE : JumpState.DROP;
 
-        float deltaY = m_jumpSpeed * fixedDeltaTime - 0.5f * m_gravity * Mathf.Pow(fixedDeltaTime, 2);
-        m_jumpSpeed -= m_gravity * fixedDeltaTime;
-
+        float deltaY = m_jumpSpeed * fixedDeltaTime - 0.5f * (m_gravity + m_dropForce) * Mathf.Pow(fixedDeltaTime, 2);
+        m_jumpSpeed -= (m_gravity + m_dropForce) * fixedDeltaTime;
+        m_dropForce += fixedDeltaTime * 5f;
         Vector3 deltaPosition = skinNode.localPosition;
         deltaPosition.y = deltaY;
         skinNode.localPosition += deltaPosition;

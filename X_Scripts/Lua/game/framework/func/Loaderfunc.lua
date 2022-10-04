@@ -21,4 +21,22 @@ function Loaderfunc.release_object_fromPool(assetName, poolName, obj)
     pool:Release(assetName, obj)
 end
 
+--加载一个特效 播放完自动回收
+function Loaderfunc.load_effect(assetName, pos, world)
+    Loaderfunc.load_object_fromPool(assetName, Loaderfunc.game_poolType.effect, function (obj)
+        if world then
+            obj.transform.position = pos
+        else
+            obj.transform.localPosition = pos
+        end
+        local spriteAnimator = obj:GetComponent(typeof(CS.SpiteAnimator))
+        if spriteAnimator then
+            spriteAnimator:Play()
+            spriteAnimator.onFinish = function ()
+                Loaderfunc.release_object_fromPool(assetName, Loaderfunc.game_poolType.effect, obj)
+            end
+        end
+    end)
+end
+
 return Loaderfunc

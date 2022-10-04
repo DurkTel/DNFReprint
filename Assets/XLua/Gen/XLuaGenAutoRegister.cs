@@ -78,7 +78,9 @@ namespace XLua
 		
 		delegate void __GEN_DELEGATE4( UnityEngine.Transform transform,  UnityEngine.Transform parent);
 		
-		delegate bool __GEN_DELEGATE5( UnityEngine.Object obj);
+		delegate void __GEN_DELEGATE5( UnityEngine.Transform transform,  UnityEngine.Transform parent,  UnityEngine.Vector3 pos);
+		
+		delegate bool __GEN_DELEGATE6( UnityEngine.Object obj);
 		
 	    static InternalGlobals()
 		{
@@ -119,6 +121,13 @@ namespace XLua
                                       .Method,
 #endif
 				
+				  new __GEN_DELEGATE5(ToolExtensions.SetParentNew)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
 				}},
 				
 				{typeof(UnityEngine.Component), new List<MethodInfo>(){
@@ -134,7 +143,7 @@ namespace XLua
 				
 				{typeof(UnityEngine.Object), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE5(ToolExtensions.IsNull)
+				  new __GEN_DELEGATE6(ToolExtensions.IsNull)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

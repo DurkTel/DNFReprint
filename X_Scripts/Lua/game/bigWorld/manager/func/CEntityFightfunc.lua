@@ -16,9 +16,14 @@ function CEntityFightfunc:set_input_enable(enable)
     self.gmentity:Set_InputEnable(enable)
 end
 
---设置顿帧
+--施加X轴移动力
 function CEntityFightfunc:set_mvoe_force(force)
     self.gmentity:Add_MoveForce(force)
+end
+
+--施加加速下落的力
+function CEntityFightfunc:set_drop_force(force)
+    self.gmentity:Add_DropForce(force)
 end
 
 --计算该实体是否和自己的朝向 面对 true/背对 false

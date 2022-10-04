@@ -28,8 +28,13 @@ end
 function SkinEntity:on_avatar_loadComplete()
     base.on_avatar_loadComplete(self)
     self.skinIsComplete = true
+    self:set_sort()
     self:init_animator()
     self:play_default_animation()
+end
+
+function SkinEntity:set_sort()
+    self:enable_sort_sprite(0.5)
 end
 
 function SkinEntity:play_default_animation()

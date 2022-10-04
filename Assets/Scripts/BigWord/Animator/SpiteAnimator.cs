@@ -13,6 +13,7 @@ public class SpiteAnimator : MonoBehaviour
     private int m_currentFrame;
 
     private SpriteRenderer m_spriteRenderer;
+    public SpriteRenderer spriteRenderer { get { return m_spriteRenderer; } }   
 
     private bool m_running = false;
 

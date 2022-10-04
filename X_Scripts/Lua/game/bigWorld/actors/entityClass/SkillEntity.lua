@@ -21,6 +21,9 @@ function SkillEntity:play_default_animation()
     end)
 end
 
+function SkillEntity:set_sort()
+    
+end
 
 function SkillEntity:refresh_skin_weapon()
     local assetName, boneName, scale, sort = EntitySkinUtility.get_effectPart_Cfg(self.entityData, avatarPartType.weapon)

@@ -105,8 +105,9 @@ public partial class Entity : BaseEvent
     }
 
     public void LateUpdate()
-    { 
-        
+    {
+        //刷新特效
+        UpdateEffect();
     }
 
     public void WaitCreate()

@@ -56,16 +56,7 @@ function FightEntity:attacker_performance(attackerTrigger, victimTrigger, skillC
         local victimBounds = victimTrigger.collider2d.bounds
 
         local contactPoint = attackerBounds:ClosestPoint(victimBounds.center)
-        GLoaderfunc.load_object_fromPool(name, GLoaderfunc.game_poolType.effect, function (obj)
-            obj.transform.position = contactPoint;
-            local spriteAnimator = obj:GetComponent(typeof(CS.SpiteAnimator))
-            if spriteAnimator then
-                spriteAnimator:Play()
-                spriteAnimator.onFinish = function ()
-                    GLoaderfunc.release_object_fromPool(name, GLoaderfunc.game_poolType.effect, obj)
-                end
-            end
-        end)
+        GLoaderfunc.load_effect(name, contactPoint, true)
     end
 end
 
@@ -108,11 +99,11 @@ function FightEntity:victim_performance(entity, damageCfg)
     Dispatcher.dispatchEvent(EventDefine.ON_ENTIT_ATTRIBUTE_UPDATE, self, GEntityDefine.entity_attribute.attribute_life, curLife - damageCfg.hurt)
 
     --音效
-    if self.entityData.dbcfg.hurtAudio then
-        math.randomseed(os.time())
-        local random = math.random(1, #self.entityData.dbcfg.hurtAudio)
-        GAudioManager.play_hurt(self.entityData.dbcfg.hurtAudio[random])
-    end
+    -- if self.entityData.dbcfg.hurtAudio then
+    --     math.randomseed(os.time())
+    --     local random = math.random(1, #self.entityData.dbcfg.hurtAudio)
+    --     GAudioManager.play_hurt(self.entityData.dbcfg.hurtAudio[random])
+    -- end
 end
 
 function FightEntity:dispose()

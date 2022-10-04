@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Entity);
-			Utils.BeginObjectRegister(type, L, translator, 0, 48, 49, 23);
+			Utils.BeginObjectRegister(type, L, translator, 0, 53, 49, 23);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -52,6 +52,9 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnGMCullingDistance", _m_OnGMCullingDistance);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnGMCullingVisible", _m_OnGMCullingVisible);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CullGroupUpdate", _m_CullGroupUpdate);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Add_BoneEffect", _m_Add_BoneEffect);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Remove_BoneEffect", _m_Remove_BoneEffect);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Get_BoneEffect", _m_Get_BoneEffect);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_HotRadius", _m_Set_HotRadius);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Stop", _m_Move_Stop);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_MoveSeed", _m_Set_MoveSeed);
@@ -63,7 +66,9 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveHurt_OnStart", _m_MoveHurt_OnStart);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveHurt_Y", _m_MoveHurt_Y);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move_Jump", _m_Move_Jump);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Add_DropForce", _m_Add_DropForce);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Set_JumpHeight", _m_Set_JumpHeight);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "EnableSortSprite", _m_EnableSortSprite);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Skin_SetAvatarSkeleton", _m_Skin_SetAvatarSkeleton);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Skin_SetAvatarPart", _m_Skin_SetAvatarPart);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Skin_SetAvatarPartScale", _m_Skin_SetAvatarPartScale);
@@ -1094,6 +1099,94 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Add_BoneEffect(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    int _boneName = LuaAPI.xlua_tointeger(L, 2);
+                    string _effectName = LuaAPI.lua_tostring(L, 3);
+                    UnityEngine.Vector3 _pos;translator.Get(L, 4, out _pos);
+                    
+                    gen_to_be_invoked.Add_BoneEffect( _boneName, _effectName, _pos );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Remove_BoneEffect(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    int _boneName = LuaAPI.xlua_tointeger(L, 2);
+                    string _effectName = LuaAPI.lua_tostring(L, 3);
+                    
+                    gen_to_be_invoked.Remove_BoneEffect( _boneName, _effectName );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Get_BoneEffect(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    int _boneName = LuaAPI.xlua_tointeger(L, 2);
+                    
+                        var gen_ret = gen_to_be_invoked.Get_BoneEffect( _boneName );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_Set_HotRadius(RealStatePtr L)
         {
 		    try {
@@ -1407,6 +1500,34 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Add_DropForce(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    float _force = (float)LuaAPI.lua_tonumber(L, 2);
+                    
+                    gen_to_be_invoked.Add_DropForce( _force );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_Set_JumpHeight(RealStatePtr L)
         {
 		    try {
@@ -1422,6 +1543,34 @@ namespace XLua.CSObjectWrap
                     float _height = (float)LuaAPI.lua_tonumber(L, 2);
                     
                     gen_to_be_invoked.Set_JumpHeight( _height );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_EnableSortSprite(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Entity gen_to_be_invoked = (Entity)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    float _floorHeight = (float)LuaAPI.lua_tonumber(L, 2);
+                    
+                    gen_to_be_invoked.EnableSortSprite( _floorHeight );
                     
                     
                     

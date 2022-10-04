@@ -21,15 +21,20 @@ end
 
 --男剑普通攻击
 funcMap[10000] = function (entity) 
+    local isHurt = entity:in_tag_animation(8)
+    if isHurt then return false end
     local curAniName, curFrame = entity:get_current_animation_state()
     local isJump = entity:in_tag_animation(2)
     local limitFlag = false
     local skillCode = 10000
     if isJump then
-        if curAniName ~= "JUMP_ATTACK_ANIM" then
+        if curAniName ~= "JUMP_ATTACK_ANIM" and (curAniName ~= "BACKJUMP_ANIM" or curFrame >= 2) then
             skillCode = 10003
             limitFlag = true
         end
+    elseif curAniName == "RUN_ANIM" then
+        skillCode = 10011
+        limitFlag = true
     elseif curAniName == "ATTACK_1_ANIM" then
         if curFrame >= 6 then --后摇
             skillCode = 10001
@@ -40,7 +45,7 @@ funcMap[10000] = function (entity)
             skillCode = 10002
             limitFlag = true
         end
-    elseif curAniName ~= "ATTACK_3_ANIM" then --后摇不能取消
+    elseif curAniName == "IDLE_ANIM" then
         limitFlag = true
     end
     return limitFlag, {skillCode = skillCode}
@@ -48,14 +53,30 @@ end
 
 --上挑
 funcMap[10004] = function (entity)
+    local isHurt = entity:in_tag_animation(8)
+    if isHurt then return false end
+    local curAniName, curFrame = entity:get_current_animation_state()
     local inJump = entity:in_tag_animation(2)
     local inSkill = entity:in_tag_animation(64)
+    local skillCode = 10004
+    local limitFlag = false
 
-    return not inJump and not inSkill
+    if inJump then
+        if curAniName ~= "BACKJUMP_ANIM" or curFrame >= 2 then
+            skillCode = 10010
+            limitFlag = true
+        end
+    else
+        limitFlag = not inSkill
+    end
+
+    return limitFlag, {skillCode = skillCode}
 end
 
 --后跳
 funcMap[10007] = function (entity)
+    local isHurt = entity:in_tag_animation(8)
+    if isHurt then return false end
     local inJump = entity:in_tag_animation(2)
     local inSkill = entity:in_tag_animation(64)
 
@@ -64,10 +85,13 @@ end
 
 --格挡
 funcMap[10008] = function (entity)
+    local isHurt = entity:in_tag_animation(8)
+    if isHurt then return false end
     local inJump = entity:in_tag_animation(2)
     local inSkill = entity:in_tag_animation(64)
 
     return not inJump and not inSkill
 end
+
 
 return SkillConditionFunc

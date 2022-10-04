@@ -15,18 +15,26 @@ MonoBehaviour:
   aniName: BODONGZHAN_ANIM
   colliderInfo: {fileID: 11400000, guid: f08f21bc28f17ce4aad97d4db5d3cafe, type: 2}
   isLoop: 0
-  speed: 0.1
+  speed: 3
   frameList:
+  - sprite: {fileID: 21300000, guid: 1090e4223b3cc90429a2b18267c2bcde, type: 3}
+    interval: 0
+    frameEventLoop: 0
+    frameEvent: []
+  - sprite: {fileID: 21300000, guid: bc64a2d75b52869449ebc2c1b9d3c950, type: 3}
+    interval: 0.1
+    frameEventLoop: 0
+    frameEvent: []
   - sprite: {fileID: 21300000, guid: e698ab15108677f439ba14e59b9d1f3a, type: 3}
     interval: 0.1
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: a1b77b0fd43e2834aae9ad1ec2d2246d, type: 3}
-    interval: 0.1
+    interval: 0.2
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: a037f911255d1054cbdcf69cdad25cce, type: 3}
-    interval: 0.1
+    interval: 0.2
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: cd30fcb8d38a1fa4f8bb850ab5d26584, type: 3}

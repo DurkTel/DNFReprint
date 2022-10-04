@@ -54,7 +54,7 @@ MonoBehaviour:
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: ddfefca8435ea954e92fdee0b6c9f7f5, type: 3}
-    interval: 0.1
+    interval: 0.3
     frameEventLoop: 0
     frameEvent: []
   - sprite: {fileID: 21300000, guid: 487e3d077963b7b4f93cd2b92cc0a380, type: 3}

@@ -164,14 +164,14 @@ public partial class Entity
         if (last_animationData != null && last_animationData.colliderInfo != null && last_animationData.colliderInfo.skillCode != 0)
             attackFinishEvent?.Invoke(entityId, last_animationData.colliderInfo.skillCode);
         colliderUpdate.ClearContact(entityId);
+        m_totalTime = 999;
+        m_currentFrame = 0;
+        updateEventLua = null;
+        finsihEventLua = null;
+        m_isFirstList = new bool[animationData.frameList.Count];
         last_animationData = current_animationData;
         current_animationData = animationData;
         updateAnimationEvent?.Invoke(animationData);
-        updateEventLua = null;
-        finsihEventLua = null;
-        m_totalTime = 999;
-        m_currentFrame = 0;
-        m_isFirstList = new bool[animationData.frameList.Count];
     }
 
     /// <summary>

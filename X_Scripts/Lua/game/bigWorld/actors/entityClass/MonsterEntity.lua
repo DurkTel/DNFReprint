@@ -6,6 +6,10 @@ function MonsterEntity:ctor()
     self.curTarget = nil
 end
 
+function MonsterEntity:set_sort()
+    self:enable_sort_sprite(0.3)
+end
+
 function MonsterEntity:on_updateAILogic(timeCount)
     --每3秒更新一次目标
     if timeCount == 1 or timeCount % 3 == 0 then

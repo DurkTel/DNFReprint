@@ -79,7 +79,13 @@ public static class ToolExtensions
         transform.SetParent(parent);
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.one;
+    }
+
+    public static void SetParentNew(this Transform transform, Transform parent, Vector3 pos)
+    { 
+        transform.SetParent(parent);
+        transform.localPosition = pos;
     }
 
     public static bool IsNull(this UnityEngine.Object obj)

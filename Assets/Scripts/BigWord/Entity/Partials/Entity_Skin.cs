@@ -94,9 +94,13 @@ public partial class Entity
     /// </summary>
     private void onAvatarLoadComplete()
     {
-        //OrbitCamera.Instance.focus = allBones["CameraTarget"];
-        skinNode.gameObject.AddComponent<SortSprite2D>();
         onLuaAvatarLoadComplete?.Invoke(entityId);
+    }
+
+    public void EnableSortSprite(float floorHeight)
+    {
+        SortSprite2D sortSprite2D = skinNode.gameObject.TryAddComponent<SortSprite2D>();
+        sortSprite2D.floorHeight = floorHeight;
     }
 
     public void Skin_SetAvatarSkeleton(string boneAssetName)

@@ -33,7 +33,7 @@ MonoBehaviour:
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: sm_atk_03
-      parameterFloat: 1
+      parameterFloat: 1.5
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
       paramType: 3
       parameterObject: {fileID: 0}
       parameterString: 
-      parameterFloat: 0
+      parameterFloat: 0.2
       parameterInt: 0
       parameterBool: 0
       parameterOnEnable: 0

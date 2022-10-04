@@ -156,11 +156,11 @@ public class RenenderSprite : MonoBehaviour
                     break;
             }
 
-            if (m_singSprite == null)
-            {
-                Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);
-                yield break;
-            }
+            //if (m_singSprite == null)
+            //{
+            //    Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);
+            //    yield break;
+            //}
             part_Sprite.Add(m_singSprite);
             i++;
         }
