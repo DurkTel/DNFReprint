@@ -124,14 +124,22 @@ public class LuaEnvironment : MonoBehaviour
         {
             requireProgress = require.GetInPath<float>("progress");
 
-            //Debug.Log(string.Format("requireProgress : {0}", requireProgress));
+            Debug.Log(string.Format("lua require progress : {0}%", requireProgress * 100));
 
             yield return null;
         }
 
-        print("lua require完成");
+        //print("lua require完成");
         //lua加载完成 启动lua主入口
         m_luaEnv.DoString(@"require 'game.main' ", "main");
+    }
+
+    private void Update()
+    {
+        if (m_luaEnv != null)
+        {
+            m_luaEnv.Tick();
+        }
     }
 
     private void OnDestroy()

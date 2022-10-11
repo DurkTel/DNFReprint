@@ -16,9 +16,9 @@ public class QuickStart : ScriptableObject
         if (EditorApplication.isPlayingOrWillChangePlaymode)
         {
             if (EditorPrefs.GetBool(m_LaunchGameTag))
-            {
-                EditorApplication.update += Update;
-            }
+        {
+            EditorApplication.update += Update;
+        }
         }
 
     }
@@ -57,6 +57,7 @@ public class QuickStart : ScriptableObject
         EditorPrefs.SetBool(m_LoadModeABTag, false);
         EditorApplication.isPlaying = true;
     }
+
 
     [MenuItem("Game/Launch  (AB包模式) #F6", false, 60)]
     static void LaunchGameAB()

@@ -38,5 +38,7 @@ public static class LuaWarp
         typeof(GMScenesManager),
         typeof(Entity),
         typeof(OrbitCamera),
+        typeof(WaitForEndOfFrame),
+        typeof(WaitForSeconds),
     };
 }

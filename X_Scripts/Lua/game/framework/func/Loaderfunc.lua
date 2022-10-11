@@ -6,7 +6,8 @@ local CGameObjectPool = CS.GameObjectPool.Instance
 
 Loaderfunc.game_poolType = 
 {
-    effect = "effect"
+    effect = "effect",
+    viewPrefab = "viewPrefab"
 }
 
 --通过对象池来加载游戏对象

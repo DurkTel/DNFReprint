@@ -7,29 +7,11 @@ local main = function()
         breakSocketHandle()
     end, 1, -1)
 
-    -- local SentityData =
-    -- {
-    --     type = 0,
-    --     models = {
-    --         [0] = 10000,
-    --         [1] = 10001,
-    --         [2] = 10002,
-    --         [3] = 10003,
-    --         [4] = 10004,
-    --         [5] = 10005,
-    --         [6] = 10006,
-    --         [7] = 10007,
-    --         [8] = 10008,
-    --     },
-    --     moveSeep = 1.5,
-    --     jumpHeight = 0.8
-    -- }
-
-    -- GEntityManager.create_entity(SentityData)
     GEntityManager.create_local_player(0)
     local monsterEntity = GEntityManager.create_monster(10000)
     monsterEntity:set_avatarPosition(Vector3(4.7,1.09,0))
     GScenesManager.switch_scene(10000)
+    GUIManager.openView(viewName, viewData)
 end
 
 

@@ -45,7 +45,7 @@ public class SpiteAnimator : MonoBehaviour
     private void Update()
     {
         if (!m_running) return;
-
+        
         TickSpriteAnimation(Time.deltaTime);
     }
 
