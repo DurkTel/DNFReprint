@@ -38,8 +38,12 @@ function ModuleRegister.registerModule(path)
     register(path)
 end
 
-function ModuleRegister.getModuleByName(name)
+function ModuleRegister.get_module_by_name(name)
     return allModuleViews[name]
+end
+
+function ModuleRegister.get_view_by_name(name)
+    return allViews[name]
 end
 
 return ModuleRegister

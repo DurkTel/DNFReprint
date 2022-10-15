@@ -12,6 +12,7 @@ local loadTab =
         _G.Vector2 = CS.UnityEngine.Vector2
         _G.GameObject = CS.UnityEngine.GameObject
         _G.Transform = CS.UnityEngine.Transform
+        _G.RectTransform = CS.UnityEngine.RectTransform
         _G.Time = CS.UnityEngine.Time
     end,
     'game.bigWorld.manager.InputManager',
@@ -21,6 +22,10 @@ local loadTab =
     'game.framework.EventDefine',
     'game.framework.EventDispatcher',
     'game.framework.Define',
+    function ()
+        require('game.framework.gui.GUIManager')
+        GUIManager.init_layer()
+    end,
     'game.framework.func.Loaderfunc',
     'game.bigWorld.manager.GameCamera',
     'game.bigWorld.manager.EntityManager',
@@ -28,7 +33,7 @@ local loadTab =
     'game.bigWorld.manager.ScenesManager',
     'game.bigWorld.manager.CopyManager',
     'game.bigWorld.finding.Finding',
-    'game.framework.gui.GUIManager'
+    
 }
 
 local clock = os.clock

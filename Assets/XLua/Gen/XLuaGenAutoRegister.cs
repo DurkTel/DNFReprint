@@ -37,6 +37,12 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(OrbitCamera), OrbitCameraWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(UnityEngine.WaitForEndOfFrame), UnityEngineWaitForEndOfFrameWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.WaitForSeconds), UnityEngineWaitForSecondsWrap.__Register);
+        
+        
         
         }
         
@@ -72,15 +78,19 @@ namespace XLua
 		
 		delegate UnityEngine.Component __GEN_DELEGATE1( UnityEngine.Transform transform,  string type);
 		
-		delegate void __GEN_DELEGATE2( UnityEngine.Component component,  bool value);
+		delegate UnityEngine.Component __GEN_DELEGATE2( UnityEngine.GameObject gameObject,  System.Type type);
 		
-		delegate void __GEN_DELEGATE3( UnityEngine.Transform transform,  UnityEngine.Transform parent);
+		delegate UnityEngine.Component __GEN_DELEGATE3( UnityEngine.Transform transform,  System.Type type);
 		
-		delegate void __GEN_DELEGATE4( UnityEngine.Transform transform,  UnityEngine.Transform parent);
+		delegate void __GEN_DELEGATE4( UnityEngine.Component component,  bool value);
 		
-		delegate void __GEN_DELEGATE5( UnityEngine.Transform transform,  UnityEngine.Transform parent,  UnityEngine.Vector3 pos);
+		delegate void __GEN_DELEGATE5( UnityEngine.Transform transform,  UnityEngine.Transform parent);
 		
-		delegate bool __GEN_DELEGATE6( UnityEngine.Object obj);
+		delegate void __GEN_DELEGATE6( UnityEngine.Transform transform,  UnityEngine.Transform parent);
+		
+		delegate void __GEN_DELEGATE7( UnityEngine.Transform transform,  UnityEngine.Transform parent,  UnityEngine.Vector3 pos);
+		
+		delegate bool __GEN_DELEGATE8( UnityEngine.Object obj);
 		
 	    static InternalGlobals()
 		{
@@ -90,6 +100,13 @@ namespace XLua
 				{typeof(UnityEngine.GameObject), new List<MethodInfo>(){
 				
 				  new __GEN_DELEGATE0(ToolExtensions.TryAddComponent)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE2(ToolExtensions.TryAddComponent)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
@@ -107,21 +124,28 @@ namespace XLua
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE3(ToolExtensions.SetParentIgnore)
+				  new __GEN_DELEGATE3(ToolExtensions.TryAddComponent)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE4(ToolExtensions.SetParentZero)
+				  new __GEN_DELEGATE5(ToolExtensions.SetParentIgnore)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE5(ToolExtensions.SetParentNew)
+				  new __GEN_DELEGATE6(ToolExtensions.SetParentZero)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE7(ToolExtensions.SetParentNew)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
@@ -132,7 +156,7 @@ namespace XLua
 				
 				{typeof(UnityEngine.Component), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE2(ToolExtensions.SetActive)
+				  new __GEN_DELEGATE4(ToolExtensions.SetActive)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
@@ -143,7 +167,7 @@ namespace XLua
 				
 				{typeof(UnityEngine.Object), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE6(ToolExtensions.IsNull)
+				  new __GEN_DELEGATE8(ToolExtensions.IsNull)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

@@ -62,7 +62,7 @@ public class OrbitCamera : SingletonMono<OrbitCamera>
     {
         GameObject go = new GameObject("OrbitCamera");
         go.AddComponent<OrbitCamera>();
-        go.AddComponent<AudioListener>();
+        //go.AddComponent<AudioListener>();
         regularCamera = go.AddComponent<Camera>();
         regularCamera.orthographic = true;
         regularCamera.orthographicSize = 2f;

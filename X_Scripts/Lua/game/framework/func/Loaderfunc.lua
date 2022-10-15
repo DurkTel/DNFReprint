@@ -40,4 +40,9 @@ function Loaderfunc.load_effect(assetName, pos, world)
     end)
 end
 
+--加载视图预制
+function Loaderfunc.load_ui_prefab(assetName, func)
+    Loaderfunc.load_object_fromPool("prefabs/gui/"..assetName, Loaderfunc.game_poolType.viewPrefab, func)
+end
+
 return Loaderfunc

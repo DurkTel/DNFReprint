@@ -11,4 +11,10 @@
 		
 	</assembly>
 
+	<assembly fullname="UnityEngine.CoreModule">
+	    <type fullname="UnityEngine.WaitForEndOfFrame" preserve="all"/>
+		<type fullname="UnityEngine.WaitForSeconds" preserve="all"/>
+		
+	</assembly>
+
 </linker>

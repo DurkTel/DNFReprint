@@ -21,6 +21,7 @@ public class GMAudioManager : MonoBehaviour
     public static void Initialize()
     {
         GameObject go = new GameObject("GMAudioManager");
+        go.AddComponent<AudioListener>();
         m_instance = go.AddComponent<GMAudioManager>();
         DontDestroyOnLoad(go);
     }

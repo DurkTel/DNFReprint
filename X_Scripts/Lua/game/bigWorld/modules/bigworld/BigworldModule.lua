@@ -17,7 +17,7 @@ end
 
 --注册该模块下的视图
 function BigworldModule:get_views()
-    
+    return "game.framework.gui.GUIView"
 end
 
 --注册本地事件

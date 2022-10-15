@@ -55,6 +55,22 @@ public static class ToolExtensions
         return TryAddComponent(transform.gameObject, type);
     }
 
+    public static Component TryAddComponent(this GameObject gameObject, Type type)
+    {
+        Component component = gameObject.GetComponent(type);
+        if (component != null)
+            return component;
+
+        component = gameObject.AddComponent(type);
+
+        return component;
+    }
+
+    public static Component TryAddComponent(this Transform transform, Type type)
+    {
+        return TryAddComponent(transform.gameObject, type);
+    }
+
     public static void SetActive(this Component component, bool value)
     {
         if (component != null && component.gameObject.activeSelf != value)

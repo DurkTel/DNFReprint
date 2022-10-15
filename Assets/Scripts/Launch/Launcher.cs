@@ -38,6 +38,9 @@ public class Launcher : MonoBehaviour
 
         print("当前资源加载模式为：" + AssetLoader.loadMode);
 
+        GMGUIManager.Instance.Initialize();
+        yield return null;
+
         GMAudioManager.Initialize();
         yield return GMAudioManager.instance.Init();
 
