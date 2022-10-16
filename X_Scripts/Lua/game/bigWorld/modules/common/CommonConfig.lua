@@ -1,0 +1,4 @@
+local CommonConfig = {}
+
+
+return CommonConfig

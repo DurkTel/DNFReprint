@@ -4,6 +4,7 @@
 
 	<assembly fullname="Assembly-CSharp">
 	    <type fullname="ToolExtensions" preserve="all"/>
+		<type fullname="GUIExtensions" preserve="all"/>
 		<type fullname="GMEntityManager" preserve="all"/>
 		<type fullname="GMScenesManager" preserve="all"/>
 		<type fullname="Entity" preserve="all"/>

@@ -33,6 +33,7 @@ public class GMGUIManager : MonoBehaviour
 
     public void Initialize()
     {
+        transform.localPosition = new Vector3(5000, 5000, 0);
         int layer = LayerMask.NameToLayer("UI");
         gameObject.layer = layer;
         GameObject cameraGO = new GameObject("UI_Camera");
@@ -60,7 +61,6 @@ public class GMGUIManager : MonoBehaviour
         canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
         canvasScaler.matchWidthOrHeight = 1f;
         canvasRoot = canvasGO.transform;
-
 
         GameObject eventGO = new GameObject("EventSystem", typeof(InputSystemUIInputModule));
         eventGO.layer = layer;

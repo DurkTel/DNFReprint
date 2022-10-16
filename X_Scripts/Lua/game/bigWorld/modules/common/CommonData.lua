@@ -1,0 +1,4 @@
+local CommonData = {}
+
+
+return CommonData

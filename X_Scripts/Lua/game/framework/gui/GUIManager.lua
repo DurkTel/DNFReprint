@@ -5,7 +5,7 @@ local GUIManager            = {} _G.GUIManager               = GUIManager
 local cgui                  = CS.GMGUIManager.Instance
 
 GUIManager.ui_camera        = cgui.uiCamera     --ui相机
-GUIManager.offset_order     = 1000              --每个层级相隔
+GUIManager.offset_order     = 10000             --每个层级相隔
 GUIManager.ui_layers        = {}                --所有的层级
 GUIManager.ui_views         = {}                --所有的视图
 
@@ -16,6 +16,8 @@ function GUIManager.init_layer()
         local layerName = string.format("%s [%s-%s]", v.name, lastOrder, lastOrder + GUIManager.offset_order)
         local canvas = cgui:InitLayer(layerName, lastOrder)
         GUIManager.ui_layers[v.name] = require(v.class)(canvas.gameObject)
+        GUIManager.ui_layers[v.name]:set_order_range(lastOrder, lastOrder + GUIManager.offset_order)
+        -- cs_coroutine.async_yield(0)
     end
 end
 
@@ -37,6 +39,7 @@ local function create_view(viewName)
 
     --创建容器
     local go = GameObject(viewName..' Container')
+    go.layer = CS.UnityEngine.LayerMask.NameToLayer("UI");
     local view = viewClass(go)
     view.name = viewName
     layer:add_view(view)
@@ -50,13 +53,31 @@ function GUIManager.open_view(viewName, viewData)
         view = create_view(viewName)
         GUIManager.ui_views[viewName] = view
     else
-
+        local layer = GUIManager.ui_layers[view.layer]
+        if layer then
+            layer:init_sorting_order(view)
+        end
     end
 
     view.viewData = viewData
     view:open()
 
     return view
+end
+
+function GUIManager.close_view(viewName)
+    local view = GUIManager.get_view(viewName)
+    if view.is_open then
+        view:close()
+    end
+end
+
+function GUIManager.remove_view(viewName)
+    GUIManager.ui_views[viewName] = nil
+end
+
+function GUIManager:is_showing(viewName)
+    return GUIManager.get_view(viewName) ~= nil
 end
 
 function GUIManager.get_view(viewName)

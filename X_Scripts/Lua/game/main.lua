@@ -11,7 +11,6 @@ local main = function()
     -- local monsterEntity = GEntityManager.create_monster(10000)
     -- monsterEntity:set_avatarPosition(Vector3(4.7,1.09,0))
     GScenesManager.switch_scene(10000)
-    GUIManager.open_view("GUIView")
 end
 
 

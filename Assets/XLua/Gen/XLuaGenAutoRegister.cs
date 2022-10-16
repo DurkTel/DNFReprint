@@ -25,6 +25,9 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(ToolExtensions), ToolExtensionsWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(GUIExtensions), GUIExtensionsWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(GMEntityManager), GMEntityManagerWrap.__Register);
         
         
@@ -92,6 +95,8 @@ namespace XLua
 		
 		delegate bool __GEN_DELEGATE8( UnityEngine.Object obj);
 		
+		delegate void __GEN_DELEGATE9( UnityEngine.GameObject go,  int sortingOrder);
+		
 	    static InternalGlobals()
 		{
 		    extensionMethodMap = new Dictionary<Type, IEnumerable<MethodInfo>>()
@@ -107,6 +112,13 @@ namespace XLua
 #endif
 				
 				  new __GEN_DELEGATE2(ToolExtensions.TryAddComponent)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE9(GUIExtensions.AddCanvas)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

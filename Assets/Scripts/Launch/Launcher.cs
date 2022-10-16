@@ -18,6 +18,9 @@ public class Launcher : MonoBehaviour
         m_useABLoadMode = true;
 #endif
 
+        //打开加载界面
+        LoadingDefaultGUI.Open(transform);
+
         LaunchUpdate update = gameObject.AddComponent<LaunchUpdate>();
         update.updateComplete = () =>
         {

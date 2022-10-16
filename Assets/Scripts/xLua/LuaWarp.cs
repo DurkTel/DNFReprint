@@ -34,6 +34,7 @@ public static class LuaWarp
     public static List<Type> LuaCallCSharpList = new List<Type>()
     {
         typeof(ToolExtensions),
+        typeof(GUIExtensions),
         typeof(GMEntityManager),
         typeof(GMScenesManager),
         typeof(Entity),

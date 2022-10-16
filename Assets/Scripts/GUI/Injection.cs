@@ -16,6 +16,14 @@ public class Injection : MonoBehaviour
             table.Set<string, Component>(item.name, item.component);
         }
     }
+
+    public Component Get(string name)
+    {
+        foreach (var item in injectionObjects)
+            if (item.name == name)
+                return item.component;
+        return null;
+    }
 }
 
 [System.Serializable]
