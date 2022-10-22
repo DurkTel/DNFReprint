@@ -75,6 +75,7 @@ public class GameObjectPool : MonoBehaviour
         }
     }
 
+
     void Update()
     {
         if (++m_frameCount % 60 == 0 && m_poolMap.Count > 0)
