@@ -57,7 +57,7 @@ public class GMGUIManager : MonoBehaviour
         canvas.planeDistance = 10;
         CanvasScaler canvasScaler = canvasGO.AddComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = new Vector2(1920, 1080);
+        canvasScaler.referenceResolution = new Vector2(1280, 720);
         canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
         canvasScaler.matchWidthOrHeight = 1f;
         canvasRoot = canvasGO.transform;

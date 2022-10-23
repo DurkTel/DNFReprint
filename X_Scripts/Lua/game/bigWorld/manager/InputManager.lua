@@ -11,21 +11,21 @@ GInputManager.INPUT_TYPE =
     MULTI = 4,      --双击
 }
 
-GInputUtility.onInputPressEvent = function (action)
+GInputUtility.onInputPressEvent:AddListener(function (action)
     Dispatcher.dispatchEvent(EventDefine.ON_INPUT_UPDATE, action, GInputManager.INPUT_TYPE.PRESS)
-end
+end) 
 
-GInputUtility.onInputReleaseEvent = function (action)
+GInputUtility.onInputReleaseEvent:AddListener(function (action)
     Dispatcher.dispatchEvent(EventDefine.ON_INPUT_UPDATE, action, GInputManager.INPUT_TYPE.RELEASE)
-end
+end)
 
-GInputUtility.onInputHoldEvent = function (action)
+GInputUtility.onInputHoldEvent:AddListener(function (action)
     Dispatcher.dispatchEvent(EventDefine.ON_INPUT_UPDATE, action, GInputManager.INPUT_TYPE.HOLD)
-end
+end)
 
-GInputUtility.onInputMultiEvent = function (action)
+GInputUtility.onInputMultiEvent:AddListener(function (action)
     Dispatcher.dispatchEvent(EventDefine.ON_INPUT_UPDATE, action, GInputManager.INPUT_TYPE.MULTI)
-end
+end)
 
 
 return InputManager

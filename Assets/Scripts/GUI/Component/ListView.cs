@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using static UnityEngine.UI.ScrollRect;
 
-public class ListView : MonoBehaviour
+public class ListView : Injection
 {
     public enum ListLayout
     {
@@ -33,12 +33,15 @@ public class ListView : MonoBehaviour
 
     [SerializeField]
     private ScrollRect m_scrollRect;
+    public ScrollRect scrollRect { get { return m_scrollRect; } set { m_scrollRect = value; } }
 
     [SerializeField]
     private RectTransform m_viewPort;
+    public RectTransform viewPort { get { return m_viewPort; } set { m_viewPort = value; } }
 
     [SerializeField]
     private RectTransform m_content;
+    public RectTransform content { get { return m_content; } set { m_content = value; } }
 
     [SerializeField]
     private GameObject m_template;
@@ -47,15 +50,15 @@ public class ListView : MonoBehaviour
     private string m_templateAsset;
 
     [SerializeField]
-    private Vector2 m_spacing;
-    public Vector2 spacing { get { return m_spacing; } set { m_spacing = value; ForceRefresh(); } }
-
-    [SerializeField]
     private int m_dataCount;
     public int dataCount { get { return m_dataCount; } set { m_dataCount = value; ForceRefresh(); } }
 
     [SerializeField]
     private int m_waitCreateCount;
+
+    [SerializeField]
+    private Vector2 m_spacing;
+    public Vector2 spacing { get { return m_spacing; } set { m_spacing = value; ForceRefresh(); } }
 
     private int m_waitIndex;
 
@@ -83,14 +86,10 @@ public class ListView : MonoBehaviour
             return m_itemSize;
         }
     }
-
-    public static UnityAction<int> onItemCreate;
-
-    public static UnityAction<int> onItemUpdate;
-
-    public static UnityAction<int> onItemRelease;
-
-    public static UnityAction<int> onUpdateComplete;
+    public UnityAction<ListViewItemRender> onItemCreate { get; set; }
+    public UnityAction<ListViewItemRender> onItemUpdate { get; set; }
+    public UnityAction<ListViewItemRender> onItemRelease { get; set; }
+    public UnityAction onUpdateComplete { get; set; }
 
     private void Start()
     {
@@ -189,7 +188,7 @@ public class ListView : MonoBehaviour
                     m_visibleList.Remove(index);
                     m_releaseList.TryUniqueAdd(item);
                     item.Release();
-                    onItemRelease?.Invoke(index);
+                    onItemRelease?.Invoke(item);
                 }
             }
 
@@ -214,12 +213,14 @@ public class ListView : MonoBehaviour
                 {
                     item = new ListViewItemRender();
                     GameObject go = Instantiate(m_template);
-                    go.transform.SetParent(m_content);
+                    go.transform.SetParentZero(m_content);
 
                     if (!go.activeSelf)
                         go.SetActive(true);
+
+                    item.SetData(i);
                     item.Create(go);
-                    onItemCreate?.Invoke(i);
+                    onItemCreate?.Invoke(item);
                 }
                 else
                 {
@@ -231,13 +232,14 @@ public class ListView : MonoBehaviour
             }
             item.SetData(i);
             item.Refresh();
-            onItemUpdate?.Invoke(i);
+            onItemUpdate?.Invoke(item);
         }
 
         if (m_visibleList.Count > lastIndex - firstIndex)
         {
             m_forceRefresh = false;
             m_waitIndex = 0;
+            onUpdateComplete?.Invoke();
         }
 
         m_lastRage.Set(firstIndex, lastIndex);
@@ -274,7 +276,7 @@ public class ListView : MonoBehaviour
 
     private void RefreshHorizontalORVerticalPos(int axis)
     {
-        Vector2 vector = Vector2.zero;
+        Vector3 vector = Vector3.zero;
         int symbol = axis == 0 ? 1 : -1;
         foreach (var item in m_visibleList.Values)
         {
@@ -285,7 +287,7 @@ public class ListView : MonoBehaviour
 
     private void RefreshGridPos()   
     {
-        Vector2 vector = Vector2.zero;
+        Vector3 vector = Vector3.zero;
         int fixedAxis = m_gridConstraint == GridConstraint.ColumnCount ? 0 : 1;
         int variableAxis = fixedAxis == 0 ? 1 : 0;
         int symbol = m_gridConstraint == GridConstraint.ColumnCount ? 1 : -1;
@@ -367,13 +369,12 @@ public class ListViewItemRender
         rectTransform = gameObject.GetComponent<RectTransform>();
         size = rectTransform.rect.size;
         rectTransform.anchorMin = rectTransform.anchorMax = rectTransform.pivot = new Vector2(0, 1);
-        text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void Refresh()
     {
         isVisible = true;
-        text.text = index.ToString();
+        Image image;
     }
 
     public void Release()

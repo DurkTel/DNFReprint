@@ -18,6 +18,7 @@ public static class LuaWarp
         typeof(Action<float,float,float>),
         typeof(Action<bool>),
         typeof(Action<bool,bool>),
+        typeof(UnityEvent<string>),
         typeof(UnityAction<int>),
         typeof(UnityAction<int,int>),
         typeof(UnityAction<int,int,int>),
@@ -27,7 +28,9 @@ public static class LuaWarp
         typeof(UnityAction<float,float,float>),
         typeof(UnityAction<bool>),
         typeof(UnityAction<bool,bool>),
+        typeof(UnityAction<string>),
         typeof(UnityAction<ColliderTrigger,ColliderTrigger,int>),
+        typeof(UnityAction<ListViewItemRender>)
     };
 
     [LuaCallCSharp]
@@ -41,5 +44,7 @@ public static class LuaWarp
         typeof(OrbitCamera),
         typeof(WaitForEndOfFrame),
         typeof(WaitForSeconds),
+        typeof(Injection),
+        typeof(ListView),
     };
 }

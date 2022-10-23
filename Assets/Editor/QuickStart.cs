@@ -16,9 +16,9 @@ public class QuickStart : ScriptableObject
         if (EditorApplication.isPlayingOrWillChangePlaymode)
         {
             if (EditorPrefs.GetBool(m_LaunchGameTag))
-        {
-            EditorApplication.update += Update;
-        }
+            {
+                EditorApplication.update += Update;
+            }
         }
 
     }

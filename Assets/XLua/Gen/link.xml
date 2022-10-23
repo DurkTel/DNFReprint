@@ -9,6 +9,8 @@
 		<type fullname="GMScenesManager" preserve="all"/>
 		<type fullname="Entity" preserve="all"/>
 		<type fullname="OrbitCamera" preserve="all"/>
+		<type fullname="Injection" preserve="all"/>
+		<type fullname="ListView" preserve="all"/>
 		
 	</assembly>
 

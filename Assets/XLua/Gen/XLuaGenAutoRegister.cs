@@ -46,6 +46,12 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(UnityEngine.WaitForSeconds), UnityEngineWaitForSecondsWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(Injection), InjectionWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(ListView), ListViewWrap.__Register);
+        
+        
         
         }
         
@@ -96,6 +102,10 @@ namespace XLua
 		delegate bool __GEN_DELEGATE8( UnityEngine.Object obj);
 		
 		delegate void __GEN_DELEGATE9( UnityEngine.GameObject go,  int sortingOrder);
+		
+		delegate void __GEN_DELEGATE10( UnityEngine.UI.Image image,  string assetName);
+		
+		delegate void __GEN_DELEGATE11( UnityEngine.UI.Image image,  string assetName);
 		
 	    static InternalGlobals()
 		{
@@ -180,6 +190,24 @@ namespace XLua
 				{typeof(UnityEngine.Object), new List<MethodInfo>(){
 				
 				  new __GEN_DELEGATE8(ToolExtensions.IsNull)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				}},
+				
+				{typeof(UnityEngine.UI.Image), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE10(GUIExtensions.SetSprite)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE11(GUIExtensions.SetSpriteAsync)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

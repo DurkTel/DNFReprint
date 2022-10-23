@@ -7,13 +7,14 @@ public class InputUtility
 {
     public static InputReader inputReader { get { return InputReader.GetInputAsset(); } }
 
-    public static UnityAction<string> onInputPressEvent;
+    public static UnityEvent<string> onInputPressEvent = new UnityEvent<string>();
 
-    public static UnityAction<string> onInputReleaseEvent;
+    public static UnityEvent<string> onInputReleaseEvent = new UnityEvent<string>();
 
-    public static UnityAction<string> onInputHoldEvent;
+    public static UnityEvent<string> onInputHoldEvent = new UnityEvent<string>();
 
-    public static UnityAction<string> onInputMultiEvent;
+    public static UnityEvent<string> onInputMultiEvent = new UnityEvent<string>();
+
     public static void Init()
     {
         inputReader.buttonPressEvent += InputPressAction;

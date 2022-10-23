@@ -11,7 +11,7 @@ end
 
 --注册该模块下的视图
 function RoleModule:get_views()
-    
+    return 'game.bigWorld.modules.role.views.CreateRoleView'
 end
 
 --注册本地事件

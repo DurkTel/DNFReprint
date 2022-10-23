@@ -30,7 +30,11 @@ function Injection:ctor(gameObject)
 	self.gameObject = gameObject
 	self.transform  = gameObject.transform
 	self.inject 	= auto_inject(self)
-	-- self:on_init()
+	self:on_init()
+end
+
+function Injection:on_init()
+
 end
 
 function Injection:get_component(name)

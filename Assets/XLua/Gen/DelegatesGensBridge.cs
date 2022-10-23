@@ -223,7 +223,29 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp9(ColliderTrigger p0, ColliderTrigger p1, int p2)
+		public void __Gen_Delegate_Imp9(string p0)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                
+                LuaAPI.lua_pushstring(L, p0);
+                
+                PCall(L, 1, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp10(ColliderTrigger p0, ColliderTrigger p1, int p2)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -237,6 +259,28 @@ namespace XLua
                 LuaAPI.xlua_pushinteger(L, p2);
                 
                 PCall(L, 3, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp11(ListViewItemRender p0)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
@@ -341,9 +385,19 @@ namespace XLua
 			    return new UnityEngine.Events.UnityAction<int, int, string>(__Gen_Delegate_Imp8);
 			}
 		
+		    if (type == typeof(UnityEngine.Events.UnityAction<string>))
+			{
+			    return new UnityEngine.Events.UnityAction<string>(__Gen_Delegate_Imp9);
+			}
+		
 		    if (type == typeof(UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>))
 			{
-			    return new UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>(__Gen_Delegate_Imp9);
+			    return new UnityEngine.Events.UnityAction<ColliderTrigger, ColliderTrigger, int>(__Gen_Delegate_Imp10);
+			}
+		
+		    if (type == typeof(UnityEngine.Events.UnityAction<ListViewItemRender>))
+			{
+			    return new UnityEngine.Events.UnityAction<ListViewItemRender>(__Gen_Delegate_Imp11);
 			}
 		
 		    return null;

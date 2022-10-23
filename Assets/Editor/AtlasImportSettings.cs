@@ -9,7 +9,7 @@ public class AtlasImportSettings : AssetPostprocessor
     //{
     //    TextureImporter import = assetImporter as TextureImporter;
     //    if (!import) return;
-        
+
 
     //    if (import.textureType != TextureImporterType.Sprite)
     //    {

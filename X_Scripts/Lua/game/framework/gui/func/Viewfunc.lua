@@ -12,8 +12,8 @@ local function on_main_ui_load_complete(self, go)
 end
 
 local function load_main_ui(self)
-
     if not self.mainObject then
+        
         GLoaderfunc.load_ui_prefab(self.prefab, function (go)
             on_main_ui_load_complete(self, go)
         end)
