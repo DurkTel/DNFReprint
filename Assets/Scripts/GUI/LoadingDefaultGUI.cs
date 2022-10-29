@@ -25,11 +25,15 @@ public class LoadingDefaultGUI : MonoBehaviour
 
     public static void Open(Transform transform)
     {
-        GameObject go = AssetLoader.Load<GameObject>("prefabs/gui/Default_Loading_GUI");
-        defaultUI = Instantiate(go);
-        defaultUI.transform.SetParent(transform);
+        AssetLoader loader = AssetUtility.LoadAssetAsync<GameObject>("Default_Loading_GUI.prefab");
+        loader.onComplete = (p) =>
+        {
+            defaultUI = Instantiate(p.rawObject as GameObject);
+            defaultUI.transform.SetParent(transform);
 
-        Init();
+            Init();
+
+        };
     }
 
     public static void Close()

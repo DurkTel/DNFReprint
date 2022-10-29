@@ -107,9 +107,10 @@ public partial class Entity
     {
         if (mainAvatar == null || string.IsNullOrEmpty(boneAssetName)) return;
         //初始化完载体加载各个皮肤部件
-        AssetLoader.LoadAsync<GameObject>(boneAssetName, (p) =>
+        AssetLoader loader = AssetUtility.LoadAssetAsync<GameObject>(boneAssetName);
+        loader.onComplete = (p) =>
         {
-            rootBone = Object.Instantiate(p).transform;
+            rootBone = Object.Instantiate(p.rawObject as GameObject).transform;
             rootBone.SetParent(mainAvatar.gameObject.transform);
             rootBone.localPosition = Vector3.zero;
 
@@ -120,7 +121,7 @@ public partial class Entity
                 part.boneTransform = transform;
                 part.RefreshBoneBinding();
             }
-        });
+        };
     }
 
     public void Skin_SetAvatarPart(int partType, string modelAssetName, string boneName)

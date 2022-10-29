@@ -17,27 +17,27 @@ MonoBehaviour:
   isLoop: 1
   speed: 1
   frameList:
-  - sprite: {fileID: 21300000, guid: 88a72ef48aaf5e946b8a4a2eb7e7f75a, type: 3}
+  - sprite: {fileID: 21300000, guid: 4b120975893afa14bbbef291217aeef1, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 87087ed50f1272e4c919f78a17c37e2a, type: 3}
+  - sprite: {fileID: 21300000, guid: 6f969474f2a6b5947a7d5ad3fa1d6487, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 87087ed50f1272e4c919f78a17c37e2a, type: 3}
+  - sprite: {fileID: 21300000, guid: d29f948f88c107243b2a5ac625f9b2b5, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 0ff7cc8eac03dc148bb9d60e16f39c9c, type: 3}
+  - sprite: {fileID: 21300000, guid: 89b7df82327622240a6c87539c5854ef, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 17027941975bc104fa95173fd55c8a72, type: 3}
+  - sprite: {fileID: 21300000, guid: d05e4934d6a7aa04e8fda4df1e52ecb3, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: dab4a47bcb7b5c347b63dbb3fef69962, type: 3}
+  - sprite: {fileID: 21300000, guid: 2fbf8c6d755a85a48a8acbe0630c4307, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []

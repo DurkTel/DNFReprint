@@ -50,7 +50,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     {
         on_LoadEvent?.Invoke(mapId);
         GMScene scene = Pool<GMScene>.Get();
-        GameObject go = AssetLoader.Load<GameObject>(path);
+        GameObject go = AssetUtility.LoadAsset<GameObject>(path);
         if (go == null)
         {
             Debug.LogError("场景加载错误，资源路径没有该资源");
@@ -71,10 +71,11 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
     {
         on_LoadEvent?.Invoke(mapId);
         GMScene scene = Pool<GMScene>.Get();
-        AssetLoader.LoadAsync<GameObject>(path, (p) =>
+        AssetLoader loader = AssetUtility.LoadAssetAsync<GameObject>(path);
+        loader.onComplete = (p) =>
         {
             Debug.Assert(p != null, "场景加载错误，资源路径没有该资源");
-            GameObject sceneObj = Instantiate(p);
+            GameObject sceneObj = Instantiate(p.rawObject as GameObject);
             if (!m_allScenes.ContainsKey(mapId))
                 m_allScenes.Add(mapId, scene);
             //加载完先放一边
@@ -82,7 +83,7 @@ public class GMScenesManager : SingletonMono<GMScenesManager>
             scene.gameObject = sceneObj;
             on_CompleteEvent?.Invoke(mapId);
             callBack?.Invoke();
-        });
+        };
         return scene;
     }
 

@@ -31,59 +31,16 @@ public class RenenderSprite : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// 同步加载
-    /// </summary>
-    /// <param name="assetName"></param>
-    /// <param name="fashionCode"></param>
-    public void InitSprite(string assetName, int fashionCode)
-    {
-        string path = string.Format("{0}/{1}/{2}", assetName, fashionCode, name);
-        part_Sprite.Clear();
-        if (path == null)
-        {
-            Debug.LogError("请添加Sprite资源路径");
-            return;
-        }
-        TextAsset tempTA = Resources.Load<TextAsset>(path + "/pointOffsize");
-
-        if (tempTA == null)
-        { 
-            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!");
-            return;
-        }
-
-        string str = tempTA.ToString();
-        m_coordinate = str.Split(' ', '\n');
-
-        m_spriteCount = m_coordinate.Length / 2;
-
-        for (int i = 0; i < m_spriteCount; i++)
-        {
-            m_singSprite = AssetLoader.Load<Sprite>(path + '/' + i);
-
-            if (m_singSprite == null)
-            {
-                Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);
-                return;
-            }
-
-            part_Sprite.Add(m_singSprite);
-        }
-    }
-
     public void InitSprite(string assetName)
     {
-        string path = assetName;
         part_Sprite.Clear();
-        if (path == null)
+        if (assetName == null)
         {
             Debug.LogError("请添加Sprite资源路径");
             return;
         }
-        string tempName = path.Substring(path.LastIndexOf('/') + 1);
 
-        TextAsset tempTA = Resources.Load<TextAsset>(path + '/' + tempName + "_pointOffsize");
+        TextAsset tempTA = AssetUtility.LoadAsset<TextAsset>(assetName + "_pointOffsize.txt");
 
         if (tempTA == null)
         {
@@ -98,7 +55,7 @@ public class RenenderSprite : MonoBehaviour
 
         for (int i = 0; i < m_spriteCount; i++)
         {
-            m_singSprite = AssetLoader.Load<Sprite>(path + '/' + tempName + '_' + i);
+            m_singSprite = AssetUtility.LoadAsset<Sprite>(assetName + "_" + i + ".png");
 
             if (m_singSprite == null)
             {
@@ -117,20 +74,18 @@ public class RenenderSprite : MonoBehaviour
     public IEnumerator InitSpriteAsync(string assetName, UnityAction<Avatar.AvatarPartType> callback)
     {
         loadComplete = false;
-        string path = assetName;
-        string tempName = path.Substring(path.LastIndexOf('/') + 1);
 
         part_Sprite.Clear();
-        if (path == null)
+        if (assetName == null)
         {
             Debug.LogError("请添加Sprite资源路径");
             yield break;
         }
-        TextAsset tempTA = AssetLoader.Load<TextAsset>(path + '/' + tempName + "_pointoffsize");
-        
+        TextAsset tempTA = AssetUtility.LoadAsset<TextAsset>(assetName + "_pointOffsize.txt");
+
         if (tempTA == null)
         {
-            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ path + '/' + tempName + "_pointoffsize");
+            Debug.LogError("位置偏移点获取不到!!!!!!!!!!!"+ assetName + "_pointOffsize.txt");
             yield break;
         }
 
@@ -142,25 +97,12 @@ public class RenenderSprite : MonoBehaviour
         int i = 0;
         while (i < m_spriteCount)
         {
-            AsyncOperation r = AssetLoader.LoadAsyncAO<Sprite>(path + '/' + tempName + '_' + i);
+            AssetLoader loader = AssetUtility.LoadAssetAsync<Sprite>(assetName + '_' + i + ".png");
 
-            yield return r;
+            yield return loader;
 
-            switch (AssetLoader.loadMode)
-            {
-                case AssetLoader.LoadMode.Resources:
-                    m_singSprite = (r as ResourceRequest).asset as Sprite;
-                    break;
-                case AssetLoader.LoadMode.AssetBundle:
-                    m_singSprite = (r as AssetBundleRequest).asset as Sprite;
-                    break;
-            }
+            m_singSprite = loader.rawObject as Sprite;
 
-            //if (m_singSprite == null)
-            //{
-            //    Debug.LogError("资源里图片和中心配置表数量不对，开始超出范围是" + i);
-            //    yield break;
-            //}
             part_Sprite.Add(m_singSprite);
             i++;
         }

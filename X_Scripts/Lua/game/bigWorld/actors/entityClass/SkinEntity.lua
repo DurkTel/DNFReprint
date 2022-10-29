@@ -67,7 +67,7 @@ function SkinEntity:refresh_skeleton()
         -- print_err("")
         return
     end
-    local skeletonAssetName = EntitySkinUtility.get_skeleton_assetName(entityType) or "model/Bone/common_single_bone"
+    local skeletonAssetName = EntitySkinUtility.get_skeleton_assetName(entityType) or "common_single_bone.prefab"
     self:set_avatarSkeleton(skeletonAssetName)
 end
 

@@ -4,9 +4,9 @@ local t_effect = require("db.db_tbeffect")
 
 EntitySkinUtility.skeletonAssetPath = 
 {
-    [0] = "model/Bone/common_character_bone",
-    [2] = "model/Bone/common_single_bone",
-    [5] = "model/Bone/common_double_bone"
+    [0] = "common_character_bone.prefab",
+    [2] = "common_single_bone.prefab",
+    [5] = "common_double_bone.prefab"
 }
 
 function EntitySkinUtility.get_skeleton_assetName(entityType)

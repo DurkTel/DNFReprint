@@ -17,7 +17,7 @@ MonoBehaviour:
   isLoop: 1
   speed: 1
   frameList:
-  - sprite: {fileID: 21300000, guid: 9827c7f0d4fadbd4aba6f463da9aead2, type: 3}
+  - sprite: {fileID: 21300000, guid: 59f11a979b4f1124aab6980d0c90df44, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []

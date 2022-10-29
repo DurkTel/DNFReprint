@@ -17,19 +17,19 @@ MonoBehaviour:
   isLoop: 0
   speed: 1
   frameList:
-  - sprite: {fileID: 21300000, guid: e4e5a1eeafe273c468a37c3f9e83c338, type: 3}
+  - sprite: {fileID: 21300000, guid: 9bff26b689aff1a4fa50cd880556aba6, type: 3}
     interval: 0.2
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 9514d402bd7e04045b8801dfea403c71, type: 3}
+  - sprite: {fileID: 21300000, guid: 1124d80ef5072944288a0f23d04b1b3e, type: 3}
     interval: 0.15
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 9d900a8695299ce4ca6cf572f2171e15, type: 3}
+  - sprite: {fileID: 21300000, guid: 53ac42efbd4e11247b230972e57b4602, type: 3}
     interval: 0.15
     frameEventLoop: 0
     frameEvent: []
-  - sprite: {fileID: 21300000, guid: 81755a6057260534ea14f956c255bcb6, type: 3}
+  - sprite: {fileID: 21300000, guid: f9391c35f91965646bb75dddb5955459, type: 3}
     interval: 0.3
     frameEventLoop: 0
     frameEvent: []

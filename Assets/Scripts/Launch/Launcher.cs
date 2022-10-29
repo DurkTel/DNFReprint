@@ -12,6 +12,9 @@ public class Launcher : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        AssetManager.Initialize();
+
 #if UNITY_EDITOR
         m_useABLoadMode = UnityEditor.EditorPrefs.GetBool("QuickMenuKey_LoadModeABTag", false);
 #else
@@ -37,9 +40,8 @@ public class Launcher : MonoBehaviour
     /// <returns></returns>
     private IEnumerator LaunchGame(UnityAction callback = null)
     {
-        AssetLoader.loadMode = m_useABLoadMode ? AssetLoader.LoadMode.AssetBundle : AssetLoader.LoadMode.Resources;
 
-        print("当前资源加载模式为：" + AssetLoader.loadMode);
+        //print("当前资源加载模式为：" + AssetLoader.loadMode);
 
         GMGUIManager.Instance.Initialize();
         yield return null;

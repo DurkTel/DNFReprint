@@ -16,14 +16,16 @@ public static class GUIExtensions
 
     public static void SetSprite(this Image image, string assetName)
     {
-        image.sprite = AssetLoader.Load<Sprite>(assetName);
+        image.sprite = AssetUtility.LoadAsset<Sprite>(assetName);
     }
 
     public static void SetSpriteAsync(this Image image, string assetName)
     {
-        AssetLoader.LoadAsync<Sprite>(assetName, (p) =>
+
+        AssetLoader loader = AssetUtility.LoadAssetAsync<Sprite>(assetName);
+        loader.onComplete = (p) =>
         {
-            image.sprite = p;
-        });
+            image.sprite = p.rawObject as Sprite;
+        };
     }
 }

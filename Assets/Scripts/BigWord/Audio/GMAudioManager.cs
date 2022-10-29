@@ -28,19 +28,11 @@ public class GMAudioManager : MonoBehaviour
 
     public IEnumerator Init()
     {
-        AsyncOperation r = AssetLoader.LoadAsyncAO<AudioMixer>("audioMixer/GameAudioMixer");
+        AssetLoader loader = AssetUtility.LoadAssetAsync<AudioMixer>("GameAudioMixer.mixer");
 
-        yield return r;
+        yield return loader;
 
-        switch (AssetLoader.loadMode)
-        {
-            case AssetLoader.LoadMode.Resources:
-                m_audioMixer = (r as ResourceRequest).asset as AudioMixer;
-                break;
-            case AssetLoader.LoadMode.AssetBundle:
-                m_audioMixer = (r as AssetBundleRequest).asset as AudioMixer;
-                break;
-        }
+        m_audioMixer = loader.rawObject as AudioMixer;
 
         audioObject = new ObjectPool<AudioObject>((ao) => ao.Init(new GameObject()), (ao) => ao.Release());
 

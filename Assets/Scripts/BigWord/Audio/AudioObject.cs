@@ -32,10 +32,11 @@ public class AudioObject
 
     private void LoadAudioClip(string assetName)
     {
-        AssetLoader.LoadAsync<AudioClip>(assetName, (clip) =>
+        AssetLoader loader = AssetUtility.LoadAssetAsync<AudioClip>(assetName);
+        loader.onComplete = (p) =>
         {
-            PlayInternal(clip);
-        });
+            PlayInternal(p.rawObject as AudioClip);
+        };
     }
 
     private void PlayInternal(AudioClip clip)

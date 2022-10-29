@@ -42,12 +42,13 @@ public class GameObjectPool : MonoBehaviour
         }
         else
         {
-            AssetLoader.LoadAsync<GameObject>(assetName, (p) =>
+            AssetLoader loader = AssetUtility.LoadAssetAsync<GameObject>(assetName);
+            loader.onComplete = (p) =>
             {
-                GameObject go = Instantiate(p);
+                GameObject go = Instantiate(p.rawObject as GameObject);
                 callBack?.Invoke(go);
                 constructor?.Invoke(go);
-            });
+            };
         }
     }
 

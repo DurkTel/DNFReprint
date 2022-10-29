@@ -590,7 +590,7 @@ public partial class Entity
             m_renenderSprites.Add(part.renender);
         }
 
-        animationMap = AssetLoader.Load<AnimationMap>("so/" + aniCfg);
+        animationMap = AssetUtility.LoadAsset<AnimationMap>(aniCfg);
         //AnimationData animation = this.status == EntityUnitily.PEACE ? animationConfig.idleTown_Anim : animationConfig.idle_Anim;
         //DOSpriteAnimation(animationMap.TryGetAnimation("IDLE_TOWN_ANIM"));
     }

@@ -53,9 +53,13 @@ public class QuickStart : ScriptableObject
             return;
         }
 
+        //本地资源模式 清点本地资源
+        //AssetManifest.RefreshAssetsManifest();
+
         EditorPrefs.SetBool(m_LaunchGameTag, true);
         EditorPrefs.SetBool(m_LoadModeABTag, false);
         EditorApplication.isPlaying = true;
+
     }
 
 

@@ -64,7 +64,7 @@ public class InputReader : ScriptableObject, InputControls.IGameplayActions, Inp
         if (inputReader != null)
             return inputReader;
 
-        inputReader = AssetLoader.Load<InputReader>("so/InputReader");
+        inputReader = AssetUtility.LoadAsset<InputReader>("InputReader.asset");
         return inputReader;
     }
 

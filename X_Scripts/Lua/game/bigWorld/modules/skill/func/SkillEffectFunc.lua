@@ -86,15 +86,15 @@ funcMap[10010] =
     started = function (entity, skillCode, customInfo)
         customInfo.startHeight = entity.gmentity.skinNode.localPosition.y --记录释放技能时的高度
         entity:set_drop_force(15)
-        entity:add_bone_effect(GEntityDefine.avatarPartType.weapon, "prefabs/effect/yinGuangLuoRenEffect", Vector3(-1.75, 22, 0))
+        entity:add_bone_effect(GEntityDefine.avatarPartType.weapon, "yinGuangLuoRenEffect.prefab", Vector3(-1.75, 22, 0))
     end,
     performed = function (frame, entity, skillCode, customInfo) --进行技能中
         if entity.gmentity.skinNode.localPosition.y <= 0 then --着地
-            entity:remove_bone_effect(GEntityDefine.avatarPartType.weapon, "prefabs/effect/yinGuangLuoRenEffect")
+            entity:remove_bone_effect(GEntityDefine.avatarPartType.weapon, "yinGuangLuoRenEffect.prefab")
             if customInfo.startHeight >= 0.5 then --大于一定高度释放的 播放下蹲动画进行缓冲
-                GLoaderfunc.load_effect("prefabs/effect/earthquake01", entity:get_position(), true)
-                GLoaderfunc.load_effect("prefabs/effect/earthquake02", entity:get_position(), true)
-                GAudioManager.play_hit("sounds/Character/swordman/sjh")
+                GLoaderfunc.load_effect("earthquake01.prefab", entity:get_position(), true)
+                GLoaderfunc.load_effect("earthquake02.prefab", entity:get_position(), true)
+                GAudioManager.play_hit("sjh.ogg")
                 entity:play_sprite_animation("SIT_ANIM")
                 entity:add_timer(function ()
                     entity:play_sprite_animation("IDLE_ANIM")

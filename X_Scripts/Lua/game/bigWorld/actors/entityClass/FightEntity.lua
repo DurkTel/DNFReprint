@@ -50,7 +50,7 @@ function FightEntity:attacker_performance(attackerTrigger, victimTrigger, skillC
         math.randomseed(os.time())
         local effects = string.split(damageCfg.effectName, ',', true)
         local random = math.random(1, #effects)
-        local name = "prefabs/effect/"..effects[random]
+        local name = effects[random]
         --计算接触点
         local attackerBounds = attackerTrigger.collider2d.bounds
         local victimBounds = victimTrigger.collider2d.bounds
@@ -72,7 +72,7 @@ function FightEntity:request_victim(attackerTrigger, victimTrigger, skillCfg)
         if faceToFace then --格挡成功
             effect = false
             self:play_sprite_animation("GEDANGEFFECT_ANIM")
-            GAudioManager.play_hit("sounds/Character/swordman/weapon/swd_eff_01")
+            GAudioManager.play_hit("swd_eff_01.ogg")
             self:set_mvoe_force(-3)
         end
     end

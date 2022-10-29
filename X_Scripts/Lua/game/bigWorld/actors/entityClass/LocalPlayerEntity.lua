@@ -42,7 +42,7 @@ function LocalPlayerEntity:attacker_performance(attackerTrigger, victimTrigger, 
     base.attacker_performance(self, attackerTrigger, victimTrigger, skillCfg)
     local audio = tempAudio[skillCfg.id]
     if audio then
-        GAudioManager.play_hit("sounds/Character/swordman/weapon/katb_hit")
+        GAudioManager.play_hit("katb_hit.ogg")
     end
 end
 
