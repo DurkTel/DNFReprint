@@ -17,8 +17,6 @@ MonoBehaviour:
     assetPath: Assets/InputSystem.inputsettings.asset
   - assetName: ArrowDown_on.png
     assetPath: Assets/Editor Default Resources/ArrowDown_on.png
-  - assetName: New Material.mat
-    assetPath: Assets/MapMatrial/New Material.mat
   - assetName: AssetManifest.asset
     assetPath: Assets/Plugins/AssetManifest.asset
   - assetName: DOTweenSettings.asset
@@ -63,12 +61,6 @@ MonoBehaviour:
     assetPath: Assets/StreamingAssets/StreamingAssets.manifest
   - assetName: version.txt
     assetPath: Assets/StreamingAssets/version.txt
-  - assetName: allText.txt
-    assetPath: Assets/TextFont/allText.txt
-  - assetName: simsun.ttc
-    assetPath: Assets/TextFont/simsun.ttc
-  - assetName: Cube.prefab
-    assetPath: Assets/Texture/Cube.prefab
   - assetName: PanelSettings.asset
     assetPath: Assets/UI Toolkit/PanelSettings.asset
   - assetName: "QQ\u622A\u56FE20220306161940.png"
@@ -77,6 +69,10 @@ MonoBehaviour:
     assetPath: "Assets/\u6548\u679C\u56FE/\u5C4F\u5E55\u622A\u56FE 2022-10-23 124012.png"
   - assetName: GameAudioMixer.mixer
     assetPath: Assets/Art/Audio/GameAudioMixer.mixer
+  - assetName: allText.txt
+    assetPath: Assets/Art/Font/allText.txt
+  - assetName: simsun.ttc
+    assetPath: Assets/Art/Font/simsun.ttc
   - assetName: Scene_10000.prefab
     assetPath: Assets/Art/Scene/Scene_10000.prefab
   - assetName: Scene_10001.prefab
@@ -85,20 +81,6 @@ MonoBehaviour:
     assetPath: Assets/Art/Scene/Scene_10002.prefab
   - assetName: Scene_10003.prefab
     assetPath: Assets/Art/Scene/Scene_10003.prefab
-  - assetName: CommonSkillAnimMap.asset
-    assetPath: Assets/Art/ScriptObject/CommonSkillAnimMap.asset
-  - assetName: GoblinAnimationMap.asset
-    assetPath: Assets/Art/ScriptObject/GoblinAnimationMap.asset
-  - assetName: InputReader.asset
-    assetPath: Assets/ScriptableObjects/Input/InputReader.asset
-  - assetName: SwordManAnimMap.asset
-    assetPath: Assets/Art/ScriptObject/SwordManAnimMap.asset
-  - assetName: Changelog.txt
-    assetPath: Assets/LubanLib/SimpleJSON/Changelog.txt
-  - assetName: LICENSE
-    assetPath: Assets/LubanLib/SimpleJSON/LICENSE
-  - assetName: README
-    assetPath: Assets/LubanLib/SimpleJSON/README
   - assetName: HotfixFlags.cpp
     assetPath: Assets/Plugins/iOS/HotfixFlags.cpp
   - assetName: libxlua.a
@@ -109,12 +91,6 @@ MonoBehaviour:
     assetPath: Assets/Plugins/Android/libs/x86/libxlua.so
   - assetName: xlua.dll
     assetPath: Assets/Plugins/WSA/x86/xlua.dll
-  - assetName: 10000.asset
-    assetPath: Assets/ScriptableObjects/NavigationData/10000.asset
-  - assetName: 10001.asset
-    assetPath: Assets/ScriptableObjects/NavigationData/10001.asset
-  - assetName: 10003.asset
-    assetPath: Assets/ScriptableObjects/NavigationData/10003.asset
   - assetName: TextMesh Pro User Guide 2016.pdf
     assetPath: Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf
   - assetName: LiberationSans - OFL.txt
@@ -197,6 +173,14 @@ MonoBehaviour:
     assetPath: Assets/Art/Model/Skeleton/common_double_bone.prefab
   - assetName: common_single_bone.prefab
     assetPath: Assets/Art/Model/Skeleton/common_single_bone.prefab
+  - assetName: InputReader.asset
+    assetPath: Assets/Art/ScriptObject/Input/InputReader.asset
+  - assetName: 10000.asset
+    assetPath: Assets/Art/ScriptObject/NavigationData/10000.asset
+  - assetName: 10001.asset
+    assetPath: Assets/Art/ScriptObject/NavigationData/10001.asset
+  - assetName: 10003.asset
+    assetPath: Assets/Art/ScriptObject/NavigationData/10003.asset
   - assetName: DOTween.dll
     assetPath: Assets/Plugins/Demigiant/DOTween/DOTween.dll
   - assetName: DOTween.dll.mdb
@@ -222,64 +206,6 @@ MonoBehaviour:
     assetPath: Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset
   - assetName: Default Style Sheet.asset
     assetPath: Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset
-  - assetName: 0.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_tile/tile_ex.img/0.png"
-  - assetName: 1.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_pathgate/gate_guild_rank.img/1.png"
-  - assetName: 10.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/10.png"
-  - assetName: 11.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/11.png"
-  - assetName: 12.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/12.png"
-  - assetName: 13.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/13.png"
-  - assetName: 14.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/14.png"
-  - assetName: 2.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/2.png"
-  - assetName: 3.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/3.png"
-  - assetName: 4.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/4.png"
-  - assetName: 5.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/5.png"
-  - assetName: 6.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/6.png"
-  - assetName: 7.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/7.png"
-  - assetName: 8.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/8.png"
-  - assetName: 9.png
-    assetPath: "Assets/Texture/\u827E\u5C14\u6587\u9632\u7EBF/sprite_map_town_04_elvengard_object/shine_seria_tree.img/9.png"
-  - assetName: 0.controller
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/0.controller"
-  - assetName: 1.controller
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/1.controller"
-  - assetName: 2.controller
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/2.controller"
-  - assetName: light.anim
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/light.anim"
-  - assetName: openDoorEffect.anim
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/openDoorEffect.anim"
-  - assetName: 15.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/15.png"
-  - assetName: 16.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/16.png"
-  - assetName: 17.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/17.png"
-  - assetName: 18.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/18.png"
-  - assetName: 19.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/19.png"
-  - assetName: 20.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/20.png"
-  - assetName: 21.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/21.png"
-  - assetName: 22.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/22.png"
-  - assetName: 23.png
-    assetPath: "Assets/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/23.png"
   - assetName: memory.lua.txt
     assetPath: Assets/XLua/Resources/perf/memory.lua.txt
   - assetName: profiler.lua.txt
@@ -962,6 +888,42 @@ MonoBehaviour:
     assetPath: Assets/Art/GUI/Module/Common/login_loading_tips_2.png
   - assetName: login_loading_tips_ani.png
     assetPath: Assets/Art/GUI/Module/Common/login_loading_tips_ani.png
+  - assetName: training_ground_0.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_0.png
+  - assetName: training_ground_1.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_1.png
+  - assetName: training_ground_10.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_10.png
+  - assetName: training_ground_11.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_11.png
+  - assetName: training_ground_12.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_12.png
+  - assetName: training_ground_13.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_13.png
+  - assetName: training_ground_14.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_14.png
+  - assetName: training_ground_2.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_2.png
+  - assetName: training_ground_3.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_3.png
+  - assetName: training_ground_4.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_4.png
+  - assetName: training_ground_5.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_5.png
+  - assetName: training_ground_6.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_6.png
+  - assetName: training_ground_7.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_7.png
+  - assetName: training_ground_8.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_8.png
+  - assetName: training_ground_9.png
+    assetPath: Assets/Art/Scene/Texture/TrainingGround/training_ground_9.png
+  - assetName: GoblinAnimationMap.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/GoblinAnimationMap.asset
+  - assetName: CommonSkillAnimMap.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Sandbag/CommonSkillAnimMap.asset
+  - assetName: SwordManAnimMap.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/SwordManAnimMap.asset
   - assetName: DOTweenEditor.dll
     assetPath: Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll
   - assetName: DOTweenEditor.dll.mdb
@@ -6046,6 +6008,196 @@ MonoBehaviour:
     assetPath: Assets/Art/Model/Texture/Monster/tau/tau_offset.txt
   - assetName: tau_pointOffsize.txt
     assetPath: Assets/Art/Model/Texture/Monster/tau/tau_pointOffsize.txt
+  - assetName: egobj01.img.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/egobj01.img/egobj01.img.png
+  - assetName: egtile.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_0.png
+  - assetName: egtile.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_1.png
+  - assetName: egtile.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_2.png
+  - assetName: egtile.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_3.png
+  - assetName: 0.controller
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/0.controller"
+  - assetName: 1.controller
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/1.controller"
+  - assetName: 2.controller
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/2.controller"
+  - assetName: light.anim
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/light.anim"
+  - assetName: openDoorEffect.anim
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/openDoorEffect.anim"
+  - assetName: 0.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/seria_add40.img/0.png"
+  - assetName: 1.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/1.png"
+  - assetName: 2.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/2.png"
+  - assetName: 3.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/3.png"
+  - assetName: 10.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/10.png"
+  - assetName: 11.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/11.png"
+  - assetName: 12.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/12.png"
+  - assetName: 13.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/13.png"
+  - assetName: 14.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/14.png"
+  - assetName: 15.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/15.png"
+  - assetName: 16.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/16.png"
+  - assetName: 17.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/17.png"
+  - assetName: 18.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/18.png"
+  - assetName: 19.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/19.png"
+  - assetName: 20.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/20.png"
+  - assetName: 21.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/21.png"
+  - assetName: 22.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/22.png"
+  - assetName: 23.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/23.png"
+  - assetName: 4.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/4.png"
+  - assetName: 5.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/5.png"
+  - assetName: 6.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/6.png"
+  - assetName: 7.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/7.png"
+  - assetName: 8.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/8.png"
+  - assetName: 9.png
+    assetPath: "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/9.png"
+  - assetName: attack_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/AnimationData/attack_Anim.asset
+  - assetName: death_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/AnimationData/death_Anim.asset
+  - assetName: drop_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/AnimationData/drop_Anim.asset
+  - assetName: hurt1_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/hurt1_Anim.asset
+  - assetName: hurt2_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/hurt2_Anim.asset
+  - assetName: idle_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/idle_Anim.asset
+  - assetName: lie_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/lie_Anim.asset
+  - assetName: rebound_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/rebound_Anim.asset
+  - assetName: sit_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/sit_Anim.asset
+  - assetName: walk_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/walk_Anim.asset
+  - assetName: attack_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/attack_collider.asset
+  - assetName: drop_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/drop_collider.asset
+  - assetName: hurt1_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/hurt1_collider.asset
+  - assetName: hurt2_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/hurt2_collider.asset
+  - assetName: idle_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/idle_collider.asset
+  - assetName: lie_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/lie_collider.asset
+  - assetName: rebound_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/rebound_collider.asset
+  - assetName: walk_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/walk_collider.asset
+  - assetName: hit1_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Sandbag/AnimationData/hit1_Anim.asset
+  - assetName: hit1_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Sandbag/ColliderInfo/hit1_collider.asset
+  - assetName: airborne_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/airborne_Anim.asset
+  - assetName: attack1_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/attack1_Anim.asset
+  - assetName: attack2_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/attack2_Anim.asset
+  - assetName: attack3_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/attack3_Anim.asset
+  - assetName: backJump_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/backJump_Anim.asset
+  - assetName: BoDongZhan_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/BoDongZhan_Anim.asset
+  - assetName: GeDangIng_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/GeDangIng_Anim.asset
+  - assetName: GeDang_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/GeDang_Anim.asset
+  - assetName: GuiZhan_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/GuiZhan_Anim.asset
+  - assetName: idlePeace_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/idlePeace_Anim.asset
+  - assetName: jumpAttack_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpAttack_Anim.asset
+  - assetName: jumpDrop_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpDrop_Anim.asset
+  - assetName: jumpEnd_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpEnd_Anim.asset
+  - assetName: jumpRise_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpRise_Anim.asset
+  - assetName: jump_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jump_Anim.asset
+  - assetName: LianTuCi_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/LianTuCi_Anim.asset
+  - assetName: runAttack_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/runAttack_Anim.asset
+  - assetName: run_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/run_Anim.asset
+  - assetName: ShangTiao_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/ShangTiao_Anim.asset
+  - assetName: walkPeace_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/walkPeace_Anim.asset
+  - assetName: YinGuangLuoRen_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/YinGuangLuoRen_Anim.asset
+  - assetName: airborne_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/airborne_collider.asset
+  - assetName: attack1_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/attack1_collider.asset
+  - assetName: attack2_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/attack2_collider.asset
+  - assetName: attack3_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/attack3_collider.asset
+  - assetName: backJump_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/backJump_collider.asset
+  - assetName: BoDongZhan_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/BoDongZhan_collider.asset
+  - assetName: GeDang_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/GeDang_collider.asset
+  - assetName: GuiZhan_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/GuiZhan_collider.asset
+  - assetName: idlePeace_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/idlePeace_collider.asset
+  - assetName: jumpAttack_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jumpAttack_collider.asset
+  - assetName: jumpDrop_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jumpDrop_collider.asset
+  - assetName: jumpEnd_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jumpEnd_collider.asset
+  - assetName: jump_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jump_collider.asset
+  - assetName: LianTuCi_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/LianTuCi_collider.asset
+  - assetName: runAttack_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/runAttack_collider.asset
+  - assetName: run_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/run_collider.asset
+  - assetName: ShangTiao_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/ShangTiao_collider.asset
+  - assetName: sit_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/sit_collider.asset
+  - assetName: walkPeace_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/walkPeace_collider.asset
+  - assetName: YinGuangLuoRen_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/YinGuangLuoRen_collider.asset
   - assetName: DOTweenIcon.png
     assetPath: Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenIcon.png
   - assetName: DOTweenMiniIcon.png
@@ -6056,58 +6208,6 @@ MonoBehaviour:
     assetPath: Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png
   - assetName: Header.jpg
     assetPath: Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Header.jpg
-  - assetName: knockLarge_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Effect/HitEffect/AnimationData/knockLarge_Anim.asset
-  - assetName: knockSmall_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Effect/HitEffect/AnimationData/knockSmall_Anim.asset
-  - assetName: boDongZhanEffect_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Effect/SkillEffect/AnimationData/boDongZhanEffect_Anim.asset
-  - assetName: guiZhanEffectA_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Effect/SkillEffect/AnimationData/guiZhanEffectA_Anim.asset
-  - assetName: boDongZhanEffect_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Effect/SkillEffect/ColliderInfo/boDongZhanEffect_collider.asset
-  - assetName: guiZhanEffectA_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Effect/SkillEffect/ColliderInfo/guiZhanEffectA_collider.asset
-  - assetName: attack_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/AnimationData/attack_Anim.asset
-  - assetName: death_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/AnimationData/death_Anim.asset
-  - assetName: drop_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/AnimationData/drop_Anim.asset
-  - assetName: hurt1_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/hurt1_Anim.asset
-  - assetName: hurt2_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/hurt2_Anim.asset
-  - assetName: idle_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/idle_Anim.asset
-  - assetName: lie_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/lie_Anim.asset
-  - assetName: rebound_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/rebound_Anim.asset
-  - assetName: sit_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/sit_Anim.asset
-  - assetName: walk_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/walk_Anim.asset
-  - assetName: attack_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/ColliderInfo/attack_collider.asset
-  - assetName: drop_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/ColliderInfo/drop_collider.asset
-  - assetName: hurt1_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/ColliderInfo/hurt1_collider.asset
-  - assetName: hurt2_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Goblin/ColliderInfo/hurt2_collider.asset
-  - assetName: idle_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/idle_collider.asset
-  - assetName: lie_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/lie_collider.asset
-  - assetName: rebound_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/rebound_collider.asset
-  - assetName: walk_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/walk_collider.asset
-  - assetName: hit1_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Sandbag/AnimationData/hit1_Anim.asset
-  - assetName: hit1_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Monster/Sandbag/ColliderInfo/hit1_collider.asset
   - assetName: darkHit01_0.png
     assetPath: Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_0.png
   - assetName: darkHit01_1.png
@@ -6304,74 +6404,224 @@ MonoBehaviour:
     assetPath: Assets/Art/GUI/Module/Role/Images/Single/create_role_bg_5.png
   - assetName: create_role_bg_6.png
     assetPath: Assets/Art/GUI/Module/Role/Images/Single/create_role_bg_6.png
-  - assetName: BoDongZhan_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/BoDongZhan_Anim.asset
-  - assetName: GeDangIng_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/GeDangIng_Anim.asset
-  - assetName: GeDang_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/GeDang_Anim.asset
-  - assetName: GuiZhan_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/GuiZhan_Anim.asset
-  - assetName: LianTuCi_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/LianTuCi_Anim.asset
-  - assetName: ShangTiao_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/ShangTiao_Anim.asset
-  - assetName: YinGuangLuoRen_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/skill/YinGuangLuoRen_Anim.asset
-  - assetName: airborne_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/airborne_collider.asset
-  - assetName: attack1_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/attack1_collider.asset
-  - assetName: attack2_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/attack2_collider.asset
-  - assetName: attack3_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/attack3_collider.asset
-  - assetName: backJump_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/backJump_collider.asset
-  - assetName: idlePeace_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/idlePeace_collider.asset
-  - assetName: jumpAttack_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/jumpAttack_collider.asset
-  - assetName: jumpDrop_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/jumpDrop_collider.asset
-  - assetName: jumpEnd_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/jumpEnd_collider.asset
-  - assetName: jump_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/jump_collider.asset
-  - assetName: runAttack_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/runAttack_collider.asset
-  - assetName: run_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/run_collider.asset
-  - assetName: sit_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/sit_collider.asset
-  - assetName: walkPeace_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/common/walkPeace_collider.asset
-  - assetName: BoDongZhan_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/skill/BoDongZhan_collider.asset
-  - assetName: GeDang_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/skill/GeDang_collider.asset
-  - assetName: GuiZhan_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/skill/GuiZhan_collider.asset
-  - assetName: LianTuCi_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/skill/LianTuCi_collider.asset
-  - assetName: ShangTiao_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/skill/ShangTiao_collider.asset
-  - assetName: YinGuangLuoRen_collider.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/ColliderInfo/skill/YinGuangLuoRen_collider.asset
-  - assetName: idle.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/idle.asset
-  - assetName: idle_town.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/idle_town.asset
-  - assetName: jump.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/jump.asset
-  - assetName: jump2.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/jump2.asset
-  - assetName: jump3.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/jump3.asset
-  - assetName: run.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/run.asset
-  - assetName: walk.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordWoman/AnimationData/common/walk.asset
+  - assetName: back_far.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_far.img/back_far.img_0.png
+  - assetName: back_far.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_far.img/back_far.img_1.png
+  - assetName: back_far.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_far.img/back_far.img_2.png
+  - assetName: back_middle.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_middle.img/back_middle.img_0.png
+  - assetName: barrier.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/barrier.img/barrier.img_0.png
+  - assetName: blacksmith.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_0.png
+  - assetName: blacksmith.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_1.png
+  - assetName: blacksmith.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_2.png
+  - assetName: blacksmith.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_3.png
+  - assetName: blacksmith.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_4.png
+  - assetName: blacksmith.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_5.png
+  - assetName: blacksmith.img_6.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_6.png
+  - assetName: blacksmith.img_7.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_7.png
+  - assetName: blacksmith.img_8.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_8.png
+  - assetName: blacksmith_smoke.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_0.png
+  - assetName: blacksmith_smoke.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_1.png
+  - assetName: blacksmith_smoke.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_2.png
+  - assetName: blacksmith_smoke.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_3.png
+  - assetName: blacksmith_smoke.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_4.png
+  - assetName: blacksmith_smoke.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_5.png
+  - assetName: blacksmith_smoke.img_6.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_6.png
+  - assetName: blacksmith_smoke.img_7.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_7.png
+  - assetName: block.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_0.png
+  - assetName: block.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_1.png
+  - assetName: block.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_2.png
+  - assetName: block.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_3.png
+  - assetName: block.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_4.png
+  - assetName: block.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_5.png
+  - assetName: clover.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_0.png
+  - assetName: clover.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_1.png
+  - assetName: clover.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_2.png
+  - assetName: clover.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_3.png
+  - assetName: guardpost.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/guardpost.img/guardpost.img_0.png
+  - assetName: myroom.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/myroom.img/myroom.img_0.png
+  - assetName: myroom.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/myroom.img/myroom.img_1.png
+  - assetName: near.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/near.img/near.img_0.png
+  - assetName: near.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/near.img/near.img_1.png
+  - assetName: seria_tree.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/seria_tree.img/seria_tree.img_0.png
+  - assetName: seria_tree_n.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/seria_tree_n.img/seria_tree_n.img_0.png
+  - assetName: shine_beam.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_0.png
+  - assetName: shine_beam.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_1.png
+  - assetName: shine_beam.img_10.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_10.png
+  - assetName: shine_beam.img_11.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_11.png
+  - assetName: shine_beam.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_2.png
+  - assetName: shine_beam.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_3.png
+  - assetName: shine_beam.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_4.png
+  - assetName: shine_beam.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_5.png
+  - assetName: shine_beam.img_6.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_6.png
+  - assetName: shine_beam.img_7.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_7.png
+  - assetName: shine_beam.img_8.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_8.png
+  - assetName: shine_beam.img_9.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_9.png
+  - assetName: shine_ground.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_0.png
+  - assetName: shine_ground.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_1.png
+  - assetName: shine_ground.img_10.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_10.png
+  - assetName: shine_ground.img_11.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_11.png
+  - assetName: shine_ground.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_2.png
+  - assetName: shine_ground.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_3.png
+  - assetName: shine_ground.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_4.png
+  - assetName: shine_ground.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_5.png
+  - assetName: shine_ground.img_6.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_6.png
+  - assetName: shine_ground.img_7.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_7.png
+  - assetName: shine_ground.img_8.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_8.png
+  - assetName: shine_ground.img_9.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_9.png
+  - assetName: shine_seria_n.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_0.png
+  - assetName: shine_seria_n.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_1.png
+  - assetName: shine_seria_n.img_10.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_10.png
+  - assetName: shine_seria_n.img_11.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_11.png
+  - assetName: shine_seria_n.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_2.png
+  - assetName: shine_seria_n.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_3.png
+  - assetName: shine_seria_n.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_4.png
+  - assetName: shine_seria_n.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_5.png
+  - assetName: shine_seria_n.img_6.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_6.png
+  - assetName: shine_seria_n.img_7.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_7.png
+  - assetName: shine_seria_n.img_8.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_8.png
+  - assetName: shine_seria_n.img_9.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_9.png
+  - assetName: shine_seria_tree.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_0.png
+  - assetName: shine_seria_tree.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_1.png
+  - assetName: shine_seria_tree.img_10.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_10.png
+  - assetName: shine_seria_tree.img_11.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_11.png
+  - assetName: shine_seria_tree.img_2.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_2.png
+  - assetName: shine_seria_tree.img_3.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_3.png
+  - assetName: shine_seria_tree.img_4.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_4.png
+  - assetName: shine_seria_tree.img_5.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_5.png
+  - assetName: shine_seria_tree.img_6.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_6.png
+  - assetName: shine_seria_tree.img_7.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_7.png
+  - assetName: shine_seria_tree.img_8.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_8.png
+  - assetName: shine_seria_tree.img_9.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_9.png
+  - assetName: sign.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/sign.img/sign.img_0.png
+  - assetName: sign_dungeon.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/sign_dungeon.img/sign_dungeon.img_0.png
+  - assetName: tent.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/tent.img/tent.img_0.png
+  - assetName: tree.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/tree.img/tree.img_0.png
+  - assetName: tree.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/tree.img/tree.img_1.png
+  - assetName: gate_down.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_down.img/gate_down.img_0.png
+  - assetName: gate_down_light.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_down_light.img/gate_down_light.img_0.png
+  - assetName: gate_guild.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild.img/gate_guild.img_0.png
+  - assetName: gate_guild.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild.img/gate_guild.img_1.png
+  - assetName: gate_guild_rank.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild_rank.img/gate_guild_rank.img_0.png
+  - assetName: gate_guild_rank.img_1.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild_rank.img/gate_guild_rank.img_1.png
+  - assetName: gate_up.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_up.img/gate_up.img_0.png
+  - assetName: gate_up_light.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_up_light.img/gate_up_light.img_0.png
+  - assetName: tile.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_tile/tile.img/tile.img_0.png
+  - assetName: tile_add40.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_tile/tile_add40.img/tile_add40.img_0.png
+  - assetName: tile_ex.img_0.png
+    assetPath: Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_tile/tile_ex.img/tile_ex.img_0.png
+  - assetName: knockLarge_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Effect/HitEffect/AnimationData/knockLarge_Anim.asset
+  - assetName: knockSmall_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Effect/HitEffect/AnimationData/knockSmall_Anim.asset
+  - assetName: boDongZhanEffect_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Effect/SkillEffect/AnimationData/boDongZhanEffect_Anim.asset
+  - assetName: guiZhanEffectA_Anim.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Effect/SkillEffect/AnimationData/guiZhanEffectA_Anim.asset
+  - assetName: boDongZhanEffect_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Effect/SkillEffect/ColliderInfo/boDongZhanEffect_collider.asset
+  - assetName: guiZhanEffectA_collider.asset
+    assetPath: Assets/Art/ScriptObject/Animations/Effect/SkillEffect/ColliderInfo/guiZhanEffectA_collider.asset
   - assetName: role_live2d_1_0.png
     assetPath: Assets/Art/GUI/Module/Role/Images/Single/live2d/role_live2d_1_0.png
   - assetName: role_live2d_1_1.png
@@ -6554,31 +6804,3 @@ MonoBehaviour:
     assetPath: Assets/Art/GUI/Module/Role/Images/Single/live2d/role_live2d_1_9.png
   - assetName: role_live2d_1_90.png
     assetPath: Assets/Art/GUI/Module/Role/Images/Single/live2d/role_live2d_1_90.png
-  - assetName: airborne_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/airborne_Anim.asset
-  - assetName: attack1_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/attack1_Anim.asset
-  - assetName: attack2_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/attack2_Anim.asset
-  - assetName: attack3_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/attack3_Anim.asset
-  - assetName: backJump_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/backJump_Anim.asset
-  - assetName: jumpAttack_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/jumpAttack_Anim.asset
-  - assetName: jumpDrop_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/jumpDrop_Anim.asset
-  - assetName: jumpEnd_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/jumpEnd_Anim.asset
-  - assetName: jumpRise_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/jumpRise_Anim.asset
-  - assetName: jump_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/jump_Anim.asset
-  - assetName: runAttack_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/runAttack_Anim.asset
-  - assetName: run_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/fight/run_Anim.asset
-  - assetName: idlePeace_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/peace/idlePeace_Anim.asset
-  - assetName: walkPeace_Anim.asset
-    assetPath: Assets/ScriptableObjects/EntityModule/Career/SwordMan/AnimationData/common/peace/walkPeace_Anim.asset

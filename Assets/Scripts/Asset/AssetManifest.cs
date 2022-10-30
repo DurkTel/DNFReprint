@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class AssetManifest : ScriptableObject, ISerializationCallbackReceiver
@@ -65,7 +64,9 @@ public class AssetManifest : ScriptableObject, ISerializationCallbackReceiver
         assetMap.Clear();
     }
 
+#if UNITY_EDITOR
     [MenuItem("Assets/Refresh AssetsManifest")]
+#endif
     public static void RefreshAssetsManifest()
     {
         AssetManifest assetManifest = GetAssetManifest();
