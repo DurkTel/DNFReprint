@@ -18,55 +18,26 @@ public class AssetManifest : ScriptableObject, ISerializationCallbackReceiver
             this.assetPath = assetPath;
         }
     }
-    public List<AssetInfo> assetList = new List<AssetInfo>();
+    public List<AssetInfo> assetList = new List<AssetInfo>(5000);
 
-    public Dictionary<string, string> assetMap = new Dictionary<string, string>();
+    public Dictionary<string, string> assetMap = new Dictionary<string, string>(5000);
 
-    public static AssetManifest GetAssetManifest()
+    public void OnBeforeSerialize()
     {
-        AssetManifest assetManifest = AssetDatabase.LoadAssetAtPath<AssetManifest>(path);
-
-        if (assetManifest == null)
-        { 
-            assetManifest = ScriptableObject.CreateInstance<AssetManifest>();
-            AssetDatabase.CreateAsset(assetManifest, path);
-        }
-
-        return assetManifest;
+        assetList.Clear();
+        foreach (var item in this.assetMap)
+            assetList.Add(new AssetInfo(item.Key, item.Value));
     }
 
-    public void Add(string assetPath)
+    public void OnAfterDeserialize()
     {
-        string assetName = Path.GetFileName(assetPath);
-
-        if (assetMap.ContainsKey(assetName))
-            assetMap[assetName] = assetPath;
-        else
-            assetMap.Add(assetName, assetPath);
-    }
-
-    public bool Contains(string assetName)
-    { 
-        return assetMap.ContainsKey(assetName);
-    }
-
-    public string GetPath(string assetName)
-    {
-        if (assetMap.ContainsKey(assetName))
-            return assetMap[assetName];
-
-        Debug.LogWarning("资源清单中没有名为：" + assetName + "的资源，请更新资源清单或检查资源名称");
-        return string.Empty;
-    }
-
-    public void Clear()
-    {
-        assetMap.Clear();
+        foreach (var item in assetList)
+            if (!this.assetMap.ContainsKey(item.assetName))
+                this.assetMap.Add(item.assetName, item.assetPath);
     }
 
 #if UNITY_EDITOR
     [MenuItem("Assets/Refresh AssetsManifest")]
-#endif
     public static void RefreshAssetsManifest()
     {
         AssetManifest assetManifest = GetAssetManifest();
@@ -92,17 +63,47 @@ public class AssetManifest : ScriptableObject, ISerializationCallbackReceiver
         Debug.Log("更新资源清单完成");
     }
 
-    public void OnBeforeSerialize()
+    public static AssetManifest GetAssetManifest()
     {
-        assetList.Clear();
-        foreach (var item in this.assetMap)
-            assetList.Add(new AssetInfo(item.Key, item.Value));
+        AssetManifest assetManifest = AssetDatabase.LoadAssetAtPath<AssetManifest>(path);
+
+        if (assetManifest == null)
+        {
+            assetManifest = ScriptableObject.CreateInstance<AssetManifest>();
+            AssetDatabase.CreateAsset(assetManifest, path);
+        }
+
+        return assetManifest;
     }
 
-    public void OnAfterDeserialize()
+    public void Add(string assetPath)
     {
-        foreach (var item in assetList)
-            if (!this.assetMap.ContainsKey(item.assetName))
-                this.assetMap.Add(item.assetName, item.assetPath);
+        string assetName = Path.GetFileName(assetPath);
+
+        if (assetMap.ContainsKey(assetName))
+            assetMap[assetName] = assetPath;
+        else
+            assetMap.Add(assetName, assetPath);
     }
+
+    public bool Contains(string assetName)
+    {
+        return assetMap.ContainsKey(assetName);
+    }
+
+    public string GetPath(string assetName)
+    {
+        if (assetMap.ContainsKey(assetName))
+            return assetMap[assetName];
+
+        Debug.LogWarning("资源清单中没有名为：" + assetName + "的资源，请更新资源清单或检查资源名称");
+        return string.Empty;
+    }
+
+    public void Clear()
+    {
+        assetMap.Clear();
+    }
+#endif
+
 }

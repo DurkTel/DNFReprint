@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 478341426
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dd4c7fc8ed8ca742336bddf2e5e63b34
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 02386d8194e09f1d4a8c23f0a0438d65
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: b40ebcf3e05108d4cbcbed9749f84b39, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: AssetManifest_Bundle/AssetInfo
+Assets:
+- Assets/Art/ABManifest.asset
+Dependencies: []

@@ -1,0 +1,230 @@
+ManifestFileVersion: 0
+CRC: 2537391885
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e47ef3f574ae8332345e9a45053bbd75
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3c2e1515e75f247c565919c9c96627aa
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 68
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: baf08a73fa13db14f980dcad1d65a2ec, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f43def111f301ba40afec2dfd2427c7e, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 210
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/18.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/21.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_2.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_3.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/myroom.img/myroom.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_4.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_tile/tile_ex.img/tile_ex.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/near.img/near.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/myroom.img/myroom.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_5.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_1.img/2.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_4.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_3.png
+- Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild.img/gate_guild.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_7.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_6.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_2.img/0.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_1.img/0.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/3.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/1.controller"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild_rank.img/gate_guild_rank.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_8.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_11.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/16.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_6.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_8.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_7.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_5.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_9.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_1.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/sign.img/sign.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_7.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/6.png"
+- Assets/Art/Scene/Texture/Elvengard/egobj01.img/egobj01.img.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/tree.img/tree.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/tent.img/tent.img_0.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_13.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_2.img/2.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_2.img/3.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_1.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_6.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/2.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/guardpost.img/guardpost.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/backgruond.img/0.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/seria_add40.img/0.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/10.png"
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_8.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_2.img/3.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_tile/tile.img/tile.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_3.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/backgruond_light.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_5.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/9.png"
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_3.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_down_light.img/gate_down_light.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_7.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_14.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_1.img/2.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_1.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_7.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_5.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_far.img/back_far.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/8.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_11.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_3.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_tile/tile_add40.img/tile_add40.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_6.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_1.img/3.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_10.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_4.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_down.img/gate_down.img_0.png
+- Assets/Art/Scene/Scene_10001.prefab
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_11.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/5.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_5.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_11.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/sign_dungeon.img/sign_dungeon.img_0.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_5.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_6.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_3.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild.img/gate_guild.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/backgruond_light.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_3.png
+- Assets/Art/Scene/Scene_10003.prefab
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_6.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/near.img/near.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/17.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_4.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_6.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_far.img/back_far.img_2.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_12.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/15.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_2.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/7.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_up_light.img/gate_up_light.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_7.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_guild_rank.img/gate_guild_rank.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/openDoorEffect.anim"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_10.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/2.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/19.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/20.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_8.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_9.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_3.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/23.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_2.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/4.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_4.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_2.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_1.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/light.anim"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/14.png"
+- Assets/Art/Scene/Scene_10000.prefab
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/2.controller"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/barrier.img/barrier.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/animation/0.controller"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_1.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/11.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_4.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_10.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/left_door.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_4.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/seria_tree_n.img/seria_tree_n.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_7.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_1.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/12.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_9.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_pathgate/gate_up.img/gate_up.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_3.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_9.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_middle.img/back_middle.img_0.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/right_door.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_beam.img/shine_beam.img_0.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_4.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_background/back_far.img/back_far.img_1.png
+- Assets/Art/Scene/Scene_10002.prefab
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/3.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_10.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_0.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith_smoke.img/blacksmith_smoke.img_3.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_2.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/block.img/block.img_5.png
+- Assets/Art/Scene/Texture/Elvengard/egtile.img/egtile.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/clover.img/clover.img_1.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_n.img/shine_seria_n.img_8.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_3.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/tree.img/tree.img_1.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/leaf_2.img/1.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_10.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_ground.img/shine_ground.img_2.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/seria_tree.img/seria_tree.img_0.png
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_11.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/13.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/backgruond_light.img/2.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_2.img/2.png"
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/gate_new_glow_eff.img/22.png"
+- Assets/Art/Scene/Texture/TrainingGround/training_ground_1.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_1.img/3.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/shine_seria_tree.img/shine_seria_tree.img_9.png
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_8.png
+- "Assets/Art/Scene/Texture/\u8D5B\u5229\u4E9A\u623F\u95F4/flower_1.img/0.png"
+- Assets/Art/Scene/Texture/Elvengard/sprite_map_town_04_elvengard_object/blacksmith.img/blacksmith.img_5.png
+Dependencies:
+- D:/UnityProject/DNFReprint/Assets/StreamingAssets/scriptobject

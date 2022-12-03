@@ -8,6 +8,12 @@ using UnityEngine;
 
 public class AssetUtility
 {
+
+    public static TextAsset LoadLuaFile(string path)
+    {
+        return AssetManager.Instance.LoadAsset<TextAsset>(path, "lua");
+    }
+
     /// <summary>
     /// 异步加载
     /// </summary>
@@ -41,9 +47,57 @@ public class AssetUtility
         return AssetManager.Instance.LoadAsset<T>(assetName);
     }
 
+    /// <summary>
+    /// 停止加载
+    /// </summary>
+    /// <param name="asstName"></param>
     public static void StopLoadingAsset(string asstName)
     { 
         AssetManager.Instance.RemoveAssetLoader(asstName);
+    }
+
+    /// <summary>
+    /// 获取AB包资源清单
+    /// </summary>
+    /// <returns></returns>
+    public static AssetManifest_Bundle GetAssetManifest_Bundle()
+    {
+        return AssetManager.Instance.GetAssetManifest_Bundle();
+    }
+
+    /// <summary>
+    /// 添加已加载的AB包
+    /// </summary>
+    /// <param name="abName"></param>
+    /// <param name="bundle"></param>
+    public static void AddAssetBundle(string abName, AssetBundle bundle)
+    {
+        AssetManager.Instance.AddAssetBundle(abName, bundle);
+    }
+
+    /// <summary>
+    /// 获取AB包
+    /// </summary>
+    /// <param name="abName"></param>
+    /// <param name="bundle"></param>
+    /// <returns></returns>
+    public static bool TryGetAssetBundle(string abName, out AssetBundle bundle)
+    {
+        return AssetManager.Instance.TryGetAssetBundle(abName, out bundle);
+    }
+
+    public static void LoadDependencies(string abName)
+    {
+        AssetManager.Instance.LoadDependencies(abName);
+    }
+
+    /// <summary>
+    /// 清除已加载的AB包
+    /// </summary>
+    /// <param name="abName"></param>
+    public static void RemoveAssetBundle(string abName)
+    {
+        AssetManager.Instance.RemoveAssetBundle(abName);
     }
 
     /// <summary>

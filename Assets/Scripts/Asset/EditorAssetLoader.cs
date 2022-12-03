@@ -29,11 +29,16 @@ public class EditorAssetLoader : AssetLoader
 
     public override string GetAssetPath(string assetName)
     {
+#if UNITY_EDITOR
         return AssetManifest.GetAssetManifest().GetPath(assetName);
+#else
+        return "";
+#endif
     }
 
     public override void Update()
     {
+#if UNITY_EDITOR
         if(m_isDone || m_error)
             return;
 
@@ -56,5 +61,6 @@ public class EditorAssetLoader : AssetLoader
 
 
         m_isDone = m_rawObject != null;
+#endif
     }
 }

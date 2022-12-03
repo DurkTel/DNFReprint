@@ -58,7 +58,7 @@ public abstract class AssetLoader : IEnumerator
 
     public bool MoveNext()
     {
-        return m_isDone;
+        return !m_isDone;
     }
 
     public void Reset()

@@ -7,19 +7,19 @@ using XLua;
 
 public class Launcher : MonoBehaviour
 {
-    private bool m_useABLoadMode;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
 
-        AssetManager.Initialize();
+        bool useABLoadMode;
 
 #if UNITY_EDITOR
-        m_useABLoadMode = UnityEditor.EditorPrefs.GetBool("QuickMenuKey_LoadModeABTag", false);
+        useABLoadMode = UnityEditor.EditorPrefs.GetBool("QuickMenuKey_LoadModeABTag", false);
 #else
-        m_useABLoadMode = true;
+        useABLoadMode = true;
 #endif
+        AssetManager.Initialize(useABLoadMode);
 
         //打开加载界面
         LoadingDefaultGUI.Open(transform);

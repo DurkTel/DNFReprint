@@ -1,0 +1,133 @@
+ManifestFileVersion: 0
+CRC: 1919038044
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ae304765996dc1e725431ea87489db8f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ab2b15cdc9b5b4dbfb64faf4f5d0d33c
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: baf08a73fa13db14f980dcad1d65a2ec, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 78b23b12b20bd5445a34f73df4aa9283, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6318af8c610e227458aabe7c7cf56e1b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f0e08a5211affaf44886b7d805dcc0ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e8eaba8a1c9d5940a66b41f24cd9936, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: AnimationFrameData
+- AssemblyName: Assembly-CSharp
+  ClassName: ColliderInfo
+- AssemblyName: Assembly-CSharp
+  ClassName: Condition
+- AssemblyName: Assembly-CSharp
+  ClassName: Condition/InputComparison
+- AssemblyName: Assembly-CSharp
+  ClassName: Condition/ValueComparison
+- AssemblyName: Assembly-CSharp
+  ClassName: FrameCollInfo
+- AssemblyName: Assembly-CSharp
+  ClassName: FrameEvent
+- AssemblyName: Assembly-CSharp
+  ClassName: SwitchingConditions
+Assets:
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/hurt1_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/lie_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/YinGuangLuoRen_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/runAttack_collider.asset
+- Assets/Art/ScriptObject/Animations/Effect/HitEffect/AnimationData/knockLarge_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/lie_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpDrop_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/hurt1_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/run_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpRise_Anim.asset
+- Assets/Art/ScriptObject/Animations/Sandbag/ColliderInfo/hit1_collider.asset
+- Assets/Art/ScriptObject/Animations/Sandbag/ColliderInfo/idle_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/LianTuCi_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/GeDangIng_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/attack1_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/rebound_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/YinGuangLuoRen_Anim.asset
+- Assets/Art/ScriptObject/Animations/Effect/SkillEffect/ColliderInfo/guiZhanEffectA_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpAttack_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/BoDongZhan_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/backJump_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/rebound_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/idle_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/rebound_collider.asset
+- Assets/Art/ScriptObject/Animations/Effect/SkillEffect/AnimationData/boDongZhanEffect_Anim.asset
+- Assets/Art/ScriptObject/Animations/Effect/SkillEffect/AnimationData/guiZhanEffectA_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/hurt1_Anim.asset
+- Assets/Art/ScriptObject/Animations/Effect/SkillEffect/ColliderInfo/boDongZhanEffect_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/attack3_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/idle_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/walk_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/hurt2_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/idle_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/run_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/idlePeace_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/SwordManAnimMap.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/attack1_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/sit_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jumpAttack_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/walkPeace_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jumpDrop_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/ShangTiao_Anim.asset
+- Assets/Art/ScriptObject/Animations/Effect/HitEffect/AnimationData/knockSmall_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/lie_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/ShangTiao_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/BoDongZhan_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/drop_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/GuiZhan_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/hurt2_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jump_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/walk_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/airborne_Anim.asset
+- Assets/Art/ScriptObject/Animations/Sandbag/CommonSkillAnimMap.asset
+- Assets/Art/ScriptObject/NavigationData/10003.asset
+- Assets/Art/ScriptObject/NavigationData/10000.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jumpEnd_collider.asset
+- Assets/Art/ScriptObject/Input/InputReader.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/backJump_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/walk_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/hurt2_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/walk_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/airborne_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/GeDang_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/attack3_collider.asset
+- Assets/Art/ScriptObject/Animations/Sandbag/AnimationData/idle_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/GuiZhan_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/runAttack_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/drop_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/sit_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/ColliderInfo/attack_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/attack2_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/walkPeace_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/attack_Anim.asset
+- Assets/Art/ScriptObject/Animations/Sandbag/AnimationData/hit1_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/lie_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/idlePeace_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/sit_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/LianTuCi_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/jumpEnd_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/attack2_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/AnimationData/GeDang_Anim.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/jump_collider.asset
+- Assets/Art/ScriptObject/Animations/SwordMan/ColliderInfo/idle_collider.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/death_Anim.asset
+- Assets/Art/ScriptObject/NavigationData/10001.asset
+- Assets/Art/ScriptObject/Animations/Goblin/AnimationData/rebound_Anim.asset
+- Assets/Art/ScriptObject/Animations/Goblin/GoblinAnimationMap.asset
+Dependencies:
+- D:/UnityProject/DNFReprint/Assets/StreamingAssets/effect
+- D:/UnityProject/DNFReprint/Assets/StreamingAssets/model

@@ -99,7 +99,7 @@ public class LuaEnvironment : MonoBehaviour
     private static byte[] LuaLoaderByAB(ref string filePath)
     {
         filePath = filePath.Replace('.', '/');
-        TextAsset luaTxt = AssetBundleManager.Instance.Load<TextAsset>("lua", "assets/luatemp/" + filePath + ".lua.txt");
+        TextAsset luaTxt = AssetUtility.LoadLuaFile("assets/luatemp/" + filePath + ".lua.txt"); //AssetBundleManager.Instance.Load<TextAsset>("lua", "assets/luatemp/" + filePath + ".lua.txt");
         if (luaTxt != null)
             return luaTxt.bytes;
 

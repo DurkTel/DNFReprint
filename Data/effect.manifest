@@ -1,0 +1,215 @@
+ManifestFileVersion: 0
+CRC: 2514870265
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 00a7df908e616440903531d8a57e6b14
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cc29c645d5dafcbd42c634b1f819c06d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 062a2dc8ef0593a459e35f15bea29537, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 210
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge3/SlashLarge3_0.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_5.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_5.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_offset.txt
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_1.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge1/SlashLarge1_1.png
+- Assets/Art/Effect/Texture/JumpAttack/JumpAttack0000a/JumpAttack0000a_2.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_0.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall2/SlashSmall2_pointOffsize.txt
+- Assets/Art/Effect/Texture/JumpAttack/JumpAttack0000a/JumpAttack0000a_0.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_3.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge1/SlashLarge1_2.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_5.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_0.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_1.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_1.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_8.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/knockLarge/knockLarge_1.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_offset.txt
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_2.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_8.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_11.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge3/SlashLarge3_1.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_0.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_3.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_4.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge2/SlashLarge2_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_6.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_1.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_2.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_9.png
+- Assets/Art/Effect/Texture/JumpAttack/JumpAttack0000a/JumpAttack0000a_1.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_7.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_4.png
+- Assets/Art/Effect/Texture/HitEffect/knockSmall/knockSmall_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_1.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_0.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_4.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_3.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_4.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_7.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_1.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall3/SlashSmall3_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall2/SlashSmall2_1.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_7.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_0.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_offset.txt
+- Assets/Art/Effect/Prefabs/earthquake01.prefab
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_3.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge2/SlashLarge2_offset.txt
+- Assets/Art/Effect/Texture/YinGuangLuoRen/YinGuangLuoRen0000a/YinGuangLuoRen0000a_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall3/SlashSmall3_2.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_10.png
+- Assets/Art/Effect/Texture/HitEffect/knockLarge/knockLarge_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_11.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_5.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_6.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_5.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_6.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_12.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_2.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_5.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall2/SlashSmall2_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_2.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_4.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_8.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_1.png
+- Assets/Art/Effect/Texture/YinGuangLuoRen/YinGuangLuoRen0000a/YinGuangLuoRen0000a_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_13.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_10.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_pointOffsize.txt
+- Assets/Art/Effect/Texture/JumpAttack/JumpAttack0000a/JumpAttack0000a_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/knockSmall/knockSmall_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_9.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall3/SlashSmall3_1.png
+- Assets/Art/Effect/Prefabs/earthquake02.prefab
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_4.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_6.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge2/SlashLarge2_0.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_4.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_4.png
+- Assets/Art/Effect/Texture/HitEffect/knockSmall/knockSmall_2.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_3.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_5.png
+- Assets/Art/Effect/Texture/HitEffect/knockSmall/knockSmall_1.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_4.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_0.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_9.png
+- Assets/Art/Effect/Prefabs/knockSmall.prefab
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall1/SlashSmall1_1.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_6.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_1.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_5.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_0.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_3.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge2/SlashLarge2_2.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_4.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_3.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_6.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge1/SlashLarge1_0.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_12.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_offset.txt
+- Assets/Art/Effect/Texture/YinGuangLuoRen/YinGuangLuoRen0000a/YinGuangLuoRen0000a_0.png
+- Assets/Art/Effect/Texture/JumpAttack/JumpAttack0000a/JumpAttack0000a_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_2.png
+- Assets/Art/Effect/Texture/HitEffect/knockSmall/knockSmall_0.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_12.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_3.png
+- Assets/Art/Effect/Prefabs/knockLarge.prefab
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_8.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_11.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_2.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_1.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_3.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge1/SlashLarge1_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge3/SlashLarge3_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_2.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_5.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_6.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_9.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge1/SlashLarge1_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_3.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_1.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/knockLarge/knockLarge_offset.txt
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge3/SlashLarge3_2.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_0.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_2.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall1/SlashSmall1_0.png
+- Assets/Art/Effect/Prefabs/fireHitEffect.prefab
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_9.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall1/SlashSmall1_2.png
+- Assets/Art/Effect/Texture/JumpAttack/JumpAttack0000a/JumpAttack0000a_3.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_6.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_8.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_0.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_2.png
+- Assets/Art/Effect/Prefabs/yinGuangLuoRenEffect.prefab
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall1/SlashSmall1_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_4.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_2.png
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_8.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_offset.txt
+- Assets/Art/Effect/Prefabs/darkHitEffect.prefab
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge3/SlashLarge3_pointOffsize.txt
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_4.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit02/darkHit02_2.png
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_10.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall1/SlashSmall1_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall2/SlashSmall2_0.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall3/SlashSmall3_0.png
+- Assets/Art/Effect/Texture/HitEffect/SlashLarge2/SlashLarge2_1.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000b/boDongZhan0000b_5.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_7.png
+- Assets/Art/Effect/Texture/BoDongZhan/boDongZhan0000a/boDongZhan0000a_3.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall3/SlashSmall3_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit01/iceHit01_7.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_0.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000b/guiZhan0000b_0.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake02/earthquake02_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/iceHit/iceHit02/iceHit02_2.png
+- Assets/Art/Effect/Texture/HitEffect/knockLarge/knockLarge_2.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_7.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_7.png
+- Assets/Art/Effect/Texture/HitEffect/earthquake/earthquake01/earthquake01_8.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_pointOffsize.txt
+- Assets/Art/Effect/Texture/HitEffect/fireHit/fireHit_offset.txt
+- Assets/Art/Effect/Texture/HitEffect/knockLarge/knockLarge_0.png
+- Assets/Art/Effect/Texture/HitEffect/SlashSmall2/SlashSmall2_2.png
+- Assets/Art/Effect/Texture/HitEffect/darkHit/darkHit01/darkHit01_1.png
+- Assets/Art/Effect/Texture/HitEffect/lightHit/lightHit_3.png
+- Assets/Art/Effect/Texture/GuiZhan/guiZhan0000a/guiZhan0000a_pointOffsize.txt
+Dependencies: []

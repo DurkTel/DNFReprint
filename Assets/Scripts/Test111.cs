@@ -11,14 +11,14 @@ public class Test111 : MonoBehaviour
     void Start()
     {
         //AssetManifest.RefreshAssetsManifest();
-        AssetManager.Initialize();
-        AssetLoader loader = AssetUtility.LoadAssetAsync<GameObject>("10003.prefab");
-        loader.onComplete = (p) =>
-        {
-            go = p.rawObject as GameObject;
-            Instantiate(go);
-            //Invoke("Destroy", 2);
-        };
+        //AssetManager.Initialize();
+        //AssetLoader loader = AssetUtility.LoadAssetAsync<GameObject>("10003.prefab");
+        //loader.onComplete = (p) =>
+        //{
+        //    go = p.rawObject as GameObject;
+        //    Instantiate(go);
+        //    //Invoke("Destroy", 2);
+        //};
 
 
     }

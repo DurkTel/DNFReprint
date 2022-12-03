@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 2307743919
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6701c9a33ac4ac35429d675910e8e569
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b5998989ece72da6beed5922eec0cc87
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Art/Font/allText.txt
+- Assets/Art/Font/simsun.ttc
+Dependencies: []
