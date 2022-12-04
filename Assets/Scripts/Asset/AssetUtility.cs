@@ -86,9 +86,9 @@ public class AssetUtility
         return AssetManager.Instance.TryGetAssetBundle(abName, out bundle);
     }
 
-    public static void LoadDependencies(string abName)
+    public static void LoadDependencies(List<string> abNames)
     {
-        AssetManager.Instance.LoadDependencies(abName);
+        AssetManager.Instance.LoadDependencies(abNames);
     }
 
     /// <summary>

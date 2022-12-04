@@ -47,6 +47,11 @@ public class BundleAssetLoader : AssetLoader
         return AssetUtility.GetAssetManifest_Bundle().GetBundleName(assetName);
     }
 
+    public List<string> GetDependsName(string assetName)
+    {
+        return AssetUtility.GetAssetManifest_Bundle().GetDependsName(assetName);
+    }
+
     public override void Update()
     {
         if (m_isDone || m_error)
@@ -86,7 +91,7 @@ public class BundleAssetLoader : AssetLoader
 
     private UnityEngine.Object Load(string abName, string assetName, Type type)
     {
-        AssetUtility.LoadDependencies(abName);
+        AssetUtility.LoadDependencies(GetDependsName(abName));
         AssetBundle ab;
         if (!AssetUtility.TryGetAssetBundle(abName, out ab))
         {
@@ -101,7 +106,7 @@ public class BundleAssetLoader : AssetLoader
 
     private AssetBundleRequest LoadAsync(string abName, string assetName, Type type)
     {
-        AssetUtility.LoadDependencies(abName);
+        AssetUtility.LoadDependencies(GetDependsName(abName));
         AssetBundle ab;
         if (!AssetUtility.TryGetAssetBundle(abName, out ab))
         {

@@ -89,15 +89,10 @@ public class AssetManager : MonoBehaviour
     /// <summary>
     /// º”‘ÿ“¿¿µ
     /// </summary>
-    public void LoadDependencies(string abName)
+    public void LoadDependencies(List<string> abNames)
     {
-        if (m_mainAB == null)
-        {
-            m_mainAB = AssetBundle.LoadFromFile(Path.Combine(AssetDefine.localDataPath, "StreamingAssets"));
-            m_manifest = m_mainAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-        }
-
-        foreach (string dependPath in m_manifest.GetDirectDependencies(abName))
+        if (abNames == null || abNames.Count == 0) return; 
+        foreach (string dependPath in abNames)
         {
             if (!m_allAB.ContainsKey(dependPath))
             {
@@ -168,7 +163,6 @@ public class AssetManager : MonoBehaviour
     /// <returns></returns>
     public T LoadAsset<T>(string assetName, string abName) where T : UnityEngine.Object
     {
-        LoadDependencies(abName);
         TryAddAssetBundle(abName); 
         return m_allAB[abName].LoadAsset<T>(assetName);
     }
