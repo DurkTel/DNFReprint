@@ -1,8 +1,9 @@
+local db = MDefine.db
 local CopyConfig = {}
-local db_tbmap = require("db.db_tbmap")
+db.db_tbmap = "db.db_tbmap"
 
 function CopyConfig.getCfgById(id)
-    return db_tbmap[id]
+    return db.db_tbmap[id]
 end
 
 

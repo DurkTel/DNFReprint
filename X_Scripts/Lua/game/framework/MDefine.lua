@@ -28,6 +28,7 @@ end
 
 MDefine.cfg = gen("cfg")
 MDefine.data = gen("data")
+MDefine.db = gen("db")
 
 
 return MDefine

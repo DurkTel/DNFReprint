@@ -1,19 +1,20 @@
+local db = MDefine.db
 local SkillConfig = {}
-local db_tbskill = require("db.db_tbskill")
-local db_tbdamage = require("db.db_tbdamage")
-local db_tbeffect = require("db.db_tbeffect")
+db.db_tbskill = "db.db_tbskill"
+db.db_tbdamage = "db.db_tbdamage"
+db.db_tbeffect = "db.db_tbeffect"
 
 
 function SkillConfig.getSkillCfgById(id)
-    return db_tbskill[id]
+    return db.db_tbskill[id]
 end
 
 function SkillConfig.getDamageCfgById(id)
-    return db_tbdamage[id]
+    return db.db_tbdamage[id]
 end
 
 function SkillConfig.getEffectCfgById(id)
-    return db_tbeffect[id]
+    return db.db_tbeffect[id]
 end
 
 return SkillConfig
