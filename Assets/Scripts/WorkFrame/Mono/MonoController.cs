@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if false
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -65,3 +67,4 @@ public class MonoController : MonoBehaviour
         fixedUpdateEvent -= fun;
     }
 }
+#endif

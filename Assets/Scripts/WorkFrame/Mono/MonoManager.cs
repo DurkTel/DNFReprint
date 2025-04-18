@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if false
+
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
@@ -72,3 +74,4 @@ public class MonoManager : SingletonBase<MonoManager>
         return controller.StartCoroutine(methodName);
     }
 }
+#endif

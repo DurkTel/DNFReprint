@@ -197,7 +197,8 @@ public partial class Entity : BaseEvent
 
         InitAnimEvent<string>(EventDefine.EVENT_PLAY_SOUND, (name) =>
         {
-            MusicManager.Instance.PlaySound(name);
+            //MusicManager.Instance.PlaySound(name);
+            GMAudioManager.Play("OtherAudio", name);
         });
     }
 

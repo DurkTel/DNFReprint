@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if false
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -125,3 +127,4 @@ public class PoolMgr : SingletonBase<PoolMgr>
         poolObj = null;
     }
 }
+#endif

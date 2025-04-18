@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if false
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -118,3 +120,4 @@ public class GUIView : MonoBehaviour
     }
 
 }
+#endif
